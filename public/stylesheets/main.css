@@ -549,9 +549,10 @@ ul.inline li {
   padding: 35px 0 40px;
   position: fixed;
   top: 0;
-  width: 100%; }
+  width: 100%;
+  z-index: 1000; }
 
-/* line 143, main.scss */
+/* line 144, main.scss */
 .logo {
   margin: 0 0 0 4%;
   width: 233px;
@@ -560,50 +561,66 @@ ul.inline li {
   float: left;
   background: url(../images/logo.png) no-repeat; }
 
-/* line 153, main.scss */
+/* line 154, main.scss */
 .main-nav {
   float: right;
   margin: 17px 6% 0 0; }
-  /* line 156, main.scss */
+  /* line 157, main.scss */
   .main-nav a {
     color: white;
     font: 800 14px "proxima-nova";
     text-transform: uppercase;
     text-decoration: none; }
-    /* line 161, main.scss */
+    /* line 162, main.scss */
     .main-nav a:hover {
       color: #f4810f; }
 
 /* line 168, main.scss */
+.headline {
+  margin-top: 146px; }
+
+/* line 171, main.scss */
 .panel {
   padding: 60px 20px 20px;
-  margin-bottom: 8px; }
+  margin-bottom: 8px;
+  overflow: hidden; }
+  /* line 175, main.scss */
+  .panel h2, .panel div, .panel p {
+    position: relative;
+    z-index: 100; }
+  /* line 180, main.scss */
+  .panel .q {
+    display: block;
+    color: #e16e2b;
+    position: absolute;
+    z-index: 1;
+    font-size: 10em; }
 
-/* line 174, main.scss */
+/* line 191, main.scss */
 .about {
   background: white; }
 
-/* line 180, main.scss */
+/* line 197, main.scss */
 .work {
   background: #dbd8cf; }
 
-/* line 185, main.scss */
+/* line 202, main.scss */
 .services {
   background: #e16e2b; }
 
-/* line 190, main.scss */
+/* line 207, main.scss */
 .value {
   background: #dbd8cf; }
 
-/* line 195, main.scss */
+/* line 212, main.scss */
 .crew {
   background: #77c7c6; }
 
-/* line 200, main.scss */
+/* line 217, main.scss */
 .clients {
   background: #c9005d; }
 
-/* line 205, main.scss */
+/* line 222, main.scss */
 .contact {
   background: #dbd8cf; }
 
@@ -613,7 +630,7 @@ ul.inline li {
 /*
  * Image replacement
  */
-/* line 222, main.scss */
+/* line 239, main.scss */
 .ir {
   background-color: transparent;
   border: 0;
@@ -621,7 +638,7 @@ ul.inline li {
   /* IE 6/7 fallback */
   *text-indent: -9999px; }
 
-/* line 230, main.scss */
+/* line 247, main.scss */
 .ir:before {
   content: "";
   display: block;
@@ -631,7 +648,7 @@ ul.inline li {
 /*
  * Hide from both screenreaders and browsers: h5bp.com/u
  */
-/* line 241, main.scss */
+/* line 258, main.scss */
 .hidden {
   display: none !important;
   visibility: hidden; }
@@ -639,7 +656,7 @@ ul.inline li {
 /*
  * Hide only visually, but have it available for screenreaders: h5bp.com/v
  */
-/* line 250, main.scss */
+/* line 267, main.scss */
 .visuallyhidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -654,7 +671,7 @@ ul.inline li {
  * Extends the .visuallyhidden class to allow the element to be focusable
  * when navigated to via the keyboard: h5bp.com/p
  */
-/* line 267, main.scss */
+/* line 284, main.scss */
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
   clip: auto;
@@ -667,7 +684,7 @@ ul.inline li {
 /*
  * Hide visually and from screenreaders, but maintain layout
  */
-/* line 280, main.scss */
+/* line 297, main.scss */
 .invisible {
   visibility: hidden; }
 
@@ -682,7 +699,7 @@ ul.inline li {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-/* line 297, main.scss */
+/* line 314, main.scss */
 .clearfix:before,
 .clearfix:after {
   content: " ";
@@ -690,7 +707,7 @@ ul.inline li {
   display: table;
   /* 2 */ }
 
-/* line 302, main.scss */
+/* line 319, main.scss */
 .clearfix:after {
   clear: both; }
 
@@ -698,7 +715,7 @@ ul.inline li {
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
  */
-/* line 311, main.scss */
+/* line 328, main.scss */
 .clearfix {
   *zoom: 1; }
 
@@ -716,7 +733,7 @@ ul.inline li {
    Inlined to avoid required HTTP connection: h5bp.com/r
    ========================================================================== */
 @media print {
-  /* line 338, main.scss */
+  /* line 355, main.scss */
   * {
     background: transparent !important;
     color: black !important;
@@ -724,59 +741,59 @@ ul.inline li {
     box-shadow: none !important;
     text-shadow: none !important; }
 
-  /* line 346, main.scss */
+  /* line 363, main.scss */
   a,
   a:visited {
     text-decoration: underline; }
 
-  /* line 350, main.scss */
+  /* line 367, main.scss */
   a[href]:after {
     content: " (" attr(href) ")"; }
 
-  /* line 354, main.scss */
+  /* line 371, main.scss */
   abbr[title]:after {
     content: " (" attr(title) ")"; }
 
   /*
    * Don't show links for images, or javascript/internal links
    */
-  /* line 364, main.scss */
+  /* line 381, main.scss */
   .ir a:after,
   a[href^="javascript:"]:after,
   a[href^="#"]:after {
     content: ""; }
 
-  /* line 369, main.scss */
+  /* line 386, main.scss */
   pre,
   blockquote {
     border: 1px solid #999999;
     page-break-inside: avoid; }
 
-  /* line 374, main.scss */
+  /* line 391, main.scss */
   thead {
     display: table-header-group;
     /* h5bp.com/t */ }
 
-  /* line 379, main.scss */
+  /* line 396, main.scss */
   tr,
   img {
     page-break-inside: avoid; }
 
-  /* line 383, main.scss */
+  /* line 400, main.scss */
   img {
     max-width: 100% !important; }
 
   @page {
     margin: 0.5cm; }
 
-  /* line 393, main.scss */
+  /* line 410, main.scss */
   p,
   h2,
   h3 {
     orphans: 3;
     widows: 3; }
 
-  /* line 399, main.scss */
+  /* line 416, main.scss */
   h2,
   h3 {
     page-break-after: avoid; } }

@@ -139,6 +139,7 @@ ul.inline li {
     position: fixed;
     top:0;
     width: 100%;
+    z-index: 1000;
 }
 .logo {
 	margin: 0 0 0 4%;
@@ -164,10 +165,26 @@ ul.inline li {
 	}
 }
 
-
+.headline {
+    margin-top: 146px;
+}
 .panel {
 	padding:60px 20px 20px;
 	margin-bottom: 8px;
+    overflow: hidden;
+    h2, div, p {
+        position: relative;
+        z-index:100;
+    }
+    // Paralax Test
+    .q {
+        display: block;
+        color: $orange;
+        position: absolute;
+        z-index: 1;
+        font-size: 10em;
+    }
+
 }
 
 //  About Q

@@ -17,6 +17,7 @@
         <script src="components/modernizr/modernizr.js"></script>
          <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="scripts/jquery.scrollTo-min.js"></script>
+        <script src="scripts/jquery.stellar.min.js"></script>
         <!-- endbuild -->
     </head>
     <body>
@@ -40,6 +41,9 @@
         <article id="about" class="about panel">
             <h2>About</h2>
             <p>Q is a strategic design studio that has worked with hundreds of clients for over 30 years. We create brand strategies, visual systems, and marketing materials that deliver compelling user experiences in all media. We help our clients succeed and thrive by designing and developing successful communications. In turn and in our own small way, we help make the world a better place.</p>
+            <div class="q" data-stellar-ratio="2">
+                Q
+            </div>
         </article>
         <article id="work" class="work panel">
             <h2>Work</h2>
@@ -78,6 +82,8 @@
         <!-- endbuild -->
         <script>
         	jQuery(function($){
+                $.stellar();
+
 				$("a[href^='#']").click(function(){//$.scrollTo works EXACTLY the same way, but scrolls the whole screen
 					$.scrollTo( this.hash, 800, { offset:-130 });
 					return false;
