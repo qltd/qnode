@@ -1,0 +1,89 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title><%= title %></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+<script type="text/javascript" src="//use.typekit.net/hia2tcg.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="stylesheets/main.css">
+        <!-- build:js scripts/vendor/modernizr.js -->
+        <script src="components/modernizr/modernizr.js"></script>
+         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="scripts/jquery.scrollTo-min.js"></script>
+        <!-- endbuild -->
+    </head>
+    <body>
+        <header class="header clearfix">
+            <h1 class="logo"><%= title %></h1>
+            <nav class="main-nav">
+                <ul class="inline">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#work">Work</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#crew">Crew</a></li>
+                    <li><a href="#clients">Clients</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section class="headline">
+            <h3>Making the world a better place through design and communication</h3>
+        </section>
+        <article id="about" class="about panel">
+            <h2>About</h2>
+            <p>Q is a strategic design studio that has worked with hundreds of clients for over 30 years. We create brand strategies, visual systems, and marketing materials that deliver compelling user experiences in all media. We help our clients succeed and thrive by designing and developing successful communications. In turn and in our own small way, we help make the world a better place.</p>
+        </article>
+        <article id="work" class="work panel">
+            <h2>Work</h2>
+        </article>
+        <article id="services" class="services panel">
+            <h2>Services</h2>
+        </article>
+        <article id="value" class="value panel">
+            <h3>Things We Value:</h3>
+        </article>
+        <article id="crew" class="crew panel">
+            <h2>Crew</h2>
+        </article>
+        <article id="clients" class="clients panel">
+            <h2>Clients</h2>
+        </article>
+        <article id="contact" class="contact panel">
+            <h2>Contact</h2>
+        </article>
+
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+
+        <!-- build:js scripts/main.js -->
+        <script data-main="scripts/main" src="components/requirejs/require.js"></script>
+
+        <!-- endbuild -->
+        <script>
+        	jQuery(function($){
+				$("a[href^='#']").click(function(){//$.scrollTo works EXACTLY the same way, but scrolls the whole screen
+					$.scrollTo( this.hash, 800, { offset:-130 });
+					return false;
+				});
+        	});
+
+        </script>
+</body>
+</html>
