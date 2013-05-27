@@ -167,6 +167,8 @@ ul.inline li {
 
 .headline {
     margin-top: 146px;
+    height: 600px;
+    background: #6ca6a6;
 }
 .panel {
     position: relative;
@@ -177,10 +179,16 @@ ul.inline li {
         position: relative;
         z-index:100;
     }
+    h2 {
+        margin-top: 24px;
+        padding-left: 40px;
+    }
     // Paralax Test
     .q {
         display: block;
-        color: $orange;
+        background: url(../images/tanq.png);
+        width: 351px;
+        height: 342px;
         position: absolute;
         z-index: 1;
         font-size: 10em;
@@ -191,6 +199,7 @@ ul.inline li {
 //  About Q
 .about {
 	background: white;
+    padding:190px 20px 160px;
 }
 
 

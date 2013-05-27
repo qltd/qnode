@@ -398,7 +398,151 @@ table {
 /**
  * Apply to any column to make it the last one of the current row.
  */
-/* line 5, _base.scss */
+/* line 21, _base.scss */
+article {
+  width: 100%;
+  margin: 0 0%; }
+
+/* line 26, _base.scss */
+#grid {
+  margin-bottom: 0px;
+  height: 0px; }
+  /* line 30, _base.scss */
+  #grid div {
+    background: none; }
+    /* line 33, _base.scss */
+    #grid div div {
+      background: black; }
+
+/* Helper Class: Container */
+/* line 139, _grid.scss */
+.row {
+  width: 100%;
+  margin: 0 0%; }
+
+/* Helper Class: Columns */
+/* line 145, _grid.scss */
+.col1 {
+  float: left;
+  margin-right: -100%;
+  width: 4.57%; }
+
+/* line 145, _grid.scss */
+.col2 {
+  float: left;
+  margin-right: -100%;
+  width: 13.25%; }
+
+/* line 145, _grid.scss */
+.col3 {
+  float: left;
+  margin-right: -100%;
+  width: 21.92%; }
+
+/* line 145, _grid.scss */
+.col4 {
+  float: left;
+  margin-right: -100%;
+  width: 30.6%; }
+
+/* line 145, _grid.scss */
+.col5 {
+  float: left;
+  margin-right: -100%;
+  width: 39.27%; }
+
+/* line 145, _grid.scss */
+.col6 {
+  float: left;
+  margin-right: -100%;
+  width: 47.95%; }
+
+/* line 145, _grid.scss */
+.col7 {
+  float: left;
+  margin-right: -100%;
+  width: 56.62%; }
+
+/* line 145, _grid.scss */
+.col8 {
+  float: left;
+  margin-right: -100%;
+  width: 65.3%; }
+
+/* line 145, _grid.scss */
+.col9 {
+  float: left;
+  margin-right: -100%;
+  width: 73.97%; }
+
+/* line 145, _grid.scss */
+.col10 {
+  float: left;
+  margin-right: -100%;
+  width: 82.65%; }
+
+/* line 145, _grid.scss */
+.col11 {
+  float: left;
+  margin-right: -100%;
+  width: 91.32%; }
+
+/* line 145, _grid.scss */
+.col12 {
+  float: left;
+  margin-right: -100%;
+  width: 100%; }
+
+/* Helper Class: Horizontal Position */
+/* line 152, _grid.scss */
+.push0 {
+  margin-left: 0%; }
+
+/* line 152, _grid.scss */
+.push1 {
+  margin-left: 8.67%; }
+
+/* line 152, _grid.scss */
+.push2 {
+  margin-left: 17.35%; }
+
+/* line 152, _grid.scss */
+.push3 {
+  margin-left: 26.02%; }
+
+/* line 152, _grid.scss */
+.push4 {
+  margin-left: 34.7%; }
+
+/* line 152, _grid.scss */
+.push5 {
+  margin-left: 43.37%; }
+
+/* line 152, _grid.scss */
+.push6 {
+  margin-left: 52.05%; }
+
+/* line 152, _grid.scss */
+.push7 {
+  margin-left: 60.72%; }
+
+/* line 152, _grid.scss */
+.push8 {
+  margin-left: 69.4%; }
+
+/* line 152, _grid.scss */
+.push9 {
+  margin-left: 78.07%; }
+
+/* line 152, _grid.scss */
+.push10 {
+  margin-left: 86.75%; }
+
+/* line 152, _grid.scss */
+.push11 {
+  margin-left: 95.42%; }
+
+/* line 41, _base.scss */
 * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -577,51 +721,60 @@ ul.inline li {
 
 /* line 168, main.scss */
 .headline {
-  margin-top: 146px; }
+  margin-top: 146px;
+  height: 600px;
+  background: #6ca6a6; }
 
-/* line 171, main.scss */
+/* line 173, main.scss */
 .panel {
   position: relative;
   padding: 60px 20px 20px;
   margin-bottom: 8px;
   overflow: hidden; }
-  /* line 176, main.scss */
+  /* line 178, main.scss */
   .panel h2, .panel div, .panel p {
     position: relative;
     z-index: 100; }
-  /* line 181, main.scss */
+  /* line 182, main.scss */
+  .panel h2 {
+    margin-top: 24px;
+    padding-left: 40px; }
+  /* line 187, main.scss */
   .panel .q {
     display: block;
-    color: #e16e2b;
+    background: url(../images/tanq.png);
+    width: 351px;
+    height: 342px;
     position: absolute;
     z-index: 1;
     font-size: 10em; }
 
-/* line 192, main.scss */
+/* line 200, main.scss */
 .about {
-  background: white; }
+  background: white;
+  padding: 190px 20px 160px; }
 
-/* line 198, main.scss */
+/* line 207, main.scss */
 .work {
   background: #dbd8cf; }
 
-/* line 203, main.scss */
+/* line 212, main.scss */
 .services {
   background: #e16e2b; }
 
-/* line 208, main.scss */
+/* line 217, main.scss */
 .value {
   background: #dbd8cf; }
 
-/* line 213, main.scss */
+/* line 222, main.scss */
 .crew {
   background: #77c7c6; }
 
-/* line 218, main.scss */
+/* line 227, main.scss */
 .clients {
   background: #c9005d; }
 
-/* line 223, main.scss */
+/* line 232, main.scss */
 .contact {
   background: #dbd8cf; }
 
@@ -631,7 +784,7 @@ ul.inline li {
 /*
  * Image replacement
  */
-/* line 240, main.scss */
+/* line 249, main.scss */
 .ir {
   background-color: transparent;
   border: 0;
@@ -639,7 +792,7 @@ ul.inline li {
   /* IE 6/7 fallback */
   *text-indent: -9999px; }
 
-/* line 248, main.scss */
+/* line 257, main.scss */
 .ir:before {
   content: "";
   display: block;
@@ -649,7 +802,7 @@ ul.inline li {
 /*
  * Hide from both screenreaders and browsers: h5bp.com/u
  */
-/* line 259, main.scss */
+/* line 268, main.scss */
 .hidden {
   display: none !important;
   visibility: hidden; }
@@ -657,7 +810,7 @@ ul.inline li {
 /*
  * Hide only visually, but have it available for screenreaders: h5bp.com/v
  */
-/* line 268, main.scss */
+/* line 277, main.scss */
 .visuallyhidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -672,7 +825,7 @@ ul.inline li {
  * Extends the .visuallyhidden class to allow the element to be focusable
  * when navigated to via the keyboard: h5bp.com/p
  */
-/* line 285, main.scss */
+/* line 294, main.scss */
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
   clip: auto;
@@ -685,7 +838,7 @@ ul.inline li {
 /*
  * Hide visually and from screenreaders, but maintain layout
  */
-/* line 298, main.scss */
+/* line 307, main.scss */
 .invisible {
   visibility: hidden; }
 
@@ -700,7 +853,7 @@ ul.inline li {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-/* line 315, main.scss */
+/* line 324, main.scss */
 .clearfix:before,
 .clearfix:after {
   content: " ";
@@ -708,7 +861,7 @@ ul.inline li {
   display: table;
   /* 2 */ }
 
-/* line 320, main.scss */
+/* line 329, main.scss */
 .clearfix:after {
   clear: both; }
 
@@ -716,7 +869,7 @@ ul.inline li {
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
  */
-/* line 329, main.scss */
+/* line 338, main.scss */
 .clearfix {
   *zoom: 1; }
 
@@ -734,7 +887,7 @@ ul.inline li {
    Inlined to avoid required HTTP connection: h5bp.com/r
    ========================================================================== */
 @media print {
-  /* line 356, main.scss */
+  /* line 365, main.scss */
   * {
     background: transparent !important;
     color: black !important;
@@ -742,59 +895,59 @@ ul.inline li {
     box-shadow: none !important;
     text-shadow: none !important; }
 
-  /* line 364, main.scss */
+  /* line 373, main.scss */
   a,
   a:visited {
     text-decoration: underline; }
 
-  /* line 368, main.scss */
+  /* line 377, main.scss */
   a[href]:after {
     content: " (" attr(href) ")"; }
 
-  /* line 372, main.scss */
+  /* line 381, main.scss */
   abbr[title]:after {
     content: " (" attr(title) ")"; }
 
   /*
    * Don't show links for images, or javascript/internal links
    */
-  /* line 382, main.scss */
+  /* line 391, main.scss */
   .ir a:after,
   a[href^="javascript:"]:after,
   a[href^="#"]:after {
     content: ""; }
 
-  /* line 387, main.scss */
+  /* line 396, main.scss */
   pre,
   blockquote {
     border: 1px solid #999999;
     page-break-inside: avoid; }
 
-  /* line 392, main.scss */
+  /* line 401, main.scss */
   thead {
     display: table-header-group;
     /* h5bp.com/t */ }
 
-  /* line 397, main.scss */
+  /* line 406, main.scss */
   tr,
   img {
     page-break-inside: avoid; }
 
-  /* line 401, main.scss */
+  /* line 410, main.scss */
   img {
     max-width: 100% !important; }
 
   @page {
     margin: 0.5cm; }
 
-  /* line 411, main.scss */
+  /* line 420, main.scss */
   p,
   h2,
   h3 {
     orphans: 3;
     widows: 3; }
 
-  /* line 417, main.scss */
+  /* line 426, main.scss */
   h2,
   h3 {
     page-break-after: avoid; } }
