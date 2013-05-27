@@ -1,7 +1,7 @@
 Q LTD 2013 Site Update
 =====
 
-To get working, you need to be running [Mongo DB](http://www.mongodb.org/).
+To get working, you need to be running [Mongo DB](http://www.mongodb.org/). We're using [Mongoose](http://mongoosejs.com/) for object modeling.
 
 Use [Nodemon](https://github.com/remy/nodemon) to run and refresh node server.
 
