@@ -114,6 +114,11 @@ h3 {
 	color:white;
 	text-align: center;
 }
+h5 {
+    font: 700 16px "adelle", serif;
+    margin: 0;
+}
+
 p {
 	font: 400 24px "proxima-nova", sans-serif;
 }
@@ -211,6 +216,56 @@ ul.inline li {
 //  Services
 .services {
 	background: $orange;
+    padding:190px 20px 160px;
+    ul {
+        list-style: none;
+        padding: 0;
+        li {
+            position: relative;
+            margin: 0;
+            padding: 5px 0;
+            color: #FFF;
+            font:italic 700 19px "adelle", serif;
+            cursor: pointer;
+            @include transition;
+            &:hover {
+                color: $grey;
+            }
+        }
+    }
+    .flyout {
+        background: rgba($grey, 0.9);
+        padding:20px;
+        position: absolute;
+        width: 410px;
+        right:60%;
+        top:50px;
+        opacity: 0;
+        z-index:-100;
+        @include transition;
+        p {
+            color: #FFF;
+            font: 400 13px "proxima-nova", sans-serif;
+        }
+        &:after {
+            content:' ';
+            display: block;
+            position: absolute;
+            top:-15px;
+            right:5%;
+            border-left:15px solid transparent;
+            border-right:15px solid transparent;
+            border-bottom:15px solid rgba($grey, 0.9);
+        }
+    }
+    ul li:hover {
+        .flyout {
+            color:white;
+            z-index:100;
+            top:40px;
+            opacity:1.0;
+        }
+    }
 }
 
 // Value
