@@ -235,6 +235,7 @@ ul li:hover {
     }
 }
 .panel {
+    @include container();
     position: relative;
 	padding:60px 20px 20px;
 	margin-bottom: 8px;
@@ -262,6 +263,14 @@ ul li:hover {
     }
 
 }
+.section-title {
+    @include column(2);
+}
+.section-content {
+    @include push(4);
+    @include column(8);
+}
+
 
 //  About Q
 .about {

@@ -13,11 +13,11 @@ var express = require('express')
 var app = express();
 
 // DB
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/qdb');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
-  // yay!
+  console.log('yay');
 });
 
 // all environments

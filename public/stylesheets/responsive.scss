@@ -1,0 +1,104 @@
+///////////////////
+// LAYOUT < 720  //
+///////////////////
+
+$total_width: 100%;
+$container_margin: 1%;
+$gutter_width: 2%;
+$max_width: 2000px;
+
+article{
+	@include container();
+	@include clearfix();
+}
+
+#row1, #row2, #row3, #row4, #row5, #row6{
+	div{@include column(12);}
+	@include generate_grid_positions(div, 12);
+}
+
+
+///////////////////
+// LAYOUT > 720  //
+///////////////////
+
+@media screen and (min-width: 720px) {
+
+	$total_width: 100%;
+	$container_margin: 1%;
+	$gutter_width: 2%;
+	$max_width: 2000px;
+
+	article{
+		@include container();
+		@include clearfix();
+	}
+
+	#row1{
+		div{@include column(2);}
+		@include generate_grid_positions(div, 2);
+	}
+	#row2{
+		div{@include column(2);}
+		@include generate_grid_positions(div, 2);
+	}
+	#row3{
+		div{@include column(4);}
+		@include generate_grid_positions(div, 4);
+		div.last{@include column(12);};
+	}
+	#row4{
+		div{@include column(4);}
+		@include generate_grid_positions(div, 4);
+	}
+	#row5{
+		div{@include column(6);}
+		@include generate_grid_positions(div, 6);
+	}
+	#row6{
+		div{@include column(12);}
+	}
+}
+
+
+///////////////////
+// LAYOUT > 960  //
+///////////////////
+
+@media all and (min-width: 960px) {
+
+	$total_width: 100%;
+	$container_margin: 1%;
+	$gutter_width: 2%;
+	$max_width: 2000px;
+
+	article{
+		@include container();
+		@include clearfix();
+	}
+
+	#row1{
+		div{@include column(1);}
+		@include generate_grid_positions(div, 1);
+	}
+	#row2{
+		div{@include column(2);}
+		@include generate_grid_positions(div, 2);
+	}
+	#row3{
+		div{@include column(3);}
+		div.last{@include column(3);}
+		@include generate_grid_positions(div, 3);
+	}
+	#row4{
+		div{@include column(4);}
+		@include generate_grid_positions(div, 4);
+	}
+	#row5{
+		div{@include column(6);}
+		@include generate_grid_positions(div, 6);
+	}
+	#row6{
+		div{@include column(12);}
+	}
+}
