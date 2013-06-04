@@ -224,7 +224,7 @@ figure {
  */
 /* line 253, _normalize.scss */
 fieldset {
-  border: 1px solid silver;
+  border: 1px solid #c0c0c0;
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em; }
 
@@ -608,7 +608,7 @@ hr {
   display: block;
   height: 1px;
   border: 0;
-  border-top: 1px solid #cccccc;
+  border-top: 1px solid #ccc;
   margin: 1em 0;
   padding: 0; }
 
@@ -668,15 +668,21 @@ h3 {
   text-align: center; }
 
 /* line 117, main.scss */
-h5 {
+h4 {
   font: 700 16px "adelle", serif;
   margin: 0; }
 
-/* line 122, main.scss */
+/* line 121, main.scss */
+h5 {
+  font: 400 12px "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  margin: 0; }
+
+/* line 127, main.scss */
 p {
   font: 400 24px "proxima-nova", sans-serif; }
 
-/* line 126, main.scss */
+/* line 131, main.scss */
 a {
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
@@ -684,14 +690,64 @@ a {
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out; }
 
-/* line 131, main.scss */
+/* line 135, main.scss */
+input, textarea {
+  width: 100%;
+  margin-bottom: 15px;
+  font: italic 700 21px "adelle", serif;
+  padding: 20px;
+  -webkit-appearance: none;
+  border: none; }
+
+/* line 143, main.scss */
+input {
+  height: 75px; }
+
+/* line 149, main.scss */
 ul.inline li {
   display: inline-block; }
-  /* line 133, main.scss */
+  /* line 151, main.scss */
   ul.inline li + li {
     margin-left: 20px; }
 
-/* line 140, main.scss */
+/* line 157, main.scss */
+.flyout {
+  background: rgba(61, 57, 58, 0.9);
+  padding: 20px;
+  position: absolute;
+  width: 410px;
+  right: 80%;
+  top: 50px;
+  opacity: 0;
+  z-index: -100;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out; }
+  /* line 167, main.scss */
+  .flyout p {
+    color: #FFF;
+    font: 400 13px "proxima-nova", sans-serif; }
+  /* line 171, main.scss */
+  .flyout:after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    top: -15px;
+    right: 5%;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid rgba(61, 57, 58, 0.9); }
+
+/* line 183, main.scss */
+ul li:hover .flyout {
+  color: white;
+  z-index: 100;
+  top: 40px;
+  opacity: 1.0; }
+
+/* line 194, main.scss */
 .header {
   color: white;
   background: #3d393a;
@@ -701,7 +757,7 @@ ul.inline li {
   width: 100%;
   z-index: 1000; }
 
-/* line 149, main.scss */
+/* line 203, main.scss */
 .logo {
   margin: 0 0 0 4%;
   width: 233px;
@@ -710,41 +766,46 @@ ul.inline li {
   float: left;
   background: url(../images/logo.png) no-repeat; }
 
-/* line 159, main.scss */
+/* line 213, main.scss */
 .main-nav {
   float: right;
   margin: 17px 6% 0 0; }
-  /* line 162, main.scss */
+  /* line 216, main.scss */
   .main-nav a {
     color: white;
     font: 800 14px "proxima-nova";
     text-transform: uppercase;
     text-decoration: none; }
-    /* line 167, main.scss */
+    /* line 221, main.scss */
     .main-nav a:hover {
       color: #f4810f; }
 
-/* line 173, main.scss */
+/* line 227, main.scss */
 .headline {
   margin-top: 146px;
   height: 600px;
-  background: #6ca6a6; }
+  background: #6ca6a6;
+  padding-top: 150px; }
+  /* line 232, main.scss */
+  .headline h3 {
+    width: 70%;
+    margin: 0 auto; }
 
-/* line 178, main.scss */
+/* line 237, main.scss */
 .panel {
   position: relative;
   padding: 60px 20px 20px;
   margin-bottom: 8px;
   overflow: hidden; }
-  /* line 183, main.scss */
-  .panel h2, .panel div, .panel p {
+  /* line 242, main.scss */
+  .panel h2, .panel p {
     position: relative;
     z-index: 100; }
-  /* line 187, main.scss */
+  /* line 246, main.scss */
   .panel h2 {
     margin-top: 24px;
     padding-left: 40px; }
-  /* line 192, main.scss */
+  /* line 251, main.scss */
   .panel .q {
     display: block;
     background: url(../images/tanq.png);
@@ -753,25 +814,28 @@ ul.inline li {
     position: absolute;
     z-index: 1;
     font-size: 10em; }
+  /* line 260, main.scss */
+  .panel .pinq {
+    background: url(../images/pinq.png); }
 
-/* line 205, main.scss */
+/* line 267, main.scss */
 .about {
   background: white;
   padding: 190px 20px 160px; }
 
-/* line 212, main.scss */
+/* line 274, main.scss */
 .work {
   background: #dbd8cf; }
 
-/* line 217, main.scss */
+/* line 279, main.scss */
 .services {
   background: #e16e2b;
   padding: 190px 20px 160px; }
-  /* line 220, main.scss */
+  /* line 282, main.scss */
   .services ul {
     list-style: none;
     padding: 0; }
-    /* line 223, main.scss */
+    /* line 285, main.scss */
     .services ul li {
       position: relative;
       margin: 0;
@@ -784,60 +848,68 @@ ul.inline li {
       -ms-transition: all 0.2s ease-out;
       -o-transition: all 0.2s ease-out;
       transition: all 0.2s ease-out; }
-      /* line 231, main.scss */
+      /* line 293, main.scss */
       .services ul li:hover {
         color: #3d393a; }
-  /* line 236, main.scss */
+  /* line 298, main.scss */
   .services .flyout {
-    background: rgba(61, 57, 58, 0.9);
-    padding: 20px;
-    position: absolute;
     width: 410px;
-    right: 60%;
-    top: 50px;
-    opacity: 0;
-    z-index: -100;
-    -webkit-transition: all 0.2s ease-out;
-    -moz-transition: all 0.2s ease-out;
-    -ms-transition: all 0.2s ease-out;
-    -o-transition: all 0.2s ease-out;
-    transition: all 0.2s ease-out; }
-    /* line 246, main.scss */
-    .services .flyout p {
-      color: #FFF;
-      font: 400 13px "proxima-nova", sans-serif; }
-    /* line 250, main.scss */
-    .services .flyout:after {
-      content: ' ';
-      display: block;
-      position: absolute;
-      top: -15px;
-      right: 5%;
-      border-left: 15px solid transparent;
-      border-right: 15px solid transparent;
-      border-bottom: 15px solid rgba(61, 57, 58, 0.9); }
-  /* line 262, main.scss */
-  .services ul li:hover .flyout {
-    color: white;
-    z-index: 100;
-    top: 40px;
-    opacity: 1.0; }
+    right: 80%;
+    top: 50px; }
 
-/* line 272, main.scss */
+/* line 306, main.scss */
 .value {
   background: #dbd8cf; }
 
-/* line 277, main.scss */
+/* line 311, main.scss */
 .crew {
+  padding: 190px 20px 160px;
   background: #77c7c6; }
 
-/* line 282, main.scss */
+/* line 316, main.scss */
+.crew-grid li {
+  float: left;
+  list-style: none;
+  position: relative; }
+/* line 321, main.scss */
+.crew-grid img {
+  border: 10px solid transparent;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out; }
+  /* line 324, main.scss */
+  .crew-grid img:hover {
+    border-color: #c9005d; }
+/* line 328, main.scss */
+.crew-grid .flyout {
+  width: 410px;
+  right: 29%;
+  top: 155px; }
+/* line 334, main.scss */
+.crew-grid ul li:hover .flyout {
+  color: white;
+  z-index: 100;
+  top: 150px;
+  opacity: 1.0; }
+
+/* line 344, main.scss */
 .clients {
   background: #c9005d; }
 
-/* line 287, main.scss */
+/* line 349, main.scss */
 .contact {
   background: #dbd8cf; }
+
+/* line 353, main.scss */
+footer#footer {
+  background: #3a363d;
+  padding: 125px 0;
+  color: white; }
+  /* line 357, main.scss */
+  footer#footer h2 {
+    color: white; }
 
 /* ==========================================================================
    Helper classes
@@ -845,7 +917,7 @@ ul.inline li {
 /*
  * Image replacement
  */
-/* line 304, main.scss */
+/* line 371, main.scss */
 .ir {
   background-color: transparent;
   border: 0;
@@ -853,7 +925,7 @@ ul.inline li {
   /* IE 6/7 fallback */
   *text-indent: -9999px; }
 
-/* line 312, main.scss */
+/* line 379, main.scss */
 .ir:before {
   content: "";
   display: block;
@@ -863,7 +935,7 @@ ul.inline li {
 /*
  * Hide from both screenreaders and browsers: h5bp.com/u
  */
-/* line 323, main.scss */
+/* line 390, main.scss */
 .hidden {
   display: none !important;
   visibility: hidden; }
@@ -871,7 +943,7 @@ ul.inline li {
 /*
  * Hide only visually, but have it available for screenreaders: h5bp.com/v
  */
-/* line 332, main.scss */
+/* line 399, main.scss */
 .visuallyhidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -886,7 +958,7 @@ ul.inline li {
  * Extends the .visuallyhidden class to allow the element to be focusable
  * when navigated to via the keyboard: h5bp.com/p
  */
-/* line 349, main.scss */
+/* line 416, main.scss */
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
   clip: auto;
@@ -899,7 +971,7 @@ ul.inline li {
 /*
  * Hide visually and from screenreaders, but maintain layout
  */
-/* line 362, main.scss */
+/* line 429, main.scss */
 .invisible {
   visibility: hidden; }
 
@@ -914,7 +986,7 @@ ul.inline li {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-/* line 379, main.scss */
+/* line 446, main.scss */
 .clearfix:before,
 .clearfix:after {
   content: " ";
@@ -922,7 +994,7 @@ ul.inline li {
   display: table;
   /* 2 */ }
 
-/* line 384, main.scss */
+/* line 451, main.scss */
 .clearfix:after {
   clear: both; }
 
@@ -930,7 +1002,7 @@ ul.inline li {
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
  */
-/* line 393, main.scss */
+/* line 460, main.scss */
 .clearfix {
   *zoom: 1; }
 
@@ -948,67 +1020,67 @@ ul.inline li {
    Inlined to avoid required HTTP connection: h5bp.com/r
    ========================================================================== */
 @media print {
-  /* line 420, main.scss */
+  /* line 487, main.scss */
   * {
     background: transparent !important;
-    color: black !important;
+    color: #000 !important;
     /* Black prints faster: h5bp.com/s */
     box-shadow: none !important;
     text-shadow: none !important; }
 
-  /* line 428, main.scss */
+  /* line 495, main.scss */
   a,
   a:visited {
     text-decoration: underline; }
 
-  /* line 432, main.scss */
+  /* line 499, main.scss */
   a[href]:after {
     content: " (" attr(href) ")"; }
 
-  /* line 436, main.scss */
+  /* line 503, main.scss */
   abbr[title]:after {
     content: " (" attr(title) ")"; }
 
   /*
    * Don't show links for images, or javascript/internal links
    */
-  /* line 446, main.scss */
+  /* line 513, main.scss */
   .ir a:after,
   a[href^="javascript:"]:after,
   a[href^="#"]:after {
     content: ""; }
 
-  /* line 451, main.scss */
+  /* line 518, main.scss */
   pre,
   blockquote {
-    border: 1px solid #999999;
+    border: 1px solid #999;
     page-break-inside: avoid; }
 
-  /* line 456, main.scss */
+  /* line 523, main.scss */
   thead {
     display: table-header-group;
     /* h5bp.com/t */ }
 
-  /* line 461, main.scss */
+  /* line 528, main.scss */
   tr,
   img {
     page-break-inside: avoid; }
 
-  /* line 465, main.scss */
+  /* line 532, main.scss */
   img {
     max-width: 100% !important; }
 
   @page {
     margin: 0.5cm; }
 
-  /* line 475, main.scss */
+  /* line 542, main.scss */
   p,
   h2,
   h3 {
     orphans: 3;
     widows: 3; }
 
-  /* line 481, main.scss */
+  /* line 548, main.scss */
   h2,
   h3 {
     page-break-after: avoid; } }

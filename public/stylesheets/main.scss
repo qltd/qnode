@@ -114,8 +114,13 @@ h3 {
 	color:white;
 	text-align: center;
 }
-h5 {
+h4 {
     font: 700 16px "adelle", serif;
+    margin: 0;
+}
+h5 {
+    font: 400 12px "proxima-nova", sans-serif;
+    text-transform: uppercase;
     margin: 0;
 }
 
@@ -127,6 +132,19 @@ a {
 	@include transition;
 }
 
+input, textarea {
+    width: 100%;
+    margin-bottom: 15px;
+    font:italic 700 21px "adelle", serif;
+    padding:20px;
+    -webkit-appearance: none;
+    border:none;
+}
+input {
+    height:75px;
+}
+
+
 // Utilities 
 ul.inline li {
 	display: inline-block;
@@ -134,6 +152,42 @@ ul.inline li {
 		margin-left: 20px;
 	}
 }
+
+// Reusable
+.flyout {
+    background: rgba($grey, 0.9);
+    padding:20px;
+    position: absolute;
+    width: 410px;
+    right: 80%;
+    top:50px;
+    opacity: 0;
+    z-index:-100;
+    @include transition;
+    p {
+        color: #FFF;
+        font: 400 13px "proxima-nova", sans-serif;
+    }
+    &:after {
+        content:' ';
+        display: block;
+        position: absolute;
+        top:-15px;
+        right:5%;
+        border-left:15px solid transparent;
+        border-right:15px solid transparent;
+        border-bottom:15px solid rgba($grey, 0.9);
+    }
+}
+ul li:hover {
+    .flyout {
+        color:white;
+        z-index:100;
+        top:40px;
+        opacity:1.0;
+    }
+}
+
 
 
 //  HEADER
@@ -174,13 +228,18 @@ ul.inline li {
     margin-top: 146px;
     height: 600px;
     background: #6ca6a6;
+    padding-top: 150px;
+    h3 {
+        width:70%;
+        margin: 0 auto;
+    }
 }
 .panel {
     position: relative;
 	padding:60px 20px 20px;
 	margin-bottom: 8px;
     overflow: hidden;
-    h2, div, p {
+    h2, p {
         position: relative;
         z-index:100;
     }
@@ -197,6 +256,9 @@ ul.inline li {
         position: absolute;
         z-index: 1;
         font-size: 10em;
+    }
+    .pinq {
+        background: url(../images/pinq.png);
     }
 
 }
@@ -234,37 +296,9 @@ ul.inline li {
         }
     }
     .flyout {
-        background: rgba($grey, 0.9);
-        padding:20px;
-        position: absolute;
         width: 410px;
-        right:60%;
+        right: 80%;
         top:50px;
-        opacity: 0;
-        z-index:-100;
-        @include transition;
-        p {
-            color: #FFF;
-            font: 400 13px "proxima-nova", sans-serif;
-        }
-        &:after {
-            content:' ';
-            display: block;
-            position: absolute;
-            top:-15px;
-            right:5%;
-            border-left:15px solid transparent;
-            border-right:15px solid transparent;
-            border-bottom:15px solid rgba($grey, 0.9);
-        }
-    }
-    ul li:hover {
-        .flyout {
-            color:white;
-            z-index:100;
-            top:40px;
-            opacity:1.0;
-        }
     }
 }
 
@@ -275,7 +309,35 @@ ul.inline li {
 
 // Crew
 .crew {
+    padding:190px 20px 160px;
 	background:$teal;
+}
+.crew-grid {
+    li {
+        float:left;
+        list-style: none;
+        position: relative;
+    }
+    img {
+        border:10px solid transparent;
+        @include transition;
+        &:hover {
+            border-color:$pink;
+        }
+    }
+    .flyout {
+        width: 410px;
+        right: 29%;
+        top: 155px;
+    }
+    ul li:hover {
+        .flyout {
+            color:white;
+            z-index:100;
+            top:150px;
+            opacity:1.0;
+        }
+    }
 }
 
 // Clients
@@ -287,10 +349,15 @@ ul.inline li {
 .contact {
 	background:$tan;
 }
-
-
-
-
+// Footer
+footer#footer {
+    background: $text; 
+    padding:125px 0;  
+    color:white;
+    h2 {
+        color:white;
+    }
+}
 
 
 /* ==========================================================================
