@@ -12,6 +12,9 @@ var express = require('express')
 
 var app = express();
 
+
+app.setMaxListeners(0);
+
 // DB
 mongoose.connect('mongodb://localhost/qdb');
 var db = mongoose.connection;
