@@ -1,42 +1,6 @@
 @import 'compass';
 @import 'normalize';
-@import 'grid';
-
-
-// //////////////////////
-// CONFIG
-// //////////////////////
-
-$total_width: 100%;
-$container_margin: 0%;
-$gutter_width: 4.1%;
-$max_width: 960px;
-
-
-// //////////////////////
-// MODULE STYLES
-// //////////////////////
-
-
-article {
-	@include container();
-}
-
-
-#grid{
-	margin-bottom: 0px;
-	height: 0px;
-
-	div{
-		background: none;
-
-		div{
-			background: black;
-		}
-	}
-}
-
-@include generate_helper_classes();
+@import "susy";
 
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 

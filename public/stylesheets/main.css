@@ -367,553 +367,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-/**
- * Profound Grid
- * 
- * Built in Sass (SCSS) this responsive/adaptive grid supports both fixed and fluid layouts, 
- * relative and fixed gutters, as well as your choice of semantic markup or generic '.grid-x' classes.
- * 
- * The biggest difference to other grid systems is the use of negative margins for column
- * placements, avoiding the subpixel rounding issues that usually break/uglify fluid layouts
- * in some browsers.
- * 
- * Nested columns are supported too, without having to reset the grid on each level. 
- *
- * Credits/Inspiration:
- * -------------------
- * Semantic Grid: http://www.semantic.gs
- * Susy: http://susy.oddbird.net
- * Negative Grid: http://chrisplaneta.com/freebies/negativegrid-fluid-css-grid-by-chris-planeta/
- *
- * @author Profound Creative Studio
- * @url http://www.profoundgrid.com
- * @url http://www.weareprofound.com 
- */
-/**
- * Establish the grid-containing element.
- */
-/**
- * Align an element to the grid.
- */
-/**
- * Apply to any column to make it the last one of the current row.
- */
-/* line 223, _grid.scss */
-article {
-  width: 98%;
-  margin: 0 1%;
-  overflow: hidden;
-  *zoom: 1; }
-
-/* line 229, _grid.scss */
-#row1 div, #row2 div, #row3 div, #row4 div, #row5 div, #row6 div {
-  float: left;
-  margin-right: -100%;
-  width: 100%; }
-/* line 166, _grid.scss */
-#row1 div:nth-child(1n+1), #row2 div:nth-child(1n+1), #row3 div:nth-child(1n+1), #row4 div:nth-child(1n+1), #row5 div:nth-child(1n+1), #row6 div:nth-child(1n+1) {
-  margin-left: 0%;
-  margin-bottom: 2%;
-  clear: both;
-  overflow: hidden;
-  *zoom: 1; }
-
-@media screen and (min-width: 720px) {
-  /* line 245, _grid.scss */
-  article {
-    width: 98%;
-    margin: 0 1%;
-    overflow: hidden;
-    *zoom: 1; }
-
-  /* line 251, _grid.scss */
-  #row1 div {
-    float: left;
-    margin-right: -100%;
-    width: 15%; }
-  /* line 166, _grid.scss */
-  #row1 div:nth-child(6n+1) {
-    margin-left: 0%;
-    margin-bottom: 2%;
-    clear: both;
-    overflow: hidden;
-    *zoom: 1; }
-  /* line 166, _grid.scss */
-  #row1 div:nth-child(6n+2) {
-    margin-left: 17%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 166, _grid.scss */
-  #row1 div:nth-child(6n+3) {
-    margin-left: 34%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 166, _grid.scss */
-  #row1 div:nth-child(6n+4) {
-    margin-left: 51%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 166, _grid.scss */
-  #row1 div:nth-child(6n+5) {
-    margin-left: 68%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 166, _grid.scss */
-  #row1 div:nth-child(6n+6) {
-    margin-left: 85%;
-    margin-bottom: 2%;
-    clear: none; }
-
-  /* line 255, _grid.scss */
-  #row2 div {
-    float: left;
-    margin-right: -100%;
-    width: 15%; }
-  /* line 166, _grid.scss */
-  #row2 div:nth-child(6n+1) {
-    margin-left: 0%;
-    margin-bottom: 2%;
-    clear: both;
-    overflow: hidden;
-    *zoom: 1; }
-  /* line 166, _grid.scss */
-  #row2 div:nth-child(6n+2) {
-    margin-left: 17%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 166, _grid.scss */
-  #row2 div:nth-child(6n+3) {
-    margin-left: 34%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 166, _grid.scss */
-  #row2 div:nth-child(6n+4) {
-    margin-left: 51%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 166, _grid.scss */
-  #row2 div:nth-child(6n+5) {
-    margin-left: 68%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 166, _grid.scss */
-  #row2 div:nth-child(6n+6) {
-    margin-left: 85%;
-    margin-bottom: 2%;
-    clear: none; }
-
-  /* line 259, _grid.scss */
-  #row3 div {
-    float: left;
-    margin-right: -100%;
-    width: 32%; }
-  /* line 166, _grid.scss */
-  #row3 div:nth-child(3n+1) {
-    margin-left: 0%;
-    margin-bottom: 2%;
-    clear: both;
-    overflow: hidden;
-    *zoom: 1; }
-  /* line 166, _grid.scss */
-  #row3 div:nth-child(3n+2) {
-    margin-left: 34%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 166, _grid.scss */
-  #row3 div:nth-child(3n+3) {
-    margin-left: 68%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 261, _grid.scss */
-  #row3 div.last {
-    float: left;
-    margin-right: -100%;
-    width: 100%; }
-
-  /* line 264, _grid.scss */
-  #row4 div {
-    float: left;
-    margin-right: -100%;
-    width: 32%; }
-  /* line 166, _grid.scss */
-  #row4 div:nth-child(3n+1) {
-    margin-left: 0%;
-    margin-bottom: 2%;
-    clear: both;
-    overflow: hidden;
-    *zoom: 1; }
-  /* line 166, _grid.scss */
-  #row4 div:nth-child(3n+2) {
-    margin-left: 34%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 166, _grid.scss */
-  #row4 div:nth-child(3n+3) {
-    margin-left: 68%;
-    margin-bottom: 2%;
-    clear: none; }
-
-  /* line 268, _grid.scss */
-  #row5 div {
-    float: left;
-    margin-right: -100%;
-    width: 49%; }
-  /* line 166, _grid.scss */
-  #row5 div:nth-child(2n+1) {
-    margin-left: 0%;
-    margin-bottom: 2%;
-    clear: both;
-    overflow: hidden;
-    *zoom: 1; }
-  /* line 166, _grid.scss */
-  #row5 div:nth-child(2n+2) {
-    margin-left: 51%;
-    margin-bottom: 2%;
-    clear: none; }
-
-  /* line 272, _grid.scss */
-  #row6 div {
-    float: left;
-    margin-right: -100%;
-    width: 100%; } }
-@media all and (min-width: 960px) {
-  /* line 288, _grid.scss */
-  article {
-    width: 98%;
-    margin: 0 1%;
-    overflow: hidden;
-    *zoom: 1; }
-
-  /* line 294, _grid.scss */
-  #row1 div {
-    float: left;
-    margin-right: -100%;
-    width: 6.5%; }
-  /* line 166, _grid.scss */
-  #row1 div:nth-child(12n+1) {
-    margin-left: 0%;
-    margin-bottom: 2%;
-    clear: both;
-    overflow: hidden;
-    *zoom: 1; }
-  /* line 166, _grid.scss */
-  #row1 div:nth-child(12n+2) {
-    margin-left: 8.5%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 166, _grid.scss */
-  #row1 div:nth-child(12n+3) {
-    margin-left: 17%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 166, _grid.scss */
-  #row1 div:nth-child(12n+4) {
-    margin-left: 25.5%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 166, _grid.scss */
-  #row1 div:nth-child(12n+5) {
-    margin-left: 34%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 166, _grid.scss */
-  #row1 div:nth-child(12n+6) {
-    margin-left: 42.5%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 166, _grid.scss */
-  #row1 div:nth-child(12n+7) {
-    margin-left: 51%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 166, _grid.scss */
-  #row1 div:nth-child(12n+8) {
-    margin-left: 59.5%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 166, _grid.scss */
-  #row1 div:nth-child(12n+9) {
-    margin-left: 68%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 166, _grid.scss */
-  #row1 div:nth-child(12n+10) {
-    margin-left: 76.5%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 166, _grid.scss */
-  #row1 div:nth-child(12n+11) {
-    margin-left: 85%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 166, _grid.scss */
-  #row1 div:nth-child(12n+12) {
-    margin-left: 93.5%;
-    margin-bottom: 2%;
-    clear: none; }
-
-  /* line 298, _grid.scss */
-  #row2 div {
-    float: left;
-    margin-right: -100%;
-    width: 15%; }
-  /* line 166, _grid.scss */
-  #row2 div:nth-child(6n+1) {
-    margin-left: 0%;
-    margin-bottom: 2%;
-    clear: both;
-    overflow: hidden;
-    *zoom: 1; }
-  /* line 166, _grid.scss */
-  #row2 div:nth-child(6n+2) {
-    margin-left: 17%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 166, _grid.scss */
-  #row2 div:nth-child(6n+3) {
-    margin-left: 34%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 166, _grid.scss */
-  #row2 div:nth-child(6n+4) {
-    margin-left: 51%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 166, _grid.scss */
-  #row2 div:nth-child(6n+5) {
-    margin-left: 68%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 166, _grid.scss */
-  #row2 div:nth-child(6n+6) {
-    margin-left: 85%;
-    margin-bottom: 2%;
-    clear: none; }
-
-  /* line 302, _grid.scss */
-  #row3 div {
-    float: left;
-    margin-right: -100%;
-    width: 23.5%; }
-  /* line 303, _grid.scss */
-  #row3 div.last {
-    float: left;
-    margin-right: -100%;
-    width: 23.5%; }
-  /* line 166, _grid.scss */
-  #row3 div:nth-child(4n+1) {
-    margin-left: 0%;
-    margin-bottom: 2%;
-    clear: both;
-    overflow: hidden;
-    *zoom: 1; }
-  /* line 166, _grid.scss */
-  #row3 div:nth-child(4n+2) {
-    margin-left: 25.5%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 166, _grid.scss */
-  #row3 div:nth-child(4n+3) {
-    margin-left: 51%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 166, _grid.scss */
-  #row3 div:nth-child(4n+4) {
-    margin-left: 76.5%;
-    margin-bottom: 2%;
-    clear: none; }
-
-  /* line 307, _grid.scss */
-  #row4 div {
-    float: left;
-    margin-right: -100%;
-    width: 32%; }
-  /* line 166, _grid.scss */
-  #row4 div:nth-child(3n+1) {
-    margin-left: 0%;
-    margin-bottom: 2%;
-    clear: both;
-    overflow: hidden;
-    *zoom: 1; }
-  /* line 166, _grid.scss */
-  #row4 div:nth-child(3n+2) {
-    margin-left: 34%;
-    margin-bottom: 2%;
-    clear: none; }
-  /* line 166, _grid.scss */
-  #row4 div:nth-child(3n+3) {
-    margin-left: 68%;
-    margin-bottom: 2%;
-    clear: none; }
-
-  /* line 311, _grid.scss */
-  #row5 div {
-    float: left;
-    margin-right: -100%;
-    width: 49%; }
-  /* line 166, _grid.scss */
-  #row5 div:nth-child(2n+1) {
-    margin-left: 0%;
-    margin-bottom: 2%;
-    clear: both;
-    overflow: hidden;
-    *zoom: 1; }
-  /* line 166, _grid.scss */
-  #row5 div:nth-child(2n+2) {
-    margin-left: 51%;
-    margin-bottom: 2%;
-    clear: none; }
-
-  /* line 315, _grid.scss */
-  #row6 div {
-    float: left;
-    margin-right: -100%;
-    width: 100%; } }
-/* line 21, _base.scss */
-article {
-  width: 100%;
-  margin: 0 0%; }
-
-/* line 26, _base.scss */
-#grid {
-  margin-bottom: 0px;
-  height: 0px; }
-  /* line 30, _base.scss */
-  #grid div {
-    background: none; }
-    /* line 33, _base.scss */
-    #grid div div {
-      background: black; }
-
-/* Helper Class: Container */
-/* line 139, _grid.scss */
-.row {
-  width: 100%;
-  margin: 0 0%; }
-
-/* Helper Class: Columns */
-/* line 145, _grid.scss */
-.col1 {
-  float: left;
-  margin-right: -100%;
-  width: 4.57%; }
-
-/* line 145, _grid.scss */
-.col2 {
-  float: left;
-  margin-right: -100%;
-  width: 13.25%; }
-
-/* line 145, _grid.scss */
-.col3 {
-  float: left;
-  margin-right: -100%;
-  width: 21.92%; }
-
-/* line 145, _grid.scss */
-.col4 {
-  float: left;
-  margin-right: -100%;
-  width: 30.6%; }
-
-/* line 145, _grid.scss */
-.col5 {
-  float: left;
-  margin-right: -100%;
-  width: 39.27%; }
-
-/* line 145, _grid.scss */
-.col6 {
-  float: left;
-  margin-right: -100%;
-  width: 47.95%; }
-
-/* line 145, _grid.scss */
-.col7 {
-  float: left;
-  margin-right: -100%;
-  width: 56.62%; }
-
-/* line 145, _grid.scss */
-.col8 {
-  float: left;
-  margin-right: -100%;
-  width: 65.3%; }
-
-/* line 145, _grid.scss */
-.col9 {
-  float: left;
-  margin-right: -100%;
-  width: 73.97%; }
-
-/* line 145, _grid.scss */
-.col10 {
-  float: left;
-  margin-right: -100%;
-  width: 82.65%; }
-
-/* line 145, _grid.scss */
-.col11 {
-  float: left;
-  margin-right: -100%;
-  width: 91.32%; }
-
-/* line 145, _grid.scss */
-.col12 {
-  float: left;
-  margin-right: -100%;
-  width: 100%; }
-
-/* Helper Class: Horizontal Position */
-/* line 152, _grid.scss */
-.push0 {
-  margin-left: 0%; }
-
-/* line 152, _grid.scss */
-.push1 {
-  margin-left: 8.67%; }
-
-/* line 152, _grid.scss */
-.push2 {
-  margin-left: 17.35%; }
-
-/* line 152, _grid.scss */
-.push3 {
-  margin-left: 26.02%; }
-
-/* line 152, _grid.scss */
-.push4 {
-  margin-left: 34.7%; }
-
-/* line 152, _grid.scss */
-.push5 {
-  margin-left: 43.37%; }
-
-/* line 152, _grid.scss */
-.push6 {
-  margin-left: 52.05%; }
-
-/* line 152, _grid.scss */
-.push7 {
-  margin-left: 60.72%; }
-
-/* line 152, _grid.scss */
-.push8 {
-  margin-left: 69.4%; }
-
-/* line 152, _grid.scss */
-.push9 {
-  margin-left: 78.07%; }
-
-/* line 152, _grid.scss */
-.push10 {
-  margin-left: 86.75%; }
-
-/* line 152, _grid.scss */
-.push11 {
-  margin-left: 95.42%; }
-
-/* line 41, _base.scss */
+/* line 5, _base.scss */
 * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -943,7 +397,7 @@ article {
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
-/* line 19, main.scss */
+/* line 41, main.scss */
 html,
 button,
 input,
@@ -951,7 +405,7 @@ select,
 textarea {
   color: #222; }
 
-/* line 23, main.scss */
+/* line 45, main.scss */
 body {
   font-size: 1em;
   line-height: 1.4; }
@@ -961,12 +415,12 @@ body {
  * These selection rule sets have to be separate.
  * Customize the background color to match your design.
  */
-/* line 34, main.scss */
+/* line 56, main.scss */
 ::-moz-selection {
   background: #b3d4fc;
   text-shadow: none; }
 
-/* line 39, main.scss */
+/* line 61, main.scss */
 ::selection {
   background: #b3d4fc;
   text-shadow: none; }
@@ -974,7 +428,7 @@ body {
 /*
  * A better looking default horizontal rule
  */
-/* line 48, main.scss */
+/* line 70, main.scss */
 hr {
   display: block;
   height: 1px;
@@ -986,14 +440,14 @@ hr {
 /*
  * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
  */
-/* line 61, main.scss */
+/* line 83, main.scss */
 img {
   vertical-align: middle; }
 
 /*
  * Remove default fieldset styles.
  */
-/* line 69, main.scss */
+/* line 91, main.scss */
 fieldset {
   border: 0;
   margin: 0;
@@ -1002,14 +456,14 @@ fieldset {
 /*
  * Allow only vertical resizing of textareas.
  */
-/* line 79, main.scss */
+/* line 101, main.scss */
 textarea {
   resize: vertical; }
 
 /* ==========================================================================
    Chrome Frame prompt
    ========================================================================== */
-/* line 87, main.scss */
+/* line 109, main.scss */
 .chromeframe {
   margin: 0.2em 0;
   background: #ccc;
@@ -1019,41 +473,41 @@ textarea {
 /* ==========================================================================
    Q STYLES
    ========================================================================== */
-/* line 99, main.scss */
+/* line 121, main.scss */
 body, p, li, table {
   color: #3a363d; }
 
-/* line 103, main.scss */
+/* line 125, main.scss */
 body {
   padding: 0;
   font-size: 100%; }
 
-/* line 109, main.scss */
+/* line 131, main.scss */
 h2 {
   font: 700 40px "adelle", serif; }
 
-/* line 112, main.scss */
+/* line 134, main.scss */
 h3 {
   font: 300 40px "adelle", serif;
   color: white;
   text-align: center; }
 
-/* line 117, main.scss */
+/* line 139, main.scss */
 h4 {
   font: 700 16px "adelle", serif;
   margin: 0; }
 
-/* line 121, main.scss */
+/* line 143, main.scss */
 h5 {
   font: 400 12px "proxima-nova", sans-serif;
   text-transform: uppercase;
   margin: 0; }
 
-/* line 127, main.scss */
+/* line 149, main.scss */
 p {
   font: 400 24px "proxima-nova", sans-serif; }
 
-/* line 131, main.scss */
+/* line 153, main.scss */
 a {
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
@@ -1061,7 +515,7 @@ a {
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out; }
 
-/* line 135, main.scss */
+/* line 157, main.scss */
 input, textarea {
   width: 100%;
   margin-bottom: 15px;
@@ -1070,18 +524,18 @@ input, textarea {
   -webkit-appearance: none;
   border: none; }
 
-/* line 143, main.scss */
+/* line 165, main.scss */
 input {
   height: 75px; }
 
-/* line 149, main.scss */
+/* line 171, main.scss */
 ul.inline li {
   display: inline-block; }
-  /* line 151, main.scss */
+  /* line 173, main.scss */
   ul.inline li + li {
     margin-left: 20px; }
 
-/* line 157, main.scss */
+/* line 179, main.scss */
 .flyout {
   background: rgba(61, 57, 58, 0.9);
   padding: 20px;
@@ -1096,11 +550,11 @@ ul.inline li {
   -ms-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out; }
-  /* line 167, main.scss */
+  /* line 189, main.scss */
   .flyout p {
     color: #FFF;
     font: 400 13px "proxima-nova", sans-serif; }
-  /* line 171, main.scss */
+  /* line 193, main.scss */
   .flyout:after {
     content: ' ';
     display: block;
@@ -1111,14 +565,14 @@ ul.inline li {
     border-right: 15px solid transparent;
     border-bottom: 15px solid rgba(61, 57, 58, 0.9); }
 
-/* line 183, main.scss */
+/* line 205, main.scss */
 ul li:hover .flyout {
   color: white;
   z-index: 100;
   top: 40px;
   opacity: 1.0; }
 
-/* line 194, main.scss */
+/* line 216, main.scss */
 .header {
   color: white;
   background: #3d393a;
@@ -1128,7 +582,7 @@ ul li:hover .flyout {
   width: 100%;
   z-index: 1000; }
 
-/* line 203, main.scss */
+/* line 225, main.scss */
 .logo {
   margin: 0 0 0 4%;
   width: 233px;
@@ -1137,48 +591,74 @@ ul li:hover .flyout {
   float: left;
   background: url(../images/logo.png) no-repeat; }
 
-/* line 213, main.scss */
+/* line 235, main.scss */
 .main-nav {
   float: right;
   margin: 17px 6% 0 0; }
-  /* line 216, main.scss */
+  /* line 238, main.scss */
   .main-nav a {
     color: white;
     font: 800 14px "proxima-nova";
     text-transform: uppercase;
     text-decoration: none; }
-    /* line 221, main.scss */
+    /* line 243, main.scss */
     .main-nav a:hover {
       color: #f4810f; }
 
-/* line 227, main.scss */
+/* line 249, main.scss */
 .headline {
   margin-top: 146px;
   height: 600px;
-  background: #6ca6a6;
-  padding-top: 150px; }
-  /* line 232, main.scss */
+  padding-top: 150px;
+  position: relative;
+  overflow: hidden; }
+  /* line 255, main.scss */
   .headline h3 {
     width: 70%;
-    margin: 0 auto; }
+    margin: 0 auto;
+    z-index: 100;
+    position: relative; }
+  /* line 261, main.scss */
+  .headline .teal {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 95;
+    height: 700px;
+    background: rgba(108, 166, 166, 0.8); }
+  /* line 269, main.scss */
+  .headline video {
+    width: 100%;
+    position: absolute;
+    z-index: 50;
+    bottom: 0; }
 
-/* line 237, main.scss */
+/* line 276, main.scss */
 .panel {
-  width: 100%;
-  margin: 0 0%;
   position: relative;
-  padding: 60px 20px 20px;
+  padding: 190px 20px 160px;
   margin-bottom: 8px;
   overflow: hidden; }
-  /* line 243, main.scss */
+  @media (min-width: 55em) {
+    /* line 278, main.scss */
+    .panel h2 {
+      width: 32.20339%;
+      float: left;
+      margin-right: 1.69492%; }
+    /* line 281, main.scss */
+    .panel .content {
+      width: 66.10169%;
+      float: right;
+      margin-right: 0; } }
+  /* line 289, main.scss */
   .panel h2, .panel p {
     position: relative;
     z-index: 100; }
-  /* line 247, main.scss */
+  /* line 293, main.scss */
   .panel h2 {
     margin-top: 24px;
     padding-left: 40px; }
-  /* line 252, main.scss */
+  /* line 298, main.scss */
   .panel .q {
     display: block;
     background: url(../images/tanq.png);
@@ -1187,41 +667,54 @@ ul li:hover .flyout {
     position: absolute;
     z-index: 1;
     font-size: 10em; }
-  /* line 261, main.scss */
+  /* line 307, main.scss */
   .panel .pinq {
     background: url(../images/pinq.png); }
 
-/* line 266, main.scss */
-.section-title {
-  float: left;
-  margin-right: -100%;
-  width: 13.25%; }
+/* line 312, main.scss */
+.container {
+  *zoom: 1;
+  max-width: 1440px;
+  _width: 1440px;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: auto;
+  margin-right: auto; }
+  /* line 38, ../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+  .container:after {
+    content: "";
+    display: table;
+    clear: both; }
+  @media (min-width: 39em) {
+    /* line 312, main.scss */
+    .container {
+      max-width: 1440px; } }
+  @media (min-width: 55em) {
+    /* line 312, main.scss */
+    .container {
+      max-width: 1440px; } }
+  @media (min-width: 66em) {
+    /* line 312, main.scss */
+    .container {
+      max-width: 1440px; } }
 
-/* line 269, main.scss */
-.section-content {
-  margin-left: 34.7%;
-  float: left;
-  margin-right: -100%;
-  width: 65.3%; }
-
-/* line 276, main.scss */
+/* line 317, main.scss */
 .about {
   background: white;
   padding: 190px 20px 160px; }
 
-/* line 283, main.scss */
+/* line 324, main.scss */
 .work {
   background: #dbd8cf; }
 
-/* line 288, main.scss */
+/* line 329, main.scss */
 .services {
-  background: #e16e2b;
-  padding: 190px 20px 160px; }
-  /* line 291, main.scss */
+  background: #e16e2b; }
+  /* line 331, main.scss */
   .services ul {
     list-style: none;
     padding: 0; }
-    /* line 294, main.scss */
+    /* line 334, main.scss */
     .services ul li {
       position: relative;
       margin: 0;
@@ -1234,30 +727,41 @@ ul li:hover .flyout {
       -ms-transition: all 0.2s ease-out;
       -o-transition: all 0.2s ease-out;
       transition: all 0.2s ease-out; }
-      /* line 302, main.scss */
+      /* line 342, main.scss */
       .services ul li:hover {
         color: #3d393a; }
-  /* line 307, main.scss */
+  /* line 347, main.scss */
   .services .flyout {
     width: 410px;
     right: 80%;
     top: 50px; }
+  @media (min-width: 55em) {
+    /* line 353, main.scss */
+    .services .first {
+      width: 48.71795%;
+      float: left;
+      margin-right: 2.5641%; }
+    /* line 356, main.scss */
+    .services .last {
+      width: 48.71795%;
+      float: right;
+      margin-right: 0; } }
 
-/* line 315, main.scss */
+/* line 363, main.scss */
 .value {
   background: #dbd8cf; }
 
-/* line 320, main.scss */
+/* line 368, main.scss */
 .crew {
   padding: 190px 20px 160px;
   background: #77c7c6; }
 
-/* line 325, main.scss */
+/* line 373, main.scss */
 .crew-grid li {
   float: left;
   list-style: none;
   position: relative; }
-/* line 330, main.scss */
+/* line 378, main.scss */
 .crew-grid img {
   border: 10px solid transparent;
   -webkit-transition: all 0.2s ease-out;
@@ -1265,35 +769,35 @@ ul li:hover .flyout {
   -ms-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out; }
-  /* line 333, main.scss */
+  /* line 381, main.scss */
   .crew-grid img:hover {
     border-color: #c9005d; }
-/* line 337, main.scss */
+/* line 385, main.scss */
 .crew-grid .flyout {
   width: 410px;
   right: 29%;
   top: 155px; }
-/* line 343, main.scss */
+/* line 391, main.scss */
 .crew-grid ul li:hover .flyout {
   color: white;
   z-index: 100;
   top: 150px;
   opacity: 1.0; }
 
-/* line 353, main.scss */
+/* line 401, main.scss */
 .clients {
   background: #c9005d; }
 
-/* line 358, main.scss */
+/* line 406, main.scss */
 .contact {
   background: #dbd8cf; }
 
-/* line 362, main.scss */
+/* line 410, main.scss */
 footer#footer {
   background: #3a363d;
   padding: 125px 0;
   color: white; }
-  /* line 366, main.scss */
+  /* line 414, main.scss */
   footer#footer h2 {
     color: white; }
 
@@ -1303,7 +807,7 @@ footer#footer {
 /*
  * Image replacement
  */
-/* line 380, main.scss */
+/* line 428, main.scss */
 .ir {
   background-color: transparent;
   border: 0;
@@ -1311,7 +815,7 @@ footer#footer {
   /* IE 6/7 fallback */
   *text-indent: -9999px; }
 
-/* line 388, main.scss */
+/* line 436, main.scss */
 .ir:before {
   content: "";
   display: block;
@@ -1321,7 +825,7 @@ footer#footer {
 /*
  * Hide from both screenreaders and browsers: h5bp.com/u
  */
-/* line 399, main.scss */
+/* line 447, main.scss */
 .hidden {
   display: none !important;
   visibility: hidden; }
@@ -1329,7 +833,7 @@ footer#footer {
 /*
  * Hide only visually, but have it available for screenreaders: h5bp.com/v
  */
-/* line 408, main.scss */
+/* line 456, main.scss */
 .visuallyhidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -1344,7 +848,7 @@ footer#footer {
  * Extends the .visuallyhidden class to allow the element to be focusable
  * when navigated to via the keyboard: h5bp.com/p
  */
-/* line 425, main.scss */
+/* line 473, main.scss */
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
   clip: auto;
@@ -1357,7 +861,7 @@ footer#footer {
 /*
  * Hide visually and from screenreaders, but maintain layout
  */
-/* line 438, main.scss */
+/* line 486, main.scss */
 .invisible {
   visibility: hidden; }
 
@@ -1372,7 +876,7 @@ footer#footer {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-/* line 455, main.scss */
+/* line 503, main.scss */
 .clearfix:before,
 .clearfix:after {
   content: " ";
@@ -1380,7 +884,7 @@ footer#footer {
   display: table;
   /* 2 */ }
 
-/* line 460, main.scss */
+/* line 508, main.scss */
 .clearfix:after {
   clear: both; }
 
@@ -1388,7 +892,7 @@ footer#footer {
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
  */
-/* line 469, main.scss */
+/* line 517, main.scss */
 .clearfix {
   *zoom: 1; }
 
@@ -1406,7 +910,7 @@ footer#footer {
    Inlined to avoid required HTTP connection: h5bp.com/r
    ========================================================================== */
 @media print {
-  /* line 496, main.scss */
+  /* line 544, main.scss */
   * {
     background: transparent !important;
     color: #000 !important;
@@ -1414,59 +918,59 @@ footer#footer {
     box-shadow: none !important;
     text-shadow: none !important; }
 
-  /* line 504, main.scss */
+  /* line 552, main.scss */
   a,
   a:visited {
     text-decoration: underline; }
 
-  /* line 508, main.scss */
+  /* line 556, main.scss */
   a[href]:after {
     content: " (" attr(href) ")"; }
 
-  /* line 512, main.scss */
+  /* line 560, main.scss */
   abbr[title]:after {
     content: " (" attr(title) ")"; }
 
   /*
    * Don't show links for images, or javascript/internal links
    */
-  /* line 522, main.scss */
+  /* line 570, main.scss */
   .ir a:after,
   a[href^="javascript:"]:after,
   a[href^="#"]:after {
     content: ""; }
 
-  /* line 527, main.scss */
+  /* line 575, main.scss */
   pre,
   blockquote {
     border: 1px solid #999;
     page-break-inside: avoid; }
 
-  /* line 532, main.scss */
+  /* line 580, main.scss */
   thead {
     display: table-header-group;
     /* h5bp.com/t */ }
 
-  /* line 537, main.scss */
+  /* line 585, main.scss */
   tr,
   img {
     page-break-inside: avoid; }
 
-  /* line 541, main.scss */
+  /* line 589, main.scss */
   img {
     max-width: 100% !important; }
 
   @page {
     margin: 0.5cm; }
 
-  /* line 551, main.scss */
+  /* line 599, main.scss */
   p,
   h2,
   h3 {
     orphans: 3;
     widows: 3; }
 
-  /* line 557, main.scss */
+  /* line 605, main.scss */
   h2,
   h3 {
     page-break-after: avoid; } }

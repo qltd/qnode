@@ -1,5 +1,27 @@
 @import 'base';
 
+
+//this is the default number of columns
+$total-columns: 5;
+ 
+//width of each column
+$column-width   : 4em;
+ 
+//space between columns
+$gutter-width   : 1em;
+ 
+//space on the right and left of the grid
+$grid-padding   : $gutter-width;
+ 
+//alternative layout breakpoints
+$tablet: 8;
+$computer: 55em 12;
+$wide: 66em 12;
+
+
+
+$container-width:1440px;
+
 /*
  * HTML5 Boilerplate
  *
@@ -227,17 +249,41 @@ ul li:hover {
 .headline {
     margin-top: 146px;
     height: 600px;
-    background: #6ca6a6;
     padding-top: 150px;
+    position: relative;
+    overflow: hidden;
     h3 {
         width:70%;
         margin: 0 auto;
+        z-index: 100;
+        position: relative;
+    }
+    .teal {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        z-index: 95;
+        height:700px;
+        background: rgba(#6ca6a6, 0.8);
+    }
+    video {
+        width:100%;
+        position: absolute;
+        z-index: 50;
+        bottom:0;
     }
 }
 .panel {
-    @include container();
+    @include at-breakpoint($computer) {
+        h2 {
+            @include span-columns(4 alpha);
+        }
+        .content {
+            @include span-columns(8 omega);
+        }
+    }
     position: relative;
-	padding:60px 20px 20px;
+    padding:190px 20px 160px;
 	margin-bottom: 8px;
     overflow: hidden;
     h2, p {
@@ -263,14 +309,9 @@ ul li:hover {
     }
 
 }
-.section-title {
-    @include column(2);
+.container {
+    @include container($total-columns, $tablet, $computer, $wide);
 }
-.section-content {
-    @include push(4);
-    @include column(8);
-}
-
 
 //  About Q
 .about {
@@ -287,7 +328,6 @@ ul li:hover {
 //  Services
 .services {
 	background: $orange;
-    padding:190px 20px 160px;
     ul {
         list-style: none;
         padding: 0;
@@ -309,6 +349,14 @@ ul li:hover {
         right: 80%;
         top:50px;
     }
+    @include at-breakpoint($computer) {
+        .first {
+            @include span-columns(4, 8);
+        }
+        .last {
+            @include span-columns(4 omega, 8);
+        }
+    } 
 }
 
 // Value
