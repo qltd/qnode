@@ -23,6 +23,19 @@ db.once('open', function callback () {
   console.log('yay');
 });
 
+mongoose.model('Document', {
+  properties: ['title', 'data', 'tags'],
+
+  indexes: [
+    'title'
+  ]
+});
+
+// exports.Document = function(db) {
+//   return db.model('Document');
+// };
+// Document = require('./models.js').Document(db);
+
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');

@@ -19,8 +19,14 @@
         <script src="scripts/jquery.scrollTo-min.js"></script>
         <script src="scripts/jquery.stellar.min.js"></script>
         <!-- endbuild -->
+        <script>
+            function changevid() {
+                document.getElementById('vid').innerHTML = '<source src="images/power.mp4" type="video/mp4">';
+                document.getElementById('vid').load();                    
+            }
+        </script>
     </head>
-    <body>
+    <body onload="changevid()">
         <header class="header clearfix">
             <h1 class="logo"><%= title %></h1>
             <nav class="main-nav">
@@ -37,9 +43,9 @@
         </header>
         <section class="headline">
             <h3>Making the world a better place through design and communication</h3>
-            <video preload autoplay loop>
-                <source src="images/power.mp4">
-                <source src="images/power.ogv">
+            <video id="vid" preload autoplay loop muted="muted">
+                
+<!--                 <source src="images/power.ogv"> -->
             </video>
             <div class="teal"></div>
         </section>
@@ -217,6 +223,7 @@
 					$.scrollTo( this.hash, 800, { offset:-150 });
 					return false;
 				});
+
         	});
 
         </script>
