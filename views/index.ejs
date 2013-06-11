@@ -214,7 +214,9 @@
                     <a class="close" href="#">Close</a>
                 </header>
                 <section>
-                    <p>We have a full-service office in Ann Arbor, Michigan. Our team is also represented in Los Angeles, Toronto, and occassionally Barbados. Our sister Q in Wiesbaden, Germany holds down the fort across the pond. If you have a project you’d like to discuss, please send us a note. We’d love to hear from you.</p>
+                    <div class="container">
+                        <p>We have a full-service office in Ann Arbor, Michigan. Our team is also represented in Los Angeles, Toronto, and occassionally Barbados. Our sister Q in Wiesbaden, Germany holds down the fort across the pond. If you have a project you’d like to discuss, please send us a note. We’d love to hear from you.</p>                        
+                    </div>
                 </section>
             </div>
         </div>
@@ -252,6 +254,13 @@
                     $('.project').removeClass('active');
                 });
 
+
+                $(document).keyup(function(e) {
+                    if (e.keyCode == 27) {
+                        $('.portfolio').removeClass('open');
+                        $('.project').removeClass('active');
+                    }
+                });
         	});
 
         </script>

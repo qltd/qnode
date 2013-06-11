@@ -413,7 +413,7 @@ ul li:hover {
     -moz-transition: all 1s;
     -o-transition: all 1s;
     transition: all 1s;
-    background: #222324;
+    background: white;
     height: 100%;
     top: 100%;
     opacity:0;
@@ -432,9 +432,15 @@ ul li:hover {
     display:none;
     header {
         background: $grey;
+        padding:110px 0;
+        h3 {
+            margin: 0;
+        }
     }
     section {
+        margin-top: 8px;
         background: $tan;
+        padding:50px 0 200px;
     }
     &.active {
         display: block;
