@@ -435,6 +435,23 @@ ul li:hover {
         padding:110px 0;
         h3 {
             margin: 0;
+            @include projTitle;
+        }
+        @include at-breakpoint($computer) {
+            h3 {
+                @include span-columns(4 alpha);
+            }
+            .content {
+                @include span-columns(8 omega);
+            }  
+        }
+        p {
+            color:white;
+            font-size: 18px;
+            margin-top: 0;
+            a {
+                color:$orange;
+            }
         }
     }
     section {

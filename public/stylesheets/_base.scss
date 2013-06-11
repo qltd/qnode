@@ -29,6 +29,14 @@ $pink:#c9005d;
     text-transform: uppercase;
 }
 
+@mixin projTitle($size:20px, $color: $teal) {
+    color: $color;
+    font: 800 $size "proxima-nova";
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: left;
+}
+
 @font-face {
     font-family: 'entypo';
     src: url('../fonts/entypo.eot');
