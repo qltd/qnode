@@ -44,8 +44,6 @@
         <section class="headline">
             <h3>Making the world a better place through design and communication</h3>
             <video id="vid" preload autoplay loop muted="muted">
-                
-<!--                 <source src="images/power.ogv"> -->
             </video>
             <div class="teal"></div>
         </section>
@@ -59,6 +57,7 @@
         <article id="work" class="work panel">
             <div class="container">
                 <h2>Work</h2>    
+                <a id="trigger" href="#">North Star Reach</a>
             </div>
         </article>
         <article id="services" class="services panel">
@@ -208,7 +207,17 @@
                 <h2 class="section-title">Connect</h2>
             </div>
         </footer>
-
+        <div class="portfolio">
+            <div id="project-one" class="project">
+                <header>
+                    <h3>North Star Reach</h3>
+                    <a class="close" href="#">Close</a>
+                </header>
+                <section>
+                    <p>We have a full-service office in Ann Arbor, Michigan. Our team is also represented in Los Angeles, Toronto, and occassionally Barbados. Our sister Q in Wiesbaden, Germany holds down the fort across the pond. If you have a project you’d like to discuss, please send us a note. We’d love to hear from you.</p>
+                </section>
+            </div>
+        </div>
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
@@ -232,6 +241,16 @@
 					$.scrollTo( this.hash, 800, { offset:-150 });
 					return false;
 				});
+
+                $('#trigger').on('click', function(){
+                    $('.portfolio').addClass('open');
+                    $('#project-one').addClass('active');
+                });
+
+                $('.close').on('click', function(){
+                    $('.portfolio').removeClass('open');
+                    $('.project').removeClass('active');
+                });
 
         	});
 

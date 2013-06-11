@@ -23,6 +23,12 @@ $pink:#c9005d;
 }
 
 
+@mixin navText($size: 14px) {
+    color: white;
+    font: 800 $size "proxima-nova";
+    text-transform: uppercase;
+}
+
 @font-face {
     font-family: 'entypo';
     src: url('../fonts/entypo.eot');

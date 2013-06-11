@@ -151,6 +151,7 @@ p {
 }
 
 a {
+    text-decoration: none;
 	@include transition;
 }
 
@@ -236,10 +237,7 @@ ul li:hover {
     float: right;
     margin: 17px 6% 0 0;
 	a {
-		color: white;
-		font: 800 14px "proxima-nova";
-		text-transform: uppercase;
-		text-decoration: none;
+        @include navText;
 		&:hover {
 			color:$linko;
 		}
@@ -406,6 +404,56 @@ ul li:hover {
 .contact {
 	background:$tan;
 }
+
+
+
+// $Portfolio
+.portfolio {
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+    background: #222324;
+    height: 100%;
+    top: 100%;
+    opacity:0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+    &.open {
+        top:0;
+        opacity:1;
+    }
+}
+.project {
+    display:none;
+    header {
+        background: $grey;
+    }
+    section {
+        background: $tan;
+    }
+    &.active {
+        display: block;
+    }
+}
+.close {
+    display: block;
+    background: $pink;
+    color:white;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    @include navText(13px);
+}
+
+
+
+
 // Footer
 footer#footer {
     background: $text; 
