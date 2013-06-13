@@ -195,18 +195,18 @@ ul.inline li {
         content:' ';
         display: block;
         position: absolute;
-        top:-15px;
-        right:5%;
-        border-left:15px solid transparent;
-        border-right:15px solid transparent;
-        border-bottom:15px solid rgba($grey, 0.9);
+        top:20px;
+        right:-15px;
+        border-top:15px solid transparent;
+        border-bottom:15px solid transparent;
+        border-left:15px solid rgba($grey, 0.9);
     }
 }
 ul li:hover {
     .flyout {
         color:white;
         z-index:100;
-        top:40px;
+        top:-16px;
         opacity:1.0;
     }
 }
@@ -344,7 +344,7 @@ ul li:hover {
     }
     .flyout {
         width: 410px;
-        right: 80%;
+        right: 315px;
         top:50px;
     }
     @include at-breakpoint($computer) {
@@ -409,10 +409,7 @@ ul li:hover {
 
 // $Portfolio
 .portfolio {
-    -webkit-transition: all 1s;
-    -moz-transition: all 1s;
-    -o-transition: all 1s;
-    transition: all 1s;
+    @include transition(1s);
     background: white;
     height: 100%;
     top: 100%;
@@ -462,6 +459,10 @@ ul li:hover {
     &.active {
         display: block;
     }
+    footer {
+        background: $grey;
+        padding:50px 0;
+    }
 }
 .close {
     display: block;
@@ -472,6 +473,10 @@ ul li:hover {
     top: 0;
     right: 0;
     @include navText(13px);
+    @include transition;
+    &:hover {
+        background: $pink - 30;
+    }
 }
 
 
@@ -484,9 +489,106 @@ footer#footer {
     color:white;
     h2 {
         color:white;
+        margin-top: 0;
+        padding-left: 40px;
     }
 }
+.social {
+    li {
+       display: inline-block; 
+        a {
+            color:white;
+            font-size: 30px;
+            display: block;
+            position: relative;
+            padding: 10px;
+            i {
+                position: relative;
+                @include transition;
+            }
+            span {
+                text-align: center;
+                opacity: 0;
+                z-index: -100;
+                position: absolute;
+                background: $tan;
+                @include transition;
+                @include navText(12px);
+                color:$text;
+                display: block;
+                padding:10px 20px;
+                top:-65px;
+                left:-30px;
+                width:105px;
+                &:after {
+                    content:'';
+                    border-top: #dbd8cf dotted 15px;
+                    border-left: transparent solid 15px;
+                    border-right: transparent solid 15px;
+                    position: absolute;
+                    bottom: -15px;
+                    left: 36%;
+                }
+            }
+            &.facebook span {
+                left:-35px;
+            }
+            &:hover {
+                color:orange;
+                i {
+                    bottom:5px;
+                }
+                span {
+                    top:-45px;
+                    opacity: 1;
+                    z-index:100;
+                }
+            }
+        }
 
+    }
+    li + li {
+        // margin-left: 20px;
+    }
+}
+.newsletter {
+    form {
+        input {
+            float: left;
+            height: 55px;
+            margin-bottom: 0;
+        }
+        .field {
+            width:64%;
+            background: #bebcbf;
+        }
+        #submitbutton {
+            background: $teal;
+            @include navText;
+            margin-left: 2%;
+            white-space: normal;
+            width:34%;
+            padding:10px 15px;
+        }
+    }
+    p {
+        font-family: "proxima-nova";
+        font-size: 12px;
+        color: #bebcbf;
+        font-weight: normal;
+    }
+}
+@include at-breakpoint($computer) {
+    h2 {
+        @include span-columns(4 alpha);
+    }
+    .social {
+        @include span-columns(4);
+    }
+    .newsletter {
+        @include span-columns(4 omega);
+    }
+}
 
 /* ==========================================================================
    Helper classes
