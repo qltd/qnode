@@ -1,3 +1,15 @@
+/*------------------------------------*\
+    $TABLE OF CONTENTS
+\*------------------------------------*/
+/**
+ * BASE...............Brings in Compass, Normalize, Susy, Variables and Mixins
+ * HTML5 Bolierplate...............Brings in CSS3 Mixins for Sass
+ */
+
+
+
+
+
 @import 'base';
 
 
@@ -22,17 +34,13 @@ $wide: 66em 12;
 
 $container-width:1440px;
 
-/*
- * HTML5 Boilerplate
- *
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
 
-/* ==========================================================================
-   Base styles: opinionated defaults
-   ========================================================================== */
+
+
+
+/*------------------------------------*\
+    $HTML5 BOILERPLATE
+\*------------------------------------*/
 
 html,
 button,
@@ -147,7 +155,7 @@ h5 {
 }
 
 p {
-	font: 400 24px "proxima-nova", sans-serif;
+	font: 400 18px "proxima-nova", sans-serif;
 }
 
 a {
@@ -166,6 +174,13 @@ input, textarea {
 input {
     height:75px;
 }
+@include at-breakpoint($computer) {
+    p {
+        font-size: 24px;
+    }
+}
+
+
 
 
 // Utilities 
@@ -206,7 +221,7 @@ ul li:hover {
     .flyout {
         color:white;
         z-index:100;
-        top:-16px;
+        top:-18px;
         opacity:1.0;
     }
 }
@@ -217,11 +232,11 @@ ul li:hover {
 .header {
 	color:white;
 	background:$grey;
-	padding:35px 0 40px;
     position: fixed;
     top:0;
     width: 100%;
     z-index: 1000;
+    padding: 25px 0 20px;
 }
 .logo {
 	margin: 0 0 0 4%;
@@ -234,6 +249,7 @@ ul li:hover {
 
 
 .main-nav {
+    display: none;
     float: right;
     margin: 17px 6% 0 0;
 	a {
@@ -243,14 +259,33 @@ ul li:hover {
 		}
 	}
 }
+@include at-breakpoint($computer) {
+    .header {
+        padding:35px 0 40px;
+    }
+    .main-nav {
+        display: block;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 .headline {
-    margin-top: 146px;
-    height: 600px;
-    padding-top: 150px;
+    margin-top: 100px;
+    padding: 60px 0;
     position: relative;
     overflow: hidden;
     h3 {
+        font-size: 30px;
         width:70%;
         margin: 0 auto;
         z-index: 100;
@@ -265,32 +300,37 @@ ul li:hover {
         background: rgba(#6ca6a6, 0.8);
     }
     video {
-        width:100%;
+        min-height: 320px;
         position: absolute;
         z-index: 50;
         bottom:0;
     }
 }
-.panel {
-    @include at-breakpoint($computer) {
-        h2 {
-            @include span-columns(4 alpha);
+
+@include at-breakpoint($computer) {
+    .headline {
+        margin-top: 146px;
+        height: 600px;
+        h3 {
+            font-size: 40px;
         }
-        .content {
-            @include span-columns(8 omega);
+        video {
+            width: 100%;
         }
     }
+}
+
+
+
+
+.panel {
     position: relative;
-    padding:190px 20px 160px;
+    padding:50px 20px 60px;
 	margin-bottom: 8px;
     overflow: hidden;
     h2, p {
         position: relative;
         z-index:100;
-    }
-    h2 {
-        margin-top: 24px;
-        padding-left: 40px;
     }
     // Paralax Test
     .q {
@@ -305,8 +345,25 @@ ul li:hover {
     .pinq {
         background: url(../images/pinq.png);
     }
-
 }
+@include at-breakpoint($computer) {
+    .panel {
+        padding:190px 20px 160px;
+        h2 {
+            @include span-columns(4 alpha);
+            padding-left: 40px;
+            margin-top: 24px;
+        }
+        .content {
+            @include span-columns(8 omega);
+        }   
+    }
+}
+
+
+
+
+
 .container {
     @include container($total-columns, $tablet, $computer, $wide);
 }
@@ -314,7 +371,6 @@ ul li:hover {
 //  About Q
 .about {
 	background: white;
-    padding:190px 20px 160px;
 }
 
 
@@ -344,7 +400,7 @@ ul li:hover {
     }
     .flyout {
         width: 410px;
-        right: 315px;
+        left: -435px;
         top:50px;
     }
     @include at-breakpoint($computer) {
@@ -404,7 +460,20 @@ ul li:hover {
 .contact {
 	background:$tan;
 }
-
+#contact-submit {
+    height: auto;
+    float: right;
+    width: auto;
+    display: block;
+    background: $pink;
+    color:white;
+    padding: 20px;
+    @include navText(13px);
+    @include transition;
+    &:hover {
+        background: $pink - 30;
+    }
+}
 
 
 // $Portfolio
