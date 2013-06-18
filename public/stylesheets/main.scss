@@ -20,38 +20,52 @@
 /*------------------------------------*\
     $TABLE OF CONTENTS
 \*------------------------------------*/
+
 /**
  * BASE...................Brings in Compass, Normalize, Susy, Variables and Mixins
  * HTML5 Bolierplate......HTML5 Boilerplate Styles
  * Elemental Styles.......Styles for HTML Elements
+ * Utilities..............Reusabel Utility Classes
+ * Content................Page Content
+ * * Header...............Header Bar Styles
+ * * Headline.............Headline / Welcome Area
+ * * Main Content.........Main Content Area General Styles
+ * * Sections.............Page Section Specific Styles
+ * * * About
+ * * * Work
+ * * * Services
+ * * * Crew
+ * * * Clients
+ * * * Contact
+ * * * Portfolio
+ * * Footer...............Footer Section of the Site aka Connect Panel
+ * Helper Classes.........Things like clearfix, image replace
  */
 
 
 
 
 
-@import 'base';
-
+ @import 'base';
 
 //this is the default number of columns
 $total-columns: 5;
- 
+
 //width of each column
 $column-width   : 4em;
- 
+
 //space between columns
 $gutter-width   : 1em;
- 
+
 //space on the right and left of the grid
 $grid-padding   : $gutter-width;
- 
+
 //alternative layout breakpoints
 $tablet: 8;
 $computer: 55em 12;
 $wide: 66em 12;
 
-
-
+// Widest width size
 $container-width:1440px;
 
 
@@ -69,12 +83,12 @@ button,
 input,
 select,
 textarea {
-    color: #222;
+  color: #222;
 }
 
 body {
-    font-size: 1em;
-    line-height: 1.4;
+  font-size: 1em;
+  line-height: 1.4;
 }
 
 /*
@@ -83,70 +97,61 @@ body {
  * Customize the background color to match your design.
  */
 
-::-moz-selection {
-    background: #b3d4fc;
-    text-shadow: none;
+ ::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
 }
 
 ::selection {
-    background: #b3d4fc;
-    text-shadow: none;
+  background: #b3d4fc;
+  text-shadow: none;
 }
 
-/*
- * A better looking default horizontal rule
- */
 
+// A better looking default horizontal rule
 hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
 }
 
-/*
- * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
- */
 
+// Remove the gap between images and the bottom of their containers: h5bp.com/i/440
 img {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
-/*
- * Remove default fieldset styles.
- */
-
+// Remove defauly fieldset styles
 fieldset {
-    border: 0;
-    margin: 0;
-    padding: 0;
+  border: 0;
+  margin: 0;
+  padding: 0;
 }
 
-/*
- * Allow only vertical resizing of textareas.
- */
-
+//Allow only vertical resizing of textareas.
 textarea {
-    resize: vertical;
+  resize: vertical;
 }
 
-/* ==========================================================================
-   Chrome Frame prompt
-   ========================================================================== */
-
+// Chrome Frame
 .chromeframe {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
 }
+
+
+
 
 
 /*------------------------------------*\
     $ELEMENTAL STYLES
 \*------------------------------------*/
+
 body, p, li, table {
 	color:$text;
 }
@@ -155,7 +160,6 @@ body {
 	padding:0;
 	font-size: 100%;
 }
-
 
 h2 {
 	font: 700 40px "adelle", serif;
@@ -166,13 +170,13 @@ h3 {
 	text-align: center;
 }
 h4 {
-    font: 700 16px "adelle", serif;
-    margin: 0;
+  font: 700 16px "adelle", serif;
+  margin: 0;
 }
 h5 {
-    font: 400 12px "proxima-nova", sans-serif;
-    text-transform: uppercase;
-    margin: 0;
+  font: 400 12px "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  margin: 0;
 }
 
 p {
@@ -180,31 +184,35 @@ p {
 }
 
 a {
-    text-decoration: none;
-	@include transition;
+  text-decoration: none;
+  @include transition;
 }
 
 input, textarea {
-    width: 100%;
-    margin-bottom: 15px;
-    font:italic 700 21px "adelle", serif;
-    padding:20px;
-    -webkit-appearance: none;
-    border:none;
+  width: 100%;
+  margin-bottom: 15px;
+  font:italic 700 21px "adelle", serif;
+  padding:20px;
+  -webkit-appearance: none;
+  border:none;
 }
 input {
-    height:75px;
+  height:75px;
 }
 @include at-breakpoint($computer) {
-    p {
-        font-size: 24px;
-    }
+  p {
+    font-size: 24px;
+  }
 }
 
 
 
 
-// Utilities 
+
+/*------------------------------------*\
+    $UTILITIES
+\*------------------------------------*/
+
 ul.inline li {
 	display: inline-block;
 	& + li {
@@ -214,51 +222,78 @@ ul.inline li {
 
 // Reusable
 .flyout {
-    background: rgba($grey, 0.9);
-    padding:20px;
+  background: rgba($grey, 0.9);
+  padding:20px;
+  position: absolute;
+  width: 410px;
+  top:50px;
+  opacity: 0;
+  z-index:-100;
+  @include transition;
+  p {
+    color: #FFF;
+    font: 400 13px "proxima-nova", sans-serif;
+  }
+  &:after {
+    content:' ';
+    display: block;
     position: absolute;
-    width: 410px;
-    right: 80%;
-    top:50px;
-    opacity: 0;
-    z-index:-100;
-    @include transition;
-    p {
-        color: #FFF;
-        font: 400 13px "proxima-nova", sans-serif;
-    }
+  }
+  &.fly-top {
     &:after {
-        content:' ';
-        display: block;
-        position: absolute;
-        top:20px;
-        right:-15px;
-        border-top:15px solid transparent;
-        border-bottom:15px solid transparent;
-        border-left:15px solid rgba($grey, 0.9);
+      @include triangle(15px, top, rgba($grey, 0.9)); 
     }
+  }
+  &.fly-left {
+    left: -435px;
+    &:after {
+      top:20px;
+      @include triangle(15px, left, rgba($grey, 0.9));    
+    }
+  }
+  &.fly-right {
+    right: -300px;
+    &:after {
+      top:20px;
+      @include triangle(15px, right, rgba($grey, 0.9));
+    }
+  }
+  &.fly-bottom {
+    &:after {
+      @include triangle(15px, bottom, rgba($grey, 0.9)); 
+    }    
+  }
 }
 ul li:hover {
-    .flyout {
-        color:white;
-        z-index:100;
-        top:-18px;
-        opacity:1.0;
-    }
+  .flyout {
+    color:white;
+    z-index:100;
+    top:-18px;
+    opacity:1.0;
+  }
 }
 
 
 
-//  HEADER
+
+
+/*------------------------------------*\
+    $CONTENT
+\*------------------------------------*/
+
+
+/*--$HEADER--*/
+
 .header {
 	color:white;
 	background:$grey;
-    position: fixed;
-    top:0;
-    width: 100%;
-    z-index: 1000;
-    padding: 25px 0 20px;
+  position: fixed;
+  top:0;
+  width: 100%;
+  z-index: 1000;
+  padding: 25px 0 20px;
 }
+
 .logo {
 	margin: 0 0 0 4%;
 	width:233px;
@@ -268,463 +303,472 @@ ul li:hover {
 	background: url(../images/logo.png) no-repeat;
 }
 
-
 .main-nav {
-    display: none;
-    float: right;
-    margin: 17px 6% 0 0;
-	a {
-        @include navText;
-		&:hover {
-			color:$linko;
-		}
-	}
+  display: none;
+  float: right;
+  margin: 17px 6% 0 0;
+  a {
+    @include navText;
+    &:hover {
+     color:$linko;
+   }
+ }
 }
+
 @include at-breakpoint($computer) {
-    .header {
-        padding:35px 0 40px;
-    }
-    .main-nav {
-        display: block;
-    }
+  .header {
+    padding:35px 0 40px;
+  }
+  .main-nav {
+    display: block;
+  }
 }
 
 
-
-
-
-
-
-
-
-
-
+/*--$HEADLINE--*/
 
 .headline {
-    margin-top: 100px;
-    padding: 60px 0;
+  margin-top: 100px;
+  padding: 60px 0;
+  position: relative;
+  overflow: hidden;
+  h3 {
+    font-size: 30px;
+    width:70%;
+    margin: 0 auto;
+    z-index: 100;
     position: relative;
-    overflow: hidden;
+  }
+  .teal {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 95;
+    height:700px;
+    background: rgba(#6ca6a6, 0.8);
+  }
+  video {
+    min-height: 320px;
+    position: absolute;
+    z-index: 50;
+    bottom:0;
+  }
+}
+
+@include at-breakpoint($computer) {
+  .headline {
+    margin-top: 146px;
+    height: 600px;
     h3 {
-        font-size: 30px;
-        width:70%;
-        margin: 0 auto;
-        z-index: 100;
-        position: relative;
-    }
-    .teal {
-        width: 100%;
-        position: absolute;
-        top: 0;
-        z-index: 95;
-        height:700px;
-        background: rgba(#6ca6a6, 0.8);
+      font-size: 40px;
     }
     video {
-        min-height: 320px;
-        position: absolute;
-        z-index: 50;
-        bottom:0;
+      width: 100%;
     }
-}
-
-@include at-breakpoint($computer) {
-    .headline {
-        margin-top: 146px;
-        height: 600px;
-        h3 {
-            font-size: 40px;
-        }
-        video {
-            width: 100%;
-        }
-    }
+  }
 }
 
 
-
+/*--$MAIN CONTENT--*/
 
 .panel {
+  position: relative;
+  padding:50px 20px 60px;
+  margin-bottom: 8px;
+  overflow: hidden;
+  h2, p {
     position: relative;
-    padding:50px 20px 60px;
-	margin-bottom: 8px;
-    overflow: hidden;
-    h2, p {
-        position: relative;
-        z-index:100;
-    }
-    // Paralax Test
-    .q {
-        display: block;
-        background: url(../images/tanq.png);
-        width: 351px;
-        height: 342px;
-        position: absolute;
-        z-index: 1;
-        font-size: 10em;
-    }
-    .pinq {
-        background: url(../images/pinq.png);
-    }
+    z-index:100;
+  }
+  // Paralax Test
+  .q {
+    display: block;
+    background: url(../images/tanq.png);
+    width: 351px;
+    height: 342px;
+    position: absolute;
+    z-index: 1;
+    font-size: 10em;
+  }
+  .pinq {
+    background: url(../images/pinq.png);
+  }
+  .content {
+    z-index:100;
+    position: relative;
+  }
 }
 @include at-breakpoint($computer) {
-    .panel {
-        padding:190px 20px 160px;
-        h2 {
-            @include span-columns(4 alpha);
-            padding-left: 40px;
-            margin-top: 24px;
-        }
-        .content {
-            @include span-columns(8 omega);
-        }   
+  .panel {
+    padding:190px 20px 160px;
+    h2 {
+      @include span-columns(4 alpha);
+      padding-left: 40px;
+      margin-top: 24px;
     }
+    .content {
+      @include span-columns(8 omega);
+    }   
+  }
 }
-
-
-
-
 
 .container {
-    @include container($total-columns, $tablet, $computer, $wide);
+  @include container($total-columns, $tablet, $computer, $wide);
 }
 
-//  About Q
+
+/*--$SECTIONS--*/
+
+/* $about */
 .about {
 	background: white;
 }
 
 
-//  Work
+/* $work */
 .work {
 	background: $tan;
+  .project-trigger {
+    @include navText;
+    color:$grey;
+  }
+  .project-wrap {
+    text-align: center;
+  }
 }
 
-//  Services
+/* $services */
 .services {
 	background: $orange;
-    ul {
-        list-style: none;
-        padding: 0;
-        li {
-            position: relative;
-            margin: 0;
-            padding: 5px 0;
-            color: #FFF;
-            font:italic 700 19px "adelle", serif;
-            cursor: pointer;
-            @include transition;
-            &:hover {
-                color: $grey;
-            }
-        }
+  ul {
+    list-style: none;
+    padding: 0;
+    li {
+      position: relative;
+      margin: 0;
+      padding: 5px 0;
+      color: #FFF;
+      font:italic 700 19px "adelle", serif;
+      cursor: pointer;
+      @include transition;
+      &:hover {
+        color: $grey;
+      }
     }
-    .flyout {
-        width: 410px;
-        left: -435px;
-        top:50px;
+  }
+  .flyout {
+    width: 410px;
+  }
+  @include at-breakpoint($computer) {
+    .first {
+      @include span-columns(4, 8);
     }
-    @include at-breakpoint($computer) {
-        .first {
-            @include span-columns(4, 8);
-        }
-        .last {
-            @include span-columns(4 omega, 8);
-        }
-    } 
+    .last {
+      @include span-columns(4 omega, 8);
+    }
+  } 
 }
 
-// Value
+/* $value */
 .value {
 	background: $tan;
 }
 
-// Crew
+/* $crew */
 .crew {
-    padding:190px 20px 160px;
-	background:$teal;
+  background:$teal;
 }
 .crew-grid {
-    li {
-        float:left;
-        list-style: none;
-        position: relative;
+  li {
+    float:left;
+    list-style: none;
+    position: relative;
+  }
+  img {
+    border:10px solid transparent;
+    @include transition;
+    &:hover {
+      border-color:$pink;
     }
-    img {
-        border:10px solid transparent;
-        @include transition;
-        &:hover {
-            border-color:$pink;
-        }
+  }
+  .flyout {
+    width: 145%;
+    right: 29%;
+    top: 155px;
+    &:after {
+      right:20px;
     }
+  }
+  ul li:hover {
     .flyout {
-        width: 410px;
-        right: 29%;
-        top: 155px;
+      color:white;
+      z-index:100;
+      top:150px;
+      opacity:1.0;
     }
-    ul li:hover {
-        .flyout {
-            color:white;
-            z-index:100;
-            top:150px;
-            opacity:1.0;
-        }
-    }
+  }
 }
 
-// Clients
+/* $clients */
 .clients {
 	background: $pink;
 }
 
-// Contact
+/* $contact */
 .contact {
 	background:$tan;
 }
 #contact-submit {
-    height: auto;
-    float: right;
-    width: auto;
-    display: block;
-    background: $pink;
-    color:white;
-    padding: 20px;
-    @include navText(13px);
-    @include transition;
-    &:hover {
-        background: $pink - 30;
-    }
+  height: auto;
+  float: right;
+  width: auto;
+  display: block;
+  background: $pink;
+  color:white;
+  padding: 20px;
+  @include navText(13px);
+  @include transition;
+  &:hover {
+    background: $pink - 30;
+  }
 }
 
 
-// $Portfolio
+/* $portfolio */
+// Portfolio Drawer container that slides up revealing individual project
 .portfolio {
-    @include transition(1s);
-    background: white;
-    height: 100%;
-    top: 100%;
-    opacity:0;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    padding: 0;
-    position: fixed;
-    width: 100%;
-    z-index: 9999;
-    &.open {
-        top:0;
-        opacity:1;
-    }
+  @include transition(1s);
+  background: white;
+  height: 100%;
+  top: 100%;
+  opacity:0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+  &.open {
+    top:0;
+    opacity:1;
+  }
 }
+
+// Individual Project 
 .project {
-    display:none;
-    header {
-        background: $grey;
-        padding:110px 0;
-        h3 {
-            margin: 0;
-            @include projTitle;
-        }
-        @include at-breakpoint($computer) {
-            h3 {
-                @include span-columns(4 alpha);
-            }
-            .content {
-                @include span-columns(8 omega);
-            }  
-        }
-        p {
-            color:white;
-            font-size: 18px;
-            margin-top: 0;
-            a {
-                color:$orange;
-            }
-        }
+  display:none;
+  header {
+    background: $grey;
+    padding:110px 0;
+    h3 {
+      margin: 0;
+      @include projTitle;
     }
-    section {
-        margin-top: 8px;
-        background: $tan;
-        padding:50px 0 200px;
-    }
-    &.active {
-        display: block;
-    }
-    footer {
-        background: $grey;
-        padding:50px 0;
-    }
-}
-.close {
-    display: block;
-    background: $pink;
-    color:white;
-    padding: 20px;
-    position: fixed;
-    top: 0;
-    right: 0;
-    @include navText(13px);
-    @include transition;
-    &:hover {
-        background: $pink - 30;
-    }
-}
-
-
-
-
-// Footer
-footer#footer {
-    background: $text; 
-    padding:125px 0;  
-    color:white;
-    h2 {
-        color:white;
-        margin-top: 0;
-        padding-left: 40px;
-    }
-}
-.social {
-    li {
-       display: inline-block; 
-        a {
-            color:white;
-            font-size: 30px;
-            display: block;
-            position: relative;
-            padding: 10px;
-            i {
-                position: relative;
-                @include transition;
-            }
-            span {
-                text-align: center;
-                opacity: 0;
-                z-index: -100;
-                position: absolute;
-                background: $tan;
-                @include transition;
-                @include navText(12px);
-                color:$text;
-                display: block;
-                padding:10px 20px;
-                top:-65px;
-                left:-30px;
-                width:105px;
-                &:after {
-                    content:'';
-                    border-top: #dbd8cf dotted 15px;
-                    border-left: transparent solid 15px;
-                    border-right: transparent solid 15px;
-                    position: absolute;
-                    bottom: -15px;
-                    left: 36%;
-                }
-            }
-            &.facebook span {
-                left:-35px;
-            }
-            &:hover {
-                color:orange;
-                i {
-                    bottom:5px;
-                }
-                span {
-                    top:-45px;
-                    opacity: 1;
-                    z-index:100;
-                }
-            }
-        }
-
-    }
-    li + li {
-        // margin-left: 20px;
-    }
-}
-.newsletter {
-    form {
-        input {
-            float: left;
-            height: 55px;
-            margin-bottom: 0;
-        }
-        .field {
-            width:64%;
-            background: #bebcbf;
-        }
-        #submitbutton {
-            background: $teal;
-            @include navText;
-            margin-left: 2%;
-            white-space: normal;
-            width:34%;
-            padding:10px 15px;
-        }
+    @include at-breakpoint($computer) {
+      h3 {
+        @include span-columns(4 alpha);
+      }
+      .content {
+        @include span-columns(8 omega);
+      }  
     }
     p {
-        font-family: "proxima-nova";
-        font-size: 12px;
-        color: #bebcbf;
-        font-weight: normal;
+      color:white;
+      font-size: 18px;
+      margin-top: 0;
+      a {
+        color:$orange;
+      }
     }
+  }
+  section {
+    margin-top: 8px;
+    background: $tan;
+    padding:50px 0 200px;
+  }
+  &.active {
+    display: block;
+  }
+  footer {
+    background: $grey;
+    padding:50px 0;
+  }
 }
+
+// Closes Portfolio Drawer
+.close {
+  display: block;
+  background: $pink;
+  color:white;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  @include navText(13px);
+  @include transition;
+  &:hover {
+    background: $pink - 30;
+  }
+}
+
+
+/*--$FOOTER--*/
+
+footer#footer {
+  background: $text; 
+  padding:125px 0;  
+  color:white;
+  h2 {
+    color:white;
+    margin-top: 0;
+    padding:0;
+  }
+}
+.social {
+  li {
+    display: inline-block; 
+    a {
+      color:white;
+      font-size: 30px;
+      display: block;
+      position: relative;
+      padding: 10px;
+      i {
+        position: relative;
+        @include transition;
+      }
+      span {
+        text-align: center;
+        opacity: 0;
+        z-index: -100;
+        position: absolute;
+        background: $tan;
+        @include transition;
+        @include navText(12px);
+        color:$text;
+        display: block;
+        padding:10px 20px;
+        top:-65px;
+        left:-30px;
+        width:105px;
+        &:after {
+          content:'';
+          border-top: #dbd8cf dotted 15px;
+          border-left: transparent solid 15px;
+          border-right: transparent solid 15px;
+          position: absolute;
+          bottom: -15px;
+          left: 36%;
+        }
+      }
+      &.facebook span {
+        left:-35px;
+      }
+      &:hover {
+        color:orange;
+        i {
+          bottom:5px;
+        }
+        span {
+          top:-45px;
+          opacity: 1;
+          z-index:100;
+        }
+      }
+    }
+  }
+}
+
+// Newsletter Signup
+.newsletter {
+  form {
+    input {
+      float: left;
+      height: 55px;
+      margin-bottom: 0;
+    }
+    .field {
+      width:64%;
+      background: #bebcbf;
+    }
+    #submitbutton {
+      background: $teal;
+      @include navText;
+      margin-left: 2%;
+      white-space: normal;
+      width:34%;
+      padding:10px 15px;
+    }
+  }
+  p {
+    font-family: "proxima-nova";
+    font-size: 12px;
+    color: #bebcbf;
+    font-weight: normal;
+  }
+}
+
 @include at-breakpoint($computer) {
-    h2 {
-        @include span-columns(4 alpha);
-    }
-    .social {
-        @include span-columns(4);
-    }
-    .newsletter {
-        @include span-columns(4 omega);
-    }
+  h2 {
+    padding-left: 40px;
+    @include span-columns(4 alpha);
+  }
+  .social {
+    @include span-columns(4);
+  }
+  .newsletter {
+    @include span-columns(4 omega);
+  }
 }
 
-/* ==========================================================================
-   Helper classes
-   ========================================================================== */
 
+
+
+
+/*------------------------------------*\
+    $HELPER CLASSES
+\*------------------------------------*/
 /*
  * Image replacement
  */
 
-.ir {
-    background-color: transparent;
-    border: 0;
-    overflow: hidden;
+ .ir {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
     /* IE 6/7 fallback */
     *text-indent: -9999px;
-}
+  }
 
-.ir:before {
+  .ir:before {
     content: "";
     display: block;
     width: 0;
     height: 150%;
-}
+  }
 
 /*
  * Hide from both screenreaders and browsers: h5bp.com/u
  */
 
-.hidden {
-    display: none !important;
-    visibility: hidden;
+ .hidden {
+  display: none !important;
+  visibility: hidden;
 }
 
 /*
  * Hide only visually, but have it available for screenreaders: h5bp.com/v
  */
 
-.visuallyhidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
+ .visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 
 /*
@@ -732,22 +776,22 @@ footer#footer {
  * when navigated to via the keyboard: h5bp.com/p
  */
 
-.visuallyhidden.focusable:active,
-.visuallyhidden.focusable:focus {
-    clip: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    position: static;
-    width: auto;
+ .visuallyhidden.focusable:active,
+ .visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
 }
 
 /*
  * Hide visually and from screenreaders, but maintain layout
  */
 
-.invisible {
-    visibility: hidden;
+ .invisible {
+  visibility: hidden;
 }
 
 /*
@@ -762,40 +806,23 @@ footer#footer {
  *    `:before` to contain the top-margins of child elements.
  */
 
-.clearfix:before,
-.clearfix:after {
+ .clearfix:before,
+ .clearfix:after {
     content: " "; /* 1 */
     display: table; /* 2 */
-}
+  }
 
-.clearfix:after {
+  .clearfix:after {
     clear: both;
-}
+  }
 
 /*
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
  */
 
-.clearfix {
-    *zoom: 1;
-}
-
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-    /* Style adjustments for viewports that meet the condition */
-}
-
-@media print,
-       (-o-min-device-pixel-ratio: 5/4),
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 120dpi) {
-    /* Style adjustments for high resolution devices */
+ .clearfix {
+  *zoom: 1;
 }
 
 /* ==========================================================================
@@ -803,69 +830,69 @@ footer#footer {
    Inlined to avoid required HTTP connection: h5bp.com/r
    ========================================================================== */
 
-@media print {
+   @media print {
     * {
-        background: transparent !important;
+      background: transparent !important;
         color: #000 !important; /* Black prints faster: h5bp.com/s */
         box-shadow: none !important;
         text-shadow: none !important;
-    }
+      }
 
-    a,
-    a:visited {
+      a,
+      a:visited {
         text-decoration: underline;
-    }
+      }
 
-    a[href]:after {
+      a[href]:after {
         content: " (" attr(href) ")";
-    }
+      }
 
-    abbr[title]:after {
+      abbr[title]:after {
         content: " (" attr(title) ")";
-    }
+      }
 
     /*
      * Don't show links for images, or javascript/internal links
      */
 
-    .ir a:after,
-    a[href^="javascript:"]:after,
-    a[href^="#"]:after {
-        content: "";
+     .ir a:after,
+     a[href^="javascript:"]:after,
+     a[href^="#"]:after {
+      content: "";
     }
 
     pre,
     blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
+      border: 1px solid #999;
+      page-break-inside: avoid;
     }
 
     thead {
         display: table-header-group; /* h5bp.com/t */
-    }
+      }
 
-    tr,
-    img {
+      tr,
+      img {
         page-break-inside: avoid;
-    }
+      }
 
-    img {
+      img {
         max-width: 100% !important;
-    }
+      }
 
-    @page {
+      @page {
         margin: 0.5cm;
-    }
+      }
 
-    p,
-    h2,
-    h3 {
+      p,
+      h2,
+      h3 {
         orphans: 3;
         widows: 3;
-    }
+      }
 
-    h2,
-    h3 {
+      h2,
+      h3 {
         page-break-after: avoid;
+      }
     }
-}

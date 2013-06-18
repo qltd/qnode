@@ -3,25 +3,50 @@
 \*------------------------------------*/
 
 @mixin transition($sec: 0.2s) {
--webkit-transition: all $sec ease-out;
-   -moz-transition: all $sec ease-out;
-    -ms-transition: all $sec ease-out;
-     -o-transition: all $sec ease-out;
-        transition: all $sec ease-out;
+  -webkit-transition: all $sec ease-out;
+  -moz-transition: all $sec ease-out;
+  -ms-transition: all $sec ease-out;
+  -o-transition: all $sec ease-out;
+  transition: all $sec ease-out;
 }
 
 
 @mixin navText($size: 14px) {
-    color: white;
-    font: 800 $size "proxima-nova";
-    text-transform: uppercase;
+  color: white;
+  font: 800 $size "proxima-nova";
+  text-transform: uppercase;
 }
 
 @mixin projTitle($size:20px, $color: $teal) {
-    color: $color;
-    font: 800 $size "proxima-nova";
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-align: left;
+  color: $color;
+  font: 800 $size "proxima-nova";
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: left;
 }
+
+@mixin triangle($size, $direction, $color) {
+  @if $direction == up {
+    border-right:$size solid transparent;
+    border-left:$size solid transparent;
+    border-top:$size solid $color; 
+    bottom:-$size;
+  } @else if $direction == left {
+    border-top:$size solid transparent;
+    border-bottom:$size solid transparent;
+    border-left:$size solid $color; 
+    right:-$size;
+  } @else if $direction == right {
+    border-top:$size solid transparent;
+    border-bottom:$size solid transparent;
+    border-right:$size solid $color; 
+    left:-$size;
+  } @else {
+    border-right:$size solid transparent;
+    border-left:$size solid transparent;
+    border-bottom:$size solid $color; 
+    top:-$size;
+  }
+}
+
 
