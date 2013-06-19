@@ -55,7 +55,7 @@ $total-columns: 5;
 $column-width   : 4em;
 
 //space between columns
-$gutter-width   : 1em;
+$gutter-width   : 2em;
 
 //space on the right and left of the grid
 $grid-padding   : $gutter-width;
@@ -431,11 +431,34 @@ ul li:hover {
   .project-trigger {
     @include navText;
     color:$grey;
+    span {
+      display: block;
+      margin-top: 30px;
+    }
   }
   .project-wrap {
+    list-style: none;
     text-align: center;
+    margin-bottom: 50px;
+    img {
+      width:100%;
+    }
   }
 }
+@include at-breakpoint($computer) {
+  .project-grid {
+    margin-top: 60px;
+    @include span-columns(12 omega);
+  }
+  .project-wrap {
+    @include span-columns(4);
+    &.omega {
+      @include span-columns(4 omega);
+    }
+  }
+}
+
+
 
 /* $services */
 .services {
