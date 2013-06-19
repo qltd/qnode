@@ -593,7 +593,7 @@ ul li:hover {
       }
       .content {
         @include span-columns(8 omega);
-      }  
+      }
     }
     p {
       color:white;
@@ -608,6 +608,9 @@ ul li:hover {
     margin-top: 8px;
     background: $tan;
     padding:50px 0 200px;
+    .container {
+      text-align: center;
+    }
   }
   &.active {
     display: block;
