@@ -560,7 +560,7 @@ ul li:hover {
 /* $portfolio */
 // Portfolio Drawer container that slides up revealing individual project
 .portfolio {
-  @include transition(1s);
+  @include transition(0.5s);
   background: white;
   height: 100%;
   top: 100%;
@@ -610,6 +610,13 @@ ul li:hover {
     padding:50px 0 200px;
     .container {
       text-align: center;
+      img {
+        max-width:100%;
+        margin-bottom: 80px;
+        &.shadow {
+          
+        }
+      }
     }
   }
   &.active {

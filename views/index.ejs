@@ -278,7 +278,7 @@
                     </li>
                     </ul>
                 </div>
-                <div class="q" data-stellar-ratio="2" data-stellar-vertical-offset="220"></div>
+                <div class="q" data-stellar-ratio="0.5" data-stellar-vertical-offset="220"></div>
             </div>
         </article>
         <article id="clients" class="clients panel">
@@ -364,10 +364,8 @@
                     </div>
                 </section>
                 <footer>
-                    
                 </footer>
             </div>
-
         </div>
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
@@ -386,7 +384,10 @@
         <!-- endbuild -->
         <script>
         	jQuery(function($){
-                $.stellar();
+                $.stellar({
+                    hideDistantElements: true,
+                    responsive: true
+                });
 
 				$("a[href^='#']").click(function(){//$.scrollTo works EXACTLY the same way, but scrolls the whole screen
 					$.scrollTo( this.hash, 800, { offset:-150 });
