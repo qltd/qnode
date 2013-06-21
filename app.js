@@ -8,12 +8,10 @@ var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , nodemailer = require("nodemailer");
 
 var app = express();
-
-
-app.setMaxListeners(0);
 
 // DB
 mongoose.connect('mongodb://localhost/qdb');
@@ -23,6 +21,9 @@ db.once('open', function callback () {
   console.log('yay');
 });
 
+var qdb = require('./database');
+
+app.setMaxListeners(0);
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -45,6 +46,9 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
+
+// for reverse proxying via nginx/apache
+app.enable('trust proxy');
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
