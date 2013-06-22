@@ -1,5 +1,15 @@
 head
   meta(charset='utf-8')
+!!! 5
+//if lt IE 7
+    html(class="no-js lt-ie9 lt-ie8 lt-ie7", lang="en")
+//if IE 7
+    html(class="no-js lt-ie9 lt-ie8", lang="en")
+//if IE 8
+    html(class="no-js lt-ie9", lang="en")
+// [if gt IE 8] <!
+html(class="no-js", lang="en")
+  // <![endif]
   meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
   title
   meta(name='description', content='')
