@@ -20,15 +20,16 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
   console.log('yay');
 });
-
 var qdb = require('./database');
 
-app.setMaxListeners(0);
-
 // all environments
+app.setMaxListeners(0);
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
+app.set('view options', {
+  layout: false
+});
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());

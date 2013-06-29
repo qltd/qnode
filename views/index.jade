@@ -1,4 +1,11 @@
-include includes/head
-include body
-include includes/foot
-include portfolio
+extends layout
+
+- page_title.set ("Q LTD Test");
+
+block body_content
+  include includes/header
+  include includes/headline
+  include pages/about
+  include pages/work
+  //- include pages/services
+  include pages/contact
