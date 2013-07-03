@@ -4,5 +4,5 @@
  */
 
 exports.index = function(req, res){
-  res.render('index', { layout: 'layout', title: 'Q Design & Communication Since 1981' });
+  res.render('index', { title: 'Q Design & Communication Since 1981' });
 };
