@@ -5,9 +5,9 @@ article#contact.contact.panel
       p.
         We have a full-service office in Ann Arbor, Michigan. Our team is also represented in Los Angeles, Toronto, and occassionally Barbados. Our sister Q in Wiesbaden, Germany holds down the fort across the pond. If you have a project you’d like to discuss, please send us a note. We’d love to hear from you.
 
-      form
-        input(placeholder="Name*", type="text")
-        input(placeholder="Email*", type="text")
-        input(placeholder="Company*", type="text")
-        textarea(placeholder="Comments*", name="", cols="10", rows="5")
+      form(action="/contactUsPost", method="POST")
+        input(name="name", placeholder="Name*", type="text")
+        input(name="email", placeholder="Email*", type="text")
+        input(name="company", placeholder="Company*", type="text")
+        textarea(name="comments", placeholder="Comments*", cols="10", rows="5")
         input#contact-submit(type="submit", value="Submit")

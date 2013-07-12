@@ -4,23 +4,14 @@
  */
 
 var express = require('express')
-  , mongoose = require('mongoose')
   , routes = require('./routes')
   , user = require('./routes/user')
+  , post = require('./routes/post')
   , http = require('http')
   , path = require('path')
   , nodemailer = require("nodemailer");
 
 var app = express();
-
-// DB
-mongoose.connect('mongodb://localhost/qdb');
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function callback () {
-  console.log('yay');
-});
-var qdb = require('./database');
 
 // all environments
 app.setMaxListeners(0);
@@ -47,6 +38,7 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
+app.post('/contactUsPost', post.contactUsForm);
 
 // for reverse proxying via nginx/apache
 app.enable('trust proxy');
