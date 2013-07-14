@@ -1,0 +1,18 @@
+extends layout
+
+block body_content
+  include includes/header
+  article.panel
+    div.container
+      - each c in cur
+        p
+          strong
+            = c.name
+          br
+          em
+            a(href='mailto:'+c.email)
+              = c.email
+          br
+          = c.company
+          br
+          = c.comments

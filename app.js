@@ -38,7 +38,9 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
+
 app.post('/contactUsPost', post.contactUsForm);
+app.get('/contactUs', post.contactUsIndex);
 
 // for reverse proxying via nginx/apache
 app.enable('trust proxy');

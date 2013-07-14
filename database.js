@@ -1,4 +1,7 @@
-// Database Interactions
+
+/**
+ * Database
+ */
 
 // require mongoose within this script in addition to previous instantiation
 var mongoose = require('mongoose')
@@ -15,7 +18,6 @@ db.once('open', function callback () {
 exports.db = db;
 exports.mongoose = mongoose;
 
-
 // schemas
 exports.contactUsSchema = mongoose.Schema({
   name: String,
@@ -24,7 +26,6 @@ exports.contactUsSchema = mongoose.Schema({
   comments: String,
   date: { type: Date, default: Date.now }
 });
-
 
 // support functions
 /*contactUsSchema.methods.speak = function () {

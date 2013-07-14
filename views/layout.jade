@@ -12,6 +12,7 @@ html(class="no-js", lang="en")
 
   //- BEGIN HEAD
   head
+    title= title
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
     
@@ -28,12 +29,9 @@ html(class="no-js", lang="en")
     script(src='scripts/jquery.scrollTo-min.js')
     script(src='scripts/jquery.stellar.min.js')
     // endbuild 
-    script(type='text/javascript').
-      function changevid() {
-        document.getElementById('vid').innerHTML = '<source src="images/power.mp4" type="video/mp4">';
-        document.getElementById('vid').load();
-      }
-
+    //- BEGIN DYNAMIC CONTENT FOR HEAD
+    block head_content
+    
   //- BEGIN BODY
   body(onload="changevid()")
     
@@ -50,5 +48,6 @@ html(class="no-js", lang="en")
           li: a(href="#contact") Contact
           li: a(href="#blog") Blog
 
-  //- BEGIN DYNAMIC CONTENT
-  block body_content
+    //- BEGIN DYNAMIC CONTENT FOR BODY
+    block body_content
+  block after_body_content
