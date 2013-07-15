@@ -1,18 +1,17 @@
 extends layouts/default
 
-block head_content
-  script(type='text/javascript').
-    function changevid() {
-      document.getElementById('vid').innerHTML = '<source src="images/power.mp4" type="video/mp4">';
-      document.getElementById('vid').load();
-    }
+block head_scripts
+  include blocks/index/head_scripts
 
 block top_navigation
-  include navigation/index
+  include blocks/navigation/index
 
 block body_content
-  include content/index/headline
-  include content/index/about
-  include content/index/work
-  include content/index/services
-  include content/index/contact
+  include blocks/index/headline
+  include blocks/index/about
+  include blocks/index/work
+  include blocks/index/services
+  include blocks/index/contact
+
+block body_scripts
+  include blocks/index/body_scripts
