@@ -1,4 +1,4 @@
-extends layout
+extends layouts/default
 
 block head_content
   script(type='text/javascript').
@@ -7,10 +7,12 @@ block head_content
       document.getElementById('vid').load();
     }
 
+block top_navigation
+  include navigation/index
+
 block body_content
-  include includes/header
-  include includes/headline
-  include pages/about
-  include pages/work
-  //- include pages/services
-  include pages/contact
+  include content/index/headline
+  include content/index/about
+  include content/index/work
+  include content/index/services
+  include content/index/contact

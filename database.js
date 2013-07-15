@@ -27,6 +27,13 @@ exports.contactUsSchema = mongoose.Schema({
   date: { type: Date, default: Date.now }
 });
 
+exports.userSchema = mongoose.Schema({
+  name: String,
+  email: String,
+  pass: String,
+  date: { type: Date, default: Date.now }
+});
+
 // support functions
 /*contactUsSchema.methods.speak = function () {
   var sayThis = this.name

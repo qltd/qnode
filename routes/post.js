@@ -16,6 +16,6 @@ exports.contactUsIndex = function(req, res) {
   var contactUsResponses = qdb.mongoose.model('contactUsResponse', qdb.contactUsSchema);
   var D = contactUsResponses.find({}, 'name email company comments', function (err, cur) {
     if (err) return handleError(err);
-    res.render('contact-us', { cur: cur });
+    res.render('admin', { cur: cur });
   });
 }

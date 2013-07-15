@@ -1,8 +1,4 @@
-extends layout
-
-block body_content
-  include includes/header
-  article.panel
+article.panel
     div.container
       - each c in cur
         p
@@ -16,3 +12,4 @@ block body_content
           = c.company
           br
           = c.comments
+          

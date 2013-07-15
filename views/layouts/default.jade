@@ -38,16 +38,9 @@ html(class="no-js", lang="en")
     //- BEGIN BODY HEADER
     header.header.clearfix
       h1.logo #{title}
-      nav.main-nav
-        ul.inline
-          li: a(href="#about") About
-          li: a(href="#work") Work
-          li: a(href="#services") Services
-          li: a(href="#crew") Crew
-          li: a(href="#clients") Clients
-          li: a(href="#contact") Contact
-          li: a(href="#blog") Blog
+      block top_navigation
+      
 
     //- BEGIN DYNAMIC CONTENT FOR BODY
     block body_content
-  block after_body_content
+    block end_body_scripts
