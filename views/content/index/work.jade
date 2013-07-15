@@ -2,19 +2,19 @@ article#work.work.panel
   .container
     h2 Work
     .content
-      p
-        | We work with local and international clients of all sizes throughout North America, Europe, and Asia with special expertise in education, health, technology, the arts, the environment, and the non-profit sector.
-        ul.project-grid
-          - var i = 0
-          while i < 9
-            - i++
-            if i % 3 == 0
-              li.project-wrap.omega
-                a.clearfix.trigger.project-trigger(data-target="#{i}", href="#")
-                  img(src="http://lorempixel.com/350/230/animals/#{i}", alt="")
-                    span North Star Reach
-            else
-              li.project-wrap 
-                a.clearfix.trigger.project-trigger(data-target="#{i}", href="#")
-                  img(src="http://lorempixel.com/350/230/animals/#{i}", alt="")
-                    span North Star Reach
+      p.
+        We work with local and international clients of all sizes throughout North America, Europe, and Asia with special expertise in education, health, technology, the arts, the environment, and the non-profit sector.
+    ul.project-grid
+      - var i = 0
+      while i < 9
+        - i++
+        if i % 3 == 0
+          li.project-wrap.omega
+            a.clearfix.trigger.project-trigger(data-target="#{i}", href="#")
+              img(src="http://lorempixel.com/350/230/animals/#{i}", alt="")
+                span North Star Reach
+        else
+          li.project-wrap 
+            a.clearfix.trigger.project-trigger(data-target="#{i}", href="#")
+              img(src="http://lorempixel.com/350/230/animals/#{i}", alt="")
+                span North Star Reach
