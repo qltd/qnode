@@ -28,7 +28,7 @@ exports.contactUsSchema = mongoose.Schema({
 });
 
 exports.userSchema = mongoose.Schema({
-  name: String,
+  username: String,
   email: String,
   pass: String,
   date: { type: Date, default: Date.now }

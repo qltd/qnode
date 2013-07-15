@@ -4,7 +4,6 @@
  */
 
 var express = require('express')
-  , hash = require('./pass').hash
   , routes = require('./routes')
   , user = require('./routes/user')
   , post = require('./routes/post')
