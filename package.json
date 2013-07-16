@@ -6,12 +6,15 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "crypto": "*",
     "express": "3.2.5",
     "jade": "*",
     "mongodb": "*",
     "mongoose": "*",
     "nib": "*",
     "nodemailer": "*",
+    "passport": "*",
+    "passport-local": "*",
     "stylus": "*"
   }
 }

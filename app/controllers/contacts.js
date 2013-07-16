@@ -1,15 +1,9 @@
-
 /*
- * POST contact us form.
- */
-
-var qdb = require('../database');
-
 exports.contactUsForm = function(req, res) {
-	var contactUsResponse = qdb.mongoose.model('contactUsResponse', qdb.contactUsSchema);
-	var c = new contactUsResponse(req.body);
-	c.save();
-	res.send(req.body);
+  var contactUsResponse = qdb.mongoose.model('contactUsResponse', qdb.contactUsSchema);
+  var c = new contactUsResponse(req.body);
+  c.save();
+  res.send(req.body);
 };
 
 exports.contactUsIndex = function(req, res) {
@@ -19,3 +13,4 @@ exports.contactUsIndex = function(req, res) {
     res.render('admin', { cur: cur });
   });
 }
+*/
