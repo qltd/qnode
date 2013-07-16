@@ -1,0 +1,68 @@
+extends ../layouts/default
+
+block head_scripts
+  script(type='text/javascript').
+    function changevid() {
+      document.getElementById('vid').innerHTML = '<source src="images/power.mp4" type="video/mp4">';
+      document.getElementById('vid').load();
+    }
+
+block top_navigation
+  nav.main-nav
+    ul.inline
+      li: a(href='#about') About
+      li: a(href='#work') Work
+      li: a(href='#services') Services
+      li: a(href='#crew') Crew
+      li: a(href='#clients') Clients
+      li: a(href='#contact') Contact
+      li: a(href='#blog') Blog
+
+block body_content
+  include blocks/headline
+  include blocks/about
+  include blocks/work
+  include blocks/services
+  include blocks/crew
+  include blocks/clients
+  include blocks/contact
+  include blocks/footer
+  include blocks/portfolio
+
+block body_scripts
+  script.
+    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  script(data-main='scripts/main', src='components/requirejs/require.js')
+  script.
+    jQuery(function($){
+      $.stellar({
+        hideDistantElements: true,
+        responsive: true
+      });
+
+      $("a[href^='#']").click(function(){//$.scrollTo works EXACTLY the same way, but scrolls the whole screen
+        $.scrollTo( this.hash, 800, { offset:-150 });
+        return false;
+      });
+
+      $('.trigger').on('click', function(){
+        $target = $(this).attr('data-target');
+        $('.portfolio').addClass('open');
+        $('#project-' + $target).addClass('active');
+      });
+
+      $('.close').on('click', function(){
+        $('.portfolio').removeClass('open');
+        $('.project').removeClass('active');
+      });
+
+      $(document).keyup(function(e) {
+        if (e.keyCode == 27) {
+          $('.portfolio').removeClass('open');
+          $('.project').removeClass('active');
+        }
+      });
+    });

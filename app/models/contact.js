@@ -22,7 +22,7 @@ var ContactSchema = new Schema({
  */
 
 /**
- * Model declarationå
+ * Model declaration
  */ 
 
 mongoose.model('Contact', ContactSchema);

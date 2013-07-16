@@ -7,18 +7,18 @@ var mongoose = require('mongoose')
   , Contact = mongoose.model('Contact');
 
 /**
- * Show contact response
+ * Index
  */
 
-exports.show = function(req, res) {
+exports.index = function(req, res) {
   Contact.find({}, 'name email company comments', function (err, contacts) {
     if (err) return handleError(err);
-    res.render('admin', { contacts: contacts });
+    res.render('contacts', { contacts: contacts });
   });
 }
 
 /**
- * Create contact response
+ * Create
  */
 
 exports.create = function(req, res) {

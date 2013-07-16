@@ -1,4 +1,7 @@
-article.panel
+extends ../layouts/default
+
+block body_content
+  article.panel
     div.container
       - each contact in contacts
         p
@@ -12,4 +15,3 @@ article.panel
           = contact.company
           br
           = contact.comments
-          
