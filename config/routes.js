@@ -1,4 +1,5 @@
-var crypto = require("crypto");
+var crypto = require("crypto")
+  , contacts = require('../app/controllers/contacts');
 
 module.exports = function(app) {
   app.get('/', function(req, res){
@@ -11,4 +12,6 @@ module.exports = function(app) {
     res.send(a);
     // res.render('login', { title: 'Q Admin Login' });
   });
+
+  app.post('/contact/save', contacts.create);
 }

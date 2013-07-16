@@ -1,16 +1,28 @@
-/*
-exports.contactUsForm = function(req, res) {
-  var contactUsResponse = qdb.mongoose.model('contactUsResponse', qdb.contactUsSchema);
-  var c = new contactUsResponse(req.body);
-  c.save();
-  res.send(req.body);
-};
 
-exports.contactUsIndex = function(req, res) {
-  var contactUsResponses = qdb.mongoose.model('contactUsResponse', qdb.contactUsSchema);
-  var D = contactUsResponses.find({}, 'name email company comments', function (err, cur) {
+/**
+ * Module dependencies
+ */
+
+var mongoose = require('mongoose')
+  , Contact = mongoose.model('Contact');
+
+/**
+ * Show contact response
+ */
+
+exports.show = function(req, res) {
+  Contact.find({}, 'name email company comments', function (err, contacts) {
     if (err) return handleError(err);
-    res.render('admin', { cur: cur });
+    res.render('admin', { contacts: contacts });
   });
 }
-*/
+
+/**
+ * Create contact response
+ */
+
+exports.create = function(req, res) {
+  var contact = new Contact(req.body);
+  contact.save();
+  res.send(req.body);
+}

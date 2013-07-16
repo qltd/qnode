@@ -4,9 +4,25 @@
  */
 
 var express = require('express')
+  , fs = require('fs')
   , http = require('http')
+  , mongoose = require('mongoose')
   , nodemailer = require('nodemailer')
   , passport = require('passport');
+
+// Bootstrap db connection
+mongoose.connect('mongodb://localhost/qltd-db');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function callback () {
+  console.log('yay');
+});
+
+// Bootstrap models
+var models_path = __dirname + '/app/models'
+fs.readdirSync(models_path).forEach(function (file) {
+  if (~file.indexOf('.js')) require(models_path + '/' + file)
+})
 
 // passport configuration
 require('./config/passport')(passport);
