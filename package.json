@@ -7,9 +7,11 @@
   },
   "dependencies": {
     "express": "3.2.5",
-    "ejs": "*",
+    "jade": "*",
+    "mongodb": "*",
+    "mongoose": "*",
     "nib": "*",
-    "stylus": "*",
-    "mongodb": "*"
+    "nodemailer": "*",
+    "stylus": "*"
   }
 }
