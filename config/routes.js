@@ -15,6 +15,8 @@ module.exports = function(app) {
   // users and authentication
   app.get('/user/login', users.login);
   app.post('/user/login', users.authenticate);
+  app.get('/user/signup', users.signup);
+  app.post('/user/signup', users.create);
 
   // contacts
   app.get('/contact', contacts.index);

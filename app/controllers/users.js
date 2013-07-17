@@ -8,7 +8,7 @@ var crypto = require('crypto')
   , User = mongoose.model('User');
 
 /**
- * Show log-in
+ * Show log-in form
  */
 
 exports.login = function(req, res) {
@@ -27,8 +27,22 @@ exports.authenticate = function(req, res) {
 }
 
 /**
-* Show sign-up
+* Show sign-up form
 */
 
+exports.signup = function(req, res) {
+  res.render('users/signup');
+}
 
- 
+/**
+ * Create user 
+ */
+
+exports.create = function(req, res) {
+  var user = new User(req.body);
+  user.password = crypto.createHmac("sha512", req.body.username)
+    .update(req.body.password)
+    .digest("base64");
+  user.save();
+  res.redirect('/');
+}

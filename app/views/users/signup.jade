@@ -1,0 +1,15 @@
+extends ../layouts/default
+
+block body_content
+  article.panel
+    .container
+      h1 Sign-up
+      form(method='post', action='/user/signup')
+        p
+          label Username:
+            input(type='text', name='username')
+        p
+          label Password:
+            input(type='password', name='password')
+        p
+          input(type='submit', value='Sign-up')

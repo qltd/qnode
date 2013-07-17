@@ -10,8 +10,8 @@ var mongoose = require('mongoose')
  */
 
 var UserSchema = new Schema({
-  name: String,
-  email: String,
+  username: String,
+  password: String,
   role: String,
   date: { type: Date, default: Date.now }
 });

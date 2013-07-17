@@ -24,5 +24,6 @@ exports.index = function(req, res) {
 exports.create = function(req, res) {
   var contact = new Contact(req.body);
   contact.save();
-  res.send(req.body);
+  // res.send(req.body); // we will use this to pass json to the front-end
+  res.redirect('/');
 }
