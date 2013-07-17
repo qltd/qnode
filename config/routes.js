@@ -1,6 +1,9 @@
 
-var crypto = require('crypto')
-  , contacts = require('../app/controllers/contacts')
+/**
+ * Module dependencies.
+ */
+
+var contacts = require('../app/controllers/contacts')
   , users = require('../app/controllers/users')
   , home = require('../app/controllers/home');
 
@@ -17,11 +20,4 @@ module.exports = function(app) {
   app.get('/contact', contacts.index);
   app.post('/contact/save', contacts.create);
 
-  // crypto tests
-  app.get('/crypto/:id', function(req, res){
-    var a = crypto.createHmac("sha512", req.params.id)
-      .update(req.params.id)
-      .digest("base64");
-    res.send(a);
-  });
 }

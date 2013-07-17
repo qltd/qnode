@@ -20,7 +20,10 @@ exports.login = function(req, res) {
  */
 
 exports.authenticate = function(req, res) {
-  res.send(req.body);
+  var hash = crypto.createHmac("sha512", req.body.username)
+    .update(req.body.password)
+    .digest("base64");
+  res.send(hash);
 }
 
 /**

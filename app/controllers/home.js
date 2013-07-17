@@ -3,8 +3,7 @@
  * Module dependencies
  */
 
-var mongoose = require('mongoose')
-  , Contact = mongoose.model('Contact');
+var mongoose = require('mongoose');
 
 /**
  * Index
