@@ -11,7 +11,7 @@ var mongoose = require('mongoose')
  */
 
 exports.index = function(req, res) {
-  Contact.find({}, 'name email company comments', function (err, contacts) {
+  Contact.find({}, function (err, contacts) {
     if (err) return handleError(err);
     res.render('contacts', { contacts: contacts });
   });

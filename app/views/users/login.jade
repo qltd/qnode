@@ -4,13 +4,12 @@ block body_content
   article.panel
     .container
       h1 Login
-      = locals.message + " Test"
-      form(method='post',action='/login')
+      form(method='post', action='/user/login')
         p
           label Username:
-            input(type='text',name='username')
+            input(type='text', name='username')
         p
           label Password:
-            input(type='password',name='password')
+            input(type='password', name='password')
         p
-          input(type='submit',value='Login')
+          input(type='submit', value='Login')

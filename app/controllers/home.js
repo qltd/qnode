@@ -13,3 +13,7 @@ var mongoose = require('mongoose')
 exports.index = function(req, res){
   res.render('home', { title: 'Q Design & Communication Since 1981' });
 };
+
+/**
+ * Index for admins
+ */
