@@ -27,11 +27,11 @@ exports.authenticate = function(req, res) {
 }
 
 /**
-* Show sign-up form
+* New user
 */
 
-exports.signup = function(req, res) {
-  res.render('users/signup');
+exports.new = function(req, res) {
+  res.render('users/new');
 }
 
 /**

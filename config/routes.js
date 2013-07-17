@@ -15,11 +15,11 @@ module.exports = function(app) {
   // users and authentication
   app.get('/user/login', users.login);
   app.post('/user/login', users.authenticate);
-  app.get('/user/signup', users.signup);
-  app.post('/user/signup', users.create);
+  app.get('/user/new', users.new);
+  app.post('/user/new', users.create);
 
   // contacts
   app.get('/contact', contacts.index);
-  app.post('/contact/save', contacts.create);
+  app.post('/contact/new', contacts.create);
 
 }
