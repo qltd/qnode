@@ -1,0 +1,2 @@
+//Common functions for the test files. *MUST* be included after require.js.
+(function(){function n(){t=!0;if(e.length){var n=document.getElementsByTagName("body")[0];if(n)for(var r=0;r<e.length;r++){var i=document.createElement("div");i.innerHTML=e[r];n.appendChild(i)}e=[]}}function i(){if(document.readyState==="complete")n();else if(r<5){r+=1;setTimeout(i,1e3)}}var e=[],t=!1;window.log=function(r){if(typeof console!="undefined"&&console.log)console.log(r);else{e.push(r);t&&n()}};var r=0;i()})();

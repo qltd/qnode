@@ -1,6 +1,8 @@
 require.config({
     paths: {
-        jquery: '../components/jquery/jquery'
+        "jquery": '../vendor/jquery/jquery',
+        "underscore": '../vendor/underscore-amd/underscore',
+        "backbone": '../vendor/backbone-amd/backbone'
     },
     shim: {
     }

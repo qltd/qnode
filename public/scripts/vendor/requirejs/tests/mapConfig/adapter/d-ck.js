@@ -1,0 +1,1 @@
+define(["d"],function(e){e.adapted=!0;return e});

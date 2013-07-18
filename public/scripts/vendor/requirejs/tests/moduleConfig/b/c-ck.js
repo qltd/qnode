@@ -1,0 +1,1 @@
+define(function(e,t,n){return{food:n.config().id}});

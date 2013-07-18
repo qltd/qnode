@@ -1,0 +1,1 @@
+define(function(e){e(["./b"])});

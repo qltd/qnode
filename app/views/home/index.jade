@@ -35,7 +35,7 @@ block body_scripts
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
-  script(data-main='scripts/main', src='/components/requirejs/require.js')
+  //- script(data-main='scripts/main', src='/scripts/vendor/requirejs/require.js')
   script.
     jQuery(function($){
       $.stellar({
@@ -52,17 +52,27 @@ block body_scripts
         $target = $(this).attr('data-target');
         $('.portfolio').addClass('open');
         $('#project-' + $target).addClass('active');
+        $('body').css('overflow', 'hidden');
       });
 
       $('.close').on('click', function(){
-        $('.portfolio').removeClass('open');
-        $('.project').removeClass('active');
+        closePort();
       });
 
+
+      // Closes portfolio drawer on esc key press
       $(document).keyup(function(e) {
         if (e.keyCode == 27) {
-          $('.portfolio').removeClass('open');
-          $('.project').removeClass('active');
+          closePort();
         }
       });
+
+
+      // Removes classes and allows body to scroll again
+      var closePort = function() {
+        $('body').css('overflow', 'visible');
+        $('.portfolio').removeClass('open');
+        $('.project').removeClass('active');      
+
+      }
     });
