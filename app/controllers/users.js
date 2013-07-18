@@ -12,7 +12,7 @@ var crypto = require('crypto')
 */
 
 exports.new = function(req, res) {
-  res.render('users/new');
+  res.render('users/new', { page_heading: 'Sign-up', form_action: '/user/new', submit_button_title: 'Sign-up' });
 }
 
 /**
@@ -33,7 +33,7 @@ exports.create = function(req, res) {
  */
 
 exports.login = function(req, res) {
-  res.render('users/login');
+  res.render('users/login', { page_heading: 'Login', form_action: '/user/login', submit_button_title: 'Login' });
 }
 
 /**
