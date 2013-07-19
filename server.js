@@ -11,11 +11,12 @@ var express = require('express')
   , passport = require('passport');
 
 // db connection
-mongoose.connect('mongodb://localhost/qltd-db');
+var dbName = 'qltd-db';
+mongoose.connect('mongodb://localhost/' + dbName);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
-  console.log('yay');
+  console.log('Connected to MongoDB, and using a database named ' + dbName);
 });
 
 // load models
