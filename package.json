@@ -18,5 +18,9 @@
     "passport": "*",
     "passport-local": "*",
     "stylus": "*"
+  },
+  "repository": { 
+    "type": "git", 
+    "url": "https://github.com/qltd/qnode"
   }
 }
