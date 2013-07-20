@@ -1,0 +1,9 @@
+extends ../layouts/default
+
+block body_content
+  article.panel
+    div.container
+      - each user in users
+        p
+          strong
+            = user.username

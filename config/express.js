@@ -4,6 +4,7 @@
  */
 
 var express = require('express')
+  , MongoStore = require('connect-mongo')(express)
   , path = require('path')
   , rootPath = path.normalize(__dirname + '/..');
 

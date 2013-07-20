@@ -10,20 +10,23 @@ var express = require('express')
   , nodemailer = require('nodemailer')
   , passport = require('passport');
 
+// load environment-specific configuration; default to 'development' if unspecified
+var env = process.env.NODE_ENV || 'development'
+  , config = require('./config/config')[env];
+
 // db connection
-var dbName = 'qltd-db';
-mongoose.connect('mongodb://localhost/' + dbName);
+mongoose.connect('mongodb://'+ config.db.host +'/' + config.db.name);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
-  console.log('Connected to MongoDB, and using a database named ' + dbName);
+  console.log('Connected to MongoDB -- host: ' + config.db.host + ', name: ' + config.db.name);
 });
 
 // load models
 var models_path = __dirname + '/app/models'
 fs.readdirSync(models_path).forEach(function (file) {
   if (~file.indexOf('.js')) require(models_path + '/' + file)
-})
+});
 
 // passport configuration
 require('./config/passport')(passport);

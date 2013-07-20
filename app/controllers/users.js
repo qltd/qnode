@@ -20,11 +20,16 @@ exports.new = function(req, res) {
  */
 
 exports.create = function(req, res) {
-  var user = new User(req.body);
-  user.password = crypto.createHmac("sha512", req.body.username)
-    .update(req.body.password)
-    .digest("base64");
-  user.save();
+  User.findOne({ username: req.body.username }, function (err, user) {
+    if (err) { return done(err); }
+    if (!user) {
+      var user = new User({ username: req.body.username, password: '' });
+      user.password = crypto.createHmac("sha512", req.body.username)
+        .update(req.body.password)
+        .digest("base64");
+      user.save();
+    }
+  });
   res.redirect('/');
 }
 
@@ -45,4 +50,15 @@ exports.authenticate = function(req, res) {
     .update(req.body.password)
     .digest("base64");
   res.send(hash);
+}
+
+/**
+ * Index
+ */
+
+exports.index = function(req, res) {
+  User.find({}, function (err, users) {
+    if (err) return handleError(err);
+    res.render('users', { users: users });
+  });
 }

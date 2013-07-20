@@ -3,9 +3,11 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "NODE_ENV=development nodemon server.js"
   },
   "dependencies": {
+    "connect-mongo": "*",
+    "connect-flash": "*",
     "crypto": "*",
     "express": "3.2.5",
     "jade": "*",

@@ -14,6 +14,7 @@ module.exports = function(app) {
   app.get('/admin', home.admin);
 
   // users and authentication
+  app.get('/user', users.index);
   app.get('/user/new', users.new);
   app.post('/user/new', users.create);
   app.get('/user/login', users.login);
