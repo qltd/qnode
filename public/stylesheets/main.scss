@@ -46,6 +46,7 @@
 
 
 
+
  @import 'base';
 
 //this is the default number of columns
@@ -319,6 +320,25 @@ ul li:hover {
      color:$linko;
    }
  }
+}
+
+.messages {
+  position: relative;
+  top: 145px;
+  color: white;
+  padding: 40px;
+  &.info {
+    background: $tan; 
+  }
+  &.success {
+    background: $teal;
+  }
+  &.warning {
+    background: $orange;
+  }
+  &.error {
+    background: $pink;
+  }
 }
 
 @include at-breakpoint($computer) {
