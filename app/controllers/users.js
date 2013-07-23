@@ -27,14 +27,11 @@ exports.create = function(req, res) {
   User.findOne({ username: req.body.username }, function (err, user) {
     if (err) { return done(err); }
     if (!user) {
-      var user = new User({ username: req.body.username, password: '' });
-      user.password = crypto.createHmac("sha512", req.body.username)
-        .update(req.body.password)
-        .digest("base64");
+      var user = new User(req.body);
       user.save();
     }
   });
-  req.flash('success', 'Successfully added user: ' + req.body.username );
+  req.flash('success', 'Successfully added user: ' + req.body.username);
   res.redirect('/');
 }
 
