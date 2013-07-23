@@ -7,7 +7,7 @@ var contacts = require('../app/controllers/contacts')
   , users = require('../app/controllers/users')
   , home = require('../app/controllers/home');
 
-module.exports = function(app) {
+module.exports = function(app, passport) {
   
   // home
   app.get('/', home.index);
@@ -18,7 +18,7 @@ module.exports = function(app) {
   app.get('/user/new', users.new);
   app.post('/user/new', users.create);
   app.get('/user/login', users.login);
-  app.post('/user/login', users.authenticate);
+  app.post('/user/login', home.admin);
 
   // contacts
   app.get('/contact', contacts.index);

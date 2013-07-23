@@ -33,13 +33,15 @@ html(class="no-js", lang="en")
     block head_scripts
     
   //- BEGIN BODY
-  body(onload="changevid()")
+  body(onload=onload)
     
     //- BEGIN BODY HEADER
     header.header.clearfix
       h1.logo #{title}
       block top_navigation
       
+    include blocks/messages
+
     //- BEGIN DYNAMIC CONTENT FOR BODY
     block body_content
     block body_scripts

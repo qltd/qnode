@@ -22,5 +22,17 @@
   "repository": { 
     "type": "git", 
     "url": "https://github.com/qltd/qnode.git"
-  }
+  },
+  "contributors": [
+    { 
+      "name": "Scott Tolinksi", 
+      "email": "scott@qltd.com",
+      "url": "http://www.qltd.com/"
+    },
+    { 
+      "name": "Michael J. Bondra", 
+      "email": "mike@qltd.com",
+      "url": "http://www.qltd.com/"
+    }
+  ]
 }
