@@ -41,18 +41,18 @@ Done!
 This project has been influenced (in direct code and/or philosophy) by the following:
 
 [Express Examples](https://github.com/visionmedia/express/tree/master/examples)  
-Copyright (c) 2009-2012 TJ Holowaychuk < [tj@vision-media.ca](tj@vision-media.ca) >  
+Copyright (c) 2009-2012 TJ Holowaychuk < [tj@vision-media.ca](mailto:tj@vision-media.ca) >  
 The MIT License (MIT)
 
 [Nodejs Express Mongoose Demo](https://github.com/madhums/node-express-mongoose-demo)   
-Copyright (c) 2012 Madhusudhan Srinivasa < [madhums8@gmail.com](madhums8@gmail.com) >  
+Copyright (c) 2012 Madhusudhan Srinivasa < [madhums8@gmail.com](mailto:madhums8@gmail.com) >  
 The MIT License (MIT)
 
 ### License
 
 The MIT License (MIT)
 
-Copyright (c) 2013 Q LTD < [web@qltd.com](web@qltd.com) >
+Copyright (c) 2013 Q LTD < [web@qltd.com](mailto:web@qltd.com) >
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
