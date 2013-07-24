@@ -18,3 +18,4 @@ npm-debug.log
 .sass-cache
 .DS_Store
 .foreverignore
+codekit-config.json
