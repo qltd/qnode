@@ -18,7 +18,10 @@ module.exports = function(app, passport) {
   app.get('/user/new', users.new);
   app.post('/user/new', users.create);
   app.get('/user/login', users.login);
-  app.post('/user/login', home.admin);
+  app.post('/user/login',  passport.authenticate('local', {
+    failureRedirect: '/user/login',
+    failureFlash: 'Username or password is incorrect!'
+  }), users.authenticated);
 
   // contacts
   app.get('/contact', contacts.index);

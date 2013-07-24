@@ -45,7 +45,8 @@ exports.login = function(req, res) {
   res.render('users/login', { 
     page_heading: 'Login', 
     form_action: '/user/login', 
-    submit_button_title: 'Login' 
+    submit_button_title: 'Login',
+    error: req.flash('error') 
   });
 }
 
@@ -60,3 +61,8 @@ exports.index = function(req, res) {
     res.render('users', { users: users });
   });
 }
+
+exports.authenticated = function(req, res) {
+  req.flash('success', 'Successfully logged in as user ' + req.session.passport.user);
+  res.redirect('/admin');
+} 

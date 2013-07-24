@@ -49,7 +49,7 @@ function validatePresenceOf(value) {
 
 UserSchema.methods = {
   authenticate: function(plainText,salt) {
-    return plainText === this.encrypt(plainText,salt);
+    return this.hashed_password === this.encrypt(plainText,salt);
   },
   encrypt: function(plainText,salt) {
     var hash = crypto.createHmac("sha512", salt)
