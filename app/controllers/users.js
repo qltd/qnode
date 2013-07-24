@@ -63,6 +63,6 @@ exports.index = function(req, res) {
 }
 
 exports.authenticated = function(req, res) {
-  req.flash('success', 'Successfully logged in as ' + req.body.username);
+  req.flash('success', 'Successfully logged in as ' + req.user.username);
   res.redirect('/admin');
 } 

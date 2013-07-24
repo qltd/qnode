@@ -3,6 +3,7 @@
  */
 
 var crypto = require('crypto')
+  , messages = require('../../config/messages.js')['user']
   , mongoose = require('mongoose')
   , Schema = mongoose.Schema;
 
@@ -13,7 +14,7 @@ var crypto = require('crypto')
 var UserSchema = new Schema({
   username: { 
     type: String, 
-    validate: [validatePresenceOf, 'Username is a required field!'], 
+    validate: [validatePresenceOf, messages.username.notPresent], 
     index: { unique: true } 
   },
   email: String,
