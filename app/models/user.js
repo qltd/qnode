@@ -11,7 +11,11 @@ var crypto = require('crypto')
  */
 
 var UserSchema = new Schema({
-  username: String,
+  username: { 
+    type: String, 
+    validate: [validatePresenceOf, 'Username is a required field!'], 
+    index: { unique: true } 
+  },
   email: String,
   hashed_password: String,
   salt: String,
@@ -38,10 +42,6 @@ UserSchema.virtual('password')
 function validatePresenceOf(value) {
   return value && value.length;
 }
-
-/**
- * Model declaration
- */
 
 /**
  * Methods 

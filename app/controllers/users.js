@@ -3,9 +3,9 @@
  * Module dependencies
  */
 
-var crypto = require('crypto')
-  , mongoose = require('mongoose')
-  , User = mongoose.model('User');
+var mongoose = require('mongoose')
+  , User = mongoose.model('User')
+  , utils = require('../../lib/utils');
 
 /**
 * New user
@@ -15,7 +15,8 @@ exports.new = function(req, res) {
   res.render('users/new', { 
     page_heading: 'Sign-up', 
     form_action: '/user/new', 
-    submit_button_title: 'Sign-up' 
+    submit_button_title: 'Sign-up',
+    error: req.flash('error')
   });
 }
 
@@ -24,15 +25,16 @@ exports.new = function(req, res) {
  */
 
 exports.create = function(req, res) {
-  User.findOne({ username: req.body.username }, function (err, user) {
-    if (err) { return done(err); }
-    if (!user) {
-      var user = new User(req.body);
-      user.save();
+  var user = new User(req.body);
+  user.save(function(err) {
+    if(err) {
+      req.flash('error', utils.errors(err));
+      return res.redirect('/user/new');
+    } else {
+      req.flash('success', 'Successfully added user: ' + req.body.username);
+      return res.redirect('/');
     }
   });
-  req.flash('success', 'Successfully added user: ' + req.body.username);
-  res.redirect('/');
 }
 
 /**
@@ -47,16 +49,6 @@ exports.login = function(req, res) {
   });
 }
 
-/**
- * Authenticate
- */
-
-exports.authenticate = function(req, res) {
-  var hash = crypto.createHmac("sha512", req.body.username)
-    .update(req.body.password)
-    .digest("base64");
-  res.send(hash);
-}
 
 /**
  * Index
