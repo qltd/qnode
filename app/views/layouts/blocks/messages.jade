@@ -1,15 +1,23 @@
 if info && info.length
   .messages.info
-    h4= info
+    h4
+      i.icon-info
+      = info
 
 if success && success.length
   .messages.success
-    h4= success
+    h4 
+      i.icon-check
+      = success
 
 if warning && warning.length
   .messages.warning
-    h4= warning
+    h4
+      i.icon-warning-sign
+      = warning
 
 if error && error.length
   .messages.error
-    h4= error
+    h4
+      i.icon-exclamation-sign
+      = error
