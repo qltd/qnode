@@ -24,31 +24,27 @@ module.exports = function(app, config, passport) {
   app.set('views', config.root + '/app/views');
   app.set('view engine', 'jade');
 
-  app.configure(function() {
+  app.use(express.cookieParser());
+  app.use(express.bodyParser());
+  app.use(express.methodOverride());
 
-    app.use(express.cookieParser());
+  // express/mongo session storage
+  app.use(express.session({
+    secret: 'L5(uAr+skeFMTFN',
+    store: new mongoStore({
+      url: 'mongodb://'+ config.db.host +'/' + config.db.name,
+      collection : 'sessions'
+    })
+  }));
 
-    app.use(express.bodyParser());
-    app.use(express.methodOverride());
+  // use passport session
+  app.use(passport.initialize());
+  app.use(passport.session());
 
-    // express/mongo session storage
-    app.use(express.session({
-      secret: 'L5(uAr+skeFMTFN',
-      store: new mongoStore({
-        url: 'mongodb://'+ config.db.host +'/' + config.db.name,
-        collection : 'sessions'
-      })
-    }));
+  // connect flash for flash messages - should be declared after sessions
+  app.use(flash());
 
-    // use passport session
-    app.use(passport.initialize());
-    app.use(passport.session());
-
-    // connect flash for flash messages - should be declared after sessions
-    app.use(flash());
-
-    app.use(app.router);
-  });
+  app.use(app.router);
 
   // development only
   if ('development' == app.get('env')) {
