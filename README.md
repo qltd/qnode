@@ -38,7 +38,11 @@ Done!
 
 ### Citations
 
-This project has been influenced (in direct code and/or philosophy) by the following projects:
+This project has been influenced (in direct code and/or philosophy) by the following:
+
+[Express Examples](https://github.com/visionmedia/express/tree/master/examples)  
+Copyright (c) 2009-2012 TJ Holowaychuk < [tj@vision-media.ca](tj@vision-media.ca) >  
+The MIT License (MIT)
 
 [Nodejs Express Mongoose Demo](https://github.com/madhums/node-express-mongoose-demo)   
 Copyright (c) 2012 Madhusudhan Srinivasa < [madhums8@gmail.com](madhums8@gmail.com) >  
