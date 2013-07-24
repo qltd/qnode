@@ -34,6 +34,8 @@ Done!
 * [Steller](http://markdalgleish.com/projects/stellar.js/) for Paralax
 * [ScrollTo](http://demos.flesler.com/jquery/scrollTo/)
 
+##Appendix
+
 ### Citations
 
 This project has been influenced (in direct code and/or philosophy) by the following projects:
