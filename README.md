@@ -3,14 +3,14 @@ Q LTD 2013 Site Update
 ##Dependencies
 
 [Node.js](https://nodejs.org/)  
-[Mongo DB](http://www.mongodb.org/)  
+[MongoDB](http://www.mongodb.org/)  
 [Nodemon](http://remy.github.io/nodemon/)
 
 See `package.json` in `/` for additional dependencies.
 
 ##Getting Started
    
-…while in the project directory   
+While in the project directory...   
 
 ```
 npm install
