@@ -48,12 +48,12 @@ function validatePresenceOf(value) {
 }
 
 UserSchema.pre('save', function(next) {
-  if (!this.isNew) return next()
+  if (!this.isNew) return next();
 
   if (!validatePresenceOf(this.password))
-    next(new Error('Invalid password'))
+    next(new Error('Invalid password'));
   else
-    next()
+    next();
 })
 
 /**
