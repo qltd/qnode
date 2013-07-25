@@ -10,6 +10,9 @@ module.exports = {
     username: {
       notPresent: 'Username is a required field.'
     },
+    email: {
+      notPresent: 'Email is a required field.'
+    },
     password: {
       notPresent: 'Password is a required field.'
     }

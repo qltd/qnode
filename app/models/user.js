@@ -3,7 +3,7 @@
  */
 
 var crypto = require('crypto')
-  , messages = require('../../config/messages.js')['user']
+  , message = require('../../config/messages.js')['user']
   , mongoose = require('mongoose')
   , Schema = mongoose.Schema;
 
@@ -14,10 +14,13 @@ var crypto = require('crypto')
 var UserSchema = new Schema({
   username: { 
     type: String, 
-    validate: [validatePresenceOf, messages.username.notPresent], 
+    validate: [validatePresenceOf, message.username.notPresent], 
     index: { unique: true } 
   },
-  email: String,
+  email: {
+    type: String,
+    validate: [validatePresenceOf, message.email.notPresent]
+  },
   hashed_password: String,
   salt: String,
   role: String,
@@ -43,6 +46,15 @@ UserSchema.virtual('password')
 function validatePresenceOf(value) {
   return value && value.length;
 }
+
+UserSchema.pre('save', function(next) {
+  if (!this.isNew) return next()
+
+  if (!validatePresenceOf(this.password))
+    next(new Error('Invalid password'))
+  else
+    next()
+})
 
 /**
  * Methods 
