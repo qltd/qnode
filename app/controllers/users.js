@@ -33,7 +33,6 @@ exports.create = function(req, res) {
   user.save(function(err) {
     if(err) {
       req.flash('error', utils.errors(err));
-      console.log(req.body);
       return res.redirect('/user/new');
     } else {
       req.flash('success', 'Successfully added user: ' + req.body.username);

@@ -3,5 +3,5 @@
 if [ "$1" ]; then
   mongo "$1" --eval "db.dropDatabase()"
 else
-  printf "Please enter the name of an existing db\n"
+  printf "NO DB SPECIFIED!!! Please execute this script with the name of the db you would like to drop as the first argument\n"
 fi

@@ -10,7 +10,6 @@
     "connect-flash": "*",
     "crypto": "*",
     "express": "3.2.5",
-    "express-validator": "*",
     "jade": "*",
     "mongodb": "*",
     "mongoose": "*",
