@@ -14,11 +14,13 @@ var crypto = require('crypto')
 var UserSchema = new Schema({
   username: { 
     type: String, 
+    default: '',
     validate: [validatePresenceOf, message.username.notPresent], 
     index: { unique: true } 
   },
   email: {
     type: String,
+    default: '',
     validate: [validatePresenceOf, message.email.notPresent]
   },
   hashed_password: String,
@@ -47,11 +49,12 @@ function validatePresenceOf(value) {
   return value && value.length;
 }
 
+// consider moving all validators here -- not doing so causes some validators to not be triggered in the presence of other validation errors
 UserSchema.pre('save', function(next) {
   if (!this.isNew) return next();
 
   if (!validatePresenceOf(this.password))
-    next(new Error('Invalid password'));
+    next(new Error(message.password.notPresent));
   else
     next();
 })

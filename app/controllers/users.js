@@ -3,7 +3,8 @@
  * Module dependencies
  */
 
-var mongoose = require('mongoose')
+var message = require('../../config/messages.js')['user']
+  , mongoose = require('mongoose')
   , User = mongoose.model('User')
   , utils = require('../../lib/utils');
 
@@ -16,7 +17,10 @@ exports.new = function(req, res) {
     page_heading: 'Sign-up', 
     form_action: '/user/new', 
     submit_button_title: 'Sign-up',
-    error: req.flash('error')
+    error: req.flash('error'),
+    user: function() {
+      return (user ? user : new User());
+    }
   });
 }
 
@@ -29,6 +33,7 @@ exports.create = function(req, res) {
   user.save(function(err) {
     if(err) {
       req.flash('error', utils.errors(err));
+      console.log(req.body);
       return res.redirect('/user/new');
     } else {
       req.flash('success', 'Successfully added user: ' + req.body.username);
@@ -46,7 +51,8 @@ exports.login = function(req, res) {
     page_heading: 'Login', 
     form_action: '/user/login', 
     submit_button_title: 'Login',
-    error: req.flash('error') 
+    error: req.flash('error'),
+    user: new User() 
   });
 }
 
