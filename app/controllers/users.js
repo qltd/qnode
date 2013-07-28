@@ -17,7 +17,7 @@ exports.new = function(req, res) {
     page_heading: 'Sign-up', 
     form_action: '/user/new', 
     submit_button_title: 'Sign-up',
-    error: req.flash('error'),
+    errors: req.flash('error'),
     user: function() {
       return (user ? user : new User());
     }
@@ -50,7 +50,7 @@ exports.login = function(req, res) {
     page_heading: 'Login', 
     form_action: '/user/login', 
     submit_button_title: 'Login',
-    error: req.flash('error'),
+    errors: req.flash('error'),
     user: new User() 
   });
 }

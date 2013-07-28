@@ -1,15 +1,23 @@
-if info && info.length
+if information && information.length
   .messages.info
-    h4= info
+    ul
+      - each info in information
+        li= info
 
-if success && success.length
+if successes && successes.length
   .messages.success
-    h4= success
+    ul
+      - each success in successes
+        li= success
 
-if warning && warning.length
+if warnings && warnings.length
   .messages.warning
-    h4= warning
+    ul
+      - each warning in warnings
+        li= warning
 
-if error && error.length
+if errors && errors.length
   .messages.error
-    h4= error
+    ul
+      - each error in errors
+        li= error

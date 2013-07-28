@@ -1,20 +1,21 @@
 
 module.exports = {
   global: {
-    default: 'Sorry! There was an error.',
+    default: 'Sorry! There was an error',
     notUnique: function(collectionField, fieldValue) {
-      return collectionField + ': \'' + fieldValue + '\' already exists, please enter another.';
+      return collectionField + ': \'' + fieldValue + '\' already exists, please enter another';
     }
   },
   user: {
     username: {
-      notPresent: 'Username is a required field.'
+      isNull: 'Username cannot be empty'
     },
     email: {
-      notPresent: 'Email is a required field.'
+      notValid: 'Email address must be valid',
+      isNull: 'Email address cannot be empty'
     },
     password: {
-      notPresent: 'Password is a required field.'
+      isNull: 'Password cannot be empty'
     }
   }
 }

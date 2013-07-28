@@ -17,7 +17,8 @@
     "nodemailer": "*",
     "passport": "*",
     "passport-local": "*",
-    "stylus": "*"
+    "stylus": "*",
+    "validator": "*"
   },
   "repository": { 
     "type": "git", 

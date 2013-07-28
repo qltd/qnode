@@ -5,7 +5,10 @@
 var crypto = require('crypto')
   , message = require('../../config/messages.js')['user']
   , mongoose = require('mongoose')
-  , Schema = mongoose.Schema;
+  , Schema = mongoose.Schema
+
+var sanitize = require('../../lib/utils').sanitizors
+  , validate = require('../../lib/utils').validators;
 
 /**
  * Contact schema
@@ -14,11 +17,22 @@ var crypto = require('crypto')
 var UserSchema = new Schema({
   username: { 
     type: String, 
-    default: '',
-    validate: [validatePresenceOf, message.username.notPresent], 
+    validate: [validate.notNull, message.username.isNull], 
     index: { unique: true } 
   },
-  email: String,
+  email: { 
+    type: String, 
+    validate: [
+      { 
+        validator: validate.isEmail, 
+        msg: message.email.notValid 
+      },
+      {
+        validator: validate.notNull,
+        msg: message.email.isNull 
+      }
+    ]
+  },
   hash: String,
   salt: String,
   role: String,
@@ -37,35 +51,19 @@ UserSchema.virtual('password')
   })
   .get(function() { return this._password; });
 
-UserSchema.path('hash').validate(function(v){
-  if (!this._password) {
-    this.invalidate('password', 'enter it, yo!');
-  }
-}, null);
-
 /**
  * Validations
  */
 
-function validatePresenceOf(value) {
-  return value && value.length;
-}
+UserSchema.path('hash').validate(function(v){
+  if (!validate.notNull(this._password)) {
+    this.invalidate('password', message.password.isNull);
+  }
+}, null);
 
-// consider moving all validators here -- not doing so causes some validators to not be triggered in the presence of other validation errors
 UserSchema.pre('save', function(next) {
   if (!this.isNew) return next();
-
-/*  try {
-    check('email', 'please enter a valid email').isEmail();
-  } catch(e) {
-    next(new Error(e));
-  }*/
-  
   next();
-/*  if (!validatePresenceOf(this.password))
-    next(new Error(message.password.notPresent));
-  else
-    next();*/
 });
 
 /**
