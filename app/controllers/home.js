@@ -16,17 +16,16 @@ exports.index = function (req, res) {
   var contact = ( contacts && contacts.length && contacts[contacts.length-1] ? contacts[contacts.length-1] : new Contact() );
   var panels = Panel.find({}, function (err, panels) {
     if (err) return handleError(err);
-    return panels;
-  });
-  res.render('home', { 
-    title: 'Q Design & Communication Since 1981', 
-    onload: 'changevid()',
-    information: req.flash('info'),
-    successes: req.flash('success'),
-    warnings: req.flash('warning'),
-    errors: req.flash('error'),
-    panels: panels,
-    contact: contact
+    res.render('home', { 
+      title: 'Q Design & Communication Since 1981', 
+      onload: 'changevid()',
+      information: req.flash('info'),
+      successes: req.flash('success'),
+      warnings: req.flash('warning'),
+      errors: req.flash('error'),
+      panels: panels,
+      contact: contact
+    });
   });
 };
 
