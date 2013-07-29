@@ -22,16 +22,9 @@ var UserSchema = new Schema({
   email: { 
     type: String, 
     validate: [
-      { 
-        validator: validate.isEmail, 
-        msg: message.email.notEmail 
-      },
-      {
-        validator: validate.notNull,
-        msg: message.email.isNull 
-      }
-    ],
-    sanitize: 'test'
+      {validator: validate.isEmail, msg: message.email.notEmail},
+      {validator: validate.notNull, msg: message.email.isNull}
+    ]
   },
   hash: String,
   salt: String,
