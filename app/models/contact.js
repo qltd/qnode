@@ -2,19 +2,37 @@
  * Module dependencies
  */
 
-var mongoose = require('mongoose')
-  , Schema = mongoose.Schema;
+var message = require('../../config/messages.js')['contact']
+  , mongoose = require('mongoose')
+  , sanitize = require('validator').sanitize
+  , Schema = mongoose.Schema
+  , validate = require('../../lib/utils').check;
 
 /**
  * Contact schema
  */
 
 var ContactSchema = new Schema({
-  name: String,
+  name: {
+    type: String,
+    validate: [validate.notNull, message.name.isNull]
+  },
   email: String,
   company: String,
   comments: String,
-  date: { type: Date, default: Date.now }
+  dateCreated: { type: Date, default: Date.now }
+});
+
+/**
+ * Pre-validation hook; Sanitizers
+ */
+
+ContactSchema.pre('validate', function(next) {
+  this.name = sanitize(this.name).escape();
+  this.email = sanitize(this.email).escape();
+  this.company = sanitize(this.company).escape();
+  this.comments = sanitize(this.comments).escape();
+  next();
 });
 
 /**

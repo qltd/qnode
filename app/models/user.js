@@ -24,7 +24,7 @@ var UserSchema = new Schema({
     validate: [
       { 
         validator: validate.isEmail, 
-        msg: message.email.notValid 
+        msg: message.email.notEmail 
       },
       {
         validator: validate.notNull,

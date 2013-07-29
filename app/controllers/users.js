@@ -12,15 +12,15 @@ var message = require('../../config/messages.js')['user']
 * New user
 */
 
-exports.new = function(req, res) {
+exports.new = function (req, res) {
+  var users = req.flash('user');
+  var user = ( users && users.length && users[users.length-1] ? users[users.length-1] : new User() );
   res.render('users/new', { 
     page_heading: 'Sign-up', 
     form_action: '/user/new', 
     submit_button_title: 'Sign-up',
     errors: req.flash('error'),
-    user: function() {
-      return (user ? user : new User());
-    }
+    user: user
   });
 }
 
@@ -28,14 +28,15 @@ exports.new = function(req, res) {
  * Create user 
  */
 
-exports.create = function(req, res) {
+exports.create = function (req, res) {
   var user = new User(req.body);
   user.save(function(err) {
     if(err) {
       req.flash('error', utils.errors(err));
+      req.flash('user', user);
       return res.redirect('/user/new');
     } else {
-      req.flash('success', 'Successfully added user: ' + req.body.username);
+      req.flash('success', message.created(user.username));
       return res.redirect('/');
     }
   });
@@ -45,7 +46,7 @@ exports.create = function(req, res) {
  * Show log-in form
  */
 
-exports.login = function(req, res) {
+exports.login = function (req, res) {
   res.render('users/login', { 
     page_heading: 'Login', 
     form_action: '/user/login', 
@@ -60,14 +61,14 @@ exports.login = function(req, res) {
  * Index
  */
 
-exports.index = function(req, res) {
+exports.index = function (req, res) {
   User.find({}, function (err, users) {
     if (err) return handleError(err);
     res.render('users', { users: users });
   });
 }
 
-exports.authenticated = function(req, res) {
-  req.flash('success', 'Successfully logged in as ' + req.user.username);
+exports.authenticated = function (req, res) {
+  req.flash('success', message.authenticated(req.user.username));
   res.redirect('/admin');
 } 

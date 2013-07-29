@@ -3,14 +3,16 @@
  * Module dependencies
  */
 
-var mongoose = require('mongoose')
-  , Contact = mongoose.model('Contact');
+var message = require('../../config/messages.js')['contact']
+  , mongoose = require('mongoose')
+  , Contact = mongoose.model('Contact')
+  , utils = require('../../lib/utils');
 
 /**
  * Index
  */
 
-exports.index = function(req, res) {
+exports.index = function (req, res) {
   Contact.find({}, function (err, contacts) {
     if (err) return handleError(err);
     res.render('contacts', { contacts: contacts });
@@ -18,12 +20,19 @@ exports.index = function(req, res) {
 }
 
 /**
- * Create
+ * Create contact
  */
 
-exports.create = function(req, res) {
+exports.create = function (req, res) {
   var contact = new Contact(req.body);
-  contact.save();
-  // res.send(req.body); // we will use this to pass json to the front-end
-  res.redirect('/');
+  contact.save(function (err) {
+    if (err) {
+      req.flash('error', utils.errors(err));
+      req.flash('contact', contact);
+      return res.redirect('/');
+    } else {
+      req.flash('success', message.success(contact.name));
+      return res.redirect('/');
+    }
+  });
 }
