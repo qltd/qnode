@@ -326,8 +326,8 @@ ul li:hover {
   position: fixed;
   bottom: 0;
   width: 100%;
-  color: white;
   z-index: 101;
+  border-top: 8px solid white;
   &.info {
     background: $tan; 
   }
@@ -339,6 +339,11 @@ ul li:hover {
   }
   &.error {
     background: $pink;
+  }
+  ul > li {
+    color: white;
+    list-style: none;
+    line-height: 2em;
   }
 }
 
