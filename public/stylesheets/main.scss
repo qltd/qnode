@@ -323,10 +323,11 @@ ul li:hover {
 }
 
 .messages {
-  position: relative;
-  top: 145px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   color: white;
-  padding: 40px;
+  z-index: 101;
   &.info {
     background: $tan; 
   }

@@ -16,20 +16,21 @@ var crypto = require('crypto')
 var UserSchema = new Schema({
   username: { 
     type: String, 
-    validate: [validate.notNull, message.username.isNull], 
+    validate: [ validate.notNull, message.username.isNull ], 
     index: { unique: true }
   },
   email: { 
     type: String, 
     validate: [
-      {validator: validate.isEmail, msg: message.email.notEmail},
-      {validator: validate.notNull, msg: message.email.isNull}
+      { validator: validate.isEmail, msg: message.email.notEmail },
+      { validator: validate.notNull, msg: message.email.isNull }
     ]
   },
   hash: String,
   salt: String,
   role: { type: String, default: 'user' },
-  dateCreated: { type: Date, default: Date.now }
+  dateCreated: { type: Date, default: Date.now },
+  dateModified: { type: Date, default: Date.now }
 });
 
 /**

@@ -15,18 +15,19 @@ var message = require('../../config/messages.js')['contact']
 var ContactSchema = new Schema({
   name: {
     type: String,
-    validate: [validate.notNull, message.name.isNull]
+    validate: [ validate.notNull, message.name.isNull ]
   },
   email: {
     type: String,
     validate: [
-      {validator: validate.isEmail, msg: message.email.notEmail},
-      {validator: validate.notNull, msg: message.email.isNull}
+      { validator: validate.isEmail, msg: message.email.notEmail },
+      { validator: validate.notNull, msg: message.email.isNull }
     ]
   },
   company: String,
   comments: String,
-  dateCreated: { type: Date, default: Date.now }
+  dateCreated: { type: Date, default: Date.now },
+  dateModified: { type: Date, default: Date.now }
 });
 
 /**
