@@ -31,6 +31,17 @@ module.exports = {
     error: 'Could not create user'
   },
 
+  panel: {
+    title: {
+      isNull: 'Title cannot be empty'
+    },
+    body: {
+      isNull: 'Body cannot be empty'
+    },
+    created: 'Panel was successfully created',
+    error: 'Could not create panel'
+  },
+
   default: 'Sorry! There was an error',
   notUnique: function (collectionField, fieldValue) { return collectionField + ' \'' + fieldValue + '\' already exists, please enter another'; }
 }

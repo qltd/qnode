@@ -25,7 +25,7 @@ Done!
 
 * Sass
 * Compass
-* Profound Grid
+* [Susy Grid](http://susy.oddbird.net/)
 * Normalize
 
 
