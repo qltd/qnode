@@ -8,7 +8,7 @@ var crypto = require('crypto')
   , Schema = mongoose.Schema
 
 var sanitize = require('../../lib/utils').sanitizors
-  , validate = require('../../lib/utils').validators;
+  , validate = require('../../lib/utils').check;
 
 /**
  * Contact schema
