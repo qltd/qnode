@@ -1,0 +1,11 @@
+extends ../layouts/default
+
+block body_content
+  article.panel
+    div.container
+      - each panel in panels
+        p
+          strong
+            = panel.title
+          br
+          != panel.body

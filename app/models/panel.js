@@ -33,12 +33,4 @@ PanelSchema.pre('validate', function(next) {
   next();
 });
 
-/**
- * Validations
- */
-
-/**
- * Model declaration
- */ 
-
 mongoose.model('Panel', PanelSchema);

@@ -16,7 +16,7 @@ exports.index = function (req, res) {
   var contact = ( contacts && contacts.length && contacts[contacts.length-1] ? contacts[contacts.length-1] : new Contact() );
   var panels = Panel.find({}, function (err, panels) {
     if (err) return handleError(err);
-    res.render('home', { 
+    return res.render('home', { 
       title: 'Q Design & Communication Since 1981', 
       onload: 'changevid()',
       information: req.flash('info'),
@@ -26,7 +26,7 @@ exports.index = function (req, res) {
       panels: panels,
       contact: contact
     });
-  });
+  });  
 };
 
 /**
@@ -46,3 +46,4 @@ exports.admin = function (req, res) {
     contact: contact
   });
 };
+
