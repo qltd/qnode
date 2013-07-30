@@ -42,6 +42,7 @@ exports.new = function (req, res) {
 exports.create = function (req, res) {
   var project = new Project(req.body);
   project.save(function (err) {
+    console.log(project);
     if (err) {
       req.flash('error', utils.errors(err));
       req.flash('project', project);
