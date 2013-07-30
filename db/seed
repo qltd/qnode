@@ -12,11 +12,18 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
   console.log('Connected to MongoDB -- host: ' + config.db.host + ', name: ' + config.db.name);
+
+  require('../app/models/panel');
+
+  var Panel = mongoose.model('Panel')
+    , data = require('./data');
+
+  panel = new Panel({ title: 'Automagically created', body: 'yes it was!' });
+  
+  panel.save(function(err) {
+    if(!err) {
+      console.log(panel);
+      process.exit(0);
+    }
+  });
 });
-
-require('../app/models/panels');
-
-var Panel = mongoose.model('Panel')
-  , data = require('./data');
-
-console.log('made it!');
