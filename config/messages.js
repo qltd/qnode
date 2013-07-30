@@ -44,7 +44,7 @@ module.exports = {
 
   project: {
     client: {
-      isNull: 'Title cannot be empty'
+      isNull: 'Client cannot be empty'
     },
     created: function (title) { return 'Panel \'' + title + '\' was successfully created'; },
     error: 'Could not create panel'

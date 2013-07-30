@@ -18,6 +18,7 @@ var ProjectSchema = new Schema({
     type: String,
     validate: [ validate.notNull, message.client.isNull ]
   },
+  machine: String,
   description: String,
   dateCreated: { type: Date, default: Date.now },
   dateModified: { type: Date, default: Date.now }
@@ -29,8 +30,19 @@ var ProjectSchema = new Schema({
 
 ProjectSchema.pre('validate', function(next) {
   this.client = sanitize(this.client).escape();
+  this.client = sanitize(this.machine).escape();
   this.description = sanitize(this.description).xss();
   next();
 });
+
+/**
+ * Pre-save hook; Sanitizers
+ */
+
+ProjectSchema.pre('save', function(next) {
+  this.machine = this.client.toLowerCase().replace(/ /g, '-');
+  next();
+});
+
 
 mongoose.model('Project', ProjectSchema);
