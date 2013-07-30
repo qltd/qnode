@@ -19,11 +19,7 @@ exports.index = function (req, res) {
     return res.render('home', { 
       title: 'Q Design & Communication Since 1981', 
       onload: 'changevid()',
-      information: req.flash('info'),
-      successes: req.flash('success'),
-      warnings: req.flash('warning'),
-      errors: req.flash('error'),
-      panels: panels,
+      panels: res.locals.objectifyPanels(panels),
       contact: contact
     });
   });  
@@ -39,10 +35,6 @@ exports.admin = function (req, res) {
   res.render('home/admin', { 
     title: 'Q Design & Communication Since 1981',
     onload: 'changevid()',
-    information: req.flash('info'),
-    successes: req.flash('success'),
-    warnings: req.flash('warning'),
-    errors: req.flash('error'),
     contact: contact
   });
 };

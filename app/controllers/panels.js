@@ -15,10 +15,6 @@ exports.index = function (req, res) {
   Panel.find({}, function (err, panels) {
     if (err) return handleError(err);
     res.render('panels', { 
-      information: req.flash('info'),
-      successes: req.flash('success'),
-      warnings: req.flash('warning'),
-      errors: req.flash('error'),
       panels: panels
     });
   });
@@ -35,7 +31,6 @@ exports.new = function (req, res) {
     page_heading: 'Create Panel', 
     form_action: '/panels/new', 
     submit_button_title: 'Create',
-    errors: req.flash('error'),
     panel: panel
   });
 }

@@ -19,7 +19,6 @@ exports.new = function (req, res) {
     page_heading: 'Sign-up', 
     form_action: '/user/new', 
     submit_button_title: 'Sign-up',
-    errors: req.flash('error'),
     user: user
   });
 }
@@ -51,7 +50,6 @@ exports.login = function (req, res) {
     page_heading: 'Login', 
     form_action: '/user/login', 
     submit_button_title: 'Login',
-    errors: req.flash('error'),
     user: new User() 
   });
 }
