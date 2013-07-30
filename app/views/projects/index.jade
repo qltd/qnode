@@ -1,0 +1,10 @@
+extends ../layouts/default
+  
+block body_content
+  article.panel
+    div.container
+      -each project in projects
+        h2 
+          = project.client
+        p
+          = project.description

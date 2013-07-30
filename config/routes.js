@@ -6,7 +6,8 @@
 var contacts = require('../app/controllers/contacts')
   , users = require('../app/controllers/users')
   , home = require('../app/controllers/home')
-  , panels = require('../app/controllers/panels');
+  , panels = require('../app/controllers/panels')
+  , projects = require('../app/controllers/projects');
 
 module.exports = function(app, passport) {
   
@@ -32,4 +33,7 @@ module.exports = function(app, passport) {
   app.get('/panel', panels.index);
   app.get('/panel/new', panels.new);
   app.post('/panel/new', panels.create);
+
+  // projects
+  app.get('/project/', projects.index);
 }

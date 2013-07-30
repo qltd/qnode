@@ -42,6 +42,14 @@ module.exports = {
     error: 'Could not create panel'
   },
 
+  project: {
+    client: {
+      isNull: 'Title cannot be empty'
+    },
+    created: function (title) { return 'Panel \'' + title + '\' was successfully created'; },
+    error: 'Could not create panel'
+  },
+
   default: 'Sorry! There was an error',
   notUnique: function (collectionField, fieldValue) { return collectionField + ' \'' + fieldValue + '\' already exists, please enter another'; }
 }
