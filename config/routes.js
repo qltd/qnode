@@ -35,5 +35,7 @@ module.exports = function(app, passport) {
   app.post('/panel/new', panels.create);
 
   // projects
-  app.get('/project/', projects.index);
+  app.get('/project', projects.index);
+  app.get('/project/new', projects.new);
+  app.post('/project/new', projects.create);
 }

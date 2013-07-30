@@ -3,8 +3,10 @@ extends ../layouts/default
 block body_content
   article.panel
     div.container
-      -each project in projects
-        h2 
-          = project.client
-        p
-          = project.description
+      ul
+        -each project in projects
+          li
+            h4 
+              = project.client
+            p
+              = project.description
