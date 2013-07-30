@@ -30,7 +30,6 @@ var ProjectSchema = new Schema({
 
 ProjectSchema.pre('validate', function(next) {
   this.client = sanitize(this.client).escape();
-  this.client = sanitize(this.machine).escape();
   this.description = sanitize(this.description).xss();
   next();
 });
