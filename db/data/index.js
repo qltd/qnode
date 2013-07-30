@@ -1,7 +1,9 @@
 // About
 
-exports.about = [{
-  content: 'Q is a strategic design studio that has worked with hundreds of clients for over 30 years. We create brand strategies, visual systems, and marketing materials that deliver compelling user experiences in all media. We help our clients succeed and thrive by designing and developing successful communications. In turn and in our own small way, we help make the world a better place.'
+exports.panels = [{
+  title: 'About',
+  body: 'Q is a strategic design studio that has worked with hundreds of clients for over 30 years. We create brand strategies, visual systems, and marketing materials that deliver compelling user experiences in all media. We help our clients succeed and thrive by designing and developing successful communications. In turn and in our own small way, we help make the world a better place.',
+  parentView: 'home'
 }];
 
 // Work

@@ -1,4 +1,22 @@
 #!/usr/bin/env node
 
-var data = require('./data');
+var mongoose = require('mongoose');
 
+// load environment-specific configuration; default to 'development' if unspecified
+var env = process.env.NODE_ENV || 'development'
+  , config = require('../config/config')[env];
+
+// db connection
+mongoose.connect('mongodb://' + config.db.host + '/' + config.db.name);
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function callback () {
+  console.log('Connected to MongoDB -- host: ' + config.db.host + ', name: ' + config.db.name);
+});
+
+require('../app/models/panels');
+
+var Panel = mongoose.model('Panel')
+  , data = require('./data');
+
+console.log('made it!');

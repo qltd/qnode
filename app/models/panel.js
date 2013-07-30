@@ -19,6 +19,7 @@ var PanelSchema = new Schema({
     validate: [ validate.notNull, message.title.isNull ]
   },
   body: String,
+  parentView: { type: String, default: 'home' },
   dateCreated: { type: Date, default: Date.now },
   dateModified: { type: Date, default: Date.now }
 });

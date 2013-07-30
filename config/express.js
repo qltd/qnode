@@ -5,7 +5,8 @@
 
 var express = require('express')
   , mongoStore = require('connect-mongo')(express)
-  , flash = require('connect-flash');
+  , flash = require('connect-flash')
+  , helpers = require('../app/helpers').functions;
 
 module.exports = function(app, config, passport) {
   // all environments
@@ -18,7 +19,7 @@ module.exports = function(app, config, passport) {
 
   // don't use logger for test env
   if (process.env.NODE_ENV !== 'test') {
-    app.use(express.logger('dev'))
+    app.use(express.logger('dev'));
   }
 
   app.set('views', config.root + '/app/views');
@@ -43,7 +44,7 @@ module.exports = function(app, config, passport) {
 
   // connect flash for flash messages - should be declared after sessions
   app.use(flash());
-
+  app.use(helpers);
   app.use(app.router);
 
   // development only
