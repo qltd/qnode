@@ -3,7 +3,7 @@
  * Helpers
  */
 
-exports.functions = function(req, res, next) {
+exports.helpers = function(req, res, next) {
 
   // make flash messages available to views
   res.locals.information = req.flash('info');

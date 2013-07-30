@@ -6,7 +6,7 @@
 var express = require('express')
   , mongoStore = require('connect-mongo')(express)
   , flash = require('connect-flash')
-  , helpers = require('../app/helpers').functions;
+  , middleware = require('../app/middleware');
 
 module.exports = function(app, config, passport) {
   // all environments
@@ -44,7 +44,7 @@ module.exports = function(app, config, passport) {
 
   // connect flash for flash messages - should be declared after sessions
   app.use(flash());
-  app.use(helpers);
+  app.use(middleware.helpers);
   app.use(app.router);
 
   // development only
