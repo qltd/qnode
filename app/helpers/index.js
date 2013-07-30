@@ -20,7 +20,6 @@ exports.functions = function(req, res, next) {
         panelsObj[panel.title] = panel;
       });
     }
-    console.log(panelsObj);
     res.locals.panel = panelsObj;
     return panels;
   }
