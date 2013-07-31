@@ -226,6 +226,10 @@ ul.inline li {
   overflow: hidden;
 }
 
+// Buttons
+.btn {
+  @include button(13px, white, $teal);
+}
 
 // Reusable
 .flyout {
