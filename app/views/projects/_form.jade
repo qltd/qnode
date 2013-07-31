@@ -11,5 +11,11 @@ block body_content
         #description
           textarea(name='description', placeholder='Description', cols='10', rows='5')
             = project.description
+        #project-image
+          .row
+            input.image-title(type='text', name='portfolio[0][title]', placeholder='Image Title')
+            input.position(type='number', name='portfolio[0][position]', placeholder='Position')
+            a#add-image.btn(href="#").
+              Add Image +
         #submit
           input(type='submit')
