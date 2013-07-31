@@ -14,8 +14,19 @@ block body_content
         #project-image
           .row
             input.image-title(type='text', name='portfolio[0][title]', placeholder='Image Title')
-            input.position(type='number', name='portfolio[0][position]', placeholder='Position')
-            a#add-image.btn(href="#").
-              Add Image +
+            input.position(type='number', name='portfolio[0][position]', placeholder='Position', value="0")
+        a#add-image.btn.
+          Add Image +
         #submit
           input(type='submit')
+
+block body_scripts
+  script.
+    jQuery(function($){
+      // Adds New Imagerow 
+      var pos = 0;
+      $('#add-image').on('click', function() {
+        pos += 1;
+        $('#project-image').append('<div class="row"><input type="text" name="portfolio[' + pos + '][title]" placeholder="Image Title" class="image-title"><input type="number" name="portfolio[' + pos + '][position]" placeholder="Position" class="position" value="' + pos +'"></div>');
+      });
+    });
