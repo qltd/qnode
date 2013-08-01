@@ -42,6 +42,18 @@ exports.new = function (req, res) {
 
 exports.create = function (req, res) {
   var project = new Project(req.body);
+  var tmp_path = req.files.image.path;
+  var target_path = './public/images/uploads/' + req.files.image.name;
+
+  fs.rename(tmp_path, target_path, function(err) {
+      if (err) throw err;
+      // delete the temporary file, so that the explicitly set temporary upload dir does not get filled with unwanted files
+      fs.unlink(tmp_path, function() {
+          if (err) throw err;
+          res.send('File uploaded to: ' + target_path + ' - ' + req.files.image.size + ' bytes');
+      });
+  });
+
   console.log(req.files.image);
   project.save(function (err) {
     console.log(project);

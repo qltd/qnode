@@ -14,7 +14,7 @@ var message = require('../../config/messages.js')['project']
  */
 
 var PortfolioSchema = new Schema ({
-  image : String,
+  name : String,
   title : String,
   position : Number
 });
@@ -54,6 +54,5 @@ ProjectSchema.pre('save', function(next) {
   this.machine = this.client.toLowerCase().replace(/ /g, '-');
   next();
 });
-
 
 mongoose.model('Project', ProjectSchema);
