@@ -43,24 +43,38 @@ exports.new = function (req, res) {
 
 exports.create = function (req, res) {
   var project = new Project(req.body);
-  var image = new Image(req.files.image);
-  var tmp_path = req.files.image.path;
-  var target_path = './public/images/uploads/' + req.files.image.name;
 
-  fs.rename(tmp_path, target_path, function(err) {
-      if (err) throw err;
-      // delete the temporary file, so that the explicitly set temporary upload dir does not get filled with unwanted files
-      fs.unlink(tmp_path, function() {
-          if (err) throw err;
-          res.send('File uploaded to: ' + target_path + ' - ' + req.files.image.size + ' bytes');
-      });
-  });
+  console.log(req.files);
 
+  var image = new Image(req.files);
+
+  // Iterates through image array
   for (var i=0;i<project.image.length;i++) { 
-    project.image[i].name = image.name;
+
+    // Grabs temp path ./tmp/
+    var tmp_path = req.files.image[i].path;
+
+    console.log("Loop" + i);
+
+    var target_path = './public/images/uploads/' + req.files.image[i].name;
+  
+    console.log(target_path);
+
+    fs.rename(tmp_path, target_path, function(err) {
+        if (err) throw err;
+        // delete the temporary file, so that the explicitly set temporary upload dir does not get filled with unwanted files
+        fs.unlink(tmp_path, function() {
+            if (err) throw err;
+            // res.send('File uploaded to: ' + target_path + ' - ' + req.files.image[i].size + ' bytes');
+        });
+    });
+    console.log(image);
+    // Adds image file name to project.image.name
+    project.image[i].name = req.files.image[i].name;
   }
 
   console.log(project);
+  console.log("after loop");
 
   project.save(function (err) {
     console.log(project);
