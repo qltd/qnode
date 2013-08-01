@@ -15,5 +15,6 @@ block body_content
             p
               = project.description
             - each port in project.portfolio
+              img(src="#{port.image}")
               = port.title
               = port.position

@@ -5,7 +5,7 @@ block body_content
     .container
       if page_heading
         h1= page_heading 
-      form(method='post', action='/project/new')
+      form(method='post', action='/project/new', enctype='multipart/form-data')
         #client
           input(type='text', name='client', placeholder='Client*', value=project.client)
         #description
@@ -13,6 +13,7 @@ block body_content
             = project.description
         #project-image
           .row
+            input.image(type='file', name='image')
             input.image-title(type='text', name='portfolio[0][title]', placeholder='Image Title')
             input.position(type='number', name='portfolio[0][position]', placeholder='Position', value="0")
         a#add-image.btn.

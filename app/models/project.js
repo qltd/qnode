@@ -14,7 +14,8 @@ var message = require('../../config/messages.js')['project']
  */
 
 var PortfolioSchema = new Schema ({
-  title : { type: String, required: true},
+  image : String,
+  title : String,
   position : Number
 });
 
@@ -29,6 +30,7 @@ var ProjectSchema = new Schema({
   },
   machine: String,
   description: String,
+  image: [],
   portfolio: [PortfolioSchema],
   dateCreated: { type: Date, default: Date.now },
   dateModified: { type: Date, default: Date.now }

@@ -5,7 +5,8 @@
 var message = require('../../config/messages.js')['project']
   , mongoose = require('mongoose')
   , Project = mongoose.model('Project')
-  , utils = require('../../lib/utils');
+  , utils = require('../../lib/utils')
+  , fs = require('fs');
 
 /**
  * Index
@@ -41,6 +42,7 @@ exports.new = function (req, res) {
 
 exports.create = function (req, res) {
   var project = new Project(req.body);
+  console.log(req.files.image);
   project.save(function (err) {
     console.log(project);
     if (err) {
