@@ -5,6 +5,7 @@
 var message = require('../../config/messages.js')['project']
   , mongoose = require('mongoose')
   , Project = mongoose.model('Project')
+  , Image = mongoose.model('Image')
   , utils = require('../../lib/utils')
   , fs = require('fs');
 
@@ -42,6 +43,7 @@ exports.new = function (req, res) {
 
 exports.create = function (req, res) {
   var project = new Project(req.body);
+  var image = new Image(req.files.image);
   var tmp_path = req.files.image.path;
   var target_path = './public/images/uploads/' + req.files.image.name;
 
@@ -54,7 +56,12 @@ exports.create = function (req, res) {
       });
   });
 
-  console.log(req.files.image);
+  for (var i=0;i<project.image.length;i++) { 
+    project.image[i].name = image.name;
+  }
+
+  console.log(project);
+
   project.save(function (err) {
     console.log(project);
     if (err) {

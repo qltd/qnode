@@ -14,7 +14,5 @@ block body_content
               = project._id
             p
               = project.description
-            - each port in project.portfolio
-              img(src="#{port.image}")
-              = port.title
-              = port.position
+            - each img in project.image
+              img(src="/images/uploads/#{img.name}", alt="#{img.title}")
