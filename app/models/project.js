@@ -10,13 +10,15 @@ var message = require('../../config/messages.js')['project']
 
 
 /**
- * Portfolio Item schema
+ * Image Item schema
  */
 
-var PortfolioSchema = new Schema ({
-  title : { type: String, required: true},
+var ImageSchema = new Schema ({
+  name : String,
+  title : String,
   position : Number
 });
+
 
 /**
  * Project schema
@@ -29,7 +31,7 @@ var ProjectSchema = new Schema({
   },
   machine: String,
   description: String,
-  portfolio: [PortfolioSchema],
+  image: [ImageSchema],
   dateCreated: { type: Date, default: Date.now },
   dateModified: { type: Date, default: Date.now }
 });
@@ -53,5 +55,5 @@ ProjectSchema.pre('save', function(next) {
   next();
 });
 
-
+mongoose.model('Image', ImageSchema);
 mongoose.model('Project', ProjectSchema);

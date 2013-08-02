@@ -5,7 +5,9 @@
 var message = require('../../config/messages.js')['project']
   , mongoose = require('mongoose')
   , Project = mongoose.model('Project')
-  , utils = require('../../lib/utils');
+  , Image = mongoose.model('Image')
+  , utils = require('../../lib/utils')
+  , fs = require('fs');
 
 /**
  * Index
@@ -41,6 +43,27 @@ exports.new = function (req, res) {
 
 exports.create = function (req, res) {
   var project = new Project(req.body);
+
+  // Iterates through image array
+  for (var i=0;i<project.image.length;i++) { 
+
+    // Grabs temp path ./tmp/
+    var tmp_path = req.files.image[i].path;
+
+    // Sets the path to public directory
+    var target_path = './public/images/uploads/' + req.files.image[i].name;
+  
+    fs.rename(tmp_path, target_path, function(err) {
+        if (err) throw err;
+        // delete the temporary file, so that the explicitly set temporary upload dir does not get filled with unwanted files
+        fs.unlink(tmp_path, function() {
+            if (err) throw err;
+        });
+    });
+    // Adds image file name to project.image.name
+    project.image[i].name = req.files.image[i].name;
+  }
+
   project.save(function (err) {
     console.log(project);
     if (err) {
