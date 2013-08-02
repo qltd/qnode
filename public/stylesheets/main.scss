@@ -226,6 +226,10 @@ ul.inline li {
   overflow: hidden;
 }
 
+// Buttons
+.btn {
+  @include button(13px, white, $teal);
+}
 
 // Reusable
 .flyout {
@@ -456,7 +460,6 @@ ul li:hover {
 	background: white;
 }
 
-
 /* $work */
 .work {
 	background: $tan;
@@ -477,6 +480,16 @@ ul li:hover {
     }
   }
 }
+
+#project-image .row {
+  input.image-title {
+    width: 30%;
+  }
+  input.position {
+    width: 17%;
+  }
+}
+
 @include at-breakpoint($computer) {
   .project-grid {
     margin-top: 60px;
@@ -489,8 +502,6 @@ ul li:hover {
     }
   }
 }
-
-
 
 /* $services */
 .services {

@@ -10,6 +10,17 @@ var message = require('../../config/messages.js')['project']
 
 
 /**
+ * Image Item schema
+ */
+
+var ImageSchema = new Schema ({
+  name : String,
+  title : String,
+  position : Number
+});
+
+
+/**
  * Project schema
  */
 
@@ -20,6 +31,7 @@ var ProjectSchema = new Schema({
   },
   machine: String,
   description: String,
+  image: [ImageSchema],
   dateCreated: { type: Date, default: Date.now },
   dateModified: { type: Date, default: Date.now }
 });
@@ -30,7 +42,6 @@ var ProjectSchema = new Schema({
 
 ProjectSchema.pre('validate', function(next) {
   this.client = sanitize(this.client).escape();
-  this.client = sanitize(this.machine).escape();
   this.description = sanitize(this.description).xss();
   next();
 });
@@ -44,5 +55,5 @@ ProjectSchema.pre('save', function(next) {
   next();
 });
 
-
+mongoose.model('Image', ImageSchema);
 mongoose.model('Project', ProjectSchema);

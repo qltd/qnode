@@ -4,9 +4,15 @@ block body_content
   article.panel
     div.container
       ul
-        -each project in projects
+        - each project in projects
           li
             h4 
               = project.client
+            h6
+              = project.machine
+            h6
+              = project._id
             p
               = project.description
+            - each img in project.image
+              img(src="/images/uploads/#{img.name}", alt="#{img.title}")

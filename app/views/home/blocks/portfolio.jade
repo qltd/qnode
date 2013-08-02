@@ -1,39 +1,16 @@
 .portfolio
-  .project#project-1
-    header
-      .container
-        h3 North Star Reach
-        .content
-          p.
-            Creating a web site focusing on the audible experience of poetry, the spoken word. The site offers an ever-expanding, media-rich library of poets and poetry, as well as a regional map of upcoming poetry events. <a href="#">Visit site</a>.
-      a.close(href='#') Close
-    section
-      .container
-        img(src='../images/port/NorthStarReach1.png')
-        img(src='../images/port/NorthStarReach2.png')
-        img(src='../images/port/NorthStarReach3.png')
-        img(src='../images/port/NorthStarReach4.png')
-    footer
-  .project#project-2
-    header
-      .container
-        h3 Applecon
-        .content
-          p.
-            Applecon description
-          p.services
-            h5 Services
-              ul
-                li BRANDING
-                li POSITIONING &amp; STRATEGY
-                li ART DIRECTION
-                li WRITING
-                li WEB SITE DESIGN &amp; BUILD
-                li PRINT COLLATERAL
-      a.close(href='#') Close
-    section
-      .container
-        img(src='../images/port/applecon_logo.jpg')
-        img(src='../images/port/applecon_brand.jpg')
-        img(src='../images/port/applecon_shirt-mug.jpg')
-    footer
+  - each project in projects
+    .project(id="project-#{project.machine}")
+      header
+        .container
+          h3 
+            = project.client
+          .content
+            p.
+              Creating a web site focusing on the audible experience of poetry, the spoken word. The site offers an ever-expanding, media-rich library of poets and poetry, as well as a regional map of upcoming poetry events. <a href="#">Visit site</a>.
+        a.close(href='#') Close
+      section
+        .container
+          - each img in project.image
+            img(src="/images/uploads/#{img.name}", alt="#{img.title}")
+      footer

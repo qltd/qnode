@@ -50,4 +50,15 @@
   }
 }
 
-
+@mixin button($size, $color, $bg) {
+  font: 800 $size "proxima-nova";
+  color: $color;
+  background: $bg;
+  display: inline-block;
+  padding:20px;
+  text-transform: uppercase;
+  @include transition;
+  &:hover {
+    background: $bg - 30;
+  }
+}

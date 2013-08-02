@@ -5,11 +5,29 @@ block body_content
     .container
       if page_heading
         h1= page_heading 
-      form(method='post', action='/project/new')
+      form(method='post', action='/project/new', enctype='multipart/form-data')
         #client
           input(type='text', name='client', placeholder='Client*', value=project.client)
         #description
           textarea(name='description', placeholder='Description', cols='10', rows='5')
             = project.description
+        #project-image
+          .row
+            input.image(type='file', name='image[0]')
+            input.image-title(type='text', name='image[0][title]', placeholder='Image Title')
+            input.position(type='number', name='image[0][position]', placeholder='Position', value="0")
+        a#add-image.btn.
+          Add Image +
         #submit
           input(type='submit')
+
+block body_scripts
+  script.
+    jQuery(function($){
+      // Adds New Imagerow 
+      var pos = 0;
+      $('#add-image').on('click', function() {
+        pos += 1;
+        $('#project-image').append('<div class="row"><input type="file" name="image[' + pos + ']"><input type="text" name="image[' + pos + '][title]" placeholder="Image Title" class="image-title"><input type="number" name="image[' + pos + '][position]" placeholder="Position" class="position" value="' + pos +'"></div>');
+      });
+    });
