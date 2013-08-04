@@ -24,7 +24,7 @@ exports.index = function (req, res) {
       return res.render('contacts');
     })
     .fail(function (err) {
-      return handleError(err);
+      return res.render('500');
     });
 }
 

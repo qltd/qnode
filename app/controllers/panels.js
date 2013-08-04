@@ -24,7 +24,7 @@ exports.index = function (req, res) {
       return res.render('panels');
     })
     .fail(function (err) {
-      return handleError(err);
+      return res.render('500');
     });
 }
 
@@ -46,7 +46,7 @@ exports.new = function (req, res) {
       });
     })
     .fail(function (err) {
-      return handleError(err);
+      return res.render('500');
     });
 }
 
