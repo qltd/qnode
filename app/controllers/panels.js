@@ -4,20 +4,25 @@
 
 var message = require('../../config/messages.js')['panel']
   , mongoose = require('mongoose')
-  , Panel = mongoose.model('Panel')
+  , Q = require('q')
   , utils = require('../../lib/utils');
+
+/**
+ * Model dependencies
+ */
+
+var Panel = mongoose.model('Panel');
 
 /**
  * Index
  */
 
 exports.index = function (req, res) {
-  Panel.find({}, function (err, panels) {
-    if (err) return handleError(err);
-    res.render('panels', { 
-      panels: panels
+  Q.ninvoke(Panel, 'find')
+    .then(function (panels) {
+      res.locals['panels'] = panels;
+      return res.render('panels');
     });
-  });
 }
 
 /**
@@ -25,14 +30,18 @@ exports.index = function (req, res) {
 */
 
 exports.new = function (req, res) {
-  var panels = req.flash('panel');
-  var panel = ( panels && panels.length && panels[panels.length-1] ? panels[panels.length-1] : new Panel() );
-  res.render('panels/new', { 
-    page_heading: 'Create Panel', 
-    form_action: '/panels/new', 
-    submit_button_title: 'Create',
-    panel: panel
-  });
+  Q.fcall(function () {
+    var panels = req.flash('panel');
+    return ( panels && panels.length && panels[panels.length-1] ? panels[panels.length-1] : new Panel() );
+  })
+    .then(function (panel) {
+      res.locals['panel'] = panel;
+      return res.render('panels/new', { 
+        page_heading: 'Create Panel', 
+        form_action: '/panels/new', 
+        submit_button_title: 'Create'
+      });
+    });
 }
 
 /**
