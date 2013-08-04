@@ -20,7 +20,7 @@ var Contact = mongoose.model('Contact');
 exports.index = function (req, res) {
   Q.ninvoke(Contact, 'find')
     .then(function (contacts) {
-      res.locals['contacts'] = contacts;
+      res.locals.contacts = contacts;
       return res.render('contacts');
     })
     .fail(function (err) {

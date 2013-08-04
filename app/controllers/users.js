@@ -17,7 +17,7 @@ var User = mongoose.model('User');
 exports.index = function (req, res) {
   Q.ninvoke(User, 'find')
     .then(function (users) {
-      res.locals['users'] = users;
+      res.locals.users = users;
       return res.render('users');
     })
     .fail(function (err) {
@@ -35,7 +35,7 @@ exports.new = function (req, res) {
     return ( users && users.length && users[users.length-1] ? users[users.length-1] : new User() );
   })
     .then(function (user) {
-      res.locals['user'] = user;
+      res.locals.user = user;
       return res.render('users/new', { 
         page_heading: 'Sign-up', 
         form_action: '/user/new', 

@@ -20,7 +20,7 @@ var Panel = mongoose.model('Panel');
 exports.index = function (req, res) {
   Q.ninvoke(Panel, 'find')
     .then(function (panels) {
-      res.locals['panels'] = panels;
+      res.locals.panels = panels;
       return res.render('panels');
     })
     .fail(function (err) {
@@ -38,7 +38,7 @@ exports.new = function (req, res) {
     return ( panels && panels.length && panels[panels.length-1] ? panels[panels.length-1] : new Panel() );
   })
     .then(function (panel) {
-      res.locals['panel'] = panel;
+      res.locals.panel = panel;
       return res.render('panels/new', { 
         page_heading: 'Create Panel', 
         form_action: '/panels/new', 
