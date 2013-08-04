@@ -1,16 +1,17 @@
 .portfolio
-  - each project in projects
-    .project(id="project-#{project.machine}")
-      header
-        .container
-          h3 
-            = project.client
-          .content
-            p.
-              Creating a web site focusing on the audible experience of poetry, the spoken word. The site offers an ever-expanding, media-rich library of poets and poetry, as well as a regional map of upcoming poetry events. <a href="#">Visit site</a>.
-        a.close(href='#') Close
-      section
-        .container
-          - each img in project.image
-            img(src="/images/uploads/#{img.name}", alt="#{img.title}")
-      footer
+  if projects && projects.length
+    - each project in projects
+      .project(id="project-#{project.machine}")
+        header
+          .container
+            h3 
+              = project.client
+            .content
+              p.
+                Creating a web site focusing on the audible experience of poetry, the spoken word. The site offers an ever-expanding, media-rich library of poets and poetry, as well as a regional map of upcoming poetry events. <a href="#">Visit site</a>.
+          a.close(href='#') Close
+        section
+          .container
+            - each img in project.image
+              img(src="/images/uploads/#{img.name}", alt="#{img.title}")
+        footer

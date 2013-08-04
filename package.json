@@ -15,6 +15,7 @@
     "mongoose": "*",
     "nib": "*",
     "nodemailer": "*",
+    "q": "*",
     "passport": "*",
     "passport-local": "*",
     "stylus": "*",

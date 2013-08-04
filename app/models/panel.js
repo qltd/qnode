@@ -25,6 +25,14 @@ var PanelSchema = new Schema({
 });
 
 /**
+ * Named scopes
+ */
+
+PanelSchema.namedScope('home', function() {
+  return this.where('parentView', 'home');
+});
+
+/**
  * Pre-validation hook; Sanitizers
  */
 
