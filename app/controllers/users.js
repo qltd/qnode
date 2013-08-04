@@ -19,6 +19,9 @@ exports.index = function (req, res) {
     .then(function (users) {
       res.locals['users'] = users;
       return res.render('users');
+    })
+    .fail(function (err) {
+      return handleError(err);
     });
 }
 
@@ -38,6 +41,9 @@ exports.new = function (req, res) {
         form_action: '/user/new', 
         submit_button_title: 'Sign-up',
       });
+    })
+    .fail(function (err) {
+      return handleError(err);
     });  
 }
 

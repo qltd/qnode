@@ -22,6 +22,9 @@ exports.index = function (req, res) {
     .then(function (contacts) {
       res.locals['contacts'] = contacts;
       return res.render('contacts');
+    })
+    .fail(function (err) {
+      return handleError(err);
     });
 }
 

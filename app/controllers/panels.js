@@ -22,7 +22,10 @@ exports.index = function (req, res) {
     .then(function (panels) {
       res.locals['panels'] = panels;
       return res.render('panels');
-    });
+    })
+    .fail(function (err) {
+      return handleError(err);
+    });;
 }
 
 /**
@@ -41,6 +44,9 @@ exports.new = function (req, res) {
         form_action: '/panels/new', 
         submit_button_title: 'Create'
       });
+    })
+    .fail(function (err) {
+      return handleError(err);
     });
 }
 

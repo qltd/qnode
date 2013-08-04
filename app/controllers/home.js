@@ -37,6 +37,9 @@ exports.index = function (req, res) {
         title: 'Q Design & Communication Since 1981', 
         onload: 'changevid()'
       });  
+    })
+    .fail(function (err) {
+      return handleError(err);
     });
 };
 
