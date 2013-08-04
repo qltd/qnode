@@ -5,22 +5,40 @@
 
 var message = require('../../config/messages.js')['user']
   , mongoose = require('mongoose')
-  , User = mongoose.model('User')
+  , Q = require('q')
   , utils = require('../../lib/utils');
+
+var User = mongoose.model('User');
+
+/**
+ * Index
+ */
+
+exports.index = function (req, res) {
+  Q.ninvoke(User, 'find')
+    .then(function (users) {
+      res.locals['users'] = users;
+      return res.render('users');
+    });
+}
 
 /**
 * New user
 */
 
 exports.new = function (req, res) {
-  var users = req.flash('user');
-  var user = ( users && users.length && users[users.length-1] ? users[users.length-1] : new User() );
-  res.render('users/new', { 
-    page_heading: 'Sign-up', 
-    form_action: '/user/new', 
-    submit_button_title: 'Sign-up',
-    user: user
-  });
+  Q.fcall(function () {
+    var users = req.flash('user');
+    return ( users && users.length && users[users.length-1] ? users[users.length-1] : new User() );
+  })
+    .then(function (user) {
+      res.locals['user'] = user;
+      return res.render('users/new', { 
+        page_heading: 'Sign-up', 
+        form_action: '/user/new', 
+        submit_button_title: 'Sign-up',
+      });
+    });  
 }
 
 /**
@@ -42,7 +60,7 @@ exports.create = function (req, res) {
 }
 
 /**
- * Show log-in form
+ * Log-in form
  */
 
 exports.login = function (req, res) {
@@ -54,17 +72,9 @@ exports.login = function (req, res) {
   });
 }
 
-
 /**
- * Index
+ * Authentication
  */
-
-exports.index = function (req, res) {
-  User.find({}, function (err, users) {
-    if (err) return handleError(err);
-    res.render('users', { users: users });
-  });
-}
 
 exports.authenticated = function (req, res) {
   req.flash('success', message.authenticated(req.user.username));

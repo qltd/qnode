@@ -4,18 +4,25 @@
 
 var message = require('../../config/messages.js')['contact']
   , mongoose = require('mongoose')
-  , Contact = mongoose.model('Contact')
+  , Q = require('q')
   , utils = require('../../lib/utils');
+
+/**
+ * Model dependencies
+ */
+
+var Contact = mongoose.model('Contact');
 
 /**
  * Index
  */
 
 exports.index = function (req, res) {
-  Contact.find({}, function (err, contacts) {
-    if (err) return handleError(err);
-    res.render('contacts', { contacts: contacts });
-  });
+  Q.ninvoke(Contact, 'find')
+    .then(function (contacts) {
+      res.locals['contacts'] = contacts;
+      return res.render('contacts');
+    });
 }
 
 /**

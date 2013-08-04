@@ -26,7 +26,7 @@ exports.index = function (req, res) {
 }
 
 /**
-* New user
+* New panel
 */
 
 exports.new = function (req, res) {
@@ -45,7 +45,7 @@ exports.new = function (req, res) {
 }
 
 /**
- * Create contact
+ * Create panel
  */
 
 exports.create = function (req, res) {
