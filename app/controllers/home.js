@@ -25,7 +25,7 @@ exports.index = function (req, res) {
   })
     .then(function (contact) {
       res.locals['contact'] = contact;
-      return Q.ninvoke(Panel, 'find', { parentView: 'home' });
+      return Q.ninvoke(Panel.home, 'find');
     })
     .then(function (panels) { 
       res.locals['panels'] = res.locals.objectifyPanels(panels); 
