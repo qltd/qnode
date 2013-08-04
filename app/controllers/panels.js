@@ -25,12 +25,12 @@ exports.index = function (req, res) {
     })
     .fail(function (err) {
       return handleError(err);
-    });;
+    });
 }
 
 /**
-* New panel
-*/
+ * New panel
+ */
 
 exports.new = function (req, res) {
   Q.fcall(function () {
