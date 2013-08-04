@@ -5,7 +5,6 @@
 var message = require('../../config/messages.js')['project']
   , mongoose = require('mongoose')
   , Project = mongoose.model('Project')
-  , Image = mongoose.model('Image')
   , utils = require('../../lib/utils')
   , fs = require('fs');
 

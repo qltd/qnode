@@ -22,7 +22,13 @@ db.once('open', function callback () {
   console.log('Connected to MongoDB -- host: ' + config.db.host + ', name: ' + config.db.name);
 });
 
-// load models
+// load subdocument models; schemas will be used by document models
+var subSchemas_path = __dirname + '/app/models/sub'
+fs.readdirSync(subSchemas_path).forEach(function (file) {
+  if (~file.indexOf('.js')) require(subSchemas_path + '/' + file);
+});
+
+// load document models
 var models_path = __dirname + '/app/models'
 fs.readdirSync(models_path).forEach(function (file) {
   if (~file.indexOf('.js')) require(models_path + '/' + file);
