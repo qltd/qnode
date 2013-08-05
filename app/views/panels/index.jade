@@ -24,7 +24,7 @@ block body_content
                     = panel.title
               td
                 a(href='/panel/' + panel.slug + '/edit')
-                  = panel._id.getTimestamp()
+                  = ( panel.changeLog[panel.changeLog.length - 1] ? panel.changeLog[panel.changeLog.length - 1]._id.getTimestamp() : panel._id.getTimestamp() ) 
               td
                 a(href='/panel/' + panel.slug + '/edit')
                   = ( panel.changeLog[panel.changeLog.length - 1] ? panel.changeLog[panel.changeLog.length - 1].username : "None" )
