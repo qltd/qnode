@@ -1,13 +1,13 @@
-article#contact.contact.panel
-  .container
-    h2 Contact
-    .content
-      p.
-        We have a full-service office in Ann Arbor, Michigan. Our team is also represented in Los Angeles, Toronto, and occassionally Barbados. Our sister Q in Wiesbaden, Germany holds down the fort across the pond. If you have a project you’d like to discuss, please send us a note. We’d love to hear from you.
-      form(action='/contact/new', method='post')
-        input(name='name', placeholder='Name*', type='text', value=contact.name)
-        input(name='email', placeholder='Email*', type='text', value=contact.email)
-        input(name='company', placeholder='Company*', type='text', value=contact.company)
-        textarea(name='comments', placeholder='Comments*', cols='10', rows='5')
-          = contact.comments
-        input#contact-submit(type='submit', value='Submit')
+if panel && panel.Contact
+  article#contact.contact.panel
+    .container
+      h2= panel.Contact.title
+      .content
+        p= panel.Contact.body
+        form(action='/contact/new', method='post')
+          input(name='name', placeholder='Name*', type='text', value=contact.name)
+          input(name='email', placeholder='Email*', type='text', value=contact.email)
+          input(name='company', placeholder='Company*', type='text', value=contact.company)
+          textarea(name='comments', placeholder='Comments*', cols='10', rows='5')
+            = contact.comments
+          input#contact-submit(type='submit', value='Submit')

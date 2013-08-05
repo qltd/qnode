@@ -1,3 +1,4 @@
-article#clients.clients.panel
-  .container
-    h2 Clients
+if panel && panel.Clients
+  article#clients.clients.panel
+    .container
+      h2= panel.Clients.title

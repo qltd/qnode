@@ -20,7 +20,6 @@ var ImageSchema = new Schema({
 });
 
 /*var ImageSchema = new Schema({
-  align: String,
   alt: String,
   class: [ String ],
   height: Number,

@@ -1,23 +1,23 @@
-article#work.work.panel
-  .container
-    h2 Work
-    .content
-      p.
-        We work with local and international clients of all sizes throughout North America, Europe, and Asia with special expertise in education, health, technology, the arts, the environment, and the non-profit sector.
-    if projects && projects.length
-      ul.project-grid
-        - var i = 0
-        - each project in projects
-          - i++
-          if i % 3 == 0
-            li.project-wrap.omega
-              a.clearfix.trigger.project-trigger(data-target="#{project.machine}", href="#")
-                img(src="http://lorempixel.com/350/230/animals/#{i}", alt="")
-                span 
-                  = project.client
-          else
-            li.project-wrap 
-              a.clearfix.trigger.project-trigger(data-target="#{project.machine}", href="#")
-                img(src="http://lorempixel.com/350/230/animals/#{i}", alt="")
-                span
-                  = project.client
+if panel && panel.Work
+  article#work.work.panel
+    .container
+      h2= panel.Work.title
+      .content
+        p= panel.Work.body
+      if projects && projects.length
+        ul.project-grid
+          - var i = 0
+          - each project in projects
+            - i++
+            if i % 3 == 0
+              li.project-wrap.omega
+                a.clearfix.trigger.project-trigger(data-target="#{project.machine}", href="#")
+                  img(src="http://lorempixel.com/350/230/animals/#{i}", alt="")
+                  span 
+                    = project.client
+            else
+              li.project-wrap 
+                a.clearfix.trigger.project-trigger(data-target="#{project.machine}", href="#")
+                  img(src="http://lorempixel.com/350/230/animals/#{i}", alt="")
+                  span
+                    = project.client
