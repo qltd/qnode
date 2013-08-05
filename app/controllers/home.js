@@ -26,7 +26,7 @@ exports.index = function (req, res) {
   })
     .then(function (contact) {
       res.locals.contact = contact;
-      return Q.fcall(gravatar.url, req.user.email, {s: '80'});
+      return ( req.user ? Q.fcall(gravatar.url, req.user.email, {s: '80'}, https=false) : false );
     })
     .then(function (gravatar) {
       res.locals.gravatar = gravatar;
