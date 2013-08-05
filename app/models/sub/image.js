@@ -1,5 +1,4 @@
 
-
 /**
  * Module dependencies
  */
@@ -19,5 +18,16 @@ var ImageSchema = new Schema({
   title : String,
   position : Number
 });
+
+/*var ImageSchema = new Schema({
+  align: String,
+  alt: String,
+  class: [ String ],
+  height: Number,
+  id: String,
+  src: String,
+  style: String,
+  width: Number
+});*/
 
 mongoose.model('Image', ImageSchema);

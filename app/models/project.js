@@ -31,6 +31,18 @@ var ProjectSchema = new Schema({
   dateModified: { type: Date, default: Date.now }
 });
 
+/*var ProjectSchema = new Schema({
+  title: String,
+  body: String,
+  portfolioImages: [{
+    sort: Number,
+    image: ImageSchema
+  }],
+  slug: String,
+  dateCreated: { type: Date, default: Date.now },
+  dateModified: { type: Date, default: Date.now }
+});*/
+
 /**
  * Pre-validation hook; Sanitizers
  */

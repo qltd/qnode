@@ -1,7 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ "$1" ]; then
-  mongo "$1" --eval "db.dropDatabase()"
+  mongo $1 --eval "db.dropDatabase()"
 else
   printf "NO DB SPECIFIED!!! Please execute this script with the name of the db you would like to drop as the first argument\n"
 fi

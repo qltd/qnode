@@ -1,29 +1,20 @@
-#!/usr/bin/env node
+#!/bin/bash
 
-var mongoose = require('mongoose');
-
-// load environment-specific configuration; default to 'development' if unspecified
-var env = process.env.NODE_ENV || 'development'
-  , config = require('../config/config')[env];
-
-// db connection
-mongoose.connect('mongodb://' + config.db.host + '/' + config.db.name);
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function callback () {
-  console.log('Connected to MongoDB -- host: ' + config.db.host + ', name: ' + config.db.name);
-
-  require('../app/models/panel');
-
-  var Panel = mongoose.model('Panel')
-    , data = require('./data');
-
-  panel = new Panel({ title: 'Automagically created', body: 'yes it was!' });
+if [ "$1" ]; then
+  ## determine path to app for includes
+  APP_EXECUTION_PATH="$0"
+  APP_EXECUTION_FILENAME="$(basename "$0")"
+  APP_EXECUTION_ROOT="$(cd "$(dirname "$APP_EXECUTION_PATH")"; pwd)"
   
-  panel.save(function(err) {
-    if(!err) {
-      console.log(panel);
-      process.exit(0);
-    }
-  });
-});
+  ## find and load json files
+  DATA_DIRECTORY="$APP_EXECUTION_ROOT/data"
+  for filename in "$DATA_DIRECTORY"/*.json; do
+    data_filename="$(basename "$filename")"
+    data_collection_name="${data_filename%.*}"
+    mongoimport --db $1 --collection $data_collection_name --file $filename
+  done
+else
+  printf "NO DB SPECIFIED!!! Please execute this script with the name of the db you would like to seed as the first argument\n"
+fi
+
+
