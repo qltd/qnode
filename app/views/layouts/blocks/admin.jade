@@ -13,10 +13,15 @@ if user
             br 
             a.logout(href="#") <i class="icon-off"></i> Logout
       li.drop-down 
-        a(href="#") <i class="icon-pencil"></i> Edit Content 
+        i.icon-pencil 
+        | Edit Content 
         ul.menu-level-2
           li
             a(href="/panel") Edit Panels
           li
             a(href="/project") Edit Projects
+      li.drop-down
+        a(href="/contact")
+          i.icon-envelope-alt 
+          | View Contact Submissions
     i#close-toolbar.icon-chevron-left
