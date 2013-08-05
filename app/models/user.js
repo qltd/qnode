@@ -5,7 +5,6 @@
 var crypto = require('crypto')
   , message = require('../../config/messages.js')['user']
   , mongoose = require('mongoose')
-  , Q = require('q')
   , sanitize = require('validator').sanitize
   , Schema = mongoose.Schema
   , validate = require('../../lib/utils').check;

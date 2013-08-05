@@ -38,4 +38,9 @@ module.exports = function(app, passport) {
   app.get('/project', projects.index);
   app.get('/project/new', projects.new);
   app.post('/project/new', projects.create);
+
+  // 404
+  app.get('*', function(req,res) {
+    res.render('404');
+  });
 }

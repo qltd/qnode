@@ -46,4 +46,14 @@ PanelSchema.pre('validate', function(next) {
   next();
 });
 
+/**
+ * Pre-save hook; Sanitizers
+ */
+
+PanelSchema.pre('save', function(next) {
+  // log changes
+  this.changeLog = { data: ChangeLogSchema.methods.getData(this) };
+  next();
+});
+
 mongoose.model('Panel', PanelSchema);

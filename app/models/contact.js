@@ -31,8 +31,7 @@ var ContactSchema = new Schema({
     ]
   },
   company: String,
-  comments: String,
-  changeLog: [ ChangeLogSchema ]
+  comments: String
 });
 
 /**
