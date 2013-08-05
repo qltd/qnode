@@ -6,6 +6,7 @@ block body_content
       - each panel in panels
         p
           strong
-            = panel.title
+            a(href='/panel/' + panel.slug + '/edit')
+              = panel.title
           br
           != panel.body

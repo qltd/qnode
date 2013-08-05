@@ -5,13 +5,67 @@
 var message = require('../../config/messages.js')['panel']
   , mongoose = require('mongoose')
   , Q = require('q')
-  , utils = require('../../lib/utils');
+  , utils = require('../../lib/utils')
+  , _ = require('underscore');
 
 /**
  * Model dependencies
  */
 
 var Panel = mongoose.model('Panel');
+
+/**
+ * Show
+ */
+
+exports.show = function (req, res) {
+  Q.ninvoke(Panel, 'findOne', { slug: req.params.slug })
+    .then(function (panel) {
+      if (!panel) return res.render('404');
+      res.locals.panel = panel;
+      return res.render('panels/show');
+    })
+    .fail(function (err) {
+      return res.render('500');
+    });
+}
+
+/**
+ * Edit
+ */
+
+exports.edit = function (req, res) {
+  Q.ninvoke(Panel, 'findOne', { slug: req.params.slug })
+    .then(function (panel) {
+      if (!panel) return res.render('404');
+      res.locals.panel = panel;
+      return res.render('panels/edit');
+    })
+    .fail(function (err) {
+      return res.render('500');
+    });
+}
+
+/**
+ * Update
+ */
+
+exports.update = function (req, res) {
+  Q.ninvoke(Panel, 'findOne', { slug: req.params.slug })
+    .then(function (panel) {
+      if (!panel) return res.render('404');
+      panel = _.extend(panel, req.body);
+      return Q.ninvoke(panel, 'save');
+    })
+    .then(function () {
+      req.flash('success', message.updated(req.body.title));
+      return res.redirect('/panel');
+    })
+    .fail(function (err) {
+      req.flash('error', utils.errors(err));
+      return res.redirect('/panel/' + req.params.slug + '/edit');
+    });
+}
 
 /**
  * Index
@@ -40,9 +94,7 @@ exports.new = function (req, res) {
     .then(function (panel) {
       res.locals.panel = panel;
       return res.render('panels/new', { 
-        page_heading: 'Create Panel', 
-        form_action: '/panels/new', 
-        submit_button_title: 'Create'
+        pageHeading: 'Create Panel'
       });
     })
     .fail(function (err) {

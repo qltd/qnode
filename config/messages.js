@@ -39,6 +39,7 @@ module.exports = {
       isNull: 'Body cannot be empty'
     },
     created: function (title) { return 'Panel \'' + title + '\' was successfully created'; },
+    updated: function (title) { return 'Panel \'' + title + '\' was successfully updated'; },
     error: 'Could not create panel'
   },
 

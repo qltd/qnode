@@ -33,6 +33,9 @@ module.exports = function(app, passport) {
   app.get('/panel', panels.index);
   app.get('/panel/new', panels.new);
   app.post('/panel/new', panels.create);
+  app.get('/panel/:slug', panels.show);
+  app.get('/panel/:slug/edit', panels.edit);
+  app.post('/panel/:slug/edit', panels.update);
 
   // projects
   app.get('/project', projects.index);
@@ -40,7 +43,7 @@ module.exports = function(app, passport) {
   app.post('/project/new', projects.create);
 
   // 404
-  app.get('*', function(req,res) {
+  app.all('*', function(req,res) {
     res.render('404');
   });
 }

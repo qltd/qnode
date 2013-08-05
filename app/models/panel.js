@@ -24,6 +24,7 @@ var PanelSchema = new Schema({
     validate: [ validate.notNull, message.title.isNull ]
   },
   body: String,
+  slug: String,
   parentView: { type: String, default: 'home' },
   changeLog: [ ChangeLogSchema ]
 });
