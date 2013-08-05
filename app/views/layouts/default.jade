@@ -39,9 +39,12 @@ html(class="no-js", lang="en")
     header.header.clearfix
       h1.logo #{title}
       block top_navigation
-      
-    include blocks/messages
-
+     
     //- BEGIN DYNAMIC CONTENT FOR BODY
     block body_content
+
+    include blocks/admin  
+    include blocks/messages
+
     block body_scripts
+
