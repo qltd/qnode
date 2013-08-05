@@ -10,6 +10,7 @@
     "connect-flash": "*",
     "crypto": "*",
     "express": "3.2.5",
+    "gravatar": "*",
     "jade": "*",
     "mongodb": "*",
     "mongoose": "*",

@@ -12,7 +12,8 @@ var mongoose = require('mongoose')
 
 var Contact = mongoose.model('Contact')
   , Panel = mongoose.model('Panel')
-  , Project = mongoose.model('Project');
+  , Project = mongoose.model('Project')
+  , gravatar = require('gravatar');
 
 /**
  * Index
@@ -25,6 +26,10 @@ exports.index = function (req, res) {
   })
     .then(function (contact) {
       res.locals.contact = contact;
+      return Q.fcall(gravatar.url, req.user.email, {s: '80'});
+    })
+    .then(function (gravatar) {
+      res.locals.gravatar = gravatar;
       return Q.ninvoke(Panel.home, 'find');
     })
     .then(function (panels) { 

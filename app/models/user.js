@@ -9,6 +9,7 @@ var crypto = require('crypto')
   , sanitize = require('validator').sanitize
   , Schema = mongoose.Schema
   , validate = require('../../lib/utils').check;
+;
 
 /**
  * Subdocument schemas
