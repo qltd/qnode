@@ -10,7 +10,13 @@ var crypto = require('crypto')
   , validate = require('../../lib/utils').check;
 
 /**
- * Contact schema
+ * Subdocument schemas
+ */
+
+var ChangeLogSchema = mongoose.model('ChangeLog').schema;
+
+/**
+ * User schema
  */
 
 var UserSchema = new Schema({
@@ -29,8 +35,7 @@ var UserSchema = new Schema({
   hash: String,
   salt: String,
   role: { type: String, default: 'user' },
-  dateCreated: { type: Date, default: Date.now },
-  dateModified: { type: Date, default: Date.now }
+  changeLog: [ ChangeLogSchema ]
 });
 
 /**
@@ -74,6 +79,16 @@ UserSchema.pre('save', function(next) {
 
   // force all users into the role 'user' until we can authenticate account creators that can assign higher roles
   this.role = 'user';
+
+  // log changes; specify data parameters to log
+  this.changeLog.push({ 
+    data: { 
+      username: this.username,
+      email: this.email,
+      role: this.role
+    }
+  });
+
   next();
 });
 

@@ -11,6 +11,9 @@ exports.helpers = function(req, res, next) {
   res.locals.warnings = req.flash('warning');
   res.locals.errors = req.flash('error');
 
+  // make session user available to views
+  res.locals.user = req.user;
+
   // creates a named series of panel objects from a panel array
   // available to views as 'panel.Title.property' 
   res.locals.objectifyPanels = function(panels) {

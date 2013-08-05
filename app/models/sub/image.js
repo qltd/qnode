@@ -26,7 +26,8 @@ var ImageSchema = new Schema({
   id: String,
   src: String,
   style: String,
-  width: Number
+  width: Number,
+  _log: [ { username: String, date: { type: Date, default: Date.now } } ]
 });*/
 
 mongoose.model('Image', ImageSchema);

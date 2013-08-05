@@ -13,6 +13,7 @@ var message = require('../../config/messages')['project']
  * Subdocument schemas
  */
 
+var ChangeLogSchema = mongoose.model('ChangeLog').schema;
 var ImageSchema = mongoose.model('Image').schema;
 
 /**
@@ -27,8 +28,7 @@ var ProjectSchema = new Schema({
   machine: String,
   description: String,
   image: [ ImageSchema ],
-  dateCreated: { type: Date, default: Date.now },
-  dateModified: { type: Date, default: Date.now }
+  changeLog: [ ChangeLogSchema ]
 });
 
 /*var ProjectSchema = new Schema({

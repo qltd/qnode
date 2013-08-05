@@ -9,6 +9,12 @@ var message = require('../../config/messages.js')['contact']
   , validate = require('../../lib/utils').check;
 
 /**
+ * Subdocument schemas
+ */
+
+var ChangeLogSchema = mongoose.model('ChangeLog').schema;
+
+/**
  * Contact schema
  */
 
@@ -26,8 +32,7 @@ var ContactSchema = new Schema({
   },
   company: String,
   comments: String,
-  dateCreated: { type: Date, default: Date.now },
-  dateModified: { type: Date, default: Date.now }
+  changeLog: [ ChangeLogSchema ]
 });
 
 /**

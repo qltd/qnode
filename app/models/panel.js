@@ -8,6 +8,11 @@ var message = require('../../config/messages.js')['panel']
   , Schema = mongoose.Schema
   , validate = require('../../lib/utils').check;
 
+/**
+ * Subdocument schemas
+ */
+
+var ChangeLogSchema = mongoose.model('ChangeLog').schema;
 
 /**
  * Panel schema
@@ -20,8 +25,7 @@ var PanelSchema = new Schema({
   },
   body: String,
   parentView: { type: String, default: 'home' },
-  dateCreated: { type: Date, default: Date.now },
-  dateModified: { type: Date, default: Date.now }
+  changeLog: [ ChangeLogSchema ]
 });
 
 /**
