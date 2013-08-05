@@ -48,3 +48,9 @@ html(class="no-js", lang="en")
 
     block body_scripts
 
+    script.
+      jQuery(function($){
+        $('#close-toolbar').on('click', function(){
+          $('.admin-bar').toggleClass('mini');
+        });
+      });

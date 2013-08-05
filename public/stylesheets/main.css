@@ -2748,17 +2748,24 @@ footer#footer {
   position: fixed;
   z-index: 10000;
   top: 0;
+  height: 37px;
+  right: 0;
   width: 100%;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
   -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); }
-  /* line 811, main.scss */
+  /* line 814, main.scss */
   .admin-bar a {
     color: white; }
-    /* line 813, main.scss */
+    /* line 816, main.scss */
     .admin-bar a:hover {
       color: #77c7c6; }
-  /* line 817, main.scss */
+  /* line 820, main.scss */
   .admin-bar .user-mega {
     overflow: hidden;
     opacity: 0;
@@ -2778,33 +2785,35 @@ footer#footer {
     -ms-transition: all 0.2s ease-out;
     -o-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out; }
-    /* line 830, main.scss */
+    /* line 833, main.scss */
     .admin-bar .user-mega img {
       border: solid 5px white;
       float: left;
       margin-right: 15px; }
-    /* line 835, main.scss */
+    /* line 838, main.scss */
     .admin-bar .user-mega h6, .admin-bar .user-mega p {
       float: left;
       color: white;
       font-size: 14px;
       margin: 0; }
-    /* line 841, main.scss */
+    /* line 844, main.scss */
     .admin-bar .user-mega .logout {
       margin-top: 35px;
       display: block; }
-  /* line 846, main.scss */
+  /* line 849, main.scss */
   .admin-bar .menu-level-1 {
+    position: absolute;
+    left: 0;
     margin: 0; }
-    /* line 847, main.scss */
+    /* line 852, main.scss */
     .admin-bar .menu-level-1 .home {
       padding: 0;
       vertical-align: middle;
       margin-right: 10px; }
-      /* line 851, main.scss */
+      /* line 856, main.scss */
       .admin-bar .menu-level-1 .home a {
         font-size: 20px; }
-    /* line 856, main.scss */
+    /* line 861, main.scss */
     .admin-bar .menu-level-1 li {
       padding: 10px;
       position: relative;
@@ -2812,10 +2821,10 @@ footer#footer {
       font-size: 12px;
       color: white;
       display: inline-block; }
-    /* line 864, main.scss */
+    /* line 869, main.scss */
     .admin-bar .menu-level-1 > li + li {
       margin-left: 10px; }
-  /* line 868, main.scss */
+  /* line 873, main.scss */
   .admin-bar .menu-level-2 {
     display: none;
     position: absolute;
@@ -2825,43 +2834,70 @@ footer#footer {
     padding: 0;
     left: 0;
     top: 36px; }
-  /* line 878, main.scss */
+  /* line 883, main.scss */
   .admin-bar .user-menu:hover {
     background: #222; }
-    /* line 880, main.scss */
+    /* line 885, main.scss */
     .admin-bar .user-menu:hover, .admin-bar .user-menu:hover > a {
       color: #77c7c6; }
-    /* line 883, main.scss */
+    /* line 888, main.scss */
     .admin-bar .user-menu:hover .user-mega {
       z-index: 1000;
       opacity: 1;
       height: auto; }
-  /* line 889, main.scss */
+  /* line 894, main.scss */
   .admin-bar .drop-down:hover {
     background: #222; }
-    /* line 891, main.scss */
+    /* line 896, main.scss */
     .admin-bar .drop-down:hover, .admin-bar .drop-down:hover > a {
       color: #77c7c6; }
-    /* line 894, main.scss */
+    /* line 899, main.scss */
     .admin-bar .drop-down:hover > .menu-level-2 {
       display: block;
       -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
       -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
       box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); }
-      /* line 897, main.scss */
+      /* line 902, main.scss */
       .admin-bar .drop-down:hover > .menu-level-2 > li {
         width: 100%;
         margin: 0;
         padding: 0; }
-      /* line 902, main.scss */
+      /* line 907, main.scss */
       .admin-bar .drop-down:hover > .menu-level-2 a {
         display: block;
         padding: 10px 5px 10px 15px;
         width: 100%; }
-        /* line 906, main.scss */
+        /* line 911, main.scss */
         .admin-bar .drop-down:hover > .menu-level-2 a:hover {
           background: #77c7c6;
           color: #222; }
+  /* line 918, main.scss */
+  .admin-bar #close-toolbar {
+    cursor: pointer;
+    padding: 10px 20px;
+    float: right; }
+    /* line 922, main.scss */
+    .admin-bar #close-toolbar:hover {
+      color: #77c7c6; }
+  /* line 926, main.scss */
+  .admin-bar.mini {
+    width: 50px;
+    overflow: hidden; }
+    /* line 929, main.scss */
+    .admin-bar.mini .menu-level-1 {
+      display: none; }
+    /* line 932, main.scss */
+    .admin-bar.mini #close-toolbar {
+      -webkit-transform: rotate(180deg);
+      -moz-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+      -o-transform: rotate(180deg);
+      transform: rotate(180deg);
+      -webkit-transition: all 0.2s ease-out;
+      -moz-transition: all 0.2s ease-out;
+      -ms-transition: all 0.2s ease-out;
+      -o-transition: all 0.2s ease-out;
+      transition: all 0.2s ease-out; }
 
 /*------------------------------------*\
     $HELPER CLASSES
@@ -2869,7 +2905,7 @@ footer#footer {
 /*
  * Image replacement
  */
-/* line 923, main.scss */
+/* line 947, main.scss */
 .ir {
   background-color: transparent;
   border: 0;
@@ -2877,7 +2913,7 @@ footer#footer {
   /* IE 6/7 fallback */
   *text-indent: -9999px; }
 
-/* line 931, main.scss */
+/* line 955, main.scss */
 .ir:before {
   content: "";
   display: block;
@@ -2887,7 +2923,7 @@ footer#footer {
 /*
  * Hide from both screenreaders and browsers: h5bp.com/u
  */
-/* line 942, main.scss */
+/* line 966, main.scss */
 .hidden {
   display: none !important;
   visibility: hidden; }
@@ -2895,7 +2931,7 @@ footer#footer {
 /*
  * Hide only visually, but have it available for screenreaders: h5bp.com/v
  */
-/* line 951, main.scss */
+/* line 975, main.scss */
 .visuallyhidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -2910,7 +2946,7 @@ footer#footer {
  * Extends the .visuallyhidden class to allow the element to be focusable
  * when navigated to via the keyboard: h5bp.com/p
  */
-/* line 968, main.scss */
+/* line 992, main.scss */
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
   clip: auto;
@@ -2923,7 +2959,7 @@ footer#footer {
 /*
  * Hide visually and from screenreaders, but maintain layout
  */
-/* line 981, main.scss */
+/* line 1005, main.scss */
 .invisible {
   visibility: hidden; }
 
@@ -2938,7 +2974,7 @@ footer#footer {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-/* line 998, main.scss */
+/* line 1022, main.scss */
 .clearfix:before,
 .clearfix:after {
   content: " ";
@@ -2946,7 +2982,7 @@ footer#footer {
   display: table;
   /* 2 */ }
 
-/* line 1003, main.scss */
+/* line 1027, main.scss */
 .clearfix:after {
   clear: both; }
 
@@ -2954,7 +2990,7 @@ footer#footer {
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
  */
-/* line 1012, main.scss */
+/* line 1036, main.scss */
 .clearfix {
   *zoom: 1; }
 
@@ -2963,7 +2999,7 @@ footer#footer {
    Inlined to avoid required HTTP connection: h5bp.com/r
    ========================================================================== */
 @media print {
-  /* line 1022, main.scss */
+  /* line 1046, main.scss */
   * {
     background: transparent !important;
     color: #000 !important;
@@ -2971,59 +3007,59 @@ footer#footer {
     box-shadow: none !important;
     text-shadow: none !important; }
 
-  /* line 1030, main.scss */
+  /* line 1054, main.scss */
   a,
   a:visited {
     text-decoration: underline; }
 
-  /* line 1034, main.scss */
+  /* line 1058, main.scss */
   a[href]:after {
     content: " (" attr(href) ")"; }
 
-  /* line 1038, main.scss */
+  /* line 1062, main.scss */
   abbr[title]:after {
     content: " (" attr(title) ")"; }
 
   /*
    * Don't show links for images, or javascript/internal links
    */
-  /* line 1048, main.scss */
+  /* line 1072, main.scss */
   .ir a:after,
   a[href^="javascript:"]:after,
   a[href^="#"]:after {
     content: ""; }
 
-  /* line 1053, main.scss */
+  /* line 1077, main.scss */
   pre,
   blockquote {
     border: 1px solid #999;
     page-break-inside: avoid; }
 
-  /* line 1058, main.scss */
+  /* line 1082, main.scss */
   thead {
     display: table-header-group;
     /* h5bp.com/t */ }
 
-  /* line 1063, main.scss */
+  /* line 1087, main.scss */
   tr,
   img {
     page-break-inside: avoid; }
 
-  /* line 1067, main.scss */
+  /* line 1091, main.scss */
   img {
     max-width: 100% !important; }
 
   @page {
     margin: 0.5cm; }
 
-  /* line 1077, main.scss */
+  /* line 1101, main.scss */
   p,
   h2,
   h3 {
     orphans: 3;
     widows: 3; }
 
-  /* line 1083, main.scss */
+  /* line 1107, main.scss */
   h2,
   h3 {
     page-break-after: avoid; } }

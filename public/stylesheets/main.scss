@@ -806,7 +806,10 @@ footer#footer {
   position:fixed;
   z-index:10000;
   top:0;
+  height:37px;
+  right:0;
   width:100%;
+  @include transition;
   @include box-shadow(1px 1px 3px rgba(black, 0.3));
   a {
     color:white;
@@ -844,6 +847,8 @@ footer#footer {
     }
   }
   .menu-level-1 {
+    position: absolute;
+    left: 0;
     .home {
       padding: 0;
       vertical-align: middle;
@@ -908,6 +913,25 @@ footer#footer {
           color:#222;
         }
       }
+    }
+  }
+  #close-toolbar {
+    cursor:pointer;
+    padding:10px 20px;
+    float: right;
+    &:hover {
+      color:$teal;
+    }
+  }
+  &.mini {
+    width:50px;
+    overflow: hidden;
+    .menu-level-1 {
+      display: none;
+    }
+    #close-toolbar {
+      @include transform( rotate(180deg));
+      @include transition;
     }
   }
 }
