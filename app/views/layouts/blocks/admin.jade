@@ -1,7 +1,14 @@
-
-.admin-bar
-  ul
-    li
-      a(href="#") <i class="icon-pencil"></i> Content 
-    li
-      a(href="#") <i class="icon-off"></i> Logout
+if user
+  .admin-bar
+    ul
+      li.user-menu <i class="icon-user"></i> User Menu
+        div.user-mega
+          img(src="http://lorempixel.com/80/80/animals/1")
+          h6
+            =user.username
+          p 
+            =user.email
+            br 
+            a.logout(href="#") <i class="icon-off"></i> Logout
+      li
+        a(href="#") <i class="icon-pencil"></i> Content 
