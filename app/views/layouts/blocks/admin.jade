@@ -1,6 +1,8 @@
 if user
   .admin-bar
-    ul
+    ul.menu-level-1
+      li.home
+        a(href="/") <i class="icon-home"></i>
       li.user-menu <i class="icon-user"></i> User Menu
         div.user-mega
           img(src="#{gravatar}")
@@ -10,5 +12,10 @@ if user
             =user.email
             br 
             a.logout(href="#") <i class="icon-off"></i> Logout
-      li
-        a(href="#") <i class="icon-pencil"></i> Content 
+      li.drop-down 
+        a(href="#") <i class="icon-pencil"></i> Edit Content 
+        ul.menu-level-2
+          li
+            a(href="/panel") Edit Panels
+          li
+            a(href="/project") Edit Projects
