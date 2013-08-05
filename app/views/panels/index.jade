@@ -3,10 +3,37 @@ extends ../layouts/default
 block body_content
   article.panel
     div.container
-      - each panel in panels
-        p
-          strong
-            a(href='/panel/' + panel.slug + '/edit')
-              = panel.title
-          br
-          != panel.body
+      a.btn.new-btn(href='/panel/new') New Panel
+      table.edit-content
+        thead
+          tr
+            th.title Title 
+              i.icon-chevron-up
+            th.date Updated Date
+              i.icon-chevron-up
+            th.by Updated By
+              i.icon-chevron-up
+            th.edit Edit
+            
+        tbody
+          - each panel in panels
+            tr
+              td
+                strong 
+                  a(href='/panel/' + panel.slug + '/edit')
+                    = panel.title
+              td
+                a(href='/panel/' + panel.slug + '/edit')
+                  = panel._id.getTimestamp()
+              td
+                a(href='/panel/' + panel.slug + '/edit')
+                  = ( panel.changeLog[panel.changeLog.length - 1] ? panel.changeLog[panel.changeLog.length - 1].username : "None" )
+              td
+                a(href='/panel/' + panel.slug + '/edit') Edit
+
+block body_scripts
+  script(src='/scripts/vendor/tablesorter/jquery.tablesorter.min.js')
+  script.
+    jQuery(function($){
+      $('.edit-content').tablesorter();
+    });

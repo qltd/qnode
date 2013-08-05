@@ -231,6 +231,12 @@ ul.inline li {
   @include button(13px, white, $teal);
 }
 
+.new-btn {
+  float: right;
+  margin-bottom: 10px;
+  background: $pink;
+}
+
 // Reusable
 .flyout {
   background: rgba($grey, 0.9);
@@ -688,6 +694,65 @@ ul li:hover {
 }
 
 
+/* $admin-content */
+.edit-content {
+  width: 100%;
+  @include box-shadow(1px 1px 3px rgba(black, 0.3));
+  text-align: left;
+  th {
+    color:$text;
+    background: $teal;
+    padding:5px;
+    cursor:pointer;
+    padding: 8px;
+    i {
+      margin-right: 5px;
+      float: right;
+      opacity: 0;
+      @include transition;
+    }
+    &.headerSortUp i {
+      opacity: 1;
+    }
+    &.headerSortDown i {
+      opacity: 1;
+      @include transform( rotate(180deg));
+    }
+  }
+  td, th {
+    border:solid 2px white;
+  }
+  tr {
+    background: #eee;
+    @include transition;
+  }
+  tr:nth-child(even) {
+    background: #ccc;
+  }
+  td {
+    @include transition;
+    a {
+      display: block;
+      width:100%;
+      padding: 8px;
+      color:$grey;
+    }
+  }
+  tr:hover {
+    background: $teal;
+  }
+  .title {
+    width:25%;
+  }
+  .date {
+    width: 40%;
+  }
+  .by {
+    width:20%;
+  }
+}
+
+
 /*--$FOOTER--*/
 
 footer#footer {
@@ -865,6 +930,9 @@ footer#footer {
       font-size: 12px;
       color:white;
       display: inline-block;
+      i {
+        padding-right:5px;
+      }
     }
     > li + li {
       margin-left:10px;
