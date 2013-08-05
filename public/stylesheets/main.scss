@@ -759,7 +759,7 @@ footer#footer {
 .newsletter {
   form {
     input {
-      float: left;
+      float: left; 
       height: 55px;
       margin-bottom: 0;
     }
@@ -798,7 +798,70 @@ footer#footer {
 }
 
 
+/*--$ADMINBAR--*/
 
+.admin-bar {
+  background:#333;
+  color:white;
+  position:fixed;
+  z-index:10000;
+  top:0;
+  width:100%;
+  @include box-shadow(1px 1px 3px rgba(black, 0.3));
+  .user-mega {
+    overflow: hidden;
+    opacity: 0;
+    height: 0;
+    // display: none;
+    position: absolute;
+    background: #333333;
+    padding:15px;
+    left:-15px;
+    top:26px;
+    min-width: 330px;
+    @include box-shadow(1px 1px 3px rgba(black, 0.3));
+    @include transition;
+    img {
+      border:solid 5px white;
+      float: left;
+      margin-right:15px;
+    }
+    h6, p {
+      float: left;
+      color:white;
+      font-size: 14px;
+      margin: 0;
+    }
+    .logout {
+      margin-top: 35px;
+      display: block;
+    }
+  }
+  ul {
+    margin:0;
+    li {
+      padding:10px 0;
+      position: relative;
+      text-transform: uppercase;
+      font-size: 12px;
+      color:white;
+      display: inline-block;
+      a {
+        color:white;
+      }
+    }
+    li + li {
+      margin-left:20px;
+    }
+  }
+  .user-menu:hover {
+    .user-mega {
+      // display: block;
+      opacity: 1;
+      height: auto; 
+    }
+  }
+}
 
 
 /*------------------------------------*\
