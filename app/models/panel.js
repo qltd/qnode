@@ -53,7 +53,7 @@ PanelSchema.pre('validate', function(next) {
 
 PanelSchema.pre('save', function(next) {
   // log changes
-  this.changeLog = { data: ChangeLogSchema.methods.getData(this) };
+  this.changeLog.push({ data: ChangeLogSchema.methods.getData(this) });
   next();
 });
 

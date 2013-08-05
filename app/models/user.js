@@ -82,7 +82,7 @@ UserSchema.pre('save', function(next) {
   this.role = 'user';
 
   // log changes
-  this.changeLog = { data: ChangeLogSchema.methods.getData(this) };
+  this.changeLog.push({ data: ChangeLogSchema.methods.getData(this) });
 
   next();
 });
