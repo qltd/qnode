@@ -14,6 +14,7 @@ While in the project directory...
 
 ```
 npm install
+./db/seed qnode_db_dev
 npm start
 ```
 

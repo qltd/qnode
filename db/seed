@@ -6,7 +6,10 @@ if [ "$1" ]; then
   APP_EXECUTION_FILENAME="$(basename "$0")"
   APP_EXECUTION_ROOT="$(cd "$(dirname "$APP_EXECUTION_PATH")"; pwd)"
   
-  ## find and load json files
+  ## drop database
+  mongo $1 --eval "db.dropDatabase()"
+
+  ## import collections from json files
   DATA_DIRECTORY="$APP_EXECUTION_ROOT/data"
   for filename in "$DATA_DIRECTORY"/*.json; do
     data_filename="$(basename "$filename")"
