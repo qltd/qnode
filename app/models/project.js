@@ -60,7 +60,7 @@ ProjectSchema.pre('validate', function(next) {
 ProjectSchema.pre('save', function(next) {
   this.machine = this.client.toLowerCase().replace(/ /g, '-');
   // log changes
-  this.changeLog = { data: ChangeLogSchema.methods.getData(this) };
+  this.changeLog.push({ data: ChangeLogSchema.methods.getData(this) });
   next();
 });
 

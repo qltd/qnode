@@ -23,15 +23,17 @@ var ChangeLogSchema = new Schema({
  */
 
 ChangeLogSchema.methods = {
-  // convert mongo object into data for changelog
+  // convert mongo/mongoose object into data for changeLog
   getData: function (data) {
     var dataObj = {};
     if (data) {
       var dataKeys = Object.keys(data['_doc']);
       dataKeys.forEach(function (key) {
         if (key != '_id' && key != 'changeLog') {
+          if (key == '__v') data['_doc'][key]++;
           dataObj[key] = data['_doc'][key];
         }
+        if (!dataObj['__v']) dataObj['__v'] = 1;
       }); 
     }
     return dataObj;
