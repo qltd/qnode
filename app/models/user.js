@@ -5,6 +5,7 @@
 var crypto = require('crypto')
   , message = require('../../config/messages.js')['user']
   , mongoose = require('mongoose')
+  , Q = require('q')
   , sanitize = require('validator').sanitize
   , Schema = mongoose.Schema
   , validate = require('../../lib/utils').check;
@@ -80,14 +81,8 @@ UserSchema.pre('save', function(next) {
   // force all users into the role 'user' until we can authenticate account creators that can assign higher roles
   this.role = 'user';
 
-  // log changes; specify data parameters to log
-  this.changeLog.push({ 
-    data: { 
-      username: this.username,
-      email: this.email,
-      role: this.role
-    }
-  });
+  // log changes
+  this.changeLog = { data: ChangeLogSchema.methods.getData(this) };
 
   next();
 });
