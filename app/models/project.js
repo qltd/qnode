@@ -64,5 +64,4 @@ ProjectSchema.pre('save', function(next) {
   next();
 });
 
-/*mongoose.model('Image', ImageSchema);*/
 mongoose.model('Project', ProjectSchema);

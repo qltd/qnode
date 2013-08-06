@@ -1,13 +1,14 @@
 
 /**
- * Module dependencies.
+ * Controllers
  */
 
 var contacts = require('../app/controllers/contacts')
   , users = require('../app/controllers/users')
   , home = require('../app/controllers/home')
   , panels = require('../app/controllers/panels')
-  , projects = require('../app/controllers/projects');
+  , projects = require('../app/controllers/projects')
+  , services = require('../app/controllers/services');
 
 module.exports = function(app, passport) {
   
