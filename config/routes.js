@@ -43,6 +43,14 @@ module.exports = function(app, passport) {
   app.get('/project/new', projects.new);
   app.post('/project/new', projects.create);
 
+  // services
+  app.get('/service', services.index);
+  app.get('/service/new', services.new);
+  app.post('/service/new', services.create);
+  app.get('/service/:slug', services.show);
+  app.get('/service/:slug/edit', services.edit);
+  app.post('/service/:slug/edit', services.update);
+
   // 404
   app.all('*', function (req,res) {
     res.render('404');

@@ -1,0 +1,39 @@
+extends ../layouts/default
+
+block body_content
+  article.panel
+    div.container
+      a.btn.new-btn(href='/service/new') New Service
+      table.edit-content
+        thead
+          tr
+            th.title Title 
+              i.icon-chevron-up
+            th.date Updated Date
+              i.icon-chevron-up
+            th.by Updated By
+              i.icon-chevron-up
+            th.edit Edit
+            
+        tbody
+          - each service in services
+            tr
+              td
+                strong 
+                  a(href='/service/' + service.slug + '/edit')
+                    = service.title
+              td
+                a(href='/service/' + service.slug + '/edit')
+                  = dateUpdated(service)
+              td
+                a(href='/service/' + service.slug + '/edit')
+                  = updatedBy(service)
+              td
+                a(href='/service/' + service.slug + '/edit') Edit
+
+block body_scripts
+  script(src='/scripts/vendor/tablesorter/jquery.tablesorter.min.js')
+  script.
+    jQuery(function($){
+      $('.edit-content').tablesorter();
+    });

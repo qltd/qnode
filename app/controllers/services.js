@@ -23,7 +23,7 @@ exports.show = function (req, res) {
     .then(function (service) {
       if (!service) return res.render('404');
       res.locals.service = service;
-      return res.render('service/show');
+      return res.render('services/show');
     })
     .fail(function (err) {
       return res.render('500');
@@ -39,7 +39,7 @@ exports.edit = function (req, res) {
     .then(function (service) {
       if (!service) return res.render('404');
       res.locals.service = service;
-      return res.render('service/edit');
+      return res.render('services/edit');
     })
     .fail(function (err) {
       return res.render('500');
