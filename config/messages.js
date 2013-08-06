@@ -51,6 +51,11 @@ module.exports = {
     error: 'Could not create panel'
   },
 
+  // responses to specific fields
+  title: {
+      isNull: 'Title cannot be empty'
+  },
+
   default: 'Sorry! There was an error',
   notUnique: function (collectionField, fieldValue) { return collectionField + ' \'' + fieldValue + '\' already exists, please enter another'; }
 }
