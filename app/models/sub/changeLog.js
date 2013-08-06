@@ -33,7 +33,7 @@ ChangeLogSchema.methods = {
           if (key == '__v') data['_doc'][key]++;
           dataObj[key] = data['_doc'][key];
         }
-        if (!dataObj['__v']) dataObj['__v'] = 1;
+        if (!dataObj['__v']) dataObj['__v'] = 0;
       }); 
     }
     return dataObj;
