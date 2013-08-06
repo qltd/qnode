@@ -25,7 +25,7 @@ var ProjectSchema = new Schema({
     type: String,
     validate: [ validate.notNull, message.client.isNull ]
   },
-  machine: String,
+  slug: String,
   description: String,
   image: [ ImageSchema ],
   changeLog: [ ChangeLogSchema ]
@@ -58,7 +58,7 @@ ProjectSchema.pre('validate', function(next) {
  */
 
 ProjectSchema.pre('save', function(next) {
-  this.machine = this.client.toLowerCase().replace(/ /g, '-');
+  this.slug = toSlug(this.client);
   // log changes
   this.changeLog.push({ data: ChangeLogSchema.methods.getData(this) });
   next();

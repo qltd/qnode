@@ -82,7 +82,12 @@ exports.login = function (req, res) {
  * Authentication
  */
 
-exports.authenticated = function (req, res) {
+exports.login.success = function (req, res) {
   req.flash('success', message.authenticated(req.user.username));
-  res.redirect('/admin');
+  res.redirect('/');
 } 
+
+exports.logout = function (req, res) {
+  req.session.destroy();
+  res.redirect('/');
+}

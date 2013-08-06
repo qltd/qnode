@@ -1,3 +1,4 @@
+
 /**
  * Module dependencies
  */
@@ -37,6 +38,10 @@ PanelSchema.namedScope('home', function() {
   return this.where('parentView', 'home');
 });
 
+PanelSchema.namedScope('index', function() {
+  return this.sort('title');
+});
+
 /**
  * Pre-validation hook; Sanitizers
  */
@@ -52,6 +57,7 @@ PanelSchema.pre('validate', function(next) {
  */
 
 PanelSchema.pre('save', function(next) {
+  this.slug = toSlug(this.title);
   // log changes
   this.changeLog.push({ data: ChangeLogSchema.methods.getData(this) });
   next();

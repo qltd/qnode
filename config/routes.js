@@ -13,7 +13,6 @@ module.exports = function(app, passport) {
   
   // home
   app.get('/', home.index);
-  app.get('/admin', home.admin);
 
   // users and authentication
   app.get('/user', users.index);
@@ -23,7 +22,8 @@ module.exports = function(app, passport) {
   app.post('/user/login',  passport.authenticate('local', {
     failureRedirect: '/user/login',
     failureFlash: 'Username or password is incorrect!'
-  }), users.authenticated);
+  }), users.login.success);
+  app.get('/user/logout', users.logout);
 
   // contacts
   app.get('/contact', contacts.index);
@@ -43,7 +43,7 @@ module.exports = function(app, passport) {
   app.post('/project/new', projects.create);
 
   // 404
-  app.all('*', function(req,res) {
+  app.all('*', function (req,res) {
     res.render('404');
   });
 }

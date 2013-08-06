@@ -72,7 +72,7 @@ exports.update = function (req, res) {
  */
 
 exports.index = function (req, res) {
-  Q.ninvoke(Panel, 'find')
+  Q.ninvoke(Panel.index, 'find')
     .then(function (panels) {
       res.locals.panels = panels;
       return res.render('panels');

@@ -1,7 +1,7 @@
 .portfolio
   if projects && projects.length
     - each project in projects
-      .project(id="project-#{project.machine}")
+      .project(id="project-#{project.slug}")
         header
           .container
             h3 

@@ -47,5 +47,9 @@ exports.helpers = function(req, res, next) {
     return ( mongoDoc.changeLog[mongoDoc.changeLog.length - 1] ? mongoDoc.changeLog[mongoDoc.changeLog.length - 1].username : 'None' );
   }
 
+  toSlug = function(value) {
+    return value.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g,'');
+  }
+
   next();
 }
