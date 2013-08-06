@@ -27,5 +27,25 @@ exports.helpers = function(req, res, next) {
     return panels;
   }
 
+  // returns the date created of a mongo/mongoose object
+  res.locals.dateCreated = function(mongoDoc) {
+    return mongoDoc._id.getTimestamp();
+  }
+
+  // returns the date updated of a mongo/mongoose object
+  res.locals.dateUpdated = function(mongoDoc) {
+    return ( mongoDoc.changeLog[mongoDoc.changeLog.length - 1] ? mongoDoc.changeLog[mongoDoc.changeLog.length - 1]._id.getTimestamp() : mongoDoc._id.getTimestamp() );
+  }
+
+  // returns the username of the creator of a mongo/mongoose object
+  res.locals.createdBy = function(mongoDoc) {
+    return ( mongoDoc.changeLog[0] ? mongoDoc.changeLog[0].username : 'None' );
+  }
+
+  // returns the username of the last updater of a mongo/mongoose object
+  res.locals.updatedBy = function(mongoDoc) {
+    return ( mongoDoc.changeLog[mongoDoc.changeLog.length - 1] ? mongoDoc.changeLog[mongoDoc.changeLog.length - 1].username : 'None' );
+  }
+
   next();
 }
