@@ -27,6 +27,7 @@ var ServiceSchema = new Schema({
   },
   body: String,
   slug: String,
+  position: Number,
   changeLog: [ ChangeLogSchema ]
 });
 
