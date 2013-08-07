@@ -1,4 +1,8 @@
 
+/**
+ * Middleware
+ */
+
 var auth = require('../app/middleware').authorization;
 
 /**
@@ -34,6 +38,10 @@ module.exports = function(app, passport) {
   // contacts
   app.get('/contact', auth.requiresLogin, contacts.index);
   app.post('/contact/new', contacts.create);
+
+  // clients
+
+  // crew
 
   // panels
   app.all('/panel*', auth.requiresLogin);

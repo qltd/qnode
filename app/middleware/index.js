@@ -27,6 +27,21 @@ exports.helpers = function(req, res, next) {
     return panels;
   }
 
+  // accepts an array of mongo documents and returns html for a two-column list
+  res.locals.renderTwoColumnList = function(mongoDocs) {
+    if (mongoDocs.length == 0) return '';
+    var html = ''
+      , docCount = 0;
+    mongoDocs.forEach(function (mongoDoc) {
+      docCount++;
+      if (docCount == 1) html = html.concat('<ul class=\'first\'>');
+      if (docCount == 1 + mongoDocs.length / 2 || mongoDocs.length % 2 == 1 && docCount == 1.5 + mongoDocs.length / 2 ) html = html.concat('</ul><ul class=\'last\'>');
+      html = html.concat('<li>' + mongoDoc.title + '<div class=\'flyout ' + ( docCount < 1 + mongoDocs.length / 2 ? 'fly-right' : 'fly-left' ) + '\'><h4>' + mongoDoc.title + '</h4><p>' + mongoDoc.body + '</p></div></li>');
+    });
+    html = html.concat('</ul>');
+    return html;
+  }
+
   // returns the date created of a mongo/mongoose object
   res.locals.dateCreated = function(mongoDoc) {
     return mongoDoc._id.getTimestamp();
