@@ -206,7 +206,21 @@ input {
   }
 }
 
-
+.admin-form {
+  input, textarea {
+    border: solid 4px $tan;
+    @include transition;
+    &:focus {
+      @include box-shadow(none);
+      outline:none;
+      background: $tan + 40;
+    }
+    &.image {
+      border:none;
+      float: left;
+    }
+  }
+}
 
 
 
