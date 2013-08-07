@@ -3,12 +3,12 @@
  */
 
 var crypto = require('crypto')
+  , gravatar = require('gravatar')
   , message = require('../../config/messages.js')['user']
   , mongoose = require('mongoose')
   , sanitize = require('validator').sanitize
   , Schema = mongoose.Schema
   , validate = require('../../lib/utils').check;
-;
 
 /**
  * Subdocument schemas
@@ -103,6 +103,9 @@ UserSchema.methods = {
   },
   makeSalt: function() {
     return Math.round((new Date().valueOf() * Math.random())) + '';
+  },
+  getGravitarSrc: function () {
+    return ( this.email ? gravatar.url(this.email, {s: '80'}, false) : '//placehold.it/80x80' );
   }
 }
 

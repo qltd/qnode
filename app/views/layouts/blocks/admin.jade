@@ -1,15 +1,15 @@
-if user
+if sessionUser
   .admin-bar
     ul.menu-level-1
       li.home
         a(href="/") <i class="icon-home"></i>
       li.user-menu <i class="icon-user"></i> User Menu
         div.user-mega
-          img(src="#{gravatar}")
+          img(src=sessionUser.getGravitarSrc())
           h6
-            =user.username
+            =sessionUser.username
           p 
-            =user.email
+            =sessionUser.email
             br 
             a.logout(href="/user/logout") <i class="icon-off"></i> Logout
       li.drop-down 
