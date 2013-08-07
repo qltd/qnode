@@ -119,3 +119,19 @@ exports.create = function (req, res) {
     }
   });
 }
+
+/**
+ * Show change log
+ */
+
+exports.log = function (req, res) {
+  Q.ninvoke(Service, 'findOne', { slug: req.params.slug })
+    .then(function (service) {
+      if (!service) return res.render('404');
+      res.locals.service = service;
+      return res.render('services/log');
+    })
+    .fail(function (err) {
+      return res.render('500');
+    });
+}

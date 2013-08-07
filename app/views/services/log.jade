@@ -1,0 +1,14 @@
+extends ../layouts/default
+
+block body_content
+  article.panel
+    div.container
+      each change in service.changeLog
+        p
+          strong
+            = change.data.title + ' (version: ' + change.data.__v + ', author: ' + change.username + ', date: ' + ( change._id ? change._id.getTimestamp() : service._id.getTimestamp() ) +')'
+          br
+          != change.data.body
+          br
+          strong Position
+          = change.data.position
