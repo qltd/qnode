@@ -30,7 +30,7 @@ exports.index = function (req, res) {
     })
     .then(function (panels) { 
       res.locals.panels = res.locals.objectifyPanels(panels);
-      return Q.ninvoke(Service, 'find');
+      return Q.ninvoke(Service.positioned, 'find');
     })
     .then(function (services) {
       res.locals.services = services;

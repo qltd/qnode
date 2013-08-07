@@ -38,6 +38,9 @@ var ServiceSchema = new Schema({
 ServiceSchema.namedScope('index', function() {
   return this.sort('title');
 });
+ServiceSchema.namedScope('positioned', function() {
+  return this.sort('position');
+});
 
 /**
  * Pre-validation hook; Sanitizers
