@@ -104,7 +104,7 @@ UserSchema.methods = {
   makeSalt: function() {
     return Math.round((new Date().valueOf() * Math.random())) + '';
   },
-  getGravitarSrc: function () {
+  getGravatarSrc: function () {
     return ( this.email ? gravatar.url(this.email, {s: '80'}, false) : '//placehold.it/80x80' );
   }
 }

@@ -5,65 +5,12 @@ if panel && panel.Services
       .content
         p.section-content= panel.Services.body
         ul.first
-          li Name Development
-            .flyout.fly-right
-              h4 Content Strategy
-              p.
-                Brochures, annual reports, advertisements, catalogs, direct mail, posters, stationery - the right combination of words, imagery, format, typography, paper, and color deli.ver our cli.ent’s unique message. We take great pride in our craft and work with our colleagues in the print industry to flawlessly execute our work.
-          li Brand Strategy
-            .flyout.fly-right
-              h4 Content Strategy
-              p.
-                Brochures, annual reports, advertisements, catalogs, direct mail, posters, stationery - the right combination of words, imagery, format, typography, paper, and color deli.ver our cli.ent’s unique message. We take great pride in our craft and work with our colleagues in the print industry to flawlessly execute our work.
-          li Graphic Identities
-            .flyout.fly-right
-              h4 Content Strategy
-              p.
-                Brochures, annual reports, advertisements, catalogs, direct mail, posters, stationery - the right combination of words, imagery, format, typography, paper, and color deli.ver our cli.ent’s unique message. We take great pride in our craft and work with our colleagues in the print industry to flawlessly execute our work.
-          li Web Design &amp; Production
-            .flyout.fly-right
-              h4 Content Strategy
-              p.
-                Brochures, annual reports, advertisements, catalogs, direct mail, posters, stationery - the right combination of words, imagery, format, typography, paper, and color deli.ver our cli.ent’s unique message. We take great pride in our craft and work with our colleagues in the print industry to flawlessly execute our work.
-          li Responsive Web Design
-            .flyout.fly-right
-              h4 Content Strategy
-              p.
-                Brochures, annual reports, advertisements, catalogs, direct mail, posters, stationery - the right combination of words, imagery, format, typography, paper, and color deli.ver our cli.ent’s unique message. We take great pride in our craft and work with our colleagues in the print industry to flawlessly execute our work.
-          li Motion/Animation
-            .flyout.fly-right
-              h4 Content Strategy
-              p.
-                Brochures, annual reports, advertisements, catalogs, direct mail, posters, stationery - the right combination of words, imagery, format, typography, paper, and color deli.ver our cli.ent’s unique message. We take great pride in our craft and work with our colleagues in the print industry to flawlessly execute our work.
-        ul.last
-          li Content Strategy
-            .flyout.fly-left
-              h4 Content Strategy
-              p.
-                Brochures, annual reports, advertisements, catalogs, direct mail, posters, stationery - the right combination of words, imagery, format, typography, paper, and color deli.ver our cli.ent’s unique message. We take great pride in our craft and work with our colleagues in the print industry to flawlessly execute our work.
-          li Content Development
-            .flyout.fly-left
-              h4 Content Development
-              p.
-                Brochures, annual reports, advertisements, catalogs, direct mail, posters, stationery - the right combination of words, imagery, format, typography, paper, and color deli.ver our cli.ent’s unique message. We take great pride in our craft and work with our colleagues in the print industry to flawlessly execute our work.
-          li Advertising
-            .flyout.fly-left
-              h4 Content Strategy
-              p.
-                Brochures, annual reports, advertisements, catalogs, direct mail, posters, stationery - the right combination of words, imagery, format, typography, paper, and color deli.ver our cli.ent’s unique message. We take great pride in our craft and work with our colleagues in the print industry to flawlessly execute our work.
-          li Print Collateral
-            .flyout.fly-left
-              h4 Content Strategy
-              p.
-                Brochures, annual reports, advertisements, catalogs, direct mail, posters, stationery - the right combination of words, imagery, format, typography, paper, and color deli.ver our cli.ent’s unique message. We take great pride in our craft and work with our colleagues in the print industry to flawlessly execute our work.
-          li Merchandise
-            .flyout.fly-left
-              h4 Content Strategy
-              p.
-                Brochures, annual reports, advertisements, catalogs, direct mail, posters, stationery - the right combination of words, imagery, format, typography, paper, and color deli.ver our cli.ent’s unique message. We take great pride in our craft and work with our colleagues in the print industry to flawlessly execute our work.
-          li Tradeshow/Signage
-            .flyout.fly-left
-              h4 Content Strategy
-              p.
-                Brochures, annual reports, advertisements, catalogs, direct mail, posters, stationery - the right combination of words, imagery, format, typography, paper, and color deli.ver our cli.ent’s unique message. We take great pride in our craft and work with our colleagues in the print industry to flawlessly execute our work.
+
+          if services
+            each service in services
+              li= service.title
+                .flyout.fly-right
+                  h4= service.title
+                  p= service.body
+
       .q.pinq(data-stellar-ratio='2', data-stellar-vertical-offset='350')
