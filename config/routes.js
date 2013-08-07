@@ -1,4 +1,6 @@
 
+var auth = require('../app/middleware').authorization;
+
 /**
  * Controllers
  */
@@ -11,7 +13,7 @@ var contacts = require('../app/controllers/contacts')
   , services = require('../app/controllers/services');
 
 module.exports = function(app, passport) {
-  
+
   // home
   app.get('/', home.index);
 
@@ -27,10 +29,11 @@ module.exports = function(app, passport) {
   app.get('/user/logout', users.logout);
 
   // contacts
-  app.get('/contact', contacts.index);
+  app.get('/contact', auth.requiresLogin, contacts.index);
   app.post('/contact/new', contacts.create);
 
   // panels
+  app.all('/panel*', auth.requiresLogin);
   app.get('/panel', panels.index);
   app.get('/panel/new', panels.new);
   app.post('/panel/new', panels.create);
@@ -40,11 +43,13 @@ module.exports = function(app, passport) {
   app.get('/panel/:slug/log', panels.log);
 
   // projects
+  app.all('/project*', auth.requiresLogin);
   app.get('/project', projects.index);
   app.get('/project/new', projects.new);
   app.post('/project/new', projects.create);
 
   // services
+  app.all('/service*', auth.requiresLogin);
   app.get('/service', services.index);
   app.get('/service/new', services.new);
   app.post('/service/new', services.create);

@@ -53,3 +53,17 @@ exports.helpers = function(req, res, next) {
 
   next();
 }
+
+/**
+ * Authorization
+ */
+
+exports.authorization = {
+  requiresLogin: function (req, res, next) {
+    if (!req.isAuthenticated()) {
+      req.flash('warning', 'This page requires authentication.');
+      return res.redirect('/user/login');
+    }
+    next();
+  }
+}
