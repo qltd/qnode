@@ -44,7 +44,7 @@ ServiceSchema.namedScope('index', function() {
  */
 
 ServiceSchema.pre('validate', function (next) {
-  this.title = sanitize(this.title).escape();
+  this.title = sanitize(this.title).xss();
   this.body = sanitize(this.body).xss();
   next();
 });
