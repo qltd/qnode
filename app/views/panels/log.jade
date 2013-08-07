@@ -6,6 +6,6 @@ block body_content
       each change in panel.changeLog
         p
           strong
-            = change.data.title + ' (version: ' + change.data.__v + ', author: ' + change.username + ')'
+            = change.data.title + ' (version: ' + change.data.__v + ', author: ' + change.username + ', date: ' + ( change._id ? change._id.getTimestamp() : panel._id.getTimestamp() ) +')'
           br
           != change.data.body
