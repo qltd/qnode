@@ -34,7 +34,7 @@ exports.helpers = function(req, res, next) {
 
   // returns the date updated of a mongo/mongoose object
   res.locals.dateUpdated = function(mongoDoc) {
-    return ( mongoDoc.changeLog[mongoDoc.changeLog.length - 1] ? mongoDoc.changeLog[mongoDoc.changeLog.length - 1]._id.getTimestamp() : mongoDoc._id.getTimestamp() );
+    return ( mongoDoc.changeLog[mongoDoc.changeLog.length - 1]._id ? mongoDoc.changeLog[mongoDoc.changeLog.length - 1]._id.getTimestamp() : mongoDoc._id.getTimestamp() );
   }
 
   // returns the username of the creator of a mongo/mongoose object

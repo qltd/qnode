@@ -119,3 +119,19 @@ exports.create = function (req, res) {
     }
   });
 }
+
+/**
+ * Show change log
+ */
+
+exports.log = function (req, res) {
+  Q.ninvoke(Panel, 'findOne', { slug: req.params.slug })
+    .then(function (panel) {
+      if (!panel) return res.render('404');
+      res.locals.panel = panel;
+      return res.render('panels/log');
+    })
+    .fail(function (err) {
+      return res.render('500');
+    });
+}

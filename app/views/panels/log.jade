@@ -1,0 +1,11 @@
+extends ../layouts/default
+
+block body_content
+  article.panel
+    div.container
+      each change in panel.changeLog
+        p
+          strong
+            = change.data.title + ' (version: ' + change.data.__v + ', author: ' + change.username + ')'
+          br
+          != change.data.body

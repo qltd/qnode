@@ -37,6 +37,7 @@ module.exports = function(app, passport) {
   app.get('/panel/:slug', panels.show);
   app.get('/panel/:slug/edit', panels.edit);
   app.post('/panel/:slug/edit', panels.update);
+  app.get('/panel/:slug/log', panels.log);
 
   // projects
   app.get('/project', projects.index);
