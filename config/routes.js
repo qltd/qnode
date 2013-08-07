@@ -17,15 +17,18 @@ module.exports = function(app, passport) {
   // home
   app.get('/', home.index);
 
-  // users and authentication
-  app.get('/user', users.index);
-  app.get('/user/new', users.new);
-  app.post('/user/new', users.create);
+  // user authentication
   app.get('/user/login', users.login);
   app.post('/user/login',  passport.authenticate('local', {
     failureRedirect: '/user/login',
     failureFlash: 'Username or password is incorrect!'
   }), users.login.success);
+
+  // users
+  app.all('/user*', auth.requiresLogin); // must be after authentication routes, or auth requirement on login pages will create an infinite loop
+  app.get('/user', users.index);
+  app.get('/user/new', users.new);
+  app.post('/user/new', users.create);
   app.get('/user/logout', users.logout);
 
   // contacts
