@@ -7,5 +7,23 @@ if panel && panel.Services
 
           if services
             != renderTwoColumnList(services)
+  
+            - var serviceCount = 0
+            each service in services
+              - serviceCount++
 
+                if serviceCount == 1
+                  | <ul class='first'>
+                else if serviceCount == 1 + services.length / 2
+                  | </ul>
+                  | <ul class='last'>
+
+                li 
+                  i.icon-plus-sign 
+                  = service.title
+                  div(class=( serviceCount < 1 + services.length / 2 ? 'fly-right' : 'fly-left' )).flyout
+                    h4=service.title
+                    p= service.body
+
+            | </ul>
       .q.pinq(data-stellar-ratio='2', data-stellar-vertical-offset='350')

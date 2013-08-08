@@ -193,7 +193,7 @@ input, textarea {
   width: 100%;
   margin-bottom: 15px;
   font:italic 700 21px "adelle", serif;
-  padding:20px;
+  padding:2%;
   -webkit-appearance: none;
   border:none;
 }
@@ -218,6 +218,16 @@ input {
     &.image {
       border:none;
       float: left;
+      width:40%;
+      line-height: 0px;
+      font-size: 18px;
+      background: $tan + 20;
+      padding-top: 28px;
+      margin-right: 1%;
+    }
+    &.image-title {
+      float: left;
+      margin-right: 1%;
     }
   }
 }
@@ -252,47 +262,49 @@ ul.inline li {
 }
 
 // Reusable
-.flyout {
-  background: rgba($grey, 0.9);
-  padding:20px;
-  position: absolute;
-  width: 410px;
-  top:50px;
-  opacity: 0;
-  z-index:-100;
-  @include transition;
-  p {
-    color: #FFF;
-    font: 400 13px "proxima-nova", sans-serif;
-  }
-  &:after {
-    content:' ';
-    display: block;
+@include at-breakpoint($computer) {
+  .flyout {
+    background: rgba($grey, 0.9);
+    padding:20px;
     position: absolute;
-  }
-  &.fly-top {
-    &:after {
-      @include triangle(15px, top, rgba($grey, 0.9)); 
+    width: 410px;
+    top:50px;
+    opacity: 0;
+    z-index:-100;
+    @include transition;
+    p {
+      color: #FFF;
+      font: 400 13px "proxima-nova", sans-serif;
     }
-  }
-  &.fly-left {
-    left: -435px;
     &:after {
-      top:20px;
-      @include triangle(15px, left, rgba($grey, 0.9));    
+      content:' ';
+      display: block;
+      position: absolute;
     }
-  }
-  &.fly-right {
-    right: -300px;
-    &:after {
-      top:20px;
-      @include triangle(15px, right, rgba($grey, 0.9));
+    &.fly-top {
+      &:after {
+        @include triangle(15px, top, rgba($grey, 0.9)); 
+      }
     }
-  }
-  &.fly-bottom {
-    &:after {
-      @include triangle(15px, bottom, rgba($grey, 0.9)); 
-    }    
+    &.fly-left {
+      left: -435px;
+      &:after {
+        top:20px;
+        @include triangle(15px, left, rgba($grey, 0.9));    
+      }
+    }
+    &.fly-right {
+      right: -300px;
+      &:after {
+        top:20px;
+        @include triangle(15px, right, rgba($grey, 0.9));
+      }
+    }
+    &.fly-bottom {
+      &:after {
+        @include triangle(15px, bottom, rgba($grey, 0.9)); 
+      }    
+    }
   }
 }
 ul li:hover {
@@ -414,13 +426,19 @@ ul li:hover {
 @include at-breakpoint($computer) {
   .headline {
     margin-top: 146px;
-    height: 600px;
+    height: 500px;
     h3 {
       font-size: 40px;
     }
     video {
       width: 100%;
     }
+  }
+}
+
+@include at-breakpoint($wide) {
+  .headline {
+    height: 600px;
   }
 }
 
@@ -438,7 +456,7 @@ ul li:hover {
   }
   // Paralax Test
   .q {
-    display: block;
+    display: none !important;
     background: url(../images/tanq.png);
     width: 351px;
     height: 342px;
@@ -461,6 +479,9 @@ ul li:hover {
       @include span-columns(4 alpha);
       padding-left: 40px;
       margin-top: 24px;
+    }
+    .q {
+      display: block !important;
     }
     .content {
       @include span-columns(8 omega);
@@ -506,7 +527,7 @@ ul li:hover {
     width: 30%;
   }
   input.position {
-    width: 17%;
+    width: 12%;
   }
 }
 
@@ -539,13 +560,35 @@ ul li:hover {
       @include transition;
       &:hover {
         color: $grey;
+        i {
+          color: $pink;
+        }
+      }
+      i {
+        margin-right: 5px;
       }
     }
   }
   .flyout {
-    width: 410px;
+    display: none;
+    h4 {
+      display: none;
+    }
+    p {
+      margin-left: 25px;
+    }
   }
   @include at-breakpoint($computer) {
+    ul {
+      li {
+        i {
+          display: none;
+        }
+      }
+    }
+    h4 {
+      display: block;
+    }
     .first {
       @include span-columns(4, 8);
     }
@@ -578,6 +621,7 @@ ul li:hover {
     }
   }
   .flyout {
+    display: none;
     width: 145%;
     right: 29%;
     top: 155px;
@@ -741,7 +785,7 @@ ul li:hover {
     @include transition;
   }
   tr:nth-child(even) {
-    background: #ccc;
+    background: #eee + 10;
   }
   td {
     @include transition;
@@ -753,7 +797,10 @@ ul li:hover {
     }
   }
   tr:hover {
-    background: $teal;
+    background: #ccc;
+  }
+  .position {
+    width:10%;
   }
   .title {
     width:25%;
