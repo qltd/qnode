@@ -4,11 +4,9 @@ if panel && panel.Services
       h2= panel.Services.title
       .content
         p.section-content= panel.Services.body
-        
-        
 
           if services
-            
+  
             - var serviceCount = 0
             each service in services
               - serviceCount++
@@ -19,9 +17,11 @@ if panel && panel.Services
                   | </ul>
                   | <ul class='last'>
 
-                li= service.title
+                li 
+                  i.icon-plus-sign 
+                  = service.title
                   div(class=( serviceCount < 1 + services.length / 2 ? 'fly-right' : 'fly-left' )).flyout
-                    h4= service.title
+                    h4=service.title
                     p= service.body
 
             | </ul>

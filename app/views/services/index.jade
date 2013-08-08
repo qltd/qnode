@@ -7,6 +7,8 @@ block body_content
       table.edit-content
         thead
           tr
+            th.position Pos
+              i.icon-chevron-up
             th.title Title 
               i.icon-chevron-up
             th.date Updated Date
@@ -18,6 +20,9 @@ block body_content
         tbody
           - each service in services
             tr
+              td
+                a(href='/service/' + service.slug + '/edit')
+                  = service.position
               td
                 strong 
                   a(href='/service/' + service.slug + '/edit')

@@ -1,0 +1,17 @@
+extends ../layouts/default
+
+block body_content
+  article.panel
+    .container
+      if page_heading
+        h1= page_heading 
+      form(method='post', action=form_action)
+        #username
+          input(type='text', name='username', placeholder='Username*', value=user.username)
+        #password
+          input(type='password', name='password', placeholder='Password*')
+        #submit
+          if submit_button_title
+            input(type='submit', value=submit_button_title)
+          else
+            input(type='submit')
