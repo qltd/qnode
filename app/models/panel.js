@@ -39,7 +39,7 @@ PanelSchema.namedScope('home', function() {
 });
 
 PanelSchema.namedScope('index', function() {
-  return this.sort('title');
+  return this.populate('changeLog.user').sort('title');
 });
 
 /**

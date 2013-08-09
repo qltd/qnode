@@ -5,6 +5,7 @@
 
 var message = require('../../../config/messages.js')
   , mongoose = require('mongoose')
+  , Q = require('q')
   , sanitize = require('validator').sanitize
   , Schema = mongoose.Schema
   , validate = require('../../../lib/utils').check;
@@ -40,5 +41,11 @@ ChangeLogSchema.methods = {
     return dataObj;
   }
 }
+
+/**
+ * Post-init hook
+ */
+
+ChangeLogSchema.post('init', function (changeLog, next, done) {});
 
 mongoose.model('ChangeLog', ChangeLogSchema);
