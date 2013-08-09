@@ -33,6 +33,7 @@ module.exports = function(app, passport) {
   app.get('/user', users.index);
   app.get('/user/new', users.new);
   app.post('/user/new', users.create);
+  app.all('/user/:username/edit', auth.requiresAuthor);
   app.get('/user/:username/edit', users.edit);
   app.post('/user/:username/edit', users.update);
   app.get('/user/logout', users.logout);

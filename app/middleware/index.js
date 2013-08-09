@@ -112,5 +112,21 @@ exports.authorization = {
       return res.redirect('/user/login');
     }
     next();
+  },
+  requiresAdmin: function (req, res, next) {
+    if (!req.user) res.render('500');
+    if (req.user.role != 'admin') {
+      req.flash('error', 'You are not authorized to edit this content.');
+      return res.redirect('/user');
+    }
+    next();
+  },
+  requiresAuthor: function (req, res, next) {
+    if (!req.user) res.render('500');
+    if (req.user.username != req.params.username && req.user.role != 'admin') {
+      req.flash('error', 'You are not authorized to edit this content.');
+      return res.redirect('/user');
+    }
+    next();
   }
 }
