@@ -109,7 +109,6 @@ exports.new = function (req, res) {
 
 exports.create = function (req, res) {
   var panel = new Panel(req.body);
-
   panel.save(function (err) {
     if (err) {
       req.flash('error', utils.errors(err));

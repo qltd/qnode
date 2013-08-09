@@ -49,7 +49,18 @@ UserSchema.virtual('password')
     this.salt = this.makeSalt();
     this.hash = this.encrypt(this._password, this.salt);
   })
-  .get(function() { return this._password; });
+  .get(function() { 
+    return this._password; 
+  });
+
+UserSchema.virtual('_meta')
+  .set(function(metaData) {
+    this.__meta = metaData;
+  })
+  .get(function() { 
+    return this.__meta; 
+  });
+
 
 /**
  * Pre-validation hook; Sanitizers

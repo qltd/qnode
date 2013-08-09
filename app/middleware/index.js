@@ -46,6 +46,10 @@ exports.helpers = function(req, res, next) {
     return panels;
   }
 
+  res.locals.splitArray = function (mongoDocs) {
+    return mongoDocs;
+  }
+
   // accepts an array of mongo documents and returns html for a two-column list
   res.locals.renderTwoColumnList = function(mongoDocs) {
     if (mongoDocs.length == 0) return '';
