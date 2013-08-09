@@ -3,8 +3,7 @@
  * Module dependencies
  */
 
-var mongoose = require('mongoose')
-  , Q = require('q');
+var mongoose = require('mongoose');
 
 /**
  * Models
@@ -87,37 +86,13 @@ exports.helpers = function(req, res, next) {
 
   // returns the username of the last updater of a mongo/mongoose object
   res.locals.updatedBy = function(mongoDoc) {
-    if (!(mongoDoc.changeLog[mongoDoc.changeLog.length - 1] && mongoDoc.changeLog[mongoDoc.changeLog.length - 1].user)) return 'anonymous';
-    return Q.ninvoke(User, 'findOne', { _id: mongoDoc.changeLog[mongoDoc.changeLog.length - 1].user })
-      .then(function (user) {
-        return user.username;
-      })
-      .fail(function (err) {
-        return 'anonymous';
-      });
-  }
-
-  getUpdatedBy = function (mongoDocs) {
-    return Q.fcall(mongoDocs.forEach(function (mongoDoc, key) {
-        Q.ninvoke(User, 'findOne', { _id: mongoDoc.changeLog[mongoDoc.changeLog.length-1].user })
-          .then(function (user) {
-            mongoDocs[key].changeLog[mongoDocs[key].changeLog.length-1].username = user.username;
-            console.log(mongoDocs[key].changeLog[mongoDocs[key].changeLog.length-1].username);
-            return user;
-          });
-      })
-    );
-
-    console.log('done');
-    return mongoDocs;
+    return ( mongoDoc.changeLog[mongoDoc.changeLog.length - 1] && mongoDoc.changeLog[mongoDoc.changeLog.length - 1].user ? mongoDoc.changeLog[mongoDoc.changeLog.length - 1].user.username : 'anonymous' );
   }
 
   // returns a URL-safe string from a string
   toSlug = function(value) {
     return value.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g,'');
   }
-
-  res.locals.Q = Q;
 
   next();
 }
