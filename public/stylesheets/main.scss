@@ -610,37 +610,34 @@ ul li:hover {
   background:$teal;
 }
 .crew-grid {
+  ul {
+    padding: 0;
+  }
   li {
-    float:left;
-    list-style: none;
-    position: relative;
+    list-style: none; 
   }
-  img {
-    float: left;
-    border:10px solid transparent;
-    @include transition;
-    &:hover {
+  .person-wrap {
+    border:10px solid $teal;
+    background: $grey;
+    color:white;
+    img {
+      width:32.61%;
+      float: left;
+    }
+    p {
+      background: $grey;
+      margin: 0;
+    }
+    .person-info {
+      float: left;
+      width:64.06%;
+      padding:3.125%;
+    }
+  }
+  li:hover {
+    .person-wrap {
       border-color:$pink;
-    }
-  }
-  .bio {
-    display: none;
-  }
-  .flyout {
-    display: block;
-    width: 145%;
-    right: 29%;
-    top: 155px;
-    &:after {
-      right:20px;
-    }
-  }
-  ul li:hover {
-    .flyout {
-      color:white;
-      z-index:100;
-      top:150px;
-      opacity:1.0;
+      background: $pink;
     }
   }
 }
