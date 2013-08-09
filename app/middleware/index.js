@@ -28,7 +28,8 @@ exports.helpers = function(req, res, next) {
 
   // stores additional metadata within requests; puts it in req.body for ability to reference within mongoose modeled objects that are passed this parameter
   req.body._meta = {
-    userId: ( req.user && req.user._id ? req.user._id : null )
+    userId: ( req.user && req.user._id ? req.user._id : null ),
+    userRole: ( req.user && req.user.role ? req.user.role : null )
   }
   // stores a copy of metadata in res
   res._meta = req.body._meta;
@@ -108,7 +109,7 @@ exports.helpers = function(req, res, next) {
 exports.authorization = {
   requiresLogin: function (req, res, next) {
     if (!req.isAuthenticated()) {
-      req.flash('warning', 'This page requires authentication.');
+      req.flash('warning', req.host + req.url + ' requires authentication');
       return res.redirect('/user/login');
     }
     next();
@@ -116,16 +117,16 @@ exports.authorization = {
   requiresAdmin: function (req, res, next) {
     if (!req.user) res.render('500');
     if (req.user.role != 'admin') {
-      req.flash('error', 'You are not authorized to edit this content.');
-      return res.redirect('/user');
+      req.flash('error', 'You are not authorized to access ' + req.host + req.url);
+      return res.redirect(( req.headers.referer ? req.headers.referer : '/' ));
     }
     next();
   },
   requiresAuthor: function (req, res, next) {
     if (!req.user) res.render('500');
     if (req.user.username != req.params.username && req.user.role != 'admin') {
-      req.flash('error', 'You are not authorized to edit this content.');
-      return res.redirect('/user');
+      req.flash('error', 'You are not authorized to access ' + req.host + req.url);
+      return res.redirect(( req.headers.referer ? req.headers.referer : '/' ));
     }
     next();
   }

@@ -64,7 +64,6 @@ exports.create = function (req, res) {
   }
 
   project.save(function (err) {
-    console.log(project);
     if (err) {
       req.flash('error', utils.errors(err));
       req.flash('project', project);

@@ -11,6 +11,8 @@ block body_content
               i.icon-chevron-up
             th.email Email
               i.icon-chevron-up
+            th.role Role
+              i.icon-chevron-up
             th.date Updated Date
               i.icon-chevron-up
             th.by Updated By
@@ -29,10 +31,12 @@ block body_content
                   = user.email
               td
                 a(href='/user/' + user.username + '/edit')
+                  = user.role
+              td
+                a(href='/user/' + user.username + '/edit')
                   = dateUpdated(user)
               td
                 a(href='/user/' + user.username + '/edit')
-                  - console.log(user)
                   = updatedBy(user)
               td
                 a(href='/user/' + user.username + '/edit') Edit

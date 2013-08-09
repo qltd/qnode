@@ -27,16 +27,17 @@ module.exports = function(app, passport) {
     failureRedirect: '/user/login',
     failureFlash: 'Username or password is incorrect!'
   }), users.login.success);
+  app.get('/user/logout', users.logout);
 
   // users
-  app.all('/user*', auth.requiresLogin); // must be after authentication routes, or auth requirement on login pages will create an infinite loop
+  app.all('/user*', auth.requiresLogin);
   app.get('/user', users.index);
+  app.all('/user/new', auth.requiresAdmin);
   app.get('/user/new', users.new);
   app.post('/user/new', users.create);
   app.all('/user/:username/edit', auth.requiresAuthor);
   app.get('/user/:username/edit', users.edit);
   app.post('/user/:username/edit', users.update);
-  app.get('/user/logout', users.logout);
 
   // contacts
   app.get('/contact', auth.requiresLogin, contacts.index);

@@ -54,6 +54,7 @@ exports.new = function (req, res) {
 
 exports.create = function (req, res) {
   var user = new User(req.body);
+
   user.save(function(err) {
     if(err) {
       req.flash('error', utils.errors(err));
@@ -61,7 +62,7 @@ exports.create = function (req, res) {
       return res.redirect('/user/new');
     } else {
       req.flash('success', message.created(user.username));
-      return res.redirect('/');
+      return res.redirect('/user');
     }
   });
 }

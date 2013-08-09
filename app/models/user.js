@@ -94,13 +94,8 @@ UserSchema.path('hash').validate(function(v){
  */
 
 UserSchema.pre('save', function(next) {
-
-  // force all users into the role 'user' until we can authenticate account creators that can assign higher roles
-  this.role = 'user';
-
   // log changes
   this.changeLog.push(ChangeLogSchema.methods.getData(this));
-
   next();
 });
 
