@@ -1,5 +1,18 @@
 
 /**
+ * Module dependencies
+ */
+
+var mongoose = require('mongoose')
+  , Q = require('q');
+
+/**
+ * Models
+ */
+
+var User = mongoose.model('User');
+
+/**
  * Helpers
  */
 
@@ -13,6 +26,13 @@ exports.helpers = function(req, res, next) {
 
   // make session user available to views
   res.locals.sessionUser = req.user;
+
+  // stores additional metadata within requests; puts it in req.body for ability to reference within mongoose modeled objects that are passed this parameter
+  req.body._meta = {
+    userId: ( req.user && req.user._id ? req.user._id : null )
+  }
+  // stores a copy of metadata in res
+  res._meta = req.body._meta;
 
   // creates a named series of panel objects from a panel array
   // available to views as 'panel.Title.property' 
@@ -42,6 +62,14 @@ exports.helpers = function(req, res, next) {
     return html;
   }
 
+  // accepts an array of mongo documents and returns html for a list grid
+  res.locals.renderGridList = function (mongoDocs) {
+    if (mongoDocs.length == 0) return '';
+    var html = ''
+      , docCount = 0;
+    return html;
+  }
+
   // returns the date created of a mongo/mongoose object
   res.locals.dateCreated = function(mongoDoc) {
     return mongoDoc._id.getTimestamp();
@@ -54,17 +82,42 @@ exports.helpers = function(req, res, next) {
 
   // returns the username of the creator of a mongo/mongoose object
   res.locals.createdBy = function(mongoDoc) {
-    return ( mongoDoc.changeLog[0] ? mongoDoc.changeLog[0].username : 'None' );
+    return ( mongoDoc.changeLog[0] && mongoDoc.changeLog[0].user ? mongoDoc.changeLog[0].user : 'anonymous' );
   }
 
   // returns the username of the last updater of a mongo/mongoose object
   res.locals.updatedBy = function(mongoDoc) {
-    return ( mongoDoc.changeLog[mongoDoc.changeLog.length - 1] ? mongoDoc.changeLog[mongoDoc.changeLog.length - 1].username : 'None' );
+    if (!(mongoDoc.changeLog[mongoDoc.changeLog.length - 1] && mongoDoc.changeLog[mongoDoc.changeLog.length - 1].user)) return 'anonymous';
+    return Q.ninvoke(User, 'findOne', { _id: mongoDoc.changeLog[mongoDoc.changeLog.length - 1].user })
+      .then(function (user) {
+        return user.username;
+      })
+      .fail(function (err) {
+        return 'anonymous';
+      });
   }
 
+  getUpdatedBy = function (mongoDocs) {
+    return Q.fcall(mongoDocs.forEach(function (mongoDoc, key) {
+        Q.ninvoke(User, 'findOne', { _id: mongoDoc.changeLog[mongoDoc.changeLog.length-1].user })
+          .then(function (user) {
+            mongoDocs[key].changeLog[mongoDocs[key].changeLog.length-1].username = user.username;
+            console.log(mongoDocs[key].changeLog[mongoDocs[key].changeLog.length-1].username);
+            return user;
+          });
+      })
+    );
+
+    console.log('done');
+    return mongoDocs;
+  }
+
+  // returns a URL-safe string from a string
   toSlug = function(value) {
     return value.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g,'');
   }
+
+  res.locals.Q = Q;
 
   next();
 }

@@ -46,7 +46,7 @@ PanelSchema.namedScope('index', function() {
  * Pre-validation hook; Sanitizers
  */
 
-PanelSchema.pre('validate', function(next) {
+PanelSchema.pre('validate', function (next) {
   this.title = sanitize(this.title).escape();
   this.body = sanitize(this.body).xss();
   next();
@@ -56,10 +56,11 @@ PanelSchema.pre('validate', function(next) {
  * Pre-save hook; Sanitizers
  */
 
-PanelSchema.pre('save', function(next) {
+PanelSchema.pre('save', function (next) {
   this.slug = toSlug(this.title);
+
   // log changes
-  this.changeLog.push({ data: ChangeLogSchema.methods.getData(this) });
+  this.changeLog.push({ data: ChangeLogSchema.methods.getData(this), user: this._meta.userId });
   next();
 });
 
