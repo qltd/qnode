@@ -38,7 +38,7 @@ ChangeLogSchema.methods = {
         if (!dataObj['__v']) dataObj['__v'] = 0;
       }); 
     }
-    return dataObj;
+    return { data: dataObj, user: data._meta.userId };
   }
 }
 

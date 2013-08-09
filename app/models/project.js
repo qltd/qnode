@@ -60,7 +60,7 @@ ProjectSchema.pre('validate', function(next) {
 ProjectSchema.pre('save', function(next) {
   this.slug = toSlug(this.client);
   // log changes
-  this.changeLog.push({ data: ChangeLogSchema.methods.getData(this) });
+  this.changeLog.push(ChangeLogSchema.methods.getData(this));
   next();
 });
 

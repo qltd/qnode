@@ -36,7 +36,7 @@ var ServiceSchema = new Schema({
  */
 
 ServiceSchema.namedScope('index', function() {
-  return this.sort('title');
+  return this.populate('changeLog.user').sort('title');
 });
 ServiceSchema.namedScope('positioned', function() {
   return this.sort('position');
@@ -59,7 +59,7 @@ ServiceSchema.pre('validate', function (next) {
 ServiceSchema.pre('save', function (next) {
   this.slug = toSlug(this.title);
   // log changes
-  this.changeLog.push({ data: ChangeLogSchema.methods.getData(this) });
+  this.changeLog.push(ChangeLogSchema.methods.getData(this));
   next();
 });
 
