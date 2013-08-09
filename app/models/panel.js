@@ -31,6 +31,18 @@ var PanelSchema = new Schema({
 });
 
 /**
+ * Virtuals
+ */
+
+PanelSchema.virtual('_meta')
+  .set(function(metaData) {
+    this.__meta = metaData;
+  })
+  .get(function() { 
+    return this.__meta; 
+  });
+
+/**
  * Named scopes
  */
 

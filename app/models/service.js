@@ -32,6 +32,18 @@ var ServiceSchema = new Schema({
 });
 
 /**
+ * Virtuals
+ */
+
+ServiceSchema.virtual('_meta')
+  .set(function(metaData) {
+    this.__meta = metaData;
+  })
+  .get(function() { 
+    return this.__meta; 
+  });
+
+/**
  * Named scopes
  */
 

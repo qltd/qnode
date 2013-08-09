@@ -44,6 +44,19 @@ var ProjectSchema = new Schema({
 });*/
 
 /**
+ * Virtuals
+ */
+
+ProjectSchema.virtual('_meta')
+  .set(function(metaData) {
+    this.__meta = metaData;
+  })
+  .get(function() { 
+    return this.__meta; 
+  });
+
+
+/**
  * Pre-validation hook; Sanitizers
  */
 
