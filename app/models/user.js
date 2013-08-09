@@ -61,6 +61,13 @@ UserSchema.virtual('_meta')
     return this.__meta; 
   });
 
+/**
+ * Named scopes
+ */
+
+UserSchema.namedScope('index', function(){
+  return this.populate('changeLog.user').sort('username');
+});
 
 /**
  * Pre-validation hook; Sanitizers
@@ -87,7 +94,6 @@ UserSchema.path('hash').validate(function(v){
  */
 
 UserSchema.pre('save', function(next) {
-  if (!this.isNew) return next();
 
   // force all users into the role 'user' until we can authenticate account creators that can assign higher roles
   this.role = 'user';

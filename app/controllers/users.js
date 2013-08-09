@@ -6,7 +6,8 @@
 var message = require('../../config/messages.js')['user']
   , mongoose = require('mongoose')
   , Q = require('q')
-  , utils = require('../../lib/utils');
+  , utils = require('../../lib/utils')
+  , _ = require('underscore');
 
 var User = mongoose.model('User');
 
@@ -15,7 +16,7 @@ var User = mongoose.model('User');
  */
 
 exports.index = function (req, res) {
-  Q.ninvoke(User, 'find')
+  Q.ninvoke(User.index, 'find')
     .then(function (users) {
       res.locals.users = users;
       return res.render('users');
@@ -63,6 +64,43 @@ exports.create = function (req, res) {
       return res.redirect('/');
     }
   });
+}
+
+/**
+ * Edit
+ */
+
+exports.edit = function (req, res) {
+  Q.ninvoke(User, 'findOne', { username: req.params.username })
+    .then(function (user) {
+      if (!user) return res.render('404');
+      res.locals.user = user;
+      return res.render('users/edit');
+    })
+    .fail(function (err) {
+      return res.render('500');
+    });
+}
+
+/**
+ * Update
+ */
+
+exports.update = function (req, res) {
+  Q.ninvoke(User, 'findOne', { username: req.params.username })
+    .then(function (user) {
+      if (!user) return res.render('404');
+      user = _.extend(user, req.body);
+      return Q.ninvoke(user, 'save');
+    })
+    .then(function () {
+      req.flash('success', message.updated(req.body.username));
+      return res.redirect('/user');
+    })
+    .fail(function (err) {
+      req.flash('error', utils.errors(err));
+      return res.redirect('/user/' + req.params.username + '/edit');
+    });
 }
 
 /**

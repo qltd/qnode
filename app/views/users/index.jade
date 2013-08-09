@@ -3,7 +3,43 @@ extends ../layouts/default
 block body_content
   article.panel
     div.container
-      - each user in users
-        p
-          strong
-            = user.username
+      a.btn.new-btn(href='/user/new') New User
+      table.edit-content
+        thead
+          tr
+            th.username Username 
+              i.icon-chevron-up
+            th.email Email
+              i.icon-chevron-up
+            th.date Updated Date
+              i.icon-chevron-up
+            th.by Updated By
+              i.icon-chevron-up
+            th.edit Edit
+            
+        tbody
+          each user in users
+            tr
+              td
+                strong 
+                  a(href='/user/' + user.username + '/edit')
+                    = user.username
+              td
+                a(href='/user/' + user.username + '/edit')
+                  = user.email
+              td
+                a(href='/user/' + user.username + '/edit')
+                  = dateUpdated(user)
+              td
+                a(href='/user/' + user.username + '/edit')
+                  - console.log(user)
+                  = updatedBy(user)
+              td
+                a(href='/user/' + user.username + '/edit') Edit
+
+block body_scripts
+  script(src='/scripts/vendor/tablesorter/jquery.tablesorter.min.js')
+  script.
+    jQuery(function($){
+      $('.edit-content').tablesorter();
+    });

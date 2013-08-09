@@ -33,6 +33,8 @@ module.exports = function(app, passport) {
   app.get('/user', users.index);
   app.get('/user/new', users.new);
   app.post('/user/new', users.create);
+  app.get('/user/:username/edit', users.edit);
+  app.post('/user/:username/edit', users.update);
   app.get('/user/logout', users.logout);
 
   // contacts

@@ -63,7 +63,7 @@ exports.update = function (req, res) {
     })
     .fail(function (err) {
       req.flash('error', utils.errors(err));
-      return res.redirect('/service/' + req.params.slug + '/service');
+      return res.redirect('/service/' + req.params.slug + '/edit');
     });
 }
 

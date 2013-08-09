@@ -28,6 +28,7 @@ module.exports = {
     },
     authenticated:  function (username) { return 'Successfully authenticated as \'' + username + '\''; },
     created: function (username) { return 'User \'' + username + '\' was successfully created'; },
+    updated: function (username) { return 'User \'' + username + '\' was successfully updated'; },
     error: 'Could not create user'
   },
 
