@@ -472,6 +472,7 @@ ul li:hover {
     position: relative;
   }
 }
+
 @include at-breakpoint($computer) {
   .panel {
     padding:190px 20px 160px;
@@ -491,6 +492,7 @@ ul li:hover {
 
 .container {
   @include container($total-columns, $tablet, $computer, $wide);
+  padding:0;
 }
 
 
@@ -614,14 +616,18 @@ ul li:hover {
     position: relative;
   }
   img {
+    float: left;
     border:10px solid transparent;
     @include transition;
     &:hover {
       border-color:$pink;
     }
   }
-  .flyout {
+  .bio {
     display: none;
+  }
+  .flyout {
+    display: block;
     width: 145%;
     right: 29%;
     top: 155px;
