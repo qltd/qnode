@@ -94,6 +94,9 @@ UserSchema.path('hash').validate(function(v){
  */
 
 UserSchema.pre('save', function(next) {
+  // prevent non-admins from elevating their role
+  if (this._meta.userRole != 'admin') this.role = 'user';
+
   // log changes
   this.changeLog.push(ChangeLogSchema.methods.getData(this));
   next();
