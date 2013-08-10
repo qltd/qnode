@@ -22,23 +22,19 @@ block body_content
           each change in panel.changeLog
             tr
               td
-                a(href='/panel/' + panel.slug + '/edit')
-                  = change.data.__v
+                = change.data.__v
               td
                 strong 
-                  a(href='/panel/' + panel.slug + '/edit')
-                    = change.data.title
+                  = change.data.title
               td
-                a(href='/panel/' + panel.slug + '/edit')
-                  = change.data.body
+                = change.data.body
               td
-                a(href='/panel/' + panel.slug + '/edit')
-                  = ( change._id ? change._id.getTimestamp() : panel._id.getTimestamp() )
+                = ( change._id ? change._id.getTimestamp() : panel._id.getTimestamp() )
               td
-                a(href='/panel/' + panel.slug + '/edit')
-                  = ( change.user ? change.user.username : createdBy(panel) )
+                = ( change.user ? change.user.username : createdBy(panel) )
               td
-                a(href='/panel/' + panel.slug + '/edit') Restore  
+                a(href='/panel/' + panel.slug + '/log/' + change.data.__v + '/restore' ) 
+                  | Restore  
 
 block body_scripts
   script(src='/scripts/vendor/tablesorter/jquery.tablesorter.min.js')

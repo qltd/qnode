@@ -13,6 +13,7 @@ block body_content
               i.icon-chevron-up
             th.by Updated By
               i.icon-chevron-up
+            th.log Log
             th.edit Edit
             
         tbody
@@ -28,6 +29,8 @@ block body_content
               td
                 a(href='/panel/' + panel.slug + '/edit')
                   = updatedBy(panel)
+              td
+                a(href='/panel/' + panel.slug + '/log') Log
               td
                 a(href='/panel/' + panel.slug + '/edit') Edit
 

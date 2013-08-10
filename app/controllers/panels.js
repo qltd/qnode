@@ -136,3 +136,25 @@ exports.log = function (req, res) {
       return res.render('500');
     });
 }
+
+/**
+ * Restore from log
+ */
+
+exports.restore = function (req, res) {
+  Q.ninvoke(Panel.index, 'findOne', { slug: req.params.slug })
+    .then(function (panel) {
+      if (!panel) return res.render('404');
+      data = _.omit(panel.changeLog[req.params.version].data, '__v');
+      data._meta = req.body._meta;
+      panel = _.extend(panel, data);
+      return Q.ninvoke(panel, 'save');
+    })
+    .then(function () {
+      req.flash('success', message.updated(data.title));
+      return res.redirect('/panel');
+    })
+    .fail(function (err) {
+      return res.render('500');
+    });
+}
