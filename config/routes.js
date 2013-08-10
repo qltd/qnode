@@ -56,7 +56,8 @@ module.exports = function(app, passport) {
   app.get('/panel/:slug/edit', panels.edit);
   app.post('/panel/:slug/edit', panels.update);
   app.get('/panel/:slug/log', panels.log);
-  app.get('/panel/:slug/log/:version/restore', panels.restore);
+  app.get('/panel/:slug/log/:__v', panels.show);
+  app.get('/panel/:slug/log/:__v/restore', panels.restore);
 
   // projects
   app.all('/project*', auth.requiresLogin);

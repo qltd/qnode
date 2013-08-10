@@ -22,7 +22,7 @@ exports.show = function (req, res) {
   Q.ninvoke(Panel, 'findOne', { slug: req.params.slug })
     .then(function (panel) {
       if (!panel) return res.render('404');
-      res.locals.panel = panel;
+      res.locals.panel = ( req.params.__v && panel.changeLog[req.params.__v] ? _.extend(panel, panel.changeLog[req.params.__v].data) : panel );
       return res.render('panels/show');
     })
     .fail(function (err) {
@@ -145,7 +145,7 @@ exports.restore = function (req, res) {
   Q.ninvoke(Panel.index, 'findOne', { slug: req.params.slug })
     .then(function (panel) {
       if (!panel) return res.render('404');
-      data = _.omit(panel.changeLog[req.params.version].data, '__v');
+      data = _.omit(panel.changeLog[req.params.__v].data, '__v');
       data._meta = req.body._meta;
       panel = _.extend(panel, data);
       return Q.ninvoke(panel, 'save');
