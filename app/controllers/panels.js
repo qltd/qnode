@@ -126,7 +126,7 @@ exports.create = function (req, res) {
  */
 
 exports.log = function (req, res) {
-  Q.ninvoke(Panel, 'findOne', { slug: req.params.slug })
+  Q.ninvoke(Panel.index, 'findOne', { slug: req.params.slug })
     .then(function (panel) {
       if (!panel) return res.render('404');
       res.locals.panel = panel;
