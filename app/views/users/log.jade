@@ -1,0 +1,48 @@
+extends ../layouts/default
+
+block body_content
+  article.panel
+    div.container
+      table.edit-content
+        thead
+          tr
+            th.version
+              i.icon-chevron-up
+            th.username Username 
+              i.icon-chevron-up
+            th.email Email 
+              i.icon-chevron-up
+            th.role Role 
+              i.icon-chevron-up
+            th.date Updated Date
+              i.icon-chevron-up
+            th.by Updated By
+              i.icon-chevron-up
+            th.restore Restore
+            
+        tbody
+          each change in user.changeLog
+            tr
+              td
+                = change.data.__v
+              td
+                strong 
+                  = change.data.username
+              td
+                = change.data.email
+              td
+                = change.data.role
+              td
+                = ( change._id ? change._id.getTimestamp() : user._id.getTimestamp() )
+              td
+                = ( change.user ? change.user.username : createdBy(user) )
+              td
+                a(href='/users/' + user.username + '/log/' + change.data.__v + '/restore' ) 
+                  | Restore  
+
+block body_scripts
+  script(src='/scripts/vendor/tablesorter/jquery.tablesorter.min.js')
+  script.
+    jQuery(function($){
+      $('.edit-content').tablesorter();
+    });

@@ -110,7 +110,7 @@ exports.authorization = {
   requiresLogin: function (req, res, next) {
     if (!req.isAuthenticated()) {
       req.flash('warning', req.host + req.url + ' requires authentication');
-      return res.redirect('/user/login');
+      return res.redirect('/users/login');
     }
     next();
   },

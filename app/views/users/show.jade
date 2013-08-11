@@ -1,0 +1,12 @@
+extends ../layouts/default
+
+block body_content
+  article.panel
+    div.container
+      p
+        strong
+          = user.username
+        br
+        = user.email
+        br
+        = user.role

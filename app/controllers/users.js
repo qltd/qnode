@@ -38,8 +38,21 @@ exports.index = function (req, res) {
 
 /**
  * Show
- * 
+ * GET /users/:username
+ * GET /users/:username/log/:__v
  */
+
+exports.show = function (req, res) {
+  Q.ninvoke(User, 'findOne', { username: req.params.username })
+    .then(function (user) {
+      if (!user) return res.render('404');
+      res.locals.user = ( req.params.__v && user.changeLog[req.params.__v] ? _.extend(user, user.changeLog[req.params.__v].data) : user );
+      return res.render('users/show');
+    })
+    .fail(function (err) {
+      return res.render('500');
+    });
+}
 
 /**
  * New
@@ -118,6 +131,47 @@ exports.update = function (req, res) {
     .fail(function (err) {
       req.flash('error', utils.errors(err));
       return res.redirect('/users/' + req.params.username + '/edit');
+    });
+}
+
+/**
+ * changeLog index
+ * GET /users/:username/log
+ */
+
+exports.log = function (req, res) {
+  Q.ninvoke(User.index, 'findOne', { username: req.params.username })
+    .then(function (user) {
+      if (!user) return res.render('404');
+      res.locals.user = user;
+      return res.render('users/log');
+    })
+    .fail(function (err) {
+      return res.render('500');
+    });
+}
+
+/**
+ * changeLog restore
+ * GET /users/:username/log/:__v/restore
+ */
+
+exports.restore = function (req, res) {
+  Q.ninvoke(User.index, 'findOne', { username: req.params.username })
+    .then(function (user) {
+      if (!user) return res.render('404');
+      data = _.omit(user.changeLog[req.params.__v].data, '__v');
+      data._meta = req.body._meta;
+      user = _.extend(user, data);
+      return Q.ninvoke(user, 'save');
+    })
+    .then(function () {
+      req.flash('success', message.updated(data.username));
+      return res.redirect('/users');
+    })
+    .fail(function (err) {
+      console.log(err);
+      return res.render('500');
     });
 }
 

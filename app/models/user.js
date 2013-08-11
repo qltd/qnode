@@ -84,7 +84,7 @@ UserSchema.pre('validate', function(next) {
  */
 
 UserSchema.path('hash').validate(function(v){
-  if (!validate.notNull(this._password)) {
+  if (!validate.notNull(this._password) && this.isNew) {
     this.invalidate('password', message.password.isNull);
   }
 }, null);

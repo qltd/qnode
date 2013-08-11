@@ -35,9 +35,13 @@ module.exports = function(app, passport) {
   app.all('/users/new', auth.requiresAdmin);
   app.get('/users/new', users.new);
   app.post('/users/new', users.create);
-  app.all('/users/:username/edit', auth.requiresAuthor);
+  app.get('/users/:username', users.show);
+  app.all('/users/:username*', auth.requiresAuthor);
   app.get('/users/:username/edit', users.edit);
   app.post('/users/:username/edit', users.update);
+  app.get('/users/:username/log', users.log);
+  app.get('/users/:username/log/:__v', users.show);
+  app.get('/users/:username/log/:__v/restore', users.restore);
 
   // contacts
   app.get('/contacts', auth.requiresLogin, contacts.index);
