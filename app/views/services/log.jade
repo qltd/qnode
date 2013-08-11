@@ -3,12 +3,42 @@ extends ../layouts/default
 block body_content
   article.panel
     div.container
-      each change in service.changeLog
-        p
-          strong
-            = change.data.title + ' (version: ' + change.data.__v + ', author: ' + change.username + ', date: ' + ( change._id ? change._id.getTimestamp() : service._id.getTimestamp() ) +')'
-          br
-          != change.data.body
-          br
-          strong Position
-          = change.data.position
+      table.edit-content
+        thead
+          tr
+            th.version
+              i.icon-chevron-up
+            th.title Title 
+              i.icon-chevron-up
+            th.title Body 
+              i.icon-chevron-up
+            th.date Updated Date
+              i.icon-chevron-up
+            th.by Updated By
+              i.icon-chevron-up
+            th.restore Restore
+            
+        tbody
+          each change in service.changeLog
+            tr
+              td
+                = change.data.__v
+              td
+                strong 
+                  = change.data.title
+              td
+                = change.data.body
+              td
+                = ( change._id ? change._id.getTimestamp() : service._id.getTimestamp() )
+              td
+                = ( change.user ? change.user.username : createdBy(service) )
+              td
+                a(href='/service/' + service.slug + '/log/' + change.data.__v + '/restore' ) 
+                  | Restore  
+
+block body_scripts
+  script(src='/scripts/vendor/tablesorter/jquery.tablesorter.min.js')
+  script.
+    jQuery(function($){
+      $('.edit-content').tablesorter();
+    });

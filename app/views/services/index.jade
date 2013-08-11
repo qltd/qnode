@@ -15,6 +15,7 @@ block body_content
               i.icon-chevron-up
             th.by Updated By
               i.icon-chevron-up
+            th.edit Log
             th.edit Edit
             
         tbody
@@ -33,6 +34,8 @@ block body_content
               td
                 a(href='/service/' + service.slug + '/edit')
                   = updatedBy(service)
+              td
+                a(href='/service/' + service.slug + '/log') Log
               td
                 a(href='/service/' + service.slug + '/edit') Edit
 

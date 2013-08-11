@@ -22,7 +22,7 @@ exports.show = function (req, res) {
   Q.ninvoke(Service, 'findOne', { slug: req.params.slug })
     .then(function (service) {
       if (!service) return res.render('404');
-      res.locals.service = service;
+      res.locals.service = ( req.params.__v && service.changeLog[req.params.__v] ? _.extend(service, service.changeLog[req.params.__v].data) : service );
       return res.render('services/show');
     })
     .fail(function (err) {
@@ -125,7 +125,7 @@ exports.create = function (req, res) {
  */
 
 exports.log = function (req, res) {
-  Q.ninvoke(Service, 'findOne', { slug: req.params.slug })
+  Q.ninvoke(Service.index, 'findOne', { slug: req.params.slug })
     .then(function (service) {
       if (!service) return res.render('404');
       res.locals.service = service;
@@ -135,3 +135,25 @@ exports.log = function (req, res) {
       return res.render('500');
     });
 }
+
+/**
+ * Restore from log
+ */
+
+exports.restore = function (req, res) {
+  Q.ninvoke(Service.index, 'findOne', { slug: req.params.slug })
+    .then(function (service) {
+      if (!service) return res.render('404');
+      data = _.omit(service.changeLog[req.params.__v].data, '__v');
+      data._meta = req.body._meta;
+      service = _.extend(service, data);
+      return Q.ninvoke(service, 'save');
+    })
+    .then(function () {
+      req.flash('success', message.updated(data.title));
+      return res.redirect('/service');
+    })
+    .fail(function (err) {
+      return res.render('500');
+    });
+} 

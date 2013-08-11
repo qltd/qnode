@@ -74,6 +74,8 @@ module.exports = function(app, passport) {
   app.get('/service/:slug/edit', services.edit);
   app.post('/service/:slug/edit', services.update);
   app.get('/service/:slug/log', services.log);
+  app.get('/service/:slug/log/:__v', services.show);
+  app.get('/service/:slug/log/:__v/restore', services.restore);
 
   // 404
   app.all('*', function (req,res) {
