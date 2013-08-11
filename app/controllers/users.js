@@ -161,7 +161,7 @@ exports.restore = function (req, res) {
       return Q.ninvoke(user, 'save');
     })
     .then(function () {
-      req.flash('success', msg.user.updated(data.username));
+      req.flash('success', msg.user.restored(data.username, req.params.__v));
       return res.redirect('/users');
     })
     .fail(function (err) {

@@ -160,7 +160,7 @@ exports.restore = function (req, res) {
       return Q.ninvoke(service, 'save');
     })
     .then(function () {
-      req.flash('success', msg.service.updated(data.title));
+      req.flash('success', msg.service.restored(data.title, req.params.__v));
       return res.redirect('/services');
     })
     .fail(function (err) {

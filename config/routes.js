@@ -1,9 +1,10 @@
 
 /**
- * Middleware
+ * Module dependencies
  */
 
-var auth = require('../app/middleware').authorization;
+var auth = require('../app/middleware').authorization
+  , msg = require('../config/messages');
 
 /**
  * Controllers
@@ -25,7 +26,7 @@ module.exports = function(app, passport) {
   app.get('/users/login', users.login);
   app.post('/users/login', passport.authenticate('local', {
     failureRedirect: '/users/login',
-    failureFlash: 'Username or password is incorrect!'
+    failureFlash: msg.user.authenticationFailed
   }), users.authenticate);
   app.get('/users/logout', users.logout);
 

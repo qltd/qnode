@@ -2,7 +2,7 @@
 module.exports = {
 
   /**
-   * Model CRUD messages
+   * Model messages (CRUD, etc)
    */
 
   contact: {
@@ -27,7 +27,11 @@ module.exports = {
     updated: function (title) { return 'Crew \'' + title + '\' was updated'; }
   },
   user: {
+    adminRequired: function (path) { return 'You must be a site administrator to access ' + path; },
     authenticated:  function (username) { return 'Authenticated as \'' + username + '\''; },
+    authenticationFailed: 'Username and/or password are not correct',
+    authenticationRequired: function (path) { return 'You must be authenticated to access ' + path; },
+    authorRequired: function (path) { return 'You must be the author to access ' + path; },
     created: function (username) { return 'User \'' + username + '\' was created'; },
     deleted: function (username) { return 'User \'' + username + '\' was deleted'; },
     read: function (username) { return 'User \'' + username + ' \' was read'; },
@@ -57,7 +61,7 @@ module.exports = {
   },
 
   /**
-   * Unbound CRUD messages
+   * Unbound messages (CRUD, etc)
    */
 
   created: function (title) { return '\'' + title + '\' was created'; },

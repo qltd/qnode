@@ -3,7 +3,8 @@
  * Module dependencies
  */
 
-var mongoose = require('mongoose');
+var mongoose = require('mongoose')
+  , msg = require('../../config/messages');
 
 /**
  * Models
@@ -109,7 +110,7 @@ exports.helpers = function(req, res, next) {
 exports.authorization = {
   requiresLogin: function (req, res, next) {
     if (!req.isAuthenticated()) {
-      req.flash('warning', req.host + req.url + ' requires authentication');
+      req.flash('warning', msg.user.authenticationRequired(req.host + req.url));
       return res.redirect('/users/login');
     }
     next();
@@ -117,7 +118,7 @@ exports.authorization = {
   requiresAdmin: function (req, res, next) {
     if (!req.user) res.render('500');
     if (req.user.role != 'admin') {
-      req.flash('error', 'You are not authorized to access ' + req.host + req.url);
+      req.flash('error', msg.user.adminRequired(req.host + req.url));
       return res.redirect(( req.headers.referer ? req.headers.referer : '/' ));
     }
     next();
@@ -125,7 +126,7 @@ exports.authorization = {
   requiresAuthor: function (req, res, next) {
     if (!req.user) res.render('500');
     if (req.user.username != req.params.username && req.user.role != 'admin') {
-      req.flash('error', 'You are not authorized to access ' + req.host + req.url);
+      req.flash('error', msg.user.authorRequired(req.host + req.url));
       return res.redirect(( req.headers.referer ? req.headers.referer : '/' ));
     }
     next();
