@@ -26,7 +26,7 @@ module.exports = function(app, config, passport) {
   app.set('view engine', 'jade');
 
   app.use(express.cookieParser());
-  app.use(express.bodyParser({uploadDir:'./tmp'}));
+  app.use(express.bodyParser());
   app.use(express.methodOverride());
 
   // express/mongo session storage
