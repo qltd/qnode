@@ -3,17 +3,22 @@
  * Module dependencies
  */
 
-var message = require('../../config/messages.js')['panel']
-  , mongoose = require('mongoose')
-  , sanitize = require('validator').sanitize
-  , Schema = mongoose.Schema
-  , validate = require('../../lib/utils').check;
-
+var mongoose = require('mongoose')
+  , Schema = mongoose.Schema;
+  
 /**
- * Subdocument schemas
+ * Schema dependencies; subdocuments
  */
 
 var ChangeLogSchema = mongoose.model('ChangeLog').schema;
+
+/**
+ * Other dependencies
+ */
+
+var message = require('../../config/messages.js')['panel']
+  , sanitize = require('validator').sanitize
+  , validate = require('../../lib/utils').check;
 
 /**
  * Panel schema

@@ -1,20 +1,26 @@
+
 /**
  * Module dependencies
  */
 
 var crypto = require('crypto')
   , gravatar = require('gravatar')
-  , message = require('../../config/messages.js')['user']
   , mongoose = require('mongoose')
-  , sanitize = require('validator').sanitize
-  , Schema = mongoose.Schema
-  , validate = require('../../lib/utils').check;
+  , Schema = mongoose.Schema;
 
 /**
- * Subdocument schemas
+ * Schema dependencies; subdocuments
  */
 
 var ChangeLogSchema = mongoose.model('ChangeLog').schema;
+
+/**
+ * Other dependencies
+ */
+
+var message = require('../../config/messages.js')['user']
+  , sanitize = require('validator').sanitize
+  , validate = require('../../lib/utils').check;
 
 /**
  * User schema
