@@ -6,36 +6,66 @@ module.exports = {
    */
 
   contact: {
-    created: function (name) { return 'Thank you for contacting us, ' + name + '! We\'ll respond per your comments.' }
+    created: function (name) { return 'Thank you for contacting us, ' + name + '! We\'ll respond per your comments.' },
+    deleted: function (name) { return 'Contact \'' + name + '\' was deleted'; },
+    read: function (name) { return 'Contact \'' + name + ' \' was read'; },
+    restored: function (title, version) { return 'Contact \'' + title + '\' was restored with data from version ' + version; },
+    updated: function (name) { return 'Contact \'' + name + '\' was updated'; }
+  },
+  client: {
+    created: function (title) { return 'Client \'' + title + '\' was created'; },
+    deleted: function (title) { return 'Client \'' + title + '\' was deleted'; },
+    read: function (title) { return 'Client \'' + title + ' \' was read'; },
+    restored: function (title, version) { return 'Client \'' + title + '\' was restored with data from version ' + version; },
+    updated: function (title) { return 'Client \'' + title + '\' was updated'; }
+  },
+  crew: {
+    created: function (title) { return 'Crew \'' + title + '\' was created'; },
+    deleted: function (title) { return 'Crew \'' + title + '\' was deleted'; },
+    read: function (title) { return 'Crew \'' + title + ' \' was read'; },
+    restored: function (title, version) { return 'Crew \'' + title + '\' was restored with data from version ' + version; },
+    updated: function (title) { return 'Crew \'' + title + '\' was updated'; }
   },
   user: {
-    authenticated:  function (username) { return 'Successfully authenticated as \'' + username + '\''; },
-    created: function (username) { return 'User \'' + username + '\' was successfully created'; },
-    updated: function (username) { return 'User \'' + username + '\' was successfully updated'; },
-    error: 'Could not create user'
+    authenticated:  function (username) { return 'Authenticated as \'' + username + '\''; },
+    created: function (username) { return 'User \'' + username + '\' was created'; },
+    deleted: function (username) { return 'User \'' + username + '\' was deleted'; },
+    read: function (username) { return 'User \'' + username + ' \' was read'; },
+    restored: function (username, version) { return 'User \'' + username + '\' was restored with data from version ' + version; },
+    updated: function (username) { return 'User \'' + username + '\' was updated'; }
   },
   panel: {
-    created: function (title) { return 'Panel \'' + title + '\' was successfully created'; },
-    updated: function (title) { return 'Panel \'' + title + '\' was successfully updated'; },
-    error: 'Could not create panel'
+    created: function (title) { return 'Panel \'' + title + '\' was created'; },
+    deleted: function (title) { return 'Panel \'' + title + '\' was deleted'; },
+    read: function (title) { return 'Panel \'' + title + ' \' was read'; },
+    restored: function (title, version) { return 'Panel \'' + title + '\' was restored with data from version ' + version; },
+    updated: function (title) { return 'Panel \'' + title + '\' was updated'; }
   },
   project: {
-    created: function (title) { return 'Panel \'' + title + '\' was successfully created'; },
-    error: 'Could not create project'
+    created: function (title) { return 'Project \'' + title + '\' was created'; },
+    deleted: function (title) { return 'Project \'' + title + '\' was deleted'; },
+    read: function (title) { return 'Project \'' + title + ' \' was read'; },
+    restored: function (title, version) { return 'Project \'' + title + '\' was restored with data from version ' + version; },
+    updated: function (title) { return 'Project \'' + title + '\' was updated'; }
   },
   service: {
-    created: function (title) { return 'Service \'' + title + '\' was successfully created'; },
-    updated: function (title) { return 'Service \'' + title + '\' was successfully updated'; }
+    created: function (title) { return 'Service \'' + title + '\' was created'; },
+    deleted: function (title) { return 'Service \'' + title + '\' was deleted'; },
+    read: function (title) { return 'Service \'' + title + ' \' was read'; },
+    restored: function (title, version) { return 'Service \'' + title + '\' was restored with data from version ' + version; },
+    updated: function (title) { return 'Service \'' + title + '\' was updated'; }
   },
 
   /**
    * Unbound CRUD messages
    */
 
-  created: function (title) { return '\'' + title + '\' was successfully created'; },
-  updated: function (title) { return '\'' + title + '\' was successfully updated'; },
-  restored: function (title) { return '\'' + title + '\' was successfully restored'; },
-
+  created: function (title) { return '\'' + title + '\' was created'; },
+  deleted: function (title) { return '\'' + title + '\' was deleted'; },
+  read: function (title) { return '\'' + title + ' \' was read'; },
+  restored: function (title, version) { return '\'' + title + '\' was restored with data from version ' + version; },
+  updated: function (title) { return '\'' + title + '\' was updated'; },
+  
   /*
    * Field validation messages
    */

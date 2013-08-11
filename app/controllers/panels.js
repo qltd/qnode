@@ -160,7 +160,7 @@ exports.restore = function (req, res) {
       return Q.ninvoke(panel, 'save');
     })
     .then(function () {
-      req.flash('success', msg.panel.updated(data.title));
+      req.flash('success', msg.panel.restored(data.title, req.params.__v));
       return res.redirect('/panels');
     })
     .fail(function (err) {
