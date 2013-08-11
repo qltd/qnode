@@ -10,7 +10,9 @@ if sessionUser
             =sessionUser.username
           p 
             =sessionUser.email
-            br 
+            br
+            a(href='/users/' + sessionUser.username) Profile
+            a(href='/users') User Index
             a.logout(href="/users/logout") <i class="icon-off"></i> Logout
       li.drop-down 
         i.icon-pencil 

@@ -17,6 +17,7 @@ block body_content
               i.icon-chevron-up
             th.by Updated By
               i.icon-chevron-up
+            th.log Log
             th.edit Edit
             
         tbody
@@ -38,6 +39,8 @@ block body_content
               td
                 a(href='/users/' + user.username + '/edit')
                   = updatedBy(user)
+              td
+                a(href='/users/' + user.username + '/log') Log
               td
                 a(href='/users/' + user.username + '/edit') Edit
 

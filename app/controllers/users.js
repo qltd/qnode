@@ -170,7 +170,6 @@ exports.restore = function (req, res) {
       return res.redirect('/users');
     })
     .fail(function (err) {
-      console.log(err);
       return res.render('500');
     });
 }

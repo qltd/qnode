@@ -56,10 +56,16 @@ module.exports = {
   title: {
       isNull: 'Title cannot be empty'
   },
-  
-  created: function (title) { return 'Panel \'' + title + '\' was successfully created'; },
-  updated: function (title) { return 'Panel \'' + title + '\' was successfully updated'; },
+  email: {
+      notEmail: 'Email address must be valid',
+      isNull: 'Email address cannot be empty'
+  },
 
   default: 'Sorry! There was an error',
+  
+  created: function (title) { return '\'' + title + '\' was successfully created'; },
+  updated: function (title) { return '\'' + title + '\' was successfully updated'; },
+  restored: function (title) { return '\'' + title + '\' was successfully restored'; },
+
   notUnique: function (collectionField, fieldValue) { return collectionField + ' \'' + fieldValue + '\' already exists, please enter another'; }
 }

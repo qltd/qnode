@@ -32,7 +32,6 @@ exports.index = function (req, res) {
       return res.render('panels');
     })
     .fail(function (err) {
-      console.log(err);
       return res.render('500');
     });
 }
