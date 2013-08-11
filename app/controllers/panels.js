@@ -17,7 +17,7 @@ var Panel = mongoose.model('Panel');
  * Other dependencies
  */
 
-var message = require('../../config/messages.js')['panel']
+var msg = require('../../config/messages')
   , utils = require('../../lib/utils');
 
 /**
@@ -105,7 +105,7 @@ exports.create = function (req, res) {
       req.flash('panel', panel);
       return res.redirect('/panels/new');
     } else {
-      req.flash('success', message.created(panel.title));
+      req.flash('success', msg.panel.created(panel.title));
       return res.redirect('/panels');
     }
   });
@@ -124,7 +124,7 @@ exports.update = function (req, res) {
       return Q.ninvoke(panel, 'save');
     })
     .then(function () {
-      req.flash('success', message.updated(req.body.title));
+      req.flash('success', msg.panel.updated(req.body.title));
       return res.redirect('/panels');
     })
     .fail(function (err) {
@@ -165,7 +165,7 @@ exports.restore = function (req, res) {
       return Q.ninvoke(panel, 'save');
     })
     .then(function () {
-      req.flash('success', message.updated(data.title));
+      req.flash('success', msg.panel.updated(data.title));
       return res.redirect('/panels');
     })
     .fail(function (err) {

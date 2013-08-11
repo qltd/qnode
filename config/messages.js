@@ -1,31 +1,15 @@
 
 module.exports = {
 
+  /**
+   * Model CRUD messages
+   */
+
   contact: {
-    name: {
-      isNull: 'Name cannot be empty'
-    },
-    email: {
-      isNull: 'Email address cannot be empty',
-      notEmail: 'Email address must be valid'
-    },
-    company: {},
-    comments: {},
-    success: function (name) { return 'Thank you for contacting us, ' + name + '! We\'ll respond per your comments.' }
+    created: function (name) { return 'Thank you for contacting us, ' + name + '! We\'ll respond per your comments.' }
   },
 
   user: {
-    username: {
-      isNull: 'Username cannot be empty',
-      notUnique: function (username) { return 'Username \'' + username + '\' already exists'; }
-    },
-    email: {
-      notEmail: 'Email address must be valid',
-      isNull: 'Email address cannot be empty'
-    },
-    password: {
-      isNull: 'Password cannot be empty'
-    },
     authenticated:  function (username) { return 'Successfully authenticated as \'' + username + '\''; },
     created: function (username) { return 'User \'' + username + '\' was successfully created'; },
     updated: function (username) { return 'User \'' + username + '\' was successfully updated'; },
@@ -33,39 +17,58 @@ module.exports = {
   },
 
   panel: {
-    title: {
-      isNull: 'Title cannot be empty'
-    },
-    body: {
-      isNull: 'Body cannot be empty'
-    },
     created: function (title) { return 'Panel \'' + title + '\' was successfully created'; },
     updated: function (title) { return 'Panel \'' + title + '\' was successfully updated'; },
     error: 'Could not create panel'
   },
 
   project: {
-    client: {
-      isNull: 'Client cannot be empty'
-    },
     created: function (title) { return 'Panel \'' + title + '\' was successfully created'; },
-    error: 'Could not create panel'
+    error: 'Could not create project'
   },
 
-  // responses to specific fields
-  title: {
-      isNull: 'Title cannot be empty'
-  },
-  email: {
-      notEmail: 'Email address must be valid',
-      isNull: 'Email address cannot be empty'
+  service: {
+    created: function (title) { return 'Service \'' + title + '\' was successfully created'; },
+    updated: function (title) { return 'Service \'' + title + '\' was successfully updated'; }
   },
 
-  default: 'Sorry! There was an error',
-  
+  /**
+   * Unbound CRUD messages
+   */
+
   created: function (title) { return '\'' + title + '\' was successfully created'; },
   updated: function (title) { return '\'' + title + '\' was successfully updated'; },
   restored: function (title) { return '\'' + title + '\' was successfully restored'; },
 
+  /*
+   * Field validation messages
+   */
+
+  client: {
+    isNull: 'Client cannot be empty'
+  },
+  email: {
+    notEmail: 'Email address must be valid',
+    isNull: 'Email address cannot be empty'
+  },
+  name: {
+    isNull: 'Name cannot be empty'
+  },
+  password: {
+    isNull: 'Password cannot be empty'
+  },
+  title: {
+    isNull: 'Title cannot be empty'
+  },
+  username: {
+    isNull: 'Username cannot be empty'
+  },
+
+  /**
+   * Unbound validation messages
+   */
+
+  default: 'Sorry! There was an error',
   notUnique: function (collectionField, fieldValue) { return collectionField + ' \'' + fieldValue + '\' already exists, please enter another'; }
+  
 }

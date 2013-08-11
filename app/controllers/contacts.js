@@ -16,7 +16,7 @@ var Contact = mongoose.model('Contact');
  * Other dependencies
  */
 
-var message = require('../../config/messages.js')['contact']
+var msg = require('../../config/messages')
   , utils = require('../../lib/utils');
 
 /**
@@ -48,7 +48,7 @@ exports.create = function (req, res) {
       req.flash('contact', contact);
       return res.redirect('/');
     } else {
-      req.flash('success', message.success(contact.name));
+      req.flash('success', msg.contact.created(contact.name));
       return res.redirect('/');
     }
   });

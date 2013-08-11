@@ -17,7 +17,7 @@ var ChangeLogSchema = mongoose.model('ChangeLog').schema
  * Other dependencies
  */
 
-var message = require('../../config/messages')['project']
+var msg = require('../../config/messages')
   , sanitize = require('validator').sanitize
   , validate = require('../../lib/utils').check;
 
@@ -28,7 +28,7 @@ var message = require('../../config/messages')['project']
 var ProjectSchema = new Schema({
   client: {
     type: String,
-    validate: [ validate.notNull, message.client.isNull ]
+    validate: [ validate.notNull, msg.client.isNull ]
   },
   slug: String,
   description: String,

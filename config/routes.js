@@ -23,7 +23,7 @@ module.exports = function(app, passport) {
 
   // user authentication
   app.get('/users/login', users.login);
-  app.post('/users/login',  passport.authenticate('local', {
+  app.post('/users/login', passport.authenticate('local', {
     failureRedirect: '/users/login',
     failureFlash: 'Username or password is incorrect!'
   }), users.authenticate);

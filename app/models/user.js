@@ -18,7 +18,7 @@ var ChangeLogSchema = mongoose.model('ChangeLog').schema;
  * Other dependencies
  */
 
-var message = require('../../config/messages.js')['user']
+var msg = require('../../config/messages')
   , sanitize = require('validator').sanitize
   , validate = require('../../lib/utils').check;
 
@@ -29,14 +29,14 @@ var message = require('../../config/messages.js')['user']
 var UserSchema = new Schema({
   username: { 
     type: String, 
-    validate: [ validate.notNull, message.username.isNull ], 
+    validate: [ validate.notNull, msg.username.isNull ], 
     index: { unique: true }
   },
   email: { 
     type: String, 
     validate: [
-      { validator: validate.isEmail, msg: message.email.notEmail },
-      { validator: validate.notNull, msg: message.email.isNull }
+      { validator: validate.isEmail, msg: msg.email.notEmail },
+      { validator: validate.notNull, msg: msg.email.isNull }
     ]
   },
   hash: String,
@@ -92,7 +92,7 @@ UserSchema.pre('validate', function(next) {
 
 UserSchema.path('hash').validate(function(v){
   if (!validate.notNull(this._password) && this.isNew) {
-    this.invalidate('password', message.password.isNull);
+    this.invalidate('password', msg.password.isNull);
   }
 }, null);
 

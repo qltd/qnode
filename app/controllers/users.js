@@ -17,7 +17,7 @@ var User = mongoose.model('User');
  * Other dependencies
  */
 
-var message = require('../../config/messages.js')['user']
+var msg = require('../../config/messages')
   , utils = require('../../lib/utils')
 
 /**
@@ -106,7 +106,7 @@ exports.create = function (req, res) {
       req.flash('user', user);
       return res.redirect('/users/new');
     } else {
-      req.flash('success', message.created(user.username));
+      req.flash('success', msg.user.created(user.username));
       return res.redirect('/users');
     }
   });
@@ -125,7 +125,7 @@ exports.update = function (req, res) {
       return Q.ninvoke(user, 'save');
     })
     .then(function () {
-      req.flash('success', message.updated(req.body.username));
+      req.flash('success', msg.user.updated(req.body.username));
       return res.redirect('/users');
     })
     .fail(function (err) {
@@ -166,7 +166,7 @@ exports.restore = function (req, res) {
       return Q.ninvoke(user, 'save');
     })
     .then(function () {
-      req.flash('success', message.updated(data.username));
+      req.flash('success', msg.user.updated(data.username));
       return res.redirect('/users');
     })
     .fail(function (err) {
@@ -200,7 +200,7 @@ exports.login = function (req, res) {
 
 exports.authenticate = function (req, res) {
   // THIS FOLLOWS passport.authenticate in /config/routes.js
-  req.flash('success', message.authenticated(req.user.username));
+  req.flash('success', msg.user.authenticated(req.user.username));
   res.redirect('/');
 } 
 

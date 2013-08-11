@@ -17,7 +17,7 @@ var Service = mongoose.model('Service');
  * Other dependencies
  */
 
-var message = require('../../config/messages.js')
+var msg = require('../../config/messages')
   , utils = require('../../lib/utils');
 
 /**
@@ -105,7 +105,7 @@ exports.create = function (req, res) {
       req.flash('service', service);
       return res.redirect('/services/new');
     } else {
-      req.flash('success', message.created(service.title));
+      req.flash('success', msg.service.created(service.title));
       return res.redirect('/services');
     }
   });
@@ -124,7 +124,7 @@ exports.update = function (req, res) {
       return Q.ninvoke(service, 'save');
     })
     .then(function () {
-      req.flash('success', message.updated(req.body.title));
+      req.flash('success', msg.service.updated(req.body.title));
       return res.redirect('/services');
     })
     .fail(function (err) {
@@ -165,7 +165,7 @@ exports.restore = function (req, res) {
       return Q.ninvoke(service, 'save');
     })
     .then(function () {
-      req.flash('success', message.updated(data.title));
+      req.flash('success', msg.service.updated(data.title));
       return res.redirect('/services');
     })
     .fail(function (err) {

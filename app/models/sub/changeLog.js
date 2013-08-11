@@ -3,12 +3,8 @@
  * Module dependencies
  */
 
-var message = require('../../../config/messages.js')
-  , mongoose = require('mongoose')
-  , Q = require('q')
-  , sanitize = require('validator').sanitize
-  , Schema = mongoose.Schema
-  , validate = require('../../../lib/utils').check;
+var mongoose = require('mongoose')
+  , Schema = mongoose.Schema;
 
 /**
  * Change log schema
@@ -16,7 +12,6 @@ var message = require('../../../config/messages.js')
 
 var ChangeLogSchema = new Schema({
   user: { type : Schema.ObjectId, ref : 'User' },
-  username: { type: String, default: 'anonymous' }, 
   data: Object
 });
 
@@ -41,11 +36,5 @@ ChangeLogSchema.methods = {
     return { data: dataObj, user: data._meta.userId };
   }
 }
-
-/**
- * Post-init hook
- */
-
-ChangeLogSchema.post('init', function (changeLog, next, done) {});
 
 mongoose.model('ChangeLog', ChangeLogSchema);

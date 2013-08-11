@@ -16,7 +16,7 @@ var Project = mongoose.model('Project');
  * Other dependencies
  */
 
-var message = require('../../config/messages.js')['project']
+var msg = require('../../config/messages')
   , utils = require('../../lib/utils');
 
 /**
@@ -93,7 +93,7 @@ exports.create = function (req, res) {
       req.flash('project', project);
       return res.redirect('/projects/new');
     } else {
-      req.flash('success', message.created(project.title));
+      req.flash('success', msg.project.created(project.title));
       return res.redirect('/projects');
     }
   });

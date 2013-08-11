@@ -16,7 +16,7 @@ var ChangeLogSchema = mongoose.model('ChangeLog').schema;
  * Other dependencies
  */
 
-var message = require('../../config/messages.js')['panel']
+var msg = require('../../config/messages')
   , sanitize = require('validator').sanitize
   , validate = require('../../lib/utils').check;
 
@@ -27,7 +27,7 @@ var message = require('../../config/messages.js')['panel']
 var PanelSchema = new Schema({
   title: {
     type: String,
-    validate: [ validate.notNull, message.title.isNull ]
+    validate: [ validate.notNull, msg.title.isNull ]
   },
   body: String,
   slug: String,

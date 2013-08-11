@@ -16,7 +16,7 @@ var ChangeLogSchema = mongoose.model('ChangeLog').schema;
  * Other dependencies
  */
 
-var message = require('../../config/messages.js')['contact']
+var msg = require('../../config/messages')
   , sanitize = require('validator').sanitize
   , validate = require('../../lib/utils').check;
 
@@ -27,13 +27,13 @@ var message = require('../../config/messages.js')['contact']
 var ContactSchema = new Schema({
   name: {
     type: String,
-    validate: [ validate.notNull, message.name.isNull ]
+    validate: [ validate.notNull, msg.name.isNull ]
   },
   email: {
     type: String,
     validate: [
-      { validator: validate.isEmail, msg: message.email.notEmail },
-      { validator: validate.notNull, msg: message.email.isNull }
+      { validator: validate.isEmail, msg: msg.email.notEmail },
+      { validator: validate.notNull, msg: msg.email.isNull }
     ]
   },
   company: String,
