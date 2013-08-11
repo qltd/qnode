@@ -19,5 +19,3 @@ npm-debug.log
 .DS_Store
 .foreverignore
 codekit-config.json
-
-tmp/*
