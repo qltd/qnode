@@ -7,17 +7,13 @@ var mongoose = require('mongoose')
   , Q = require('q');
 
 /**
- * Model dependencies
+ * Models
  */
 
 var Contact = mongoose.model('Contact')
   , Panel = mongoose.model('Panel')
   , Project = mongoose.model('Project')
   , Service = mongoose.model('Service');
-
-/**
- * Other dependencies
- */
 
 /**
  * Index

@@ -4,20 +4,15 @@
  */
 
 var mongoose = require('mongoose')
-  , Q = require('q');
+  , msg = require('../../config/messages')
+  , Q = require('q')
+  , utils = require('../../lib/utils');
 
 /**
- * Model dependencies
+ * Models
  */
 
 var Contact = mongoose.model('Contact');
-
-/**
- * Other dependencies
- */
-
-var msg = require('../../config/messages')
-  , utils = require('../../lib/utils');
 
 /**
  * Index

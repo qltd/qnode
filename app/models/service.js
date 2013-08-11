@@ -4,21 +4,16 @@
  */
 
 var mongoose = require('mongoose')
-  , Schema = mongoose.Schema;
+  , msg = require('../../config/messages.js')
+  , sanitize = require('validator').sanitize
+  , Schema = mongoose.Schema
+  , validate = require('../../lib/utils').check;
 
 /**
  * Schema dependencies; subdocuments
  */
 
 var ChangeLogSchema = mongoose.model('ChangeLog').schema;
-
-/**
- * Other dependencies
- */
-
-var msg = require('../../config/messages.js')
-  , sanitize = require('validator').sanitize
-  , validate = require('../../lib/utils').check;
 
 /**
  * Service schema

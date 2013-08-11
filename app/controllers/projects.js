@@ -4,20 +4,15 @@
  */
 
 var fs = require('fs')
-  , mongoose = require('mongoose');
+  , mongoose = require('mongoose')
+  , msg = require('../../config/messages')
+  , utils = require('../../lib/utils');
 
 /**
- * Model dependencies
+ * Models
  */
 
 var Project = mongoose.model('Project');
-
-/**
- * Other dependencies
- */
-
-var msg = require('../../config/messages')
-  , utils = require('../../lib/utils');
 
 /**
  * Index

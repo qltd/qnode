@@ -4,7 +4,10 @@
  */
 
 var mongoose = require('mongoose')
-  , Schema = mongoose.Schema;
+  , msg = require('../../config/messages')
+  , sanitize = require('validator').sanitize
+  , Schema = mongoose.Schema
+  , validate = require('../../lib/utils').check;
 
 /**
  * Schema dependencies; subdocuments
@@ -12,14 +15,6 @@ var mongoose = require('mongoose')
 
 var ChangeLogSchema = mongoose.model('ChangeLog').schema
   , ImageSchema = mongoose.model('Image').schema;
-
-/**
- * Other dependencies
- */
-
-var msg = require('../../config/messages')
-  , sanitize = require('validator').sanitize
-  , validate = require('../../lib/utils').check;
 
 /**
  * Project schema

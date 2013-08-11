@@ -4,21 +4,16 @@
  */
 
 var mongoose = require('mongoose')
+  , msg = require('../../config/messages')
   , Q = require('q')
+  , utils = require('../../lib/utils')
   , _ = require('underscore');
 
 /**
- * Model dependencies
+ * Models
  */
 
 var User = mongoose.model('User');
-
-/**
- * Other dependencies
- */
-
-var msg = require('../../config/messages')
-  , utils = require('../../lib/utils')
 
 /**
  * Index
