@@ -8,25 +8,21 @@ module.exports = {
   contact: {
     created: function (name) { return 'Thank you for contacting us, ' + name + '! We\'ll respond per your comments.' }
   },
-
   user: {
     authenticated:  function (username) { return 'Successfully authenticated as \'' + username + '\''; },
     created: function (username) { return 'User \'' + username + '\' was successfully created'; },
     updated: function (username) { return 'User \'' + username + '\' was successfully updated'; },
     error: 'Could not create user'
   },
-
   panel: {
     created: function (title) { return 'Panel \'' + title + '\' was successfully created'; },
     updated: function (title) { return 'Panel \'' + title + '\' was successfully updated'; },
     error: 'Could not create panel'
   },
-
   project: {
     created: function (title) { return 'Panel \'' + title + '\' was successfully created'; },
     error: 'Could not create project'
   },
-
   service: {
     created: function (title) { return 'Service \'' + title + '\' was successfully created'; },
     updated: function (title) { return 'Service \'' + title + '\' was successfully updated'; }
