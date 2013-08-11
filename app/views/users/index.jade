@@ -3,7 +3,7 @@ extends ../layouts/default
 block body_content
   article.panel
     div.container
-      a.btn.new-btn(href='/user/new') New User
+      a.btn.new-btn(href='/users/new') New User
       table.edit-content
         thead
           tr
@@ -24,22 +24,22 @@ block body_content
             tr
               td
                 strong 
-                  a(href='/user/' + user.username + '/edit')
+                  a(href='/users/' + user.username + '/edit')
                     = user.username
               td
-                a(href='/user/' + user.username + '/edit')
+                a(href='/users/' + user.username + '/edit')
                   = user.email
               td
-                a(href='/user/' + user.username + '/edit')
+                a(href='/users/' + user.username + '/edit')
                   = user.role
               td
-                a(href='/user/' + user.username + '/edit')
+                a(href='/users/' + user.username + '/edit')
                   = dateUpdated(user)
               td
-                a(href='/user/' + user.username + '/edit')
+                a(href='/users/' + user.username + '/edit')
                   = updatedBy(user)
               td
-                a(href='/user/' + user.username + '/edit') Edit
+                a(href='/users/' + user.username + '/edit') Edit
 
 block body_scripts
   script(src='/scripts/vendor/tablesorter/jquery.tablesorter.min.js')

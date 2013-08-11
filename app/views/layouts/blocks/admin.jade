@@ -11,25 +11,25 @@ if sessionUser
           p 
             =sessionUser.email
             br 
-            a.logout(href="/user/logout") <i class="icon-off"></i> Logout
+            a.logout(href="/users/logout") <i class="icon-off"></i> Logout
       li.drop-down 
         i.icon-pencil 
         | Edit Content 
         ul.menu-level-2
           li
-            a(href="/panel") 
+            a(href="/panels") 
               i.icon-tasks
               | Edit Panels
           li
-            a(href="/project") 
+            a(href="/projects") 
               i.icon-laptop
               | Edit Projects
           li
-            a(href="/service") 
+            a(href="/services") 
               i.icon-book
               | Edit Services
           li
-            a(href="/crew") 
+            a(href="/crews") 
               i.icon-group
               | Edit Crew
           li
@@ -37,7 +37,7 @@ if sessionUser
               i.icon-briefcase
               | Edit Clients
       li.drop-down
-        a(href="/contact")
+        a(href="/contacts")
           i.icon-envelope-alt 
           | View Contact Submissions
     i#close-toolbar.icon-chevron-left

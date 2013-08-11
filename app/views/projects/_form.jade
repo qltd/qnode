@@ -5,7 +5,7 @@ block body_content
     .container
       if page_heading
         h1= page_heading 
-      form.admin-form(method='post', action='/project/new', enctype='multipart/form-data')
+      form.admin-form(method='post', action='/projects/new', enctype='multipart/form-data')
         #client
           input(type='text', name='client', placeholder='Client*', value=project.client)
         #description

@@ -16,7 +16,12 @@ var Contact = mongoose.model('Contact')
   , Service = mongoose.model('Service');
 
 /**
+ * Other dependencies
+ */
+
+/**
  * Index
+ * GET /
  */
 
 exports.index = function (req, res) {

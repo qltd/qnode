@@ -3,7 +3,7 @@ extends ../layouts/default
 block body_content
   article.panel
     div.container
-      a.btn.new-btn(href='/service/new') New Service
+      a.btn.new-btn(href='/services/new') New Service
       table.edit-content
         thead
           tr
@@ -22,22 +22,22 @@ block body_content
           - each service in services
             tr
               td
-                a(href='/service/' + service.slug + '/edit')
+                a(href='/services/' + service.slug + '/edit')
                   = service.position
               td
                 strong 
-                  a(href='/service/' + service.slug + '/edit')
+                  a(href='/services/' + service.slug + '/edit')
                     = service.title
               td
-                a(href='/service/' + service.slug + '/edit')
+                a(href='/services/' + service.slug + '/edit')
                   = dateUpdated(service)
               td
-                a(href='/service/' + service.slug + '/edit')
+                a(href='/services/' + service.slug + '/edit')
                   = updatedBy(service)
               td
-                a(href='/service/' + service.slug + '/log') Log
+                a(href='/services/' + service.slug + '/log') Log
               td
-                a(href='/service/' + service.slug + '/edit') Edit
+                a(href='/services/' + service.slug + '/edit') Edit
 
 block body_scripts
   script(src='/scripts/vendor/tablesorter/jquery.tablesorter.min.js')

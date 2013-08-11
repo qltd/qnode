@@ -1,15 +1,27 @@
+
 /**
  * Module dependencies
  */
 
+var fs = require('fs')
+  , mongoose = require('mongoose');
+
+/**
+ * Model dependencies
+ */
+
+var Project = mongoose.model('Project');
+
+/**
+ * Other dependencies
+ */
+
 var message = require('../../config/messages.js')['project']
-  , mongoose = require('mongoose')
-  , Project = mongoose.model('Project')
-  , utils = require('../../lib/utils')
-  , fs = require('fs');
+  , utils = require('../../lib/utils');
 
 /**
  * Index
+ * GET /projects
  */
 
 exports.index = function (req, res) {
@@ -22,7 +34,13 @@ exports.index = function (req, res) {
 }
 
 /**
- * New Project
+ * Show
+ *
+ */
+
+/**
+ * New
+ * GET /projects/new
  */
 
 exports.new = function (req, res) {
@@ -37,7 +55,13 @@ exports.new = function (req, res) {
 }
 
 /**
- * Create Project
+ * Edit
+ *
+ */
+
+/**
+ * Create
+ * POST /projects/new
  */
 
 exports.create = function (req, res) {
@@ -67,10 +91,25 @@ exports.create = function (req, res) {
     if (err) {
       req.flash('error', utils.errors(err));
       req.flash('project', project);
-      return res.redirect('/project/new');
+      return res.redirect('/projects/new');
     } else {
       req.flash('success', message.created(project.title));
-      return res.redirect('/project');
+      return res.redirect('/projects');
     }
   });
 }
+
+/**
+ * Update
+ *
+ */
+
+/**
+ * changeLog index
+ * 
+ */
+
+/**
+ * changeLog restore
+ * 
+ */

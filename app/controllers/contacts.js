@@ -2,10 +2,8 @@
  * Module dependencies
  */
 
-var message = require('../../config/messages.js')['contact']
-  , mongoose = require('mongoose')
-  , Q = require('q')
-  , utils = require('../../lib/utils');
+var mongoose = require('mongoose')
+  , Q = require('q');
 
 /**
  * Model dependencies
@@ -14,7 +12,15 @@ var message = require('../../config/messages.js')['contact']
 var Contact = mongoose.model('Contact');
 
 /**
+ * Other dependencies
+ */
+
+var message = require('../../config/messages.js')['contact']
+  , utils = require('../../lib/utils');
+
+/**
  * Index
+ * GET /contacts
  */
 
 exports.index = function (req, res) {
@@ -29,7 +35,8 @@ exports.index = function (req, res) {
 }
 
 /**
- * Create contact
+ * Create
+ * POST /contacts/new
  */
 
 exports.create = function (req, res) {

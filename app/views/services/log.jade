@@ -33,7 +33,7 @@ block body_content
               td
                 = ( change.user ? change.user.username : createdBy(service) )
               td
-                a(href='/service/' + service.slug + '/log/' + change.data.__v + '/restore' ) 
+                a(href='/services/' + service.slug + '/log/' + change.data.__v + '/restore' ) 
                   | Restore  
 
 block body_scripts

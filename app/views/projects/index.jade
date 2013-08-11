@@ -3,7 +3,7 @@ extends ../layouts/default
 block body_content
   article.project-listing.panel
     div.container
-      a.btn.new-btn(href='/project/new') New Project
+      a.btn.new-btn(href='/projects/new') New Project
       table.edit-content
         thead
           tr
@@ -20,16 +20,16 @@ block body_content
             tr
               td
                 strong 
-                  a(href='/project/' + project.slug + '/edit')
+                  a(href='/projects/' + project.slug + '/edit')
                     = project.title
               td
-                a(href='/project/' + project.slug + '/edit')
+                a(href='/projects/' + project.slug + '/edit')
                   = dateUpdated(project)
               td
-                a(href='/project/' + project.slug + '/edit')
+                a(href='/projects/' + project.slug + '/edit')
                   = updatedBy(project)
               td
-                a(href='/project/' + project.slug + '/edit') Edit
+                a(href='/projects/' + project.slug + '/edit') Edit
 
 block body_scripts
   script(src='/scripts/vendor/tablesorter/jquery.tablesorter.min.js')

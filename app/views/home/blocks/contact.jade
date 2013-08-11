@@ -4,7 +4,7 @@ if panel && panel.Contact
       h2= panel.Contact.title
       .content
         p= panel.Contact.body
-        form(action='/contact/new', method='post')
+        form(action='/contacts/new', method='post')
           input(name='name', placeholder='Name*', type='text', value=contact.name)
           input(name='email', placeholder='Email*', type='text', value=contact.email)
           input(name='company', placeholder='Company*', type='text', value=contact.company)

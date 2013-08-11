@@ -5,7 +5,7 @@ block body_content
     .container
       if page_heading
         h1= page_heading 
-      form(method='post', action=form_action)
+      form(method='post')
         #username
           input(type='text', name='username', placeholder='Username*', value=user.username)
         #password

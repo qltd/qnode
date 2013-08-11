@@ -1,11 +1,10 @@
+
 /**
  * Module dependencies
  */
 
-var message = require('../../config/messages.js')['panel']
-  , mongoose = require('mongoose')
+var mongoose = require('mongoose')
   , Q = require('q')
-  , utils = require('../../lib/utils')
   , _ = require('underscore');
 
 /**
@@ -15,60 +14,15 @@ var message = require('../../config/messages.js')['panel']
 var Panel = mongoose.model('Panel');
 
 /**
- * Show
+ * Other dependencies
  */
 
-exports.show = function (req, res) {
-  Q.ninvoke(Panel, 'findOne', { slug: req.params.slug })
-    .then(function (panel) {
-      if (!panel) return res.render('404');
-      res.locals.panel = ( req.params.__v && panel.changeLog[req.params.__v] ? _.extend(panel, panel.changeLog[req.params.__v].data) : panel );
-      return res.render('panels/show');
-    })
-    .fail(function (err) {
-      return res.render('500');
-    });
-}
-
-/**
- * Edit
- */
-
-exports.edit = function (req, res) {
-  Q.ninvoke(Panel, 'findOne', { slug: req.params.slug })
-    .then(function (panel) {
-      if (!panel) return res.render('404');
-      res.locals.panel = panel;
-      return res.render('panels/edit');
-    })
-    .fail(function (err) {
-      return res.render('500');
-    });
-}
-
-/**
- * Update
- */
-
-exports.update = function (req, res) {
-  Q.ninvoke(Panel, 'findOne', { slug: req.params.slug })
-    .then(function (panel) {
-      if (!panel) return res.render('404');
-      panel = _.extend(panel, req.body);
-      return Q.ninvoke(panel, 'save');
-    })
-    .then(function () {
-      req.flash('success', message.updated(req.body.title));
-      return res.redirect('/panel');
-    })
-    .fail(function (err) {
-      req.flash('error', utils.errors(err));
-      return res.redirect('/panel/' + req.params.slug + '/edit');
-    });
-}
+var message = require('../../config/messages.js')['panel']
+  , utils = require('../../lib/utils');
 
 /**
  * Index
+ * GET /panels
  */
 
 exports.index = function (req, res) {
@@ -84,7 +38,26 @@ exports.index = function (req, res) {
 }
 
 /**
- * New panel
+ * Show
+ * GET /panels/:slug
+ * GET /panels/:slug/log/:__v
+ */
+
+exports.show = function (req, res) {
+  Q.ninvoke(Panel, 'findOne', { slug: req.params.slug })
+    .then(function (panel) {
+      if (!panel) return res.render('404');
+      res.locals.panel = ( req.params.__v && panel.changeLog[req.params.__v] ? _.extend(panel, panel.changeLog[req.params.__v].data) : panel );
+      return res.render('panels/show');
+    })
+    .fail(function (err) {
+      return res.render('500');
+    });
+}
+
+/**
+ * New
+ * GET /panels/new
  */
 
 exports.new = function (req, res) {
@@ -104,7 +77,25 @@ exports.new = function (req, res) {
 }
 
 /**
- * Create panel
+ * Edit
+ * GET /panels/:slug/edit
+ */
+
+exports.edit = function (req, res) {
+  Q.ninvoke(Panel, 'findOne', { slug: req.params.slug })
+    .then(function (panel) {
+      if (!panel) return res.render('404');
+      res.locals.panel = panel;
+      return res.render('panels/edit');
+    })
+    .fail(function (err) {
+      return res.render('500');
+    });
+}
+
+/**
+ * Create
+ * POST /panels/new
  */
 
 exports.create = function (req, res) {
@@ -113,16 +104,39 @@ exports.create = function (req, res) {
     if (err) {
       req.flash('error', utils.errors(err));
       req.flash('panel', panel);
-      return res.redirect('/panel/new');
+      return res.redirect('/panels/new');
     } else {
       req.flash('success', message.created(panel.title));
-      return res.redirect('/panel');
+      return res.redirect('/panels');
     }
   });
 }
 
 /**
- * Show change log
+ * Update
+ * POST /panels/:slug/edit
+ */
+
+exports.update = function (req, res) {
+  Q.ninvoke(Panel, 'findOne', { slug: req.params.slug })
+    .then(function (panel) {
+      if (!panel) return res.render('404');
+      panel = _.extend(panel, req.body);
+      return Q.ninvoke(panel, 'save');
+    })
+    .then(function () {
+      req.flash('success', message.updated(req.body.title));
+      return res.redirect('/panels');
+    })
+    .fail(function (err) {
+      req.flash('error', utils.errors(err));
+      return res.redirect('/panels/' + req.params.slug + '/edit');
+    });
+}
+
+/**
+ * changeLog index
+ * GET /panels/:slug/log
  */
 
 exports.log = function (req, res) {
@@ -138,7 +152,8 @@ exports.log = function (req, res) {
 }
 
 /**
- * Restore from log
+ * changeLog restore
+ * GET /panels/:slug/log/:__v/restore
  */
 
 exports.restore = function (req, res) {
@@ -152,7 +167,7 @@ exports.restore = function (req, res) {
     })
     .then(function () {
       req.flash('success', message.updated(data.title));
-      return res.redirect('/panel');
+      return res.redirect('/panels');
     })
     .fail(function (err) {
       return res.render('500');

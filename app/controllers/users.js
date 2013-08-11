@@ -3,16 +3,26 @@
  * Module dependencies
  */
 
-var message = require('../../config/messages.js')['user']
-  , mongoose = require('mongoose')
+var mongoose = require('mongoose')
   , Q = require('q')
-  , utils = require('../../lib/utils')
   , _ = require('underscore');
+
+/**
+ * Model dependencies
+ */
 
 var User = mongoose.model('User');
 
 /**
+ * Other dependencies
+ */
+
+var message = require('../../config/messages.js')['user']
+  , utils = require('../../lib/utils')
+
+/**
  * Index
+ * GET /users
  */
 
 exports.index = function (req, res) {
@@ -27,8 +37,14 @@ exports.index = function (req, res) {
 }
 
 /**
-* New user
-*/
+ * Show
+ * 
+ */
+
+/**
+ * New
+ * GET /users/new
+ */
 
 exports.new = function (req, res) {
   Q.fcall(function () {
@@ -39,7 +55,6 @@ exports.new = function (req, res) {
       res.locals.user = user;
       return res.render('users/new', { 
         page_heading: 'Sign-up', 
-        form_action: '/user/new', 
         submit_button_title: 'Sign-up',
       });
     })
@@ -49,26 +64,8 @@ exports.new = function (req, res) {
 }
 
 /**
- * Create user 
- */
-
-exports.create = function (req, res) {
-  var user = new User(req.body);
-
-  user.save(function(err) {
-    if(err) {
-      req.flash('error', utils.errors(err));
-      req.flash('user', user);
-      return res.redirect('/user/new');
-    } else {
-      req.flash('success', message.created(user.username));
-      return res.redirect('/user');
-    }
-  });
-}
-
-/**
  * Edit
+ * GET /users/:username/edit
  */
 
 exports.edit = function (req, res) {
@@ -84,7 +81,27 @@ exports.edit = function (req, res) {
 }
 
 /**
+ * Create
+ * POST /users/new 
+ */
+
+exports.create = function (req, res) {
+  var user = new User(req.body);
+  user.save(function(err) {
+    if(err) {
+      req.flash('error', utils.errors(err));
+      req.flash('user', user);
+      return res.redirect('/users/new');
+    } else {
+      req.flash('success', message.created(user.username));
+      return res.redirect('/users');
+    }
+  });
+}
+
+/**
  * Update
+ * POST /users/:username/edit
  */
 
 exports.update = function (req, res) {
@@ -96,35 +113,48 @@ exports.update = function (req, res) {
     })
     .then(function () {
       req.flash('success', message.updated(req.body.username));
-      return res.redirect('/user');
+      return res.redirect('/users');
     })
     .fail(function (err) {
       req.flash('error', utils.errors(err));
-      return res.redirect('/user/' + req.params.username + '/edit');
+      return res.redirect('/users/' + req.params.username + '/edit');
     });
 }
 
+/* * * * * * * * * *
+ * Authentication  *
+ * * * * * * * * * *
+ * Below functions extend the user model for authentication
+ */
+
 /**
- * Log-in form
+ * Login
+ * GET /users/login
  */
 
 exports.login = function (req, res) {
   res.render('users/login', { 
     page_heading: 'Login', 
-    form_action: '/user/login', 
     submit_button_title: 'Login',
     user: new User() 
   });
 }
 
 /**
- * Authentication
+ * Authenticate
+ * POST /users/login
  */
 
-exports.login.success = function (req, res) {
+exports.authenticate = function (req, res) {
+  // THIS FOLLOWS passport.authenticate in /config/routes.js
   req.flash('success', message.authenticated(req.user.username));
   res.redirect('/');
 } 
+
+/**
+ * Logout
+ * GET /users/logout
+ */
 
 exports.logout = function (req, res) {
   req.session.destroy();

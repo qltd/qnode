@@ -33,7 +33,7 @@ block body_content
               td
                 = ( change.user ? change.user.username : createdBy(panel) )
               td
-                a(href='/panel/' + panel.slug + '/log/' + change.data.__v + '/restore' ) 
+                a(href='/panels/' + panel.slug + '/log/' + change.data.__v + '/restore' ) 
                   | Restore  
 
 block body_scripts

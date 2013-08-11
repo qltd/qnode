@@ -3,7 +3,7 @@ extends ../layouts/default
 block body_content
   article.panel
     div.container
-      a.btn.new-btn(href='/panel/new') New Panel
+      a.btn.new-btn(href='/panels/new') New Panel
       table.edit-content
         thead
           tr
@@ -21,18 +21,18 @@ block body_content
             tr
               td
                 strong 
-                  a(href='/panel/' + panel.slug + '/edit')
+                  a(href='/panels/' + panel.slug + '/edit')
                     = panel.title
               td
-                a(href='/panel/' + panel.slug + '/edit')
+                a(href='/panels/' + panel.slug + '/edit')
                   = dateUpdated(panel)
               td
-                a(href='/panel/' + panel.slug + '/edit')
+                a(href='/panels/' + panel.slug + '/edit')
                   = updatedBy(panel)
               td
-                a(href='/panel/' + panel.slug + '/log') Log
+                a(href='/panels/' + panel.slug + '/log') Log
               td
-                a(href='/panel/' + panel.slug + '/edit') Edit
+                a(href='/panels/' + panel.slug + '/edit') Edit
 
 block body_scripts
   script(src='/scripts/vendor/tablesorter/jquery.tablesorter.min.js')
