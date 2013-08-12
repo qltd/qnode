@@ -5,10 +5,17 @@ block body_content
     .container
       if pageHeading
         h1= pageHeading 
-      form(method='post')
+      form(method='post', enctype='multipart/form-data')
         #title
           input(type='text', name='title', placeholder='Client Name*', value=_client.title)
         #url
           input(type='text', name='url', placeholder='Client URL', value=_client.url)
+        #image
+          .row
+            if _client.image[0] && _client.image[0].src
+              img(src=_client.image[0].src)
+            else
+            input.image(type='file', name='image[0]')
+            input.image-title(type='text', name='image[0][title]', placeholder='Image Title', value=( _client.image[0] ? _client.image[0].title : null ))
         #submit
           input(type='submit')

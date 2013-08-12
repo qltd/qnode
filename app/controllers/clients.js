@@ -95,6 +95,22 @@ exports.edit = function (req, res) {
 
 exports.create = function (req, res) {
   var client = new Client(req.body);
+
+  client.image.forEach(function (image, key) {
+    if (req.files.image[key].name) {
+      image = _.extend(image, req.files.image[key]);
+      Q.fcall(fs.rename, image.tmpPath, image.sysPath)
+        .then(function () {
+          return true;
+        })
+        .fail(function (err) {
+          return res.render('500');
+        });
+    } else {
+      image.remove();
+    }
+  });
+
   Q.ninvoke(client, 'save')
     .then(function () {
       req.flash('success', msg.client.created(client.title));
@@ -116,7 +132,16 @@ exports.update = function (req, res) {
   Q.ninvoke(Client, 'findOne', { slug: req.params.slug })
     .then(function (client) {
       if (!client) return res.render('404');
-      client = _.extend(client, req.body);
+      client = _.extend(client, _.omit(req.body, 'image'));
+      
+      req.files.image.forEach(function (image, key) {
+        if (image.name) { 
+          // image and data
+        } else if (client.image[key]) {
+          // data
+        }
+      });
+
       return Q.ninvoke(client, 'save');
     })
     .then(function () {
@@ -124,6 +149,7 @@ exports.update = function (req, res) {
       return res.redirect('/clients');
     })
     .fail(function (err) {
+      console.log(err);
       req.flash('error', utils.errors(err));
       return res.redirect('/clients/' + req.params.slug + '/edit');
     });
