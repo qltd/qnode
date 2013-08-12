@@ -6,7 +6,7 @@
 var fs = require('fs')
   , mongoose = require('mongoose')
   , msg = require('../../config/messages')
-  , Q = require('Q')
+  , Q = require('q')
   , utils = require('../../lib/utils')
   , _ = require('underscore');
 
