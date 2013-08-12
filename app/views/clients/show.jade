@@ -1,0 +1,10 @@
+extends ../layouts/default
+
+block body_content
+  article.panel
+    div.container
+      p
+        strong
+          = _client.title
+        br
+        a(href=_client.url)= _client.url

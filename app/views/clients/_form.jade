@@ -7,9 +7,8 @@ block body_content
         h1= pageHeading 
       form(method='post')
         #title
-          input(type='text', name='title', placeholder='Title*', value=client.title)
-        #body
-          textarea(name='body', placeholder='Body', cols='10', rows='5')
-            = client.body
+          input(type='text', name='title', placeholder='Client Name*', value=_client.title)
+        #url
+          input(type='text', name='url', placeholder='Client URL', value=_client.url)
         #submit
           input(type='submit')

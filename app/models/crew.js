@@ -30,6 +30,18 @@ var CrewSchema = new Schema({
 });
 
 /**
+ * Virtuals
+ */
+
+CrewSchema.virtual('_meta')
+  .set(function(metaData) {
+    this.__meta = metaData;
+  })
+  .get(function() { 
+    return this.__meta; 
+  });
+
+/**
  * Named scopes
  */
 

@@ -68,13 +68,11 @@ exports.create = function (req, res) {
     image = _.extend(image, req.files.images[key]);
     Q.fcall(fs.rename, image.tmpPath, image.sysPath)
       .then(function () {
-        return Q.fcall(fs.unlink, image.tmpPath);
-      })
-      .then(function () {
         return true;
       })
       .fail(function (err) {
-        return res.redirect('500');
+        console.log(err);
+        return res.render('500');
       });
   });
 

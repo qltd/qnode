@@ -54,6 +54,13 @@ module.exports = function(app, passport) {
   app.all('/clients*', auth.requiresLogin);
   app.get('/clients', clients.index);
   app.get('/clients/new', clients.new);
+  app.post('/clients/new', clients.create);
+  app.get('/clients/:slug', clients.show);
+  app.get('/clients/:slug/edit', clients.edit);
+  app.post('/clients/:slug/edit', clients.update);
+  app.get('/clients/:slug/log', clients.log);
+  app.get('/clients/:slug/log/:__v', clients.show);
+  app.get('/clients/:slug/log/:__v/restore', clients.restore);
 
   // crew
   app.all('/crew*', auth.requiresLogin);

@@ -25,10 +25,23 @@ var ClientSchema = new Schema({
     type: String,
     validate: [ validate.notNull, msg.title.isNull ]
   },
+  url: String,
   slug: String,
   image: [ ImageSchema ],
   changeLog: [ ChangeLogSchema ]
 });
+
+/**
+ * Virtuals
+ */
+
+ClientSchema.virtual('_meta')
+  .set(function(metaData) {
+    this.__meta = metaData;
+  })
+  .get(function() { 
+    return this.__meta; 
+  });
 
 /**
  * Named scopes
