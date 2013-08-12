@@ -31,10 +31,18 @@ var ClientSchema = new Schema({
 });
 
 /**
+ * Named scopes
+ */
+
+ClientSchema.namedScope('index', function() {
+  return this.populate('changeLog.user').sort('title');
+});
+
+/**
  * Pre-validation hook; Sanitizers
  */
 
-ClientSchema.pre('validate', function (next) {
+ClientSchema.pre('validate', function(next) {
   this.title = sanitize(this.title).escape();
   next();
 });
@@ -43,7 +51,7 @@ ClientSchema.pre('validate', function (next) {
  * Pre-save hook
  */
 
-ClientSchema.pre('save', function (next) {
+ClientSchema.pre('save', function(next) {
   this.slug = toSlug(this.title);
 
   // log changes
