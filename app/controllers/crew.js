@@ -14,7 +14,8 @@ var fs = require('fs')
  * Models
  */
 
-var Client = mongoose.model('Client');
+var Crew = mongoose.model('Crew');
+
 
 /**
  * Index
