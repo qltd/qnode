@@ -10,7 +10,9 @@ var auth = require('../app/middleware').authorization
  * Controllers
  */
 
-var contacts = require('../app/controllers/contacts')
+var clients = require('../app/controllers/clients')
+  , contacts = require('../app/controllers/contacts')
+  , crew = require('../app/controllers/crew')
   , users = require('../app/controllers/users')
   , home = require('../app/controllers/home')
   , panels = require('../app/controllers/panels')
@@ -49,8 +51,12 @@ module.exports = function(app, passport) {
   app.post('/contacts/new', contacts.create);
 
   // clients
+  app.all('/clients*', auth.requiresLogin);
+  app.get('/clients', clients.index);
+  app.get('/clients/new', clients.new);
 
   // crew
+  app.all('/crew*', auth.requiresLogin);
 
   // panels
   app.all('/panels*', auth.requiresLogin);

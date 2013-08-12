@@ -1,0 +1,42 @@
+extends ../layouts/default
+
+block body_content
+  article.panel
+    div.container
+      a.btn.new-btn(href='/panels/new') New Client
+      table.edit-content
+        thead
+          tr
+            th.title Title 
+              i.icon-chevron-up
+            th.date Updated Date
+              i.icon-chevron-up
+            th.by Updated By
+              i.icon-chevron-up
+            th.log Log
+            th.edit Edit
+            
+        tbody
+          each client in clients
+            tr
+              td
+                strong 
+                  a(href='/clients/' + client.slug + '/edit')
+                    = client.title
+              td
+                a(href='/clients/' + client.slug + '/edit')
+                  = dateUpdated(client)
+              td
+                a(href='/clients/' + client.slug + '/edit')
+                  = updatedBy(client)
+              td
+                a(href='/clients/' + client.slug + '/log') Log
+              td
+                a(href='/clients/' + client.slug + '/edit') Edit
+
+block body_scripts
+  script(src='/scripts/vendor/tablesorter/jquery.tablesorter.min.js')
+  script.
+    jQuery(function($){
+      $('.edit-content').tablesorter();
+    });

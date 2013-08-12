@@ -1,0 +1,15 @@
+extends ../layouts/default
+
+block body_content
+  article.panel
+    .container
+      if pageHeading
+        h1= pageHeading 
+      form(method='post')
+        #title
+          input(type='text', name='title', placeholder='Title*', value=client.title)
+        #body
+          textarea(name='body', placeholder='Body', cols='10', rows='5')
+            = client.body
+        #submit
+          input(type='submit')
