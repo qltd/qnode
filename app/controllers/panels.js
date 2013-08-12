@@ -94,16 +94,16 @@ exports.edit = function (req, res) {
 
 exports.create = function (req, res) {
   var panel = new Panel(req.body);
-  panel.save(function (err) {
-    if (err) {
+  Q.ninvoke(panel, 'save')
+    .then(function () {
+      req.flash('success', msg.panel.created(panel.title));
+      return res.redirect('/panels');
+    })
+    .fail(function (err) {
       req.flash('error', utils.errors(err));
       req.flash('panel', panel);
       return res.redirect('/panels/new');
-    } else {
-      req.flash('success', msg.panel.created(panel.title));
-      return res.redirect('/panels');
-    }
-  });
+    });
 }
 
 /**

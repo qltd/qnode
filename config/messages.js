@@ -74,9 +74,6 @@ module.exports = {
    * Field validation messages
    */
 
-  client: {
-    isNull: 'Client cannot be empty'
-  },
   email: {
     notEmail: 'Email address must be valid',
     isNull: 'Email address cannot be empty'

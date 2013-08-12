@@ -23,25 +23,13 @@ var ChangeLogSchema = mongoose.model('ChangeLog').schema
 var ProjectSchema = new Schema({
   client: {
     type: String,
-    validate: [ validate.notNull, msg.client.isNull ]
+    validate: [ validate.notNull, msg.title.isNull ]
   },
   slug: String,
   description: String,
-  image: [ ImageSchema ],
+  images: [ ImageSchema ],
   changeLog: [ ChangeLogSchema ]
 });
-
-/*var ProjectSchema = new Schema({
-  title: String,
-  body: String,
-  portfolioImages: [{
-    sort: Number,
-    image: ImageSchema
-  }],
-  slug: String,
-  dateCreated: { type: Date, default: Date.now },
-  dateModified: { type: Date, default: Date.now }
-});*/
 
 /**
  * Virtuals

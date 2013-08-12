@@ -12,6 +12,6 @@
           a.close(href='#') Close
         section
           .container
-            - each img in project.image
-              img(src="/images/uploads/#{img.name}", alt="#{img.title}")
+            - each image in project.images
+              img(src=image.src, alt=image.alt)
         footer

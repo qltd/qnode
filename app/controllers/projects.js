@@ -6,7 +6,9 @@
 var fs = require('fs')
   , mongoose = require('mongoose')
   , msg = require('../../config/messages')
-  , utils = require('../../lib/utils');
+  , Q = require('Q')
+  , utils = require('../../lib/utils')
+  , _ = require('underscore');
 
 /**
  * Models
@@ -62,36 +64,31 @@ exports.new = function (req, res) {
 exports.create = function (req, res) {
   var project = new Project(req.body);
 
-  // Iterates through image array
-  for (var i=0;i<project.image.length;i++) { 
+  project.images.forEach(function (image, key) {
+    image = _.extend(image, req.files.images[key]);
+    Q.fcall(fs.rename, image.tmpPath, image.sysPath)
+      .then(function () {
+        return Q.fcall(fs.unlink, image.tmpPath);
+      })
+      .then(function () {
+        return true;
+      })
+      .fail(function (err) {
+        console.log(err);
+        return res.redirect('500');
+      });
+  });
 
-    // Grabs temp path ./tmp/
-    var tmp_path = req.files.image[i].path;
-
-    // Sets the path to public directory
-    var target_path = './public/images/uploads/' + req.files.image[i].name;
-  
-    fs.rename(tmp_path, target_path, function(err) {
-        if (err) throw err;
-        // delete the temporary file, so that the explicitly set temporary upload dir does not get filled with unwanted files
-        fs.unlink(tmp_path, function() {
-            if (err) throw err;
-        });
-    });
-    // Adds image file name to project.image.name
-    project.image[i].name = req.files.image[i].name;
-  }
-
-  project.save(function (err) {
-    if (err) {
+  Q.ninvoke(project, 'save')
+    .then(function () {
+      req.flash('success', msg.project.created(project.title));
+      return res.redirect('/projects');
+    })
+    .fail(function (err) {
       req.flash('error', utils.errors(err));
       req.flash('project', project);
       return res.redirect('/projects/new');
-    } else {
-      req.flash('success', msg.project.created(project.title));
-      return res.redirect('/projects');
-    }
-  });
+    });
 }
 
 /**

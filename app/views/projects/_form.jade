@@ -13,9 +13,9 @@ block body_content
             = project.description
         #project-image
           .row
-            input.image(type='file', name='image[0]')
-            input.image-title(type='text', name='image[0][title]', placeholder='Image Title')
-            input.position(type='number', name='image[0][position]', placeholder='Position', value="0")
+            input.image(type='file', name='images[0]')
+            input.image-title(type='text', name='images[0][title]', placeholder='Image Title')
+            input.position(type='number', name='images[0][position]', placeholder='Position', value="0")
         a#add-image.btn.btn-new.
           Add Image +
         #submit
@@ -28,6 +28,6 @@ block body_scripts
       var pos = 0;
       $('#add-image').on('click', function() {
         pos += 1;
-        $('#project-image').append('<div class="row"><input class="image" type="file" name="image[' + pos + ']"><input type="text" name="image[' + pos + '][title]" placeholder="Image Title" class="image-title"><input type="number" name="image[' + pos + '][position]" placeholder="Position" class="position" value="' + pos +'"></div>');
+        $('#project-image').append('<div class="row"><input class="image" type="file" name="images[' + pos + ']"><input type="text" name="images[' + pos + '][title]" placeholder="Image Title" class="image-title"><input type="number" name="images[' + pos + '][position]" placeholder="Position" class="position" value="' + pos +'"></div>');
       });
     });
