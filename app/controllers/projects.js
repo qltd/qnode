@@ -74,7 +74,6 @@ exports.create = function (req, res) {
         return true;
       })
       .fail(function (err) {
-        console.log(err);
         return res.redirect('500');
       });
   });
