@@ -1,0 +1,42 @@
+extends ../layouts/default
+
+block body_content
+  article.panel
+    div.container
+      a.btn.new-btn(href='/panels/new') New Crew
+      table.edit-content
+        thead
+          tr
+            th.title Title 
+              i.icon-chevron-up
+            th.date Updated Date
+              i.icon-chevron-up
+            th.by Updated By
+              i.icon-chevron-up
+            th.log Log
+            th.edit Edit
+            
+        tbody
+          each c in crew
+            tr
+              td
+                strong 
+                  a(href='/crew/' + c.slug + '/edit')
+                    = c.title
+              td
+                a(href='/crew/' + c.slug + '/edit')
+                  = dateUpdated(c)
+              td
+                a(href='/crew/' + c.slug + '/edit')
+                  = updatedBy(c)
+              td
+                a(href='/crew/' + c.slug + '/log') Log
+              td
+                a(href='/crew/' + c.slug + '/edit') Edit
+
+block body_scripts
+  script(src='/scripts/vendor/tablesorter/jquery.tablesorter.min.js')
+  script.
+    jQuery(function($){
+      $('.edit-content').tablesorter();
+    });

@@ -19,8 +19,19 @@ var Crew = mongoose.model('Crew');
 
 /**
  * Index
- *
+ * GET /crew
  */
+
+exports.index = function (req, res) {
+  Q.ninvoke(Crew.index, 'find')
+    .then(function (crew) {
+      res.locals.crew = crew;
+      return res.render('crew');
+    })
+    .fail(function (err) {
+      return res.render('500');
+    });
+}
 
 /**
  * Show

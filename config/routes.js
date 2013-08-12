@@ -57,6 +57,7 @@ module.exports = function(app, passport) {
 
   // crew
   app.all('/crew*', auth.requiresLogin);
+  app.get('/crew', crew.index);
 
   // panels
   app.all('/panels*', auth.requiresLogin);
