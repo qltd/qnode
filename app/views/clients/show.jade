@@ -8,3 +8,7 @@ block body_content
           = _client.title
         br
         a(href=_client.url)= _client.url
+        if _client.image[0] && _client.image[0].src
+          br
+          img(src=_client.image[0].src)
+          = _client.image[0].title

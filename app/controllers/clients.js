@@ -130,13 +130,28 @@ exports.create = function (req, res) {
  */
 
 exports.update = function (req, res) {
-
-  // build new image to replace current image subdoc; these are immutable during a normal find and save operation
-  if (req.body.image['current'] && req.body.image['current'][0]) { 
-    _img = new Image(req.body.image['current'][0]);
-    console.log(_img);
+  if (!(req.body.image['current'] && req.body.image['current'][0]) && req.files.image[0].name) {
+    // new image and new data
+    var _img = new Image(_.extend(req.files.image[0], req.body.image[0]));
+  } else if (req.body.image['current'] && req.body.image['current'][0] && req.files.image[0].name) {
+    // new image with old data
+    var _img = new Image(_.extend(req.files.image[0], _.omit(req.body.image['current'][0], 'name', 'type', 'size')));
+  } else if (req.body.image['current'] && req.body.image['current'][0]) {
+    // old image with new data 
+    var _img = new Image(req.body.image['current'][0]);
   } else {
-    _img = {};
+    // no image
+    var _img = {};
+  }
+
+  if (req.files.image[0].name) {
+    Q.fcall(fs.rename, _img.tmpPath, _img.sysPath)
+      .then(function () {
+        return true;
+      })
+      .fail(function (err) {
+        console.log(err);
+      });
   }
 
   Q.ninvoke(Client, 'update', { slug: req.params.slug }, { 'image.0' : _img })
