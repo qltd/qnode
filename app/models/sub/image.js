@@ -14,6 +14,7 @@ var ImageSchema = new Schema({
   alt: String,
   body: String,
   class: [ String ],
+  fileName: String,
   height: Number,
   id: String,
   position: String,
@@ -34,6 +35,7 @@ var ImageSchema = new Schema({
 ImageSchema.virtual('name')
   .set(function (name) {
     this._name = name;
+    this.fileName = this._name;
     this.sysPath = './public/images/uploads/' + this._name;
     this.src = '/images/uploads/' + this._name;
   })

@@ -14,7 +14,8 @@ var fs = require('fs')
  * Models
  */
 
-var Client = mongoose.model('Client');
+var Client = mongoose.model('Client')
+  , Image = mongoose.model('Image');
 
 /**
  * Index
@@ -129,19 +130,22 @@ exports.create = function (req, res) {
  */
 
 exports.update = function (req, res) {
-  Q.ninvoke(Client, 'findOne', { slug: req.params.slug })
+
+  // build new image to replace current image subdoc; these are immutable during a normal find and save operation
+  if (req.body.image['current'] && req.body.image['current'][0]) { 
+    _img = new Image(req.body.image['current'][0]);
+    console.log(_img);
+  } else {
+    _img = {};
+  }
+
+  Q.ninvoke(Client, 'update', { slug: req.params.slug }, { 'image.0' : _img })
+    .then(function (data) {
+      return Q.ninvoke(Client, 'findOne', { slug: req.params.slug })
+    })
     .then(function (client) {
       if (!client) return res.render('404');
       client = _.extend(client, _.omit(req.body, 'image'));
-      
-      req.files.image.forEach(function (image, key) {
-        if (image.name) { 
-          // image and data
-        } else if (client.image[key]) {
-          // data
-        }
-      });
-
       return Q.ninvoke(client, 'save');
     })
     .then(function () {
