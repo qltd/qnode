@@ -105,8 +105,19 @@ exports.create = function (req, res) {
           return true;
         })
         .fail(function (err) {
+          console.log(err);
           return res.render('500');
         });
+    } else if (req.files.image[key].path) {
+      Q.fcall(fs.unlink, req.files.image[key].path)
+        .then(function () {
+          return true;
+        })
+        .fail(function (err) {
+          console.log(err);
+          return res.render('500');
+        });
+      image.remove();
     } else {
       image.remove();
     }
@@ -151,6 +162,16 @@ exports.update = function (req, res) {
       })
       .fail(function (err) {
         console.log(err);
+        return res.render('500');
+      });
+  } else if (req.files.image[0].path) {
+    Q.fcall(fs.unlink, req.files.image[0].path)
+      .then(function () {
+        return true;
+      })
+      .fail(function (err) {
+        console.log(err);
+        return res.render('500');
       });
   }
 
@@ -200,16 +221,25 @@ exports.restore = function (req, res) {
   Q.ninvoke(Client.index, 'findOne', { slug: req.params.slug })
     .then(function (client) {
       if (!client) return res.render('404');
-      data = _.omit(client.changeLog[req.params.__v].data, '__v');
+      img = client.changeLog[req.params.__v].data.image;
+      return Q.ninvoke(Client, 'update', { slug: req.params.slug }, { 'image' : img });
+    })
+    .then(function () {
+      return Q.ninvoke(Client.index, 'findOne', { slug: req.params.slug });
+    })
+    .then(function (client) {
+      if (!client) return res.render('404');
+      data = _.omit(client.changeLog[req.params.__v].data, '__v', 'image');
       data._meta = req.body._meta;
       client = _.extend(client, data);
       return Q.ninvoke(client, 'save');
     })
-    .then(function () {
+    .then(function () { 
       req.flash('success', msg.client.restored(data.title, req.params.__v));
       return res.redirect('/clients');
     })
     .fail(function (err) {
+      console.log(err);
       return res.render('500');
     });
 }
