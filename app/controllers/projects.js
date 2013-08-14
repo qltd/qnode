@@ -108,6 +108,15 @@ exports.create = function (req, res) {
         .fail(function (err) {
           return res.render('500');
         });
+    } else if (req.files.images[key] && req.files.images[key].path) {
+      Q.fcall(fs.unlink, req.files.images[key].path)
+        .then(function () {
+          return true;
+        })
+        .fail(function (err) {
+          return res.render('500');
+        });
+      image.remove();
     } else {
       image.remove();
     }
@@ -216,7 +225,7 @@ exports.log = function (req, res) {
 exports.restore = function (req, res) {
   Q.ninvoke(Project.index, 'findOne', { slug: req.params.slug })
     .then(function (project) {
-      if (!project) return res.render('404');
+      if (!project || !project.changeLog[req.params.__v]) return res.render('404');
       _images = project.changeLog[req.params.__v].data.images;
       return Q.ninvoke(Project, 'update', { slug: req.params.slug }, { 'images' : _images });
     })
