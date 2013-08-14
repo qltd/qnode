@@ -22,6 +22,7 @@ if [ "$1" ]; then
     mongoimport --db $1 --collection $data_collection_name --file $filename
   done
 
+  ## import images that are referenced by mongo docs
   for filename in "$DATA_DIRECTORY"/*.tar.gz; do
     data_filename="$(basename "$filename")"
     cd "$DATA_DIRECTORY"
