@@ -26,10 +26,7 @@ var CrewSchema = new Schema({
     type: String,
     validate: [ validate.notNull, msg.position.isNull ]
   },
-  body: {
-    type: String,
-    validate: [ validate.notNull, msg.body.isNull ]
-  },
+  body: String,
   firstName: {
     type: String,
     validate: [ validate.notNull, msg.name.first.isNull ]

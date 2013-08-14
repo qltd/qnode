@@ -77,6 +77,9 @@ module.exports = {
   body: {
     isNull: 'Body field cannot be empty' 
   },
+  comments: {
+    isNull: 'Comments cannot be empty'
+  },
   email: {
     notEmail: 'Email address must be valid',
     isNull: 'Email address cannot be empty'

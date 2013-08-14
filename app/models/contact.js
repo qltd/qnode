@@ -32,7 +32,10 @@ var ContactSchema = new Schema({
     ]
   },
   company: String,
-  comments: String
+  comments: {
+    type: String,
+    validate: [ validate.notNull, msg.comments.isNull ]
+  }
 });
 
 /**
