@@ -22,8 +22,15 @@ var ChangeLogSchema = mongoose.model('ChangeLog').schema
 
 var CrewSchema = new Schema({
   title: String,
-  subTitle: String,
+  position: String,
   body: String,
+  firstName: String,
+  lastName: String,
+  middleName: String,
+  email: String,
+  twitterUser: String,
+  dribbleUser: String,
+  gitHubUser: String, 
   slug: String,
   image: [ ImageSchema ],
   changeLog: [ ChangeLogSchema ]
@@ -54,6 +61,7 @@ CrewSchema.namedScope('index', function() {
  */
 
 CrewSchema.pre('save', function(next) {
+  this.title = this.firstName + ' ' + ( this.middleName ? this.middleName + ' ' : null ) + this.lastName;
   this.slug = toSlug(this.title);
 
   // log changes

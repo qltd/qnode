@@ -1,0 +1,37 @@
+extends ../layouts/default
+
+block body_content
+  article.panel
+    .container
+      if pageHeading
+        h1= pageHeading 
+      form(method='post', enctype='multipart/form-data')
+        #name
+          input(type='text', name='firstName', placeholder='First Name*', value=crew.firstName)
+          input(type='text', name='middleName', placeholder='Middle Name', value=crew.middleName)
+          input(type='text', name='lastName', placeholder='Last Name*', value=crew.lastName)
+        #position
+          input(type='text', name='position', placeholder='Position*', value=crew.position)
+        #biography
+          textarea(type='text', name='body', placeholder='Biography*', cols='10', rows='5')
+            != crew.body 
+        #email
+          input(type='text', name='email', placeholder='Email', value=crew.email)
+        #external-accounts
+          input(type='text', name='twitterUser', placeholder='Twitter Username', value=crew.twitterUser)
+          input(type='text', name='dribbleUser', placeholder='Dribble Username', value=crew.dribbleUser)
+          input(type='text', name='gitHubUser', placeholder='GitHub Username', value=crew.gitHubUser)
+        #image
+          .row
+            if crew.image[0] && crew.image[0].src
+              img(src=crew.image[0].src)
+              input(type='hidden', name='image[current][0][name]', value=crew.image[0].fileName)
+              input(type='hidden', name='image[current][0][type]', value=crew.image[0].type)
+              input(type='hidden', name='image[current][0][size]', value=crew.image[0].size)
+              input.image(type='file', name='image[0]')
+              input.image-title(type='text', name='image[current][0][title]', placeholder='Image Title', value=( crew.image[0] ? crew.image[0].title : null ))
+            else
+              input.image(type='file', name='image[0]')
+              input.image-title(type='text', name='image[0][title]', placeholder='Image Title', value=( crew.image[0] ? crew.image[0].title : null ))
+        #submit
+          input(type='submit')

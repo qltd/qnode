@@ -1,0 +1,32 @@
+extends ../layouts/default
+
+block body_content
+  article.panel
+    div.container
+      p
+        strong
+          = crew.title
+        br
+        = crew.position
+        br
+        != crew.body
+        br
+        a(href='mailto:' + crew.email)= crew.email
+        
+        if crew.twitterUser
+          br
+          a(href='https://twitter.com/' + crew.twitterUser)='https://twitter.com/' + crew.twitterUser
+
+        if crew.dribbleUser
+          br
+          a(href='https://dribble.com/' + crew.dribbleUser)='https://dribble.com/' + crew.dribbleUser
+
+        if crew.gitHubUser
+          br
+          a(href='https://github.com/' + crew.gitHubUser)='https://github.com/' + crew.gitHubUser
+
+        if crew.image[0] && crew.image[0].src
+          br
+          img(src=crew.image[0].src)
+          br
+          = crew.image[0].title
