@@ -25,11 +25,11 @@ block body_content
           .row
             if crew.image[0] && crew.image[0].src
               img(src=crew.image[0].src)
-              input(type='hidden', name='image[current][0][name]', value=crew.image[0].fileName)
-              input(type='hidden', name='image[current][0][type]', value=crew.image[0].type)
-              input(type='hidden', name='image[current][0][size]', value=crew.image[0].size)
+              input(type='hidden', name='image[0][name]', value=crew.image[0].fileName)
+              input(type='hidden', name='image[0][type]', value=crew.image[0].type)
+              input(type='hidden', name='image[0][size]', value=crew.image[0].size)
               input.image(type='file', name='image[0]')
-              input.image-title(type='text', name='image[current][0][title]', placeholder='Image Title', value=( crew.image[0] ? crew.image[0].title : null ))
+              input.image-title(type='text', name='image[0][title]', placeholder='Image Title', value=( crew.image[0] ? crew.image[0].title : null ))
             else
               input.image(type='file', name='image[0]')
               input.image-title(type='text', name='image[0][title]', placeholder='Image Title', value=( crew.image[0] ? crew.image[0].title : null ))
