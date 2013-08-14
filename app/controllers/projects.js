@@ -210,5 +210,32 @@ exports.log = function (req, res) {
 
 /**
  * changeLog restore
- * 
+ * GET /projects/:slug/log/:__v/restore
  */
+
+exports.restore = function (req, res) {
+  Q.ninvoke(Project.index, 'findOne', { slug: req.params.slug })
+    .then(function (project) {
+      if (!project) return res.render('404');
+      _images = project.changeLog[req.params.__v].data.images;
+      return Q.ninvoke(Project, 'update', { slug: req.params.slug }, { 'images' : _images });
+    })
+    .then(function () {
+      return Q.ninvoke(Project.index, 'findOne', { slug: req.params.slug });
+    })
+    .then(function (project) {
+      if (!project) return res.render('404');
+      data = _.omit(project.changeLog[req.params.__v].data, '__v', 'images');
+      data._meta = req.body._meta;
+      project = _.extend(project, data);
+      return Q.ninvoke(project, 'save');
+    })
+    .then(function () { 
+      req.flash('success', msg.project.restored(data.title, req.params.__v));
+      return res.redirect('/projects');
+    })
+    .fail(function (err) {
+      console.log(err);
+      return res.render('500');
+    });
+}

@@ -95,8 +95,9 @@ module.exports = function(app, passport) {
   app.get('/projects/:slug/edit', projects.edit);
   app.post('/projects/:slug/edit', projects.update);
   app.get('/projects/:slug/log', projects.log);
-
   app.get('/projects/:slug/log/:__v', projects.show);
+  app.get('/projects/:slug/log/:__v/restore', projects.restore);
+
 
   // services
   app.all('/services*', auth.requiresLogin);
