@@ -93,7 +93,8 @@ module.exports = function(app, passport) {
   app.post('/projects/new', projects.create);
   app.get('/projects/:slug', projects.show);
   app.get('/projects/:slug/edit', projects.edit);
-  // app.post('/projects/:slug/edit', projects.update);
+  app.post('/projects/:slug/edit', projects.update);
+  app.get('/projects/:slug/log', projects.log);
 
   app.get('/projects/:slug/log/:__v', projects.show);
 

@@ -17,12 +17,12 @@ block body_content
             .row
               img(src=image.src)
               br
-              input(type='hidden', name='images[current]['+key+'][name]', value=image.fileName)
-              input(type='hidden', name='images[current]['+key+'][type]', value=image.type)
-              input(type='hidden', name='images[current]['+key+'][size]', value=image.size)
+              input(type='hidden', name='images['+key+'][name]', value=image.fileName)
+              input(type='hidden', name='images['+key+'][type]', value=image.type)
+              input(type='hidden', name='images['+key+'][size]', value=image.size)
               input.image(type='file', name='images['+key+']')
-              input.image-title(type='text', name='images[current]['+key+'][title]', placeholder='Image Title', value=image.title)
-              input.position(type='number', name='images[current]['+key+'][position]', placeholder='Position', value=image.position)
+              input.image-title(type='text', name='images['+key+'][title]', placeholder='Image Title', value=image.title)
+              input.position(type='number', name='images['+key+'][position]', placeholder='Position', value=image.position)
 
           .row
             input.image(type='file', name='images['+project.images.length+']')
