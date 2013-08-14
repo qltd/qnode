@@ -33,5 +33,3 @@ if [ "$1" ]; then
 else
   printf "NO DB SPECIFIED!!! Please execute this script with the name of the db you would like to seed as the first argument\n"
 fi
-
-
