@@ -22,12 +22,27 @@ var ChangeLogSchema = mongoose.model('ChangeLog').schema
 
 var CrewSchema = new Schema({
   title: String,
-  position: String,
-  body: String,
-  firstName: String,
-  lastName: String,
+  position: {
+    type: String,
+    validate: [ validate.notNull, msg.position.isNull ]
+  },
+  body: {
+    type: String,
+    validate: [ validate.notNull, msg.body.isNull ]
+  },
+  firstName: {
+    type: String,
+    validate: [ validate.notNull, msg.name.first.isNull ]
+  },
+  lastName: {
+    type: String,
+    validate: [ validate.notNull, msg.name.last.isNull ]
+  },
   middleName: String,
-  email: String,
+  email: {
+    type: String,
+    validate: [ validate.isEmail, msg.email.notEmail ]
+  },
   twitterUser: String,
   dribbleUser: String,
   gitHubUser: String, 
@@ -54,6 +69,24 @@ CrewSchema.virtual('_meta')
 
 CrewSchema.namedScope('index', function() {
   return this.populate('changeLog.user').sort('title');
+});
+
+/**
+ * Pre-validation hook; Sanitizers
+ */
+
+CrewSchema.pre('validate', function(next) {
+  this.body = sanitize(this.body).xss();
+  this.position = sanitize(this.position).escape();
+  this.firstName = sanitize(this.firstName).escape();
+  this.lastName = sanitize(this.lastName).escape();
+  this.middleName = sanitize(this.middleName).escape();
+  this.email = sanitize(this.email).escape();
+  this.twitterUser = sanitize(this.twitterUser).escape();
+  this.dribbleUser = sanitize(this.dribbleUser).escape();
+  this.gitHubUser = sanitize(this.gitHubUser).escape();
+  
+  next();
 });
 
 /**

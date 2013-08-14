@@ -24,7 +24,10 @@ var ServiceSchema = new Schema({
     type: String,
     validate: [ validate.notNull, msg.title.isNull ]
   },
-  body: String,
+  body: {
+    type: String,
+    validate: [ validate.notNull, msg.body.isNull ]
+  },
   slug: String,
   position: Number,
   changeLog: [ ChangeLogSchema ]

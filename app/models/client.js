@@ -25,7 +25,10 @@ var ClientSchema = new Schema({
     type: String,
     validate: [ validate.notNull, msg.title.isNull ]
   },
-  url: String,
+  url: {
+    type: String,
+    validate: [ validate.isUrl, msg.url.notUrl ]
+  },
   slug: String,
   image: [ ImageSchema ],
   changeLog: [ ChangeLogSchema ]
@@ -57,6 +60,7 @@ ClientSchema.namedScope('index', function() {
 
 ClientSchema.pre('validate', function(next) {
   this.title = sanitize(this.title).escape();
+  this.url = sanitize(this.url).xss();
   next();
 });
 

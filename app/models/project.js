@@ -25,7 +25,10 @@ var ProjectSchema = new Schema({
     type: String,
     validate: [ validate.notNull, msg.title.isNull ]
   },
-  body: String,
+  body: {
+    type: String,
+    validate: [ validate.notNull, msg.body.isNull ]
+  },
   slug: String,
   images: [ ImageSchema ],
   changeLog: [ ChangeLogSchema ]

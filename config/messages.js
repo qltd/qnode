@@ -74,18 +74,33 @@ module.exports = {
    * Field validation messages
    */
 
+  body: {
+    isNull: 'Body field cannot be empty' 
+  },
   email: {
     notEmail: 'Email address must be valid',
     isNull: 'Email address cannot be empty'
   },
   name: {
+    first: {
+      isNull: 'First name cannot be empty'
+    },
+    last: {
+      isNull: 'Last name cannot be empty'
+    }, 
     isNull: 'Name cannot be empty'
   },
   password: {
     isNull: 'Password cannot be empty'
   },
+  position: {
+    isNull: 'Position cannot be empty'
+  },
   title: {
     isNull: 'Title cannot be empty'
+  },
+  url: {
+    notUrl: 'Url must be valid'
   },
   username: {
     isNull: 'Username cannot be empty'
