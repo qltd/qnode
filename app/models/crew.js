@@ -29,7 +29,7 @@ var CrewSchema = new Schema({
   middleName: String,
   email: String,
   twitterUser: String,
-  dribbleUser: String,
+  dribbbleUser: String,
   gitHubUser: String, 
   slug: String,
   image: [ ImageSchema ],
