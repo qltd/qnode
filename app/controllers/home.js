@@ -13,7 +13,8 @@ var mongoose = require('mongoose')
 var Contact = mongoose.model('Contact')
   , Panel = mongoose.model('Panel')
   , Project = mongoose.model('Project')
-  , Service = mongoose.model('Service');
+  , Service = mongoose.model('Service')
+  , Crew = mongoose.model('Crew');
 
 /**
  * Index
@@ -31,6 +32,10 @@ exports.index = function (req, res) {
     })
     .then(function (panels) { 
       res.locals.panels = res.locals.objectifyPanels(panels);
+      return Q.ninvoke(Crew, 'find');
+    })
+    .then(function (crew) { 
+      res.locals.crew = crew;
       return Q.ninvoke(Service.positioned, 'find');
     })
     .then(function (services) {
