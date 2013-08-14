@@ -52,4 +52,17 @@ ImageSchema.virtual('path')
     return this._path; 
   });
 
+/**
+ * Methods 
+ */
+
+ImageSchema.methods = {
+  createImages: function (parent, data) {
+    return data;
+  },
+  updateImages: function (parent, data) {
+    return data;
+  }
+}
+
 mongoose.model('Image', ImageSchema);
