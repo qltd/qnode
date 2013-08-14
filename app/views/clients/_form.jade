@@ -22,5 +22,7 @@ block body_content
             else
               input.image(type='file', name='image[0]')
               input.image-title(type='text', name='image[0][title]', placeholder='Image Title', value=( _client.image[0] ? _client.image[0].title : null ))
+        #position
+          input.position(type='number', name='position', placeholder='Position', value=_client.position)
         #submit
           input(type='submit')

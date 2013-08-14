@@ -29,6 +29,7 @@ var ClientSchema = new Schema({
     type: String,
     validate: [ validate.isUrl, msg.url.notUrl ]
   },
+  position: Number,
   slug: String,
   image: [ ImageSchema ],
   changeLog: [ ChangeLogSchema ]
