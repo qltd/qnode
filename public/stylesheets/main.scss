@@ -651,8 +651,12 @@ ul li:hover {
     a {
       color:white;
     }
+    i {
+      font-size: 18px;
+      margin:10px 10px 0 0;
+    }
     p {
-      margin: 0;
+      margin: 0 0 10px;
       @include proxSemi(14px, white);
     }
   }

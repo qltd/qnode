@@ -41,7 +41,7 @@ var CrewSchema = new Schema({
     validate: [ validate.isEmail, msg.email.notEmail ]
   },
   twitterUser: String,
-  dribbleUser: String,
+  dribbbleUser: String,
   gitHubUser: String, 
   slug: String,
   image: [ ImageSchema ],
