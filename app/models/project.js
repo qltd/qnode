@@ -21,12 +21,12 @@ var ChangeLogSchema = mongoose.model('ChangeLog').schema
  */
 
 var ProjectSchema = new Schema({
-  client: {
+  title: {
     type: String,
     validate: [ validate.notNull, msg.title.isNull ]
   },
+  body: String,
   slug: String,
-  description: String,
   images: [ ImageSchema ],
   changeLog: [ ChangeLogSchema ]
 });
@@ -43,14 +43,21 @@ ProjectSchema.virtual('_meta')
     return this.__meta; 
   });
 
+/**
+ * Named scopes
+ */
+
+ProjectSchema.namedScope('index', function() {
+  return this.populate('changeLog.user').sort('title');
+});
 
 /**
  * Pre-validation hook; Sanitizers
  */
 
 ProjectSchema.pre('validate', function(next) {
-  this.client = sanitize(this.client).escape();
-  this.description = sanitize(this.description).xss();
+  this.title = sanitize(this.title).escape();
+  this.body = sanitize(this.body).xss();
   next();
 });
 
@@ -59,7 +66,7 @@ ProjectSchema.pre('validate', function(next) {
  */
 
 ProjectSchema.pre('save', function(next) {
-  this.slug = toSlug(this.client);
+  this.slug = toSlug(this.title);
   // log changes
   this.changeLog.push(ChangeLogSchema.methods.getData(this));
   next();

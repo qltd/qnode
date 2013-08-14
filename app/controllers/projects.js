@@ -14,7 +14,8 @@ var fs = require('fs')
  * Models
  */
 
-var Project = mongoose.model('Project');
+var Project = mongoose.model('Project')
+  , Image = mongoose.model('Image');
 
 /**
  * Index
@@ -22,12 +23,15 @@ var Project = mongoose.model('Project');
  */
 
 exports.index = function (req, res) {
-  Project.find({}, function (err, projects) {
-    if (err) return handleError(err);
-    res.render('projects', { 
-      projects: projects
+  Q.ninvoke(Project.index, 'find')
+    .then(function (projects) {
+      res.locals.projects = projects;
+      return res.render('projects');
+    })
+    .fail(function (err) {
+      console.log(err);
+      return res.render('500');
     });
-  });
 }
 
 /**
@@ -41,14 +45,19 @@ exports.index = function (req, res) {
  */
 
 exports.new = function (req, res) {
-  var projects = req.flash('project');
-  var project = ( projects && projects.length && projects[projects.length-1] ? projects[projects.length-1] : new Project() );
-  res.render('projects/new', {
-    page_heading: 'Create Project',
-    form_action: 'projects/new',
-    submit_button_title: 'Create Project',
-    project: project
-  });
+  Q.fcall(function () {
+    var projects = req.flash('project');
+    return ( projects && projects.length && projects[projects.length-1] ? projects[projects.length-1] : new Project() );
+  })
+    .then(function (project) {
+      res.locals.project = project;
+      return res.render('projects/new', { 
+        pageHeading: 'Create Project'
+      });
+    })
+    .fail(function (err) {
+      return res.render('500');
+    });
 }
 
 /**

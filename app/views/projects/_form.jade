@@ -5,17 +5,29 @@ block body_content
     .container
       if page_heading
         h1= page_heading 
-      form.admin-form(method='post', action='/projects/new', enctype='multipart/form-data')
+      form.admin-form(method='post', enctype='multipart/form-data')
         #client
-          input(type='text', name='client', placeholder='Client*', value=project.client)
+          input(type='text', name='title', placeholder='Client*', value=project.title)
         #description
-          textarea(name='description', placeholder='Description', cols='10', rows='5')
-            = project.description
+          textarea(name='body', placeholder='Description', cols='10', rows='5')
+            != project.body
         #project-image
+          
+          each image, key in project.images
+            .row
+              img(src=project.images[key].src)
+              input(type='hidden', name='images[current]['+key+'][name]', value=project.images[key].fileName)
+              input(type='hidden', name='images[current]['+key+'][type]', value=project.images[key].type)
+              input(type='hidden', name='images[current]['+key+'][size]', value=project.images[key].size)
+              input.image(type='file', name='images['+key+']')
+              input.image-title(type='text', name='images[current]['+key+'][title]', placeholder='Image Title', value=( project.images[key] ? project.images[key].title : null ))
+              input.position(type='number', name='images[current]['+key+'][position]', placeholder='Position', value="0")
+
           .row
-            input.image(type='file', name='images[0]')
-            input.image-title(type='text', name='images[0][title]', placeholder='Image Title')
-            input.position(type='number', name='images[0][position]', placeholder='Position', value="0")
+            input.image(type='file', name='images['+project.images.length+']')
+            input.image-title(type='text', name='images['+project.images.length+'][title]', placeholder='Image Title')
+            input.position(type='number', name='images['+project.images.length+'][position]', placeholder='Position', value=project.images.length)
+
         a#add-image.btn.btn-new.
           Add Image +
         #submit
