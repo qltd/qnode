@@ -1,0 +1,15 @@
+extends ../layouts/default
+
+block body_content
+  article.panel
+    div.container
+      p
+        strong
+          = project.title
+        br
+        != project.body
+        each image, key in project.images 
+          br
+          img(src=image.src)
+          br
+          = image.title

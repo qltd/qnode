@@ -36,8 +36,21 @@ exports.index = function (req, res) {
 
 /**
  * Show
- *
+ * GET /projects/:slug
+ * GET /projects/:slug/log/:__v
  */
+
+exports.show = function (req, res) {
+  Q.ninvoke(Project, 'findOne', { slug: req.params.slug })
+    .then(function (project) {
+      if (!project) return res.render('404');
+      res.locals.project = ( req.params.__v && project.changeLog[req.params.__v] ? _.extend(project, project.changeLog[req.params.__v].data) : project );
+      return res.render('projects/show');
+    })
+    .fail(function (err) {
+      return res.render('500');
+    });
+}
 
 /**
  * New
@@ -62,8 +75,20 @@ exports.new = function (req, res) {
 
 /**
  * Edit
- *
+ * GET /projects/:slug/edit
  */
+
+exports.edit = function (req, res) {
+  Q.ninvoke(Project, 'findOne', { slug: req.params.slug })
+    .then(function (project) {
+      if (!project) return res.render('404');
+      res.locals.project = project;
+      return res.render('projects/edit');
+    })
+    .fail(function (err) {
+      return res.render('500');
+    });
+}
 
 /**
  * Create
@@ -98,8 +123,10 @@ exports.create = function (req, res) {
 
 /**
  * Update
- *
+ * POST /projects/:slug/edit
  */
+
+
 
 /**
  * changeLog index

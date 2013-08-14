@@ -15,13 +15,14 @@ block body_content
           
           each image, key in project.images
             .row
-              img(src=project.images[key].src)
-              input(type='hidden', name='images[current]['+key+'][name]', value=project.images[key].fileName)
-              input(type='hidden', name='images[current]['+key+'][type]', value=project.images[key].type)
-              input(type='hidden', name='images[current]['+key+'][size]', value=project.images[key].size)
+              img(src=image.src)
+              br
+              input(type='hidden', name='images[current]['+key+'][name]', value=image.fileName)
+              input(type='hidden', name='images[current]['+key+'][type]', value=image.type)
+              input(type='hidden', name='images[current]['+key+'][size]', value=image.size)
               input.image(type='file', name='images['+key+']')
-              input.image-title(type='text', name='images[current]['+key+'][title]', placeholder='Image Title', value=( project.images[key] ? project.images[key].title : null ))
-              input.position(type='number', name='images[current]['+key+'][position]', placeholder='Position', value="0")
+              input.image-title(type='text', name='images[current]['+key+'][title]', placeholder='Image Title', value=image.title)
+              input.position(type='number', name='images[current]['+key+'][position]', placeholder='Position', value=image.position)
 
           .row
             input.image(type='file', name='images['+project.images.length+']')
@@ -37,9 +38,7 @@ block body_scripts
   script.
     jQuery(function($){
       // Adds New Imagerow 
-      var pos = 0;
       $('#add-image').on('click', function() {
-        pos += 1;
-        $('#project-image').append('<div class="row"><input class="image" type="file" name="images[' + pos + ']"><input type="text" name="images[' + pos + '][title]" placeholder="Image Title" class="image-title"><input type="number" name="images[' + pos + '][position]" placeholder="Position" class="position" value="' + pos +'"></div>');
+        $('#project-image').append('<div class="row"><input class="image" type="file" name="images[' + $("input[name*='[title]']").length + ']"><input type="text" name="images[' + $("input[name*='[title]']").length + '][title]" placeholder="Image Title" class="image-title"><input type="number" name="images[' + $("input[name*='[title]']").length + '][position]" placeholder="Position" class="position" value="' + $("input[name*='[title]']").length +'"></div>');
       });
     });
