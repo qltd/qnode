@@ -97,7 +97,8 @@ module.exports = {
     isNull: 'Password cannot be empty'
   },
   position: {
-    isNull: 'Position cannot be empty'
+    isNull: 'Position cannot be empty',
+    notNumeric: 'Position must be numeric'
   },
   title: {
     isNull: 'Title cannot be empty'
