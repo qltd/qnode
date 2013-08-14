@@ -607,7 +607,7 @@ ul li:hover {
 
 /* $crew */
 .crew {
-  background:$teal;
+  background:$teal; 
 }
 .crew-grid {
   ul {
@@ -620,6 +620,9 @@ ul li:hover {
     border:10px solid $teal;
     background: $grey;
     color:white;
+    position: relative;
+    z-index: 100;
+    @include transition;
     img {
       width:32.61%;
       float: left;
@@ -634,10 +637,33 @@ ul li:hover {
       padding:3.125%;
     }
   }
+  .bio {
+    top:-20px;
+    z-index: 10;
+    position: relative;
+    margin:0 2%;
+    max-height: 0px;
+    overflow: hidden;
+    background:$grey;
+    padding: 0 4%;
+    color: white;
+    @include transition;
+    a {
+      color:white;
+    }
+    p {
+      margin: 0;
+      @include proxSemi(14px, white);
+    }
+  }
   li:hover {
     .person-wrap {
       border-color:$pink;
       background: $pink;
+    }
+    .bio {
+      padding:40px 4% 20px;
+      max-height: 200px;
     }
   }
 }

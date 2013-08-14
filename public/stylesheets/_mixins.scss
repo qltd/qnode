@@ -62,3 +62,8 @@
     background: $bg - 30;
   }
 }
+
+@mixin proxSemi($size, $color) {
+  color: $color;
+  font: 600 $size "proxima-nova";
+}
