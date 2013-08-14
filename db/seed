@@ -5,9 +5,14 @@ if [ "$1" ]; then
   APP_EXECUTION_PATH="$0"
   APP_EXECUTION_FILENAME="$(basename "$0")"
   APP_EXECUTION_ROOT="$(cd "$(dirname "$APP_EXECUTION_PATH")"; pwd)"
+  APP_EXECUTION_PARENT_FOLDER="$(cd "$(dirname "$APP_EXECUTION_ROOT")"; pwd)"
   
   ## drop database
   mongo $1 --eval "db.dropDatabase()"
+
+  ## delete content within tmp & dynamic content folders
+  rm "$APP_EXECUTION_PARENT_FOLDER/tmp/"*
+  rm "$APP_EXECUTION_PARENT_FOLDER/public/images/uploads/"*
 
   ## import collections from json files
   DATA_DIRECTORY="$APP_EXECUTION_ROOT/data"
@@ -15,6 +20,14 @@ if [ "$1" ]; then
     data_filename="$(basename "$filename")"
     data_collection_name="${data_filename%.*}"
     mongoimport --db $1 --collection $data_collection_name --file $filename
+  done
+
+  for filename in "$DATA_DIRECTORY"/*.tar.gz; do
+    data_filename="$(basename "$filename")"
+    cd "$DATA_DIRECTORY"
+    tar -xzvf "$data_filename"
+    mv "$DATA_DIRECTORY/uploads/"* "$APP_EXECUTION_PARENT_FOLDER/public/images/uploads/"
+    rm -rf "$DATA_DIRECTORY/uploads"
   done
 else
   printf "NO DB SPECIFIED!!! Please execute this script with the name of the db you would like to seed as the first argument\n"
