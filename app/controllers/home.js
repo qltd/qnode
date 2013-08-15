@@ -14,6 +14,7 @@ var Contact = mongoose.model('Contact')
   , Panel = mongoose.model('Panel')
   , Project = mongoose.model('Project')
   , Service = mongoose.model('Service')
+  , Client = mongoose.model('Client')
   , Crew = mongoose.model('Crew');
 
 /**
@@ -36,6 +37,10 @@ exports.index = function (req, res) {
     })
     .then(function (crew) { 
       res.locals.crew = crew;
+      return Q.ninvoke(Client.index, 'find');
+    })
+    .then(function (clients) { 
+      res.locals.clients = clients;
       return Q.ninvoke(Service.positioned, 'find');
     })
     .then(function (services) {
