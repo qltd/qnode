@@ -5,7 +5,7 @@ if panel && panel.Crew
       .crew-grid.content
         ul
           each crewmember, key in crew
-            li 
+            li.crew-member 
               .person-wrap.clearfix
                 each image in crewmember.image
                   img(src=image.src, alt=image.alt)

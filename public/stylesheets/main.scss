@@ -552,6 +552,12 @@ ul li:hover {
   ul {
     list-style: none;
     padding: 0;
+    &.first {
+      margin-bottom: 0;
+    }
+    &.last {
+      margin-top: 0;
+    }
     li {
       position: relative;
       margin: 0;
@@ -613,7 +619,7 @@ ul li:hover {
   ul {
     padding: 0;
   }
-  li {
+  .crew-member {
     list-style: none; 
   }
   .person-wrap {
@@ -660,7 +666,7 @@ ul li:hover {
       @include proxSemi(14px, white);
     }
   }
-  li:hover {
+  li:hover, li.open {
     .person-wrap {
       border-color:$pink;
       background: $pink;
