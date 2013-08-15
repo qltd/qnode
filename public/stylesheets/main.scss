@@ -193,7 +193,7 @@ input, textarea {
   width: 100%;
   margin-bottom: 15px;
   font:italic 700 21px "adelle", serif;
-  padding:2%;
+  padding:0.5% 2%;
   -webkit-appearance: none;
   border:none;
 }
@@ -506,6 +506,9 @@ ul li:hover {
 /* $work */
 .work {
 	background: $tan;
+  .project-grid {
+    padding: 0;
+  }
   .project-trigger {
     @include navText;
     color:$grey;
@@ -857,7 +860,7 @@ ul li:hover {
 
 footer#footer {
   background: $text; 
-  padding:125px 0;  
+  padding:125px 20px;  
   color:white;
   h2 {
     color:white;
@@ -866,6 +869,7 @@ footer#footer {
   }
 }
 .social {
+  padding: 0;
   li {
     display: inline-block; 
     a {
@@ -938,7 +942,7 @@ footer#footer {
       margin-left: 2%;
       white-space: normal;
       width:34%;
-      padding:10px 15px;
+      padding:10px 1%;
     }
   }
   p {
