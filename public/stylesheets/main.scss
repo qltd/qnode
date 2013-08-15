@@ -334,11 +334,11 @@ ul li:hover {
   top:0;
   width: 100%;
   z-index: 1000;
-  padding: 25px 0 20px;
+  padding: 25px 0 0;
 }
 
 .logo {
-	margin: 0 0 0 4%;
+	margin: 0 0 20px 4%;
 	width:233px;
 	height: 55px;
 	text-indent: -9999px;
@@ -346,16 +346,34 @@ ul li:hover {
 	background: url(../images/logo.png) no-repeat;
 }
 
+.nav-toggle {
+  background: $pink;
+  color:white;
+  float: right;
+  padding: 5px 15px;
+  margin-right: 2%;
+}
+
 .main-nav {
   display: none;
-  float: right;
-  margin: 17px 6% 0 0;
+  background: $pink;
+  clear:both;
+  ul {
+    margin: 0;
+    padding:20px 0;
+  }
+  li {
+    text-align: center;
+    list-style: none;
+  }
   a {
+    display: block;
+    padding:15px;
     @include navText;
     &:hover {
-     color:$linko;
-   }
- }
+    color:$linko;
+    }
+  }
 }
 
 .messages {
@@ -387,9 +405,30 @@ ul li:hover {
   .header {
     padding:35px 0 40px;
   }
-  .main-nav {
-    display: block;
+
+  .nav-toggle {
+    display: none;  
   }
+
+  .main-nav {
+    display: block !important;
+    float: right;
+    margin: 17px 6% 0 0;
+    background: transparent;
+    clear: none;
+    ul {
+      li {
+        display: inline-block;  
+        & + li {
+          margin-left: 20px;
+        }
+      }
+      a {
+        padding: 0;
+      }
+    }
+  }
+
 }
 
 
@@ -427,9 +466,11 @@ ul li:hover {
   .headline {
     margin-top: 146px;
     height: 500px;
+    
     h3 {
       font-size: 40px;
     }
+
     video {
       width: 100%;
     }
@@ -970,6 +1011,7 @@ footer#footer {
 /*--$ADMINBAR--*/
 
 .admin-bar {
+  display: none;
   background:#333;
   color:white;
   position:fixed;

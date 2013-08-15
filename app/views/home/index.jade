@@ -9,7 +9,7 @@ block head_scripts
 
 block top_navigation
   nav.main-nav
-    ul.inline
+    ul
       li: a(href='#about') About
       li: a(href='#work') Work
       li: a(href='#services') Services
@@ -76,9 +76,13 @@ block body_scripts
 
       }
 
-
+      //-  Toggles crew member on mobile
       $('.crew-member').on('click', function(){
         $(this).toggleClass('open');
+      });
+
+      $('.nav-toggle').on('click', function(){
+        $('.main-nav').slideToggle();
       });
 
     });
