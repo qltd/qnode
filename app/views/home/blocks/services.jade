@@ -4,13 +4,17 @@ if panel && panel.Services
       h2= panel.Services.title
       .content
         p.section-content= panel.Services.body
-
+        ul  
           if services
             if services[0]
               each service, key in services[0]
-                div= service.title
+                li
+                  i.icon-plus-sign 
+                  = service.title
             if services[1]
               each service, key in services[1]
-                div= service.title
+                li
+                  i.icon-plus-sign 
+                  =service.title
   
       .q.pinq(data-stellar-ratio='2', data-stellar-vertical-offset='350')
