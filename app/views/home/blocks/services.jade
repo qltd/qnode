@@ -6,6 +6,11 @@ if panel && panel.Services
         p.section-content= panel.Services.body
 
           if services
-            != renderTwoColumnList(services)
+            if services[0]
+              each service, key in services[0]
+                div= service.title
+            if services[1]
+              each service, key in services[1]
+                div= service.title
   
       .q.pinq(data-stellar-ratio='2', data-stellar-vertical-offset='350')

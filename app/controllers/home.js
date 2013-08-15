@@ -32,7 +32,7 @@ exports.index = function (req, res) {
       return Q.ninvoke(Panel.home, 'find');
     })
     .then(function (panels) { 
-      res.locals.panels = res.locals.objectifyPanels(panels);
+      res.locals.panels = objectifyPanels(panels);
       return Q.ninvoke(Crew, 'find');
     })
     .then(function (crew) { 
@@ -44,7 +44,7 @@ exports.index = function (req, res) {
       return Q.ninvoke(Service.positioned, 'find');
     })
     .then(function (services) {
-      res.locals.services = services;
+      res.locals.services = splitArray(services);
       return Q.ninvoke(Project, 'find');
     })
     .then(function (projects) {
@@ -55,6 +55,7 @@ exports.index = function (req, res) {
       });  
     })
     .fail(function (err) {
+      console.log(err);
       return res.render('500');
     });
 };
