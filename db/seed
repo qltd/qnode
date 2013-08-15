@@ -11,7 +11,9 @@ if [ "$1" ]; then
   mongo $1 --eval "db.dropDatabase()"
 
   ## delete content within tmp & dynamic content folders
+  touch "$APP_EXECUTION_PARENT_FOLDER/tmp/_tmp"
   rm "$APP_EXECUTION_PARENT_FOLDER/tmp/"*
+  touch "$APP_EXECUTION_PARENT_FOLDER/public/images/uploads/_tmp"
   rm "$APP_EXECUTION_PARENT_FOLDER/public/images/uploads/"*
 
   ## import collections from json files
