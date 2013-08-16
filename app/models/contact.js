@@ -3,10 +3,12 @@
  * Module dependencies
  */
 
-var mongoose = require('mongoose')
+var nodemailer = require('nodemailer')
+  , mongoose = require('mongoose')
   , msg = require('../../config/messages')
   , sanitize = require('validator').sanitize
   , Schema = mongoose.Schema
+  , transport = nodemailer.createTransport('Sendmail')
   , validate = require('../../lib/utils').check;
 
 /**
@@ -35,7 +37,8 @@ var ContactSchema = new Schema({
   comments: {
     type: String,
     validate: [ validate.notNull, msg.comments.isNull ]
-  }
+  },
+  slug: String
 });
 
 /**
@@ -48,6 +51,29 @@ ContactSchema.pre('validate', function(next) {
   this.company = sanitize(this.company).escape();
   this.comments = sanitize(this.comments).escape();
   next();
+});
+
+/**
+ * Pre-save hook
+ */
+
+ContactSchema.pre('save', function (next) {
+  this.slug = toSlug(this.name);
+  next();
+});
+
+/**
+ * Post-save hook
+ */
+
+ContactSchema.post('save', function (contact) {
+  var mailOptions = {
+      from: 'web@qltd.com',
+      to: 'mike@qltd.com',
+      subject: 'qltd.com: New Message for Q from ' + contact.name,
+      text: 'From: ' + contact.name + ' (' + contact.email + ')\nCompany: ' + contact.company + '\nComments: ' + contact.comments
+  }
+  transport.sendMail(mailOptions);
 });
 
 mongoose.model('Contact', ContactSchema);
