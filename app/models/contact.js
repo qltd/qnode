@@ -73,7 +73,14 @@ ContactSchema.post('save', function (contact) {
       subject: 'qltd.com: New Message for Q from ' + contact.name,
       text: 'From: ' + contact.name + ' (' + contact.email + ')\nCompany: ' + contact.company + '\nComments: ' + contact.comments
   }
-  transport.sendMail(mailOptions);
+  transport.sendMail(mailOptions, function (err, responseStatus) {
+    if(!err){
+      console.log(responseStatus.message); // response from the server
+      console.log(responseStatus.messageId); // Message-ID value used
+    } else {
+      console.log(err);
+    }
+  });
 });
 
 mongoose.model('Contact', ContactSchema);
