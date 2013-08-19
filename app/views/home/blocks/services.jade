@@ -11,10 +11,14 @@ if panel && panel.Services
                 li
                   i.icon-plus-sign 
                   = service.title
+                    .service-details
+                      =service.body
             if services[1]
               each service, key in services[1]
                 li
                   i.icon-plus-sign 
                   =service.title
+                    .service-details
+                      =service.body
   
       .q.pinq(data-stellar-ratio='2', data-stellar-vertical-offset='350')

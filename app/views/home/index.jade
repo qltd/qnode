@@ -44,7 +44,7 @@ block body_scripts
       });
 
       $("a[href^='#']").click(function(){//$.scrollTo works EXACTLY the same way, but scrolls the whole screen
-        $.scrollTo( this.hash, 800, { offset:-150 });
+        $.scrollTo( this.hash, 800, { offset:-150, axis: 'y' });
         return false;
       });
 
