@@ -67,7 +67,7 @@ ContactSchema.pre('save', function (next) {
  */
 
 ContactSchema.post('save', function (contact) {
-  var mailOptions = {
+  /*var mailOptions = {
       from: 'web@qltd.com',
       to: 'mike@qltd.com',
       subject: 'qltd.com: New Message for Q from ' + contact.name,
@@ -80,7 +80,7 @@ ContactSchema.post('save', function (contact) {
     } else {
       console.log(err);
     }
-  });
+  });*/
 });
 
 mongoose.model('Contact', ContactSchema);
