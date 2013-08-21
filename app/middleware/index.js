@@ -104,7 +104,7 @@ exports.helpers = function (req, res, next) {
   }
 
   stripObject = function (mongoDoc) {
-    var _mongoDoc = stripObjectId(mongoDoc);
+    var _mongoDoc = ( mongoDoc['_doc'] ? stripObjectId(mongoDoc['_doc']) : stripObjectId(mongoDoc) );
     var _mongoDocKeys = Object.keys(_mongoDoc);
     _mongoDocKeys.forEach(function (key) {
       if (typeof _mongoDoc[key] === 'object') {
