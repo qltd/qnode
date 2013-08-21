@@ -11,7 +11,7 @@ if panel && panel.Crew
                   img(src=image.src, alt=image.alt)
                 .person-info
                   h4 
-                    = crewmember.firstName + " " + crewmember.lastName
+                    = crewmember.title
                   h5
                     = crewmember.position
               .bio
@@ -29,6 +29,5 @@ if panel && panel.Crew
                 if crewmember.gitHubUser
                   a(href="http://github.com/#{crewmember.gitHubUser}", target="_blank")
                     i.icon-github
-
 
       .q(data-stellar-ratio='0.5', data-stellar-vertical-offset='220')

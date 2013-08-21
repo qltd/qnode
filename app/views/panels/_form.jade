@@ -11,5 +11,7 @@ block body_content
         #body
           textarea(name='body', placeholder='Body', cols='10', rows='5')
             = panel.body
+        #position
+          input.position(type='number', name='position', placeholder='Position', value=panel.position)
         #submit
           input(type='submit')

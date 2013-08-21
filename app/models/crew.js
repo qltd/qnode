@@ -65,7 +65,7 @@ CrewSchema.virtual('_meta')
  */
 
 CrewSchema.namedScope('index', function() {
-  return this.populate('changeLog.user').sort('title');
+  return this.populate('changeLog.user').sort('lastName');
 });
 
 /**
@@ -91,7 +91,7 @@ CrewSchema.pre('validate', function(next) {
  */
 
 CrewSchema.pre('save', function(next) {
-  this.title = this.firstName + ' ' + ( this.middleName ? this.middleName + ' ' : null ) + this.lastName;
+  this.title = this.firstName + ' ' + ( this.middleName ? this.middleName + ' ' : '' ) + this.lastName;
   this.slug = toSlug(this.title);
 
   // log changes

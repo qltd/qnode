@@ -3,8 +3,10 @@ extends ../layouts/default
 block body_content
   article.panel
     div.container
-      p
-        strong
-          = panel.title
-        br
+      h1= panel.title
+      p#body
         != panel.body
+      #position 
+        strong Position
+        br
+        = panel.position

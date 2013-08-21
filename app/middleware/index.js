@@ -33,8 +33,8 @@ exports.helpers = function (req, res, next) {
     userId: ( req.user && req.user._id ? req.user._id : null ),
     userRole: ( req.user && req.user.role ? req.user.role : null )
   }
-  // stores a copy of metadata in res
-  res._meta = req.body._meta;
+  // stores a copy of metadata in res.locals
+  res.locals._meta = req.body._meta;
 
   // creates a named series of panel objects from a panel array
   // available to views as 'panel.Title.property' 
@@ -97,7 +97,7 @@ exports.helpers = function (req, res, next) {
   toSlug = function (value) {
     return value.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g,'');
   }
-
+  
   next();
 }
 
