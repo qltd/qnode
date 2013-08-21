@@ -21,12 +21,14 @@ var Crew = mongoose.model('Crew')
 /**
  * Index
  * GET /crew
+ * GET /crew/json
  */
 
 exports.index = function (req, res) {
   Q.ninvoke(Crew.index, 'find')
     .then(function (crew) {
       res.locals.crew = crew;
+      if (req.url.indexOf('/json') > -1) return res.send(stripObjects(crew));
       return res.render('crew');
     })
     .fail(function (err) {
@@ -37,7 +39,9 @@ exports.index = function (req, res) {
 /**
  * Show
  * GET /crew/:slug
+ * GET /crew/:slug/json
  * GET /crew/:slug/log/:__v
+ * GET /crew/:slug/log/:__v/json
  */
 
 exports.show = function (req, res) {
@@ -45,6 +49,7 @@ exports.show = function (req, res) {
     .then(function (crew) {
       if (!crew) return res.render('404');
       res.locals.crew = ( req.params.__v && crew.changeLog[req.params.__v] ? _.extend(crew, crew.changeLog[req.params.__v].data) : crew );
+      if (req.url.indexOf('/json') > -1) return res.send(stripObject(res.locals.crew['_doc']));
       return res.render('crew/show');
     })
     .fail(function (err) {

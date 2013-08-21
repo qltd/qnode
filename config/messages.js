@@ -84,6 +84,9 @@ module.exports = {
     notEmail: 'Email address must be valid',
     isNull: 'Email address cannot be empty'
   },
+  jobTitle: {
+    isNull: 'Job title cannot be empty'
+  },
   name: {
     first: {
       isNull: 'First name cannot be empty'

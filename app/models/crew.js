@@ -22,11 +22,14 @@ var ChangeLogSchema = mongoose.model('ChangeLog').schema
 
 var CrewSchema = new Schema({
   title: String,
-  position: {
+  body: {
     type: String,
-    validate: [ validate.notNull, msg.position.isNull ]
+    validate: [ validate.notNull, msg.body.isNull ]
   },
-  body: String,
+  jobTitle: {
+    type: String,
+    validate: [ validate.notNull, msg.jobTitle.isNull ]
+  },
   firstName: {
     type: String,
     validate: [ validate.notNull, msg.name.first.isNull ]

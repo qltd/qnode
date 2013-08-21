@@ -97,6 +97,40 @@ exports.helpers = function (req, res, next) {
   toSlug = function (value) {
     return value.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g,'');
   }
+
+  stripObjectId = function (mongoDoc) {
+    var _mongoDoc = _.omit(mongoDoc, '_id', 'user');
+    return _mongoDoc;
+  }
+
+  stripObject = function (mongoDoc) {
+    var _mongoDoc = stripObjectId(mongoDoc);
+    var _mongoDocKeys = Object.keys(_mongoDoc);
+    _mongoDocKeys.forEach(function (key) {
+      if (typeof _mongoDoc[key] === 'object') {
+        if (_.isArray(_mongoDoc[key])) {
+          var _mDs = [];
+          _mongoDoc[key].forEach(function (mD, k) {
+            _mDs.push( ( mD['_doc'] ? stripObject(mD['_doc']) : stripObject(mD) ) );
+          });
+          _mongoDoc[key] = _mDs;
+        } else {
+          _mongoDoc[key] = ( _mongoDoc[key]['_doc'] ? stripObject(_mongoDoc[key]['_doc']) : stripObject(_mongoDoc[key]) );
+        } 
+      } 
+    });
+    return _mongoDoc;
+  }
+
+  // function for producing stripped json suitable for seed files
+  stripObjects = function (mongoDocs) {
+    var _mongoDocs = [];
+    mongoDocs.forEach(function (mD, key) {
+      var _mD = stripObject(mD['_doc']);
+      _mongoDocs.push(_mD);
+    });
+    return _mongoDocs; 
+  }
   
   next();
 }

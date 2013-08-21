@@ -10,7 +10,7 @@ block body_content
               i.icon-chevron-up
             th.title Title 
               i.icon-chevron-up
-            th.position Position 
+            th.job-title Job Title 
               i.icon-chevron-up
             th.date Updated Date
               i.icon-chevron-up
@@ -27,7 +27,7 @@ block body_content
                 strong 
                   = change.data.title
               td
-                = change.data.position
+                = change.data.jobTitle
               td
                 = ( change._id ? change._id.getTimestamp() : crew._id.getTimestamp() )
               td

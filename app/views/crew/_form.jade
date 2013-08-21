@@ -10,8 +10,8 @@ block body_content
           input(type='text', name='firstName', placeholder='First Name*', value=crew.firstName)
           input(type='text', name='middleName', placeholder='Middle Name', value=crew.middleName)
           input(type='text', name='lastName', placeholder='Last Name*', value=crew.lastName)
-        #position
-          input(type='text', name='position', placeholder='Position*', value=crew.position)
+        #job-title
+          input(type='text', name='jobTitle', placeholder='Job Title*', value=crew.jobTitle)
         #biography
           textarea(type='text', name='body', placeholder='Biography*', cols='10', rows='5')
             != crew.body 
