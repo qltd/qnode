@@ -196,6 +196,7 @@ input, textarea {
   padding:0.5% 2%;
   -webkit-appearance: none;
   border:none;
+  @include border-radius(0);
 }
 input {
   height:75px;
@@ -714,7 +715,7 @@ ul li:hover {
       @include proxSemi(14px, white);
     }
   }
-  li:hover, li.open {
+  li.open {
     .person-wrap {
       border-color:$pink;
       background: $pink;
