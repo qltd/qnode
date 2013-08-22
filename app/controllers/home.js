@@ -32,7 +32,8 @@ exports.index = function (req, res) {
       return Q.ninvoke(Panel.home, 'find');
     })
     .then(function (panels) { 
-      res.locals.panels = objectifyPanels(panels);
+      // make panels accessible as panel.slug; where slug has had hyphens removed, and been converted to camelCase 
+      res.locals.panel = toCamelKeyObject(panels);
       return Q.ninvoke(Crew, 'find');
     })
     .then(function (crew) { 
@@ -44,7 +45,8 @@ exports.index = function (req, res) {
       return Q.ninvoke(Service.positioned, 'find');
     })
     .then(function (services) {
-      res.locals.services = splitArray(services);
+      // make an array of the services array that has half of its children in either of two keys
+      res.locals.services = toSplitArray(services);
       return Q.ninvoke(Project, 'find');
     })
     .then(function (projects) {

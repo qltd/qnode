@@ -60,7 +60,7 @@ PanelSchema.namedScope('index', function() {
  */
 
 PanelSchema.pre('validate', function (next) {
-  this.title = sanitize(this.title).escape();
+  this.title = sanitize(this.title).xss();
   this.body = sanitize(this.body).xss();
   next();
 });

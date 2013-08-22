@@ -1,7 +1,7 @@
-if panel && panel.Clients
+if panel && panel.clients
   article#clients.clients.panel
     .container
-      h2= panel.Clients.title
+      h2= panel.clients.title
       .clients.cycle-slideshow
         each client in clients
           img(src=client.image[0].src, alt=client.image[0].alt)

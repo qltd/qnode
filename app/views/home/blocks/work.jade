@@ -1,9 +1,9 @@
-if panel && panel.Work
+if panel && panel.work
   article#work.work.panel
     .container
-      h2= panel.Work.title
+      h2= panel.work.title
       .content
-        p= panel.Work.body
+        p= panel.work.body
       if projects && projects.length
         ul.project-grid
           each project, key in projects
