@@ -192,7 +192,7 @@ exports.update = function (req, res) {
       return Q.ninvoke(crew, 'save');
     })
     .then(function () {
-      req.flash('success', msg.crew.updated(req.body.firstName + ' ' + ( req.body.middleName ? req.body.middleName + ' ' : null ) + req.body.lastName));
+      req.flash('success', msg.crew.updated(req.body.firstName + ' ' + ( req.body.middleName ? req.body.middleName + ' ' : '' ) + req.body.lastName));
       return res.redirect('/crew');
     })
     .fail(function (err) {

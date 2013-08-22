@@ -17,13 +17,15 @@ var Contact = mongoose.model('Contact');
 /**
  * Index
  * GET /contacts
+ * GET /contacts/json
  */
 
 exports.index = function (req, res) {
   Q.ninvoke(Contact, 'find')
     .then(function (contacts) {
       res.locals.contacts = contacts;
-      return res.render('contacts');
+      if (req.url.indexOf('/json') > -1) return res.send(stripObjects(contacts)); // json
+      return res.render('contacts'); // html
     })
     .fail(function (err) {
       return res.render('500');

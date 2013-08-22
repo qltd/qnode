@@ -18,13 +18,15 @@ var User = mongoose.model('User');
 /**
  * Index
  * GET /users
+ * GET /users/json
  */
 
 exports.index = function (req, res) {
   Q.ninvoke(User.index, 'find')
     .then(function (users) {
       res.locals.users = users;
-      return res.render('users');
+      if (req.url.indexOf('/json') > -1) return res.send(stripObjects(users)); // json
+      return res.render('users'); // html
     })
     .fail(function (err) {
       return res.render('500');
@@ -34,7 +36,9 @@ exports.index = function (req, res) {
 /**
  * Show
  * GET /users/:username
+ * GET /users/:username/json
  * GET /users/:username/log/:__v
+ * GET /users/:username/log/:__v/json
  */
 
 exports.show = function (req, res) {
@@ -42,7 +46,8 @@ exports.show = function (req, res) {
     .then(function (user) {
       if (!user) return res.render('404');
       res.locals.user = ( req.params.__v && user.changeLog[req.params.__v] ? _.extend(user, user.changeLog[req.params.__v].data) : user );
-      return res.render('users/show');
+      if (req.url.indexOf('/json') > -1) return res.send(stripObject(res.locals.user)); // json
+      return res.render('users/show'); // html
     })
     .fail(function (err) {
       return res.render('500');

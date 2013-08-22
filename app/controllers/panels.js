@@ -18,13 +18,15 @@ var Panel = mongoose.model('Panel');
 /**
  * Index
  * GET /panels
+ * GET /panels/json
  */
 
 exports.index = function (req, res) {
   Q.ninvoke(Panel.index, 'find')
     .then(function (panels) {
       res.locals.panels = panels;
-      return res.render('panels');
+      if (req.url.indexOf('/json') > -1) return res.send(stripObjects(panels)); // json
+      return res.render('panels'); // html
     })
     .fail(function (err) {
       return res.render('500');
@@ -34,7 +36,9 @@ exports.index = function (req, res) {
 /**
  * Show
  * GET /panels/:slug
+ * GET /panels/:slug/json
  * GET /panels/:slug/log/:__v
+ * GET /panels/:slug/log/:__v/json
  */
 
 exports.show = function (req, res) {
@@ -42,7 +46,8 @@ exports.show = function (req, res) {
     .then(function (panel) {
       if (!panel) return res.render('404');
       res.locals.panel = ( req.params.__v && panel.changeLog[req.params.__v] ? _.extend(panel, panel.changeLog[req.params.__v].data) : panel );
-      return res.render('panels/show');
+      if (req.url.indexOf('/json') > -1) return res.send(stripObject(res.locals.panel)); // json
+      return res.render('panels/show'); // html
     })
     .fail(function (err) {
       return res.render('500');

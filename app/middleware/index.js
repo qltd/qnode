@@ -98,11 +98,13 @@ exports.helpers = function (req, res, next) {
     return value.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g,'');
   }
 
+  // function that removes '_id' and 'user' from mongo doc json
   stripObjectId = function (mongoDoc) {
     var _mongoDoc = _.omit(mongoDoc, '_id', 'user');
     return _mongoDoc;
   }
 
+  // function for producing stripped json suitable for seed files from a single mongo doc
   stripObject = function (mongoDoc) {
     var _mongoDoc = ( mongoDoc['_doc'] ? stripObjectId(mongoDoc['_doc']) : stripObjectId(mongoDoc) );
     var _mongoDocKeys = Object.keys(_mongoDoc);
@@ -122,7 +124,7 @@ exports.helpers = function (req, res, next) {
     return _mongoDoc;
   }
 
-  // function for producing stripped json suitable for seed files
+  // function for producing stripped json suitable for seed files from an array of mongo docs
   stripObjects = function (mongoDocs) {
     var _mongoDocs = [];
     mongoDocs.forEach(function (mD, key) {

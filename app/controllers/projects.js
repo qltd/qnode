@@ -20,13 +20,15 @@ var Project = mongoose.model('Project')
 /**
  * Index
  * GET /projects
+ * GET /projects/json
  */
 
 exports.index = function (req, res) {
   Q.ninvoke(Project.index, 'find')
     .then(function (projects) {
       res.locals.projects = projects;
-      return res.render('projects');
+      if (req.url.indexOf('/json') > -1) return res.send(stripObjects(projects)); // json
+      return res.render('projects'); // html
     })
     .fail(function (err) {
       console.log(err);
@@ -37,7 +39,9 @@ exports.index = function (req, res) {
 /**
  * Show
  * GET /projects/:slug
+ * GET /projects/:slug/json
  * GET /projects/:slug/log/:__v
+ * GET /projects/:slug/log/:__v/json
  */
 
 exports.show = function (req, res) {
@@ -45,7 +49,8 @@ exports.show = function (req, res) {
     .then(function (project) {
       if (!project) return res.render('404');
       res.locals.project = ( req.params.__v && project.changeLog[req.params.__v] ? _.extend(project, project.changeLog[req.params.__v].data) : project );
-      return res.render('projects/show');
+      if (req.url.indexOf('/json') > -1) return res.send(stripObject(res.locals.project)); // json
+      return res.render('projects/show'); // html
     })
     .fail(function (err) {
       return res.render('500');

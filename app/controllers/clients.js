@@ -20,13 +20,15 @@ var Client = mongoose.model('Client')
 /**
  * Index
  * GET /clients
+ * GET /clients/json
  */
 
 exports.index = function (req, res) {
   Q.ninvoke(Client.index, 'find')
     .then(function (clients) {
       res.locals.clients = clients;
-      return res.render('clients');
+      if (req.url.indexOf('/json') > -1) return res.send(stripObjects(clients)); // json
+      return res.render('clients'); // html
     })
     .fail(function (err) {
       return res.render('500');
@@ -36,7 +38,9 @@ exports.index = function (req, res) {
 /**
  * Show
  * GET /clients/:slug
+ * GET /clients/:slug/json
  * GET /clients/:slug/log/:__v
+ * GET /clients/:slug/log/:__v/json
  */
 
 exports.show = function (req, res) {
@@ -44,7 +48,8 @@ exports.show = function (req, res) {
     .then(function (client) {
       if (!client) return res.render('404');
       res.locals._client = ( req.params.__v && client.changeLog[req.params.__v] ? _.extend(client, client.changeLog[req.params.__v].data) : client );
-      return res.render('clients/show');
+      if (req.url.indexOf('/json') > -1) return res.send(stripObject(res.locals._client)); // json
+      return res.render('clients/show'); // html
     })
     .fail(function (err) {
       return res.render('500');
