@@ -2889,7 +2889,7 @@ ul li:hover .flyout {
 /* line 722, main.scss */
 .crew-grid li:hover .bio, .crew-grid li.open .bio {
   padding: 40px 4% 20px;
-  max-height: 200px; }
+  max-height: 400px; }
 
 /* $clients */
 /* line 730, main.scss */
