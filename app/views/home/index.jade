@@ -81,8 +81,14 @@ block body_scripts
         $(this).toggleClass('open');
       });
 
+      //- Toggles Mobile Nav
       $('.nav-toggle').on('click', function(){
         $('.main-nav').slideToggle();
       });
+
+      //- Toggles Services 
+      $('.services-list li').on('click', function(){
+        $(this).children('.service-details').slideToggle();
+      });      
 
     });

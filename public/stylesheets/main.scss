@@ -620,6 +620,11 @@ ul li:hover {
       }
     }
   }
+  .service-details {
+    display: none;
+    margin-left: 27px;
+    @include proxSemi(12px, $grey);
+  }
   .flyout {
     display: none;
     h4 {

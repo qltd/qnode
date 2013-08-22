@@ -4,7 +4,7 @@ if panel && panel.services
       h2= panel.services.title
       .content
         p.section-content= panel.services.body
-        ul  
+        ul.services-list
           if services
             if services[0]
               each service, key in services[0]
