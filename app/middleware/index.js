@@ -138,7 +138,7 @@ exports.helpers = function (req, res, next) {
   }
 
   /**
-   * Returns a stripped mongoDoc from a mongoDoc
+   * Returns an attribute-filtered mongoDoc from a mongoDoc
    * @param {object} mongoDoc
    * @returns {object}
    */
@@ -162,7 +162,7 @@ exports.helpers = function (req, res, next) {
   }
 
   /**
-   * Returns an array of stripped mongoDocs from an array of mongoDocs
+   * Returns an array of attribute-filtered mongoDocs from an array of mongoDocs
    * @param {object[]} mongoDocs
    * @returns {object[]}
    */
