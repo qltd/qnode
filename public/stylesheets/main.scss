@@ -731,10 +731,16 @@ ul li:hover {
 	background: $pink;
 }
 
+.clients-slideshow {
+  width: 140px;
+  margin: 0 auto;
+}
+
 /* $contact */
 .contact {
 	background:$tan;
 }
+
 #contact-submit {
   height: auto;
   float: right;
@@ -747,6 +753,15 @@ ul li:hover {
   @include transition;
   &:hover {
     background: $pink - 30;
+  }
+}
+
+.location {
+  p {
+    text-transform: uppercase;
+    a, a:visited {
+      color:$pink;
+    }
   }
 }
 
@@ -776,7 +791,7 @@ ul li:hover {
   display:none;
   header {
     background: $grey;
-    padding:110px 0;
+    padding:110px 20px;
     h3 {
       margin: 0;
       @include projTitle;
@@ -801,7 +816,7 @@ ul li:hover {
   section {
     margin-top: 8px;
     background: $tan;
-    padding:50px 0 200px;
+    padding:50px 20px 200px;
     .container {
       text-align: center;
       img {
@@ -818,7 +833,7 @@ ul li:hover {
   }
   footer {
     background: $grey;
-    padding:50px 0;
+    padding:50px 20px;
   }
 }
 
@@ -905,7 +920,7 @@ ul li:hover {
 
 footer#footer {
   background: $text; 
-  padding:125px 20px;  
+  padding:125px 20px 0;  
   color:white;
   h2 {
     color:white;
@@ -968,6 +983,10 @@ footer#footer {
     }
   }
 }
+.copyright {
+  margin-top: 70px;
+  @include proxReg(12px, white);
+}
 
 // Newsletter Signup
 .newsletter {
@@ -984,6 +1003,7 @@ footer#footer {
     #submitbutton {
       background: $teal;
       @include navText;
+      font-size: 12px;
       margin-left: 2%;
       white-space: normal;
       width:34%;
@@ -1008,6 +1028,9 @@ footer#footer {
   }
   .newsletter {
     @include span-columns(4 omega);
+  }
+  #submitbutton {
+    @include navText;
   }
 }
 

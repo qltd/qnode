@@ -67,3 +67,8 @@
   color: $color;
   font: 600 $size "proxima-nova";
 }
+
+@mixin proxReg($size, $color) {
+  color: $color;
+  font: normal $size "proxima-nova";
+}

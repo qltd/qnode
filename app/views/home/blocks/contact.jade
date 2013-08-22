@@ -4,6 +4,16 @@ if panel && panel.contact
       h2= panel.contact.title
       .content
         p= panel.contact.body
+
+        .location
+          h5 logo
+          p
+            | 109 CATHERINE STREET<br> 
+            | ANN ARBOR, MICHIGAN 48104<br>
+            | <a href="#">VIEW MAP</a><br>
+          p
+            | <a href="tel:+7346681695"><strong>734.668.1695</strong></a><br>
+            | <a href="mailto:info@qltd.com"><strong>info@qltd.com</strong></a>
         form(action='/contacts/new', method='post')
           input(name='name', placeholder='Name*', type='text', value=contact.name)
           input(name='email', placeholder='Email*', type='text', value=contact.email)
