@@ -38,10 +38,12 @@ block body_scripts
   //- script(data-main='scripts/main', src='/scripts/vendor/requirejs/require.js')
   script.
     jQuery(function($){
-      $.stellar({
-        hideDistantElements: true,
-        responsive: true
-      });
+      if(!navigator.userAgent.match(/(iPhone|iPod|iPad)/i)) {
+        $.stellar({
+          hideDistantElements: true,
+          responsive: true
+        });
+      }
 
       $("a[href^='#']").click(function(){//$.scrollTo works EXACTLY the same way, but scrolls the whole screen
         $.scrollTo( this.hash, 800, { offset:-150, axis: 'y' });
