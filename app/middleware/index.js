@@ -36,10 +36,11 @@ exports.helpers = function (req, res, next) {
   res.locals._meta = req.body._meta;
 
   /**
-   * Converts an array of mongoDocs into an object-contained series of camelKeyed mongoDocs
-   * @param {object[]} mongoDocs
-   * @returns {object}  
-   */
+   * Converts an array of mongoose-modeled objects into an object containing multiple mongoose-modeled objects with camel-case keys that are generated from their slugs or titles
+   *
+   * @param {Array} mongoDocs - An array of mongoose-modeled objects
+   * @returns {object} An object containing multiple mongoose-modeled objects with camel-case keys that are generated from their slugs or titles
+   */  
   toCamelKeyObject = function (mongoDocs) {
     var _mongoDocs = {};
     mongoDocs.forEach(function (mD, key) {
@@ -58,9 +59,10 @@ exports.helpers = function (req, res, next) {
   res.locals.toCamelKeyObject = toCamelKeyObject;
 
   /**
-   * Converts a single array in to an array-containing array that has half of its children in either of two keys
-   * @param {object[]} array
-   * @returns {object[]}  
+   * Converts a single array in to an array-containing array that holds the halves of the original array within two keys
+   *
+   * @param {Array} array - A valid javascript array
+   * @returns {Array} An array containing the original array in two halves, referenced by keys '0' and '1'
    */
   toSplitArray = function (array) {
     if (array.length < 2)  return [array,[]];
@@ -79,7 +81,8 @@ exports.helpers = function (req, res, next) {
   res.locals.toSplitArray = toSplitArray;
 
   /**
-   * Returns the time and date a mongoDoc was created
+   * Returns the time and date a mongoose-modeled object was created
+   *
    * @param {object} mongoDoc
    * @returns {string}
    */
