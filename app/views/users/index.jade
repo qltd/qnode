@@ -38,7 +38,7 @@ block body_content
                   = dateUpdated(user)
               td
                 a(href='/users/' + user.username + '/edit')
-                  = updatedBy(user)
+                  = authorUpdated(user)
               td
                 a(href='/users/' + user.username + '/log') Log
               td

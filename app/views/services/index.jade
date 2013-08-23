@@ -33,7 +33,7 @@ block body_content
                   = dateUpdated(service)
               td
                 a(href='/services/' + service.slug + '/edit')
-                  = updatedBy(service)
+                  = authorUpdated(service)
               td
                 a(href='/services/' + service.slug + '/log') Log
               td

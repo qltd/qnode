@@ -25,7 +25,7 @@ exports.index = function (req, res) {
   Q.ninvoke(Panel.index, 'find')
     .then(function (panels) {
       res.locals.panels = panels;
-      if (req.url.indexOf('/json') > -1) return res.send(stripObjects(panels)); // json
+      if (req.url.indexOf('/json') > -1) return res.send(stripMongoIds(panels)); // json
       return res.render('panels'); // html
     })
     .fail(function (err) {
@@ -46,7 +46,7 @@ exports.show = function (req, res) {
     .then(function (panel) {
       if (!panel) return res.render('404');
       res.locals.panel = ( req.params.__v && panel.changeLog[req.params.__v] ? _.extend(panel, panel.changeLog[req.params.__v].data) : panel );
-      if (req.url.indexOf('/json') > -1) return res.send(stripObject(res.locals.panel)); // json
+      if (req.url.indexOf('/json') > -1) return res.send(stripMongoIds(res.locals.panel)); // json
       return res.render('panels/show'); // html
     })
     .fail(function (err) {

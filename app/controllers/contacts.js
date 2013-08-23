@@ -24,7 +24,7 @@ exports.index = function (req, res) {
   Q.ninvoke(Contact, 'find')
     .then(function (contacts) {
       res.locals.contacts = contacts;
-      if (req.url.indexOf('/json') > -1) return res.send(stripObjects(contacts)); // json
+      if (req.url.indexOf('/json') > -1) return res.send(stripMongoIds(contacts)); // json
       return res.render('contacts'); // html
     })
     .fail(function (err) {

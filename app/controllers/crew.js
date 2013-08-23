@@ -28,10 +28,11 @@ exports.index = function (req, res) {
   Q.ninvoke(Crew.index, 'find')
     .then(function (crew) {
       res.locals.crew = crew;
-      if (req.url.indexOf('/json') > -1) return res.send(stripObjects(crew)); // json
+      if (req.url.indexOf('/json') > -1) return res.send(stripMongoIds(crew)); // json
       return res.render('crew'); // html
     })
     .fail(function (err) {
+      console.log(err);
       return res.render('500');
     });
 }
@@ -49,7 +50,7 @@ exports.show = function (req, res) {
     .then(function (crew) {
       if (!crew) return res.render('404');
       res.locals.crew = ( req.params.__v && crew.changeLog[req.params.__v] ? _.extend(crew, crew.changeLog[req.params.__v].data) : crew );
-      if (req.url.indexOf('/json') > -1) return res.send(stripObject(res.locals.crew)); // json
+      if (req.url.indexOf('/json') > -1) return res.send(stripMongoIds(res.locals.crew)); // json
       return res.render('crew/show'); // html
     })
     .fail(function (err) {

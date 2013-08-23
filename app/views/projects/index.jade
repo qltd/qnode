@@ -28,7 +28,7 @@ block body_content
                   = dateUpdated(project)
               td
                 a(href='/projects/' + project.slug + '/edit')
-                  = updatedBy(project)
+                  = authorUpdated(project)
               td
                 a(href='/projects/' + project.slug + '/log') Log
               td

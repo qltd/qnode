@@ -28,7 +28,7 @@ block body_content
                   = dateUpdated(client)
               td
                 a(href='/clients/' + client.slug + '/edit')
-                  = updatedBy(client)
+                  = authorUpdated(client)
               td
                 a(href='/clients/' + client.slug + '/log') Log
               td
