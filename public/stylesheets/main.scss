@@ -198,9 +198,15 @@ input, textarea {
   border:none;
   @include border-radius(0);
 }
+
 input {
   height:75px;
 }
+
+textarea {
+  padding-top:10px;
+}
+
 @include at-breakpoint($computer) {
   p {
     font-size: 24px;
@@ -758,11 +764,23 @@ ul li:hover {
 }
 
 .location {
+  width: 113%;
+  margin-left: -30px;
+  background: url(../images/map.png) no-repeat 50% 220px;
+  padding:0 30px 320px;
   p {
+    line-height: 25px;
     text-transform: uppercase;
     a, a:visited {
       color:$pink;
     }
+  }
+  .dark-logo {
+    margin:50px 0 0 0;
+    height: 34px;
+    display: block;
+    text-indent: -9999px;
+    background: url(../images/dark-logo.png) no-repeat;
   }
 }
 
