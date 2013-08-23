@@ -471,6 +471,7 @@ ul li:hover {
 
 @include at-breakpoint($computer) {
   .headline {
+    padding: 150px 0;
     margin-top: 146px;
     height: 500px;
     
@@ -570,7 +571,7 @@ ul li:hover {
     text-align: center;
     margin-bottom: 50px;
     img {
-      width:100%;
+      max-width:100%;
     }
   }
 }
@@ -603,6 +604,7 @@ ul li:hover {
   ul {
     list-style: none;
     padding: 0;
+    margin: 0;
     &.first {
       margin-bottom: 0;
     }
@@ -644,6 +646,12 @@ ul li:hover {
   }
   @include at-breakpoint($computer) {
     ul {
+      &.list-left {
+        @include span-columns(4, 8);
+      }
+      &.list-right {
+        @include span-columns(4 omega, 8);
+      }
       li {
         i {
           display: none;
@@ -734,6 +742,11 @@ ul li:hover {
   }
 }
 
+@include at-breakpoint($computer) {
+
+}
+
+
 /* $clients */
 .clients {
 	background: $pink;
@@ -782,6 +795,13 @@ ul li:hover {
     display: block;
     text-indent: -9999px;
     background: url(../images/dark-logo.png) no-repeat;
+  }
+}
+
+@include at-breakpoint($computer) {
+  .location {
+    padding-bottom: 75px;
+    background-position: 86% 0;
   }
 }
 
