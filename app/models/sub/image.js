@@ -60,6 +60,13 @@ ImageSchema.virtual('path')
  */
 
 ImageSchema.methods = {
+  /**
+   * Adds images to a mongoose-modeled object, and moves files from temp to permanent storage
+   * 
+   * @param {Array} imageFieldArray - Parent object image field values
+   * @param {Array} fileArray - File-field form values
+   * @returns {Array} Return a populated image field array
+   */
   addImages: function (imageFieldArray, fileArray) {
     imageFieldArray.forEach(function (img, key) {
       if (fileArray[key] && fileArray[key].name) { /** handle new image */
@@ -86,6 +93,17 @@ ImageSchema.methods = {
     })
     return imageFieldArray;
   },
+
+  /**
+   * Updates images in a mongoose-modeled object, and moves files from temp to permanent storage
+   * 
+   * @param {Object} parentModel - A mongoose model
+   * @param {Array} updateQuery - The filtering query that will be used to determine which models to update
+   * @param {String} fieldName - The name of image-containing field in the parent mongoose model
+   * @param {Array} dataArray - Text-field form values
+   * @param {Array} fileArray - File-field form values
+   * @returns {Array} Returns a populated image field array
+   */
   updateImages: function (parentModel, updateQuery, fieldName, dataArray, fileArray) {
     var Image = mongoose.model('Image');
     var images = [];
