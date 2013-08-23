@@ -4,21 +4,22 @@ if panel && panel.services
       h2= panel.services.title
       .content
         p.section-content= panel.services.body
-        ul.services-list
           if services
-            if services[0]
-              each service, key in services[0]
-                li
-                  i.icon-plus-sign 
-                  = service.title
-                    .service-details
-                      =service.body
-            if services[1]
-              each service, key in services[1]
-                li
-                  i.icon-plus-sign 
-                  =service.title
-                    .service-details
-                      =service.body
+            ul.services-list.list-left
+              if services[0]
+                each service, key in services[0]
+                  li
+                    i.icon-plus-sign 
+                    = service.title
+                      .service-details
+                        =service.body
+            ul.services-list.list-right
+              if services[1]
+                each service, key in services[1]
+                  li
+                    i.icon-plus-sign 
+                    =service.title
+                      .service-details
+                        =service.body
   
       .q.pinq(data-stellar-ratio='2', data-stellar-vertical-offset='350')
