@@ -31,7 +31,7 @@ block body_content
               td
                 = ( change._id ? change._id.getTimestamp() : panel._id.getTimestamp() )
               td
-                = ( change.user ? change.user.username : createdBy(panel) )
+                = ( change.user ? change.user.username : authorCreated(panel) )
               td
                 a(href='/panels/' + panel.slug + '/log/' + change.data.__v + '/restore' ) 
                   | Restore  

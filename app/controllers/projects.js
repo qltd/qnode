@@ -27,7 +27,7 @@ exports.index = function (req, res) {
   Q.ninvoke(Project.index, 'find')
     .then(function (projects) {
       res.locals.projects = projects;
-      if (req.url.indexOf('/json') > -1) return res.send(stripObjects(projects)); // json
+      if (req.url.indexOf('/json') > -1) return res.send(stripMongoIds(projects)); // json
       return res.render('projects'); // html
     })
     .fail(function (err) {
@@ -49,7 +49,7 @@ exports.show = function (req, res) {
     .then(function (project) {
       if (!project) return res.render('404');
       res.locals.project = ( req.params.__v && project.changeLog[req.params.__v] ? _.extend(project, project.changeLog[req.params.__v].data) : project );
-      if (req.url.indexOf('/json') > -1) return res.send(stripObject(res.locals.project)); // json
+      if (req.url.indexOf('/json') > -1) return res.send(stripMongoIds(res.locals.project)); // json
       return res.render('projects/show'); // html
     })
     .fail(function (err) {

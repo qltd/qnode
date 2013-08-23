@@ -36,6 +36,74 @@ exports.helpers = function (req, res, next) {
   res.locals._meta = req.body._meta;
 
   /**
+   * Returns the username of the user who created a mongoDoc
+   *
+   * @param {Object} mongoDoc
+   * @returns {String}
+   */
+  authorCreated = function (mongoDoc) {
+    return ( mongoDoc.changeLog[0] && mongoDoc.changeLog[0].user ? mongoDoc.changeLog[0].user.username : 'anonymous' );
+  }
+  res.locals.authorCreated = authorCreated;
+
+  /**
+   * Returns the username of the user who last updated a mongoDoc
+   *
+   * @param {Object} mongoDoc
+   * @returns {String}
+   */
+  authorUpdated = function (mongoDoc) {
+    return ( mongoDoc.changeLog[mongoDoc.changeLog.length - 1] && mongoDoc.changeLog[mongoDoc.changeLog.length - 1].user ? mongoDoc.changeLog[mongoDoc.changeLog.length - 1].user.username : 'anonymous' );
+  }
+  res.locals.authorUpdated = authorUpdated;
+
+  /**
+   * Returns the time and date a mongoose-modeled object was created
+   *
+   * @param {Object} mongoDoc
+   * @returns {String}
+   */
+  dateCreated = function (mongoDoc) {
+    return mongoDoc._id.getTimestamp();
+  }
+  res.locals.dateCreated = dateCreated;
+
+  /**
+   * Returns the time and date a mongoDoc was last updated
+   *
+   * @param {Object} mongoDoc
+   * @returns {String}
+   */
+  dateUpdated = function (mongoDoc) {
+    return ( mongoDoc.changeLog[mongoDoc.changeLog.length - 1] && mongoDoc.changeLog[mongoDoc.changeLog.length - 1]._id ? mongoDoc.changeLog[mongoDoc.changeLog.length - 1]._id.getTimestamp() : mongoDoc._id.getTimestamp() );
+  }
+  res.locals.dateUpdated = dateUpdated;
+
+  /**
+   * Removes Mongo and user identifiers from objects and arrays
+   *
+   * @param {Object|Array} obj - Any object or array
+   * @returns {Object|Array} An object or array that has been stripped of mongo and user identifiers
+   */
+  stripMongoIds = function (obj) {
+    if (typeof obj !== 'object') return obj;
+    if (_.isArray(obj)) { // is Object Array
+      var _obj = [];
+      obj.forEach(function (o, key) {
+        _obj.push(stripMongoIds(o));
+      });
+    } else { // is Object
+      var _obj = _.omit( ( obj._doc ? obj._doc : obj ) , '_id', 'user');
+      _objKeys = Object.keys(_obj);
+      _objKeys.forEach(function (key) {
+        _obj[key] = stripMongoIds(_obj[key]);
+      });
+    }
+    return _obj;
+  }
+  res.locals.stripMongoIds = stripMongoIds;
+
+  /**
    * Converts an array of mongoose-modeled objects into an object containing multiple mongoose-modeled objects with camel-case keys that are generated from their slugs or titles
    *
    * @param {Array} mongoDocs - An array of mongoose-modeled objects
@@ -59,6 +127,16 @@ exports.helpers = function (req, res, next) {
   res.locals.toCamelKeyObject = toCamelKeyObject;
 
   /**
+   * Returns a URL-safe value from another value
+   *
+   * @param {String} value
+   * @returns {String} URL-safe value
+   */
+  toSlug = function (value) {
+    return value.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g,'');
+  }
+
+  /**
    * Converts a single array in to an array-containing array that holds the halves of the original array within two keys
    *
    * @param {Array} array - A valid javascript array
@@ -80,104 +158,6 @@ exports.helpers = function (req, res, next) {
   }
   res.locals.toSplitArray = toSplitArray;
 
-  /**
-   * Returns the time and date a mongoose-modeled object was created
-   *
-   * @param {object} mongoDoc
-   * @returns {string}
-   */
-  dateCreated = function (mongoDoc) {
-    return mongoDoc._id.getTimestamp();
-  }
-  res.locals.dateCreated = dateCreated;
-
-  /**
-   * Returns the time and date a mongoDoc was last updated
-   * @param {object} mongoDoc
-   * @returns {string}
-   */
-  dateUpdated = function (mongoDoc) {
-    return ( mongoDoc.changeLog[mongoDoc.changeLog.length - 1] && mongoDoc.changeLog[mongoDoc.changeLog.length - 1]._id ? mongoDoc.changeLog[mongoDoc.changeLog.length - 1]._id.getTimestamp() : mongoDoc._id.getTimestamp() );
-  }
-  res.locals.dateUpdated = dateUpdated;
-
-  /**
-   * Returns the username of the user who created a mongoDoc
-   * @param {object} mongoDoc
-   * @returns {string}
-   */
-  createdBy = function (mongoDoc) {
-    return ( mongoDoc.changeLog[0] && mongoDoc.changeLog[0].user ? mongoDoc.changeLog[0].user.username : 'anonymous' );
-  }
-  res.locals.createdBy = createdBy;
-
-  /**
-   * Returns the username of the user who last updated a mongoDoc
-   * @param {object} mongoDoc
-   * @returns {string}
-   */
-  updatedBy = function (mongoDoc) {
-    return ( mongoDoc.changeLog[mongoDoc.changeLog.length - 1] && mongoDoc.changeLog[mongoDoc.changeLog.length - 1].user ? mongoDoc.changeLog[mongoDoc.changeLog.length - 1].user.username : 'anonymous' );
-  }
-  res.locals.updatedBy = updatedBy;
-
-  /**
-   * Returns a URL-safe value from another value
-   * @param {string} value
-   * @returns {string}
-   */
-  toSlug = function (value) {
-    return value.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g,'');
-  }
-
-  /**
-   * Returns a mongoDoc after stripping it of its '_id' and 'user' keys and values
-   * @param {object} mongoDoc
-   * @returns {object}
-   */
-  stripObjectId = function (mongoDoc) {
-    var _mongoDoc = _.omit(mongoDoc, '_id', 'user');
-    return _mongoDoc;
-  }
-
-  /**
-   * Returns an attribute-filtered mongoDoc from a mongoDoc
-   * @param {object} mongoDoc
-   * @returns {object}
-   */
-  stripObject = function (mongoDoc) {
-    var _mongoDoc = ( mongoDoc['_doc'] ? stripObjectId(mongoDoc['_doc']) : stripObjectId(mongoDoc) );
-    var _mongoDocKeys = Object.keys(_mongoDoc);
-    _mongoDocKeys.forEach(function (key) {
-      if (typeof _mongoDoc[key] === 'object') {
-        if (_.isArray(_mongoDoc[key])) {
-          var _mDs = [];
-          _mongoDoc[key].forEach(function (mD, k) {
-            _mDs.push( ( mD['_doc'] ? stripObject(mD['_doc']) : stripObject(mD) ) );
-          });
-          _mongoDoc[key] = _mDs;
-        } else {
-          _mongoDoc[key] = ( _mongoDoc[key]['_doc'] ? stripObject(_mongoDoc[key]['_doc']) : stripObject(_mongoDoc[key]) );
-        } 
-      } 
-    });
-    return _mongoDoc;
-  }
-
-  /**
-   * Returns an array of attribute-filtered mongoDocs from an array of mongoDocs
-   * @param {object[]} mongoDocs
-   * @returns {object[]}
-   */
-  stripObjects = function (mongoDocs) {
-    var _mongoDocs = [];
-    mongoDocs.forEach(function (mD, key) {
-      var _mD = stripObject(mD['_doc']);
-      _mongoDocs.push(_mD);
-    });
-    return _mongoDocs; 
-  }
-  
   next();
 }
 

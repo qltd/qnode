@@ -25,7 +25,7 @@ exports.index = function (req, res) {
   Q.ninvoke(Service.index, 'find')
     .then(function (services) {
       res.locals.services = services;
-      if (req.url.indexOf('/json') > -1) return res.send(stripObjects(services)); // json
+      if (req.url.indexOf('/json') > -1) return res.send(stripMongoIds(services)); // json
       return res.render('services'); // html
     })
     .fail(function (err) {
@@ -46,7 +46,7 @@ exports.show = function (req, res) {
     .then(function (service) {
       if (!service) return res.render('404');
       res.locals.service = ( req.params.__v && service.changeLog[req.params.__v] ? _.extend(service, service.changeLog[req.params.__v].data) : service );
-      if (req.url.indexOf('/json') > -1) return res.send(stripObject(res.locals.service)); // json
+      if (req.url.indexOf('/json') > -1) return res.send(stripMongoIds(res.locals.service)); // json
       return res.render('services/show'); // html
     })
     .fail(function (err) {

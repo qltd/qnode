@@ -27,7 +27,7 @@ exports.index = function (req, res) {
   Q.ninvoke(Client.index, 'find')
     .then(function (clients) {
       res.locals.clients = clients;
-      if (req.url.indexOf('/json') > -1) return res.send(stripObjects(clients)); // json
+      if (req.url.indexOf('/json') > -1) return res.send(stripMongoIds(clients)); // json
       return res.render('clients'); // html
     })
     .fail(function (err) {
@@ -48,7 +48,7 @@ exports.show = function (req, res) {
     .then(function (client) {
       if (!client) return res.render('404');
       res.locals._client = ( req.params.__v && client.changeLog[req.params.__v] ? _.extend(client, client.changeLog[req.params.__v].data) : client );
-      if (req.url.indexOf('/json') > -1) return res.send(stripObject(res.locals._client)); // json
+      if (req.url.indexOf('/json') > -1) return res.send(stripMongoIds(res.locals._client)); // json
       return res.render('clients/show'); // html
     })
     .fail(function (err) {

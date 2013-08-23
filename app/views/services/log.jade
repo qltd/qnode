@@ -31,7 +31,7 @@ block body_content
               td
                 = ( change._id ? change._id.getTimestamp() : service._id.getTimestamp() )
               td
-                = ( change.user ? change.user.username : createdBy(service) )
+                = ( change.user ? change.user.username : authorCreated(service) )
               td
                 a(href='/services/' + service.slug + '/log/' + change.data.__v + '/restore' ) 
                   | Restore  
