@@ -104,33 +104,7 @@ exports.edit = function (req, res) {
 
 exports.create = function (req, res) {
   var crew = new Crew(req.body);
-
-  crew.image.forEach(function (image, key) {
-    if (req.files.image[key].name) {
-      image = _.extend(image, req.files.image[key]);
-      Q.fcall(fs.rename, image.tmpPath, image.sysPath)
-        .then(function () {
-          return true;
-        })
-        .fail(function (err) {
-          console.log(err);
-          return res.render('500');
-        });
-    } else if (req.files.image[key].path) {
-      Q.fcall(fs.unlink, req.files.image[key].path)
-        .then(function () {
-          return true;
-        })
-        .fail(function (err) {
-          console.log(err);
-          return res.render('500');
-        });
-      image.remove();
-    } else {
-      image.remove();
-    }
-  });
-
+  crew.image = Image.schema.methods.addImages(crew.image, req.files.image);
   Q.ninvoke(crew, 'save')
     .then(function () {
       req.flash('success', msg.crew.created(crew.title));
@@ -149,41 +123,7 @@ exports.create = function (req, res) {
  */
 
 exports.update = function (req, res) {
-  if (req.files.image[0].name && !req.body.image[0].name) {
-    // new image and new data
-    var _img = new Image(_.extend(req.files.image[0], req.body.image[0]));
-  } else if (req.files.image[0].name && req.body.image[0].name) {
-    // new image with old data
-    var _img = new Image(_.extend(req.files.image[0], _.omit(req.body.image[0], 'name', 'type', 'size')));
-  } else if (req.body.image[0].name) {
-    // old image with potentially new data 
-    var _img = new Image(req.body.image[0]);
-  } else {
-    // no image
-    var _img = {};
-  }
-
-  if (req.files.image[0].name) {
-    Q.fcall(fs.rename, _img.tmpPath, _img.sysPath)
-      .then(function () {
-        return true;
-      })
-      .fail(function (err) {
-        console.log(err);
-        return res.render('500');
-      });
-  } else if (req.files.image[0].path) {
-    Q.fcall(fs.unlink, req.files.image[0].path)
-      .then(function () {
-        return true;
-      })
-      .fail(function (err) {
-        console.log(err);
-        return res.render('500');
-      });
-  }
-
-  Q.ninvoke(Crew, 'update', { slug: req.params.slug }, { 'image.0' : _img })
+  Image.schema.methods.updateImages(Crew, { slug: req.params.slug }, 'image', req.body.image, req.files.image)
     .then(function (data) {
       return Q.ninvoke(Crew, 'findOne', { slug: req.params.slug })
     })

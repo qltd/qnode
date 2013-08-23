@@ -68,7 +68,7 @@ CrewSchema.virtual('_meta')
  */
 
 CrewSchema.namedScope('index', function() {
-  return this.populate('changeLog.user').sort('lastName');
+  return this.populate('changeLog.user').sort('lastName').sort('firstName');
 });
 
 /**
