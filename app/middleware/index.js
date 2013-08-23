@@ -11,7 +11,8 @@ var mongoose = require('mongoose')
  * Models
  */
 
-var User = mongoose.model('User');
+var User = mongoose.model('User')
+  , Image = mongoose.model('Image');
 
 /**
  * Helpers
@@ -135,6 +136,7 @@ exports.helpers = function (req, res, next) {
   toSlug = function (value) {
     return value.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g,'');
   }
+  res.locals.toSlug = toSlug;
 
   /**
    * Converts a single array in to an array-containing array that holds the halves of the original array within two keys

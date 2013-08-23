@@ -102,31 +102,7 @@ exports.edit = function (req, res) {
 
 exports.create = function (req, res) {
   var project = new Project(req.body);
-
-  project.images.forEach(function (image, key) {
-    if (req.files.images[key] && req.files.images[key].name) {
-      image = _.extend(image, req.files.images[key]);
-      Q.fcall(fs.rename, image.tmpPath, image.sysPath)
-        .then(function () {
-          return true;
-        })
-        .fail(function (err) {
-          return res.render('500');
-        });
-    } else if (req.files.images[key] && req.files.images[key].path) {
-      Q.fcall(fs.unlink, req.files.images[key].path)
-        .then(function () {
-          return true;
-        })
-        .fail(function (err) {
-          return res.render('500');
-        });
-      image.remove();
-    } else {
-      image.remove();
-    }
-  });
-
+  project.images = Image.schema.methods.addImages(project.images, req.files.images);
   Q.ninvoke(project, 'save')
     .then(function () {
       req.flash('success', msg.project.created(project.title));
@@ -145,49 +121,9 @@ exports.create = function (req, res) {
  */
 
 exports.update = function (req, res) {
-
-  // construct fresh array of associated images
-  var _images = [];
-  req.body.images.forEach(function (image, key) {
-    if (req.files.images[key].name && image.name) {
-      // new image with old data
-      _images.push(new Image(_.extend(req.files.images[key], _.omit(image, 'name', 'type', 'size'))));
-    } else if (req.files.images[key].name && !image.name) {
-      // new image with new data
-      _images.push(new Image(_.extend(req.files.images[key], image)));
-    } else if (image.name) {
-      // old image with potentially new data
-      _images.push(new Image(image));
-    }
-  });
-
-  // handle file data
-  req.files.images.forEach(function (image, key) {
-    if (image.name) {
-      Q.fcall(fs.rename, _images[key].tmpPath, _images[key].sysPath)
-        .then(function () {
-          return true;
-        })
-        .fail(function (err) {
-          console.log(err);
-          return res.render('500');
-        });
-    } else if (image.path) {
-      Q.fcall(fs.unlink, req.files.images[key].path)
-        .then(function () {
-          return true;
-        })
-        .fail(function (err) {
-          console.log(err);
-          return res.render('500');
-        });
-    }
-  });
-
-  // update images before other parent doc data
-  Q.ninvoke(Project, 'update', { slug: req.params.slug }, { 'images' : _images })
+  Image.schema.methods.updateImages(Project, { slug: req.params.slug }, 'images', req.body.images, req.files.images) 
     .then(function (data) {
-      return Q.ninvoke(Project, 'findOne', { slug: req.params.slug })
+      return Q.ninvoke(Project, 'findOne', { slug: req.params.slug });
     })
     .then(function (project) {
       if (!project) return res.render('404');
