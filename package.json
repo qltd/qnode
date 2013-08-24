@@ -11,6 +11,7 @@
     "crypto": "*",
     "express": "3.x.x",
     "gravatar": "*",
+    "imagemagick": "*",
     "jade": "*",
     "mongodb": "*",
     "mongoose": "3.x.x",

@@ -134,7 +134,7 @@ exports.helpers = function (req, res, next) {
    * @returns {String} URL-safe value
    */
   toSlug = function (value) {
-    return value.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g,'');
+    return value.toLowerCase().replace(/[ |_]/g, '-').replace(/[^\w-]+/g,'');
   }
   res.locals.toSlug = toSlug;
 

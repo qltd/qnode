@@ -4,8 +4,10 @@
  */
 
 var fs = require('fs')
+  , im = require('imagemagick')
   , mongoose = require('mongoose')
   , Q = require('q')
+  , sanitize = require('validator').sanitize
   , Schema = mongoose.Schema
   , _ = require('underscore');
 
@@ -25,6 +27,7 @@ var ImageSchema = new Schema({
   src: String,
   style: String,
   sysPath: String,
+  sysPathRetina: String,
   title: String,
   tmpPath: String,
   type: String,
@@ -37,9 +40,13 @@ var ImageSchema = new Schema({
 
 ImageSchema.virtual('name')
   .set(function (name) {
-    this._name = name;
+    var pathParts = name.match(/(.*)\.(.{3,4})$/);
+    pathParts[1] = toSlug(sanitize(pathParts[1]).escape());
+    pathParts[2] = sanitize(pathParts[2].toLowerCase()).escape();
+    this._name = pathParts[1] + '.' + pathParts[2];
     this.fileName = this._name;
-    this.sysPath = './public/images/uploads/' + this._name;
+    this.sysPath = 'public/images/uploads/' + this._name;
+    this.sysPathRetina = 'public/images/uploads/' + pathParts[1] + '@2x.' + pathParts[2];
     this.src = '/images/uploads/' + this._name;
   })
   .get(function () { 
@@ -71,12 +78,20 @@ ImageSchema.methods = {
     imageFieldArray.forEach(function (img, key) {
       if (fileArray[key] && fileArray[key].name) { /** handle new image */
         img = _.extend(img, fileArray[key]);
-        Q.fcall(fs.rename, img.tmpPath, img.sysPath)
+        Q.fcall(fs.rename, img.tmpPath, img.sysPathRetina)
           .then(function () {
+            return Q.fcall(im.resize, {
+              srcPath: img.sysPathRetina,
+              dstPath: img.sysPath,
+              quality: 1,
+              width:   '50%'
+            }); /** create half-sized, non-retina version */
+          })
+          .then(function (stdout, stderr) {
             return true;
           })
           .fail(function (err) {
-            return res.render('500');
+            throw err;
           });
       } else if (fileArray[key] && fileArray[key].path) { /** no image, remove tmp file and data */
         Q.fcall(fs.unlink, fileArray[key].path)
@@ -84,7 +99,7 @@ ImageSchema.methods = {
             return true;
           })
           .fail(function (err) {
-            return res.render('500');
+            throw err;
           });
         img.remove();
       } else { /** no image, no tmp file, remove data */
@@ -102,7 +117,7 @@ ImageSchema.methods = {
    * @param {String} fieldName - The name of image-containing field in the parent mongoose model
    * @param {Array} dataArray - Text-field form values
    * @param {Array} fileArray - File-field form values
-   * @returns {Array} Returns a populated image field array
+   * @returns {Promise} Returns a then-able Promise which updates images in a mongoose-modeled object
    */
   updateImages: function (parentModel, updateQuery, fieldName, dataArray, fileArray) {
     var Image = mongoose.model('Image');
@@ -122,13 +137,20 @@ ImageSchema.methods = {
     /** handle file data */
     fileArray.forEach(function (img, key) {
       if (img.name) { /** new image */
-        Q.fcall(fs.rename, images[key].tmpPath, images[key].sysPath)
+        Q.fcall(fs.rename, images[key].tmpPath, images[key].sysPathRetina)
           .then(function () {
+            return Q.fcall(im.resize, {
+              srcPath: images[key].sysPathRetina,
+              dstPath: images[key].sysPath,
+              quality: 1,
+              width:   '50%'
+            }); /** create half-sized, non-retina version */
+          })
+          .then(function (stdout, stderr) {
             return true;
           })
           .fail(function (err) {
-            console.log(err);
-            return res.render('500');
+            throw err;
           });
       } else if (img.path) { /** no image, remove tmp file */
         Q.fcall(fs.unlink, img.path)
@@ -136,8 +158,7 @@ ImageSchema.methods = {
             return true;
           })
           .fail(function (err) {
-            console.log(err);
-            return res.render('500');
+            throw err;
           });
       }
     });
