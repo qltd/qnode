@@ -4,7 +4,7 @@
  */
 
 var fs = require('fs')
-  , im = require('imagemagick')
+  , gm = require('gm')
   , mongoose = require('mongoose')
   , Q = require('q')
   , sanitize = require('validator').sanitize
@@ -80,15 +80,11 @@ ImageSchema.methods = {
         img = _.extend(img, fileArray[key]);
         Q.fcall(fs.rename, img.tmpPath, img.sysPathRetina)
           .then(function () {
-            return Q.fcall(im.resize, {
-              srcPath: __dirname + '/../../../' + img.sysPathRetina,
-              dstPath: __dirname + '/../../../' + img.sysPath,
-              quality: 1,
-              width:   '50%'
-            }); /** create half-sized, non-retina version */
-          })
-          .then(function (stdout, stderr) {
-            return true;
+            gm(img.sysPathRetina)
+              .resize('50%')
+              .write(img.sysPath, function (err) {
+                if (err) throw err;
+              }); /** create half-sized, non-retina version */
           })
           .fail(function (err) {
             throw err;
@@ -139,15 +135,11 @@ ImageSchema.methods = {
       if (img.name) { /** new image */
         Q.fcall(fs.rename, images[key].tmpPath, images[key].sysPathRetina)
           .then(function () {
-            return Q.fcall(im.resize, {
-              srcPath: __dirname + '/../../../' + images[key].sysPathRetina,
-              dstPath: __dirname + '/../../../' + images[key].sysPath,
-              quality: 1,
-              width:   '50%'
-            }); /** create half-sized, non-retina version */
-          })
-          .then(function (stdout, stderr) {
-            return true;
+            gm(images[key].sysPathRetina)
+              .resize('50%')
+              .write(images[key].sysPath, function (err) {
+                if (err) throw err;
+              }); /** create half-sized, non-retina version */ /** create half-sized, non-retina version */
           })
           .fail(function (err) {
             throw err;
