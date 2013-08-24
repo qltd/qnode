@@ -80,6 +80,7 @@ ImageSchema.methods = {
         img = _.extend(img, fileArray[key]);
         Q.fcall(fs.rename, img.tmpPath, img.sysPathRetina)
           .then(function () {
+            console.log('just before imagemagick');
             return Q.fcall(im.resize, {
               srcPath: img.sysPathRetina,
               dstPath: img.sysPath,
@@ -88,6 +89,9 @@ ImageSchema.methods = {
             }); /** create half-sized, non-retina version */
           })
           .then(function (stdout, stderr) {
+            console.log('just after imagemagick');
+            console.log(stdout);
+            console.log(stderr);
             return true;
           })
           .fail(function (err) {
@@ -139,6 +143,7 @@ ImageSchema.methods = {
       if (img.name) { /** new image */
         Q.fcall(fs.rename, images[key].tmpPath, images[key].sysPathRetina)
           .then(function () {
+            console.log('just before imagemagick');
             return Q.fcall(im.resize, {
               srcPath: images[key].sysPathRetina,
               dstPath: images[key].sysPath,
@@ -147,6 +152,9 @@ ImageSchema.methods = {
             }); /** create half-sized, non-retina version */
           })
           .then(function (stdout, stderr) {
+            console.log('just after imagemagick');
+            console.log(stdout);
+            console.log(stderr);
             return true;
           })
           .fail(function (err) {
