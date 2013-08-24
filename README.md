@@ -5,6 +5,7 @@ Q LTD 2013 Site Update
 [Node.js](https://nodejs.org/)  
 [MongoDB](http://www.mongodb.org/)  
 [Nodemon](http://remy.github.io/nodemon/)
+[GraphicsMagick](http://www.graphicsmagick.org/)
 
 See `package.json` in `/` for additional dependencies.
 
