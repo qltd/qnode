@@ -25,6 +25,7 @@ var ImageSchema = new Schema({
   position: String,
   size: Number,
   src: String,
+  srcRetina: String,
   style: String,
   sysPath: String,
   sysPathRetina: String,
@@ -48,6 +49,7 @@ ImageSchema.virtual('name')
     this.sysPath = 'public/images/uploads/' + this._name;
     this.sysPathRetina = 'public/images/uploads/' + pathParts[1] + '@2x.' + pathParts[2];
     this.src = '/images/uploads/' + this._name;
+    this.srcRetina = '/images/uploads/' + pathParts[1] + '@2x.' + pathParts[2];
   })
   .get(function () { 
     return this._name; 
@@ -81,6 +83,7 @@ ImageSchema.methods = {
         Q.fcall(fs.rename, img.tmpPath, img.sysPathRetina)
           .then(function () {
             gm(img.sysPathRetina)
+              .quality(100)
               .resize('50%')
               .write(img.sysPath, function (err) {
                 if (err) throw err;
@@ -136,6 +139,7 @@ ImageSchema.methods = {
         Q.fcall(fs.rename, images[key].tmpPath, images[key].sysPathRetina)
           .then(function () {
             gm(images[key].sysPathRetina)
+              .quality(100)
               .resize('50%')
               .write(images[key].sysPath, function (err) {
                 if (err) throw err;
