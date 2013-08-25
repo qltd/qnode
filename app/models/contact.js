@@ -74,12 +74,7 @@ ContactSchema.post('save', function (contact) {
       text: 'From: ' + contact.name + ' (' + contact.email + ')\nCompany: ' + contact.company + '\nComments: ' + contact.comments
   }
   transport.sendMail(mailOptions, function (err, responseStatus) {
-    if(!err){
-      console.log(responseStatus.message); // response from the server
-      console.log(responseStatus.messageId); // Message-ID value used
-    } else {
-      console.log(err);
-    }
+    if (err) throw err;
   });
 });
 
