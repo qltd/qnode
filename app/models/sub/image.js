@@ -22,7 +22,7 @@ var ImageSchema = new Schema({
   fileName: String,
   height: Number,
   id: String,
-  position: String,
+  position: Number,
   size: Number,
   src: String,
   srcRetina: String,

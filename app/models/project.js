@@ -27,8 +27,9 @@ var ProjectSchema = new Schema({
   },
   body: String,
   slug: String,
-  images: [ ImageSchema ],
-  changeLog: [ ChangeLogSchema ]
+  changeLog: [ ChangeLogSchema ],
+  coverImage: [ ImageSchema ],
+  images: [ ImageSchema ]
 });
 
 /**

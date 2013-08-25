@@ -8,9 +8,24 @@ block body_content
       form.admin-form(method='post', enctype='multipart/form-data')
         #client
           input(type='text', name='title', placeholder='Client*', value=project.title)
+        #cover-image Cover Image
+
+          .row
+            if project.coverImage[0] && project.coverImage[0].src
+              img(src=project.coverImage[0].src)
+              input(type='hidden', name='coverImage[0][name]', value=project.coverImage[0].fileName)
+              input(type='hidden', name='coverImage[0][type]', value=project.coverImage[0].type)
+              input(type='hidden', name='coverImage[0][size]', value=project.coverImage[0].size)
+              input.image(type='file', name='coverImage[0]')
+              input.image-title(type='text', name='coverImage[0][title]', placeholder='Cover Image Title', value=( project.coverImage[0] ? project.coverImage[0].title : null ))
+            else
+              input.image(type='file', name='coverImage[0]')
+              input.image-title(type='text', name='coverImage[0][title]', placeholder='Cover Image Title', value=( project.coverImage[0] ? project.coverImage[0].title : null ))
+
         #description
           textarea(name='body', placeholder='Description', cols='10', rows='5')
             != project.body
+
         #project-image
           
           each image, key in project.images
@@ -34,11 +49,13 @@ block body_content
         #submit
           input(type='submit')
 
+
+
 block body_scripts
   script.
     jQuery(function($){
       // Adds New Imagerow 
       $('#add-image').on('click', function() {
-        $('#project-image').append('<div class="row"><input class="image" type="file" name="images[' + $("input[name*='[title]']").length + ']"><input type="text" name="images[' + $("input[name*='[title]']").length + '][title]" placeholder="Image Title" class="image-title"><input type="number" name="images[' + $("input[name*='[title]']").length + '][position]" placeholder="Position" class="position" value="' + $("input[name*='[title]']").length +'"></div>');
+        $('#project-image').append('<div class="row"><input class="image" type="file" name="images[' + $('#project-image > .row').length + ']"><input type="text" name="images[' + $('#project-image > .row').length + '][title]" placeholder="Image Title" class="image-title"><input type="number" name="images[' + $('#project-image > .row').length + '][position]" placeholder="Position" class="position" value="' + $('#project-image > .row').length + '"></div>');
       });
     });

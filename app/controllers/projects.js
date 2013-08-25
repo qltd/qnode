@@ -102,6 +102,7 @@ exports.edit = function (req, res) {
 
 exports.create = function (req, res) {
   var project = new Project(req.body);
+  project.coverImage = Image.schema.methods.addImages(project.coverImage, req.files.coverImage);
   project.images = Image.schema.methods.addImages(project.images, req.files.images);
   Q.ninvoke(project, 'save')
     .then(function () {
@@ -121,13 +122,16 @@ exports.create = function (req, res) {
  */
 
 exports.update = function (req, res) {
-  Image.schema.methods.updateImages(Project, { slug: req.params.slug }, 'images', req.body.images, req.files.images) 
+  Image.schema.methods.updateImages(Project, { slug: req.params.slug }, 'coverImage', req.body.coverImage, req.files.coverImage) 
+    .then(function (data) {
+      return Image.schema.methods.updateImages(Project, { slug: req.params.slug }, 'images', req.body.images, req.files.images);
+    })
     .then(function (data) {
       return Q.ninvoke(Project, 'findOne', { slug: req.params.slug });
     })
     .then(function (project) {
       if (!project) return res.render('404');
-      project = _.extend(project, _.omit(req.body, 'images'));
+      project = _.extend(project, _.omit(req.body, 'images', 'coverImage'));
       return Q.ninvoke(project, 'save');
     })
     .then(function () {
