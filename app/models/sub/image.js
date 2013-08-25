@@ -77,41 +77,39 @@ ImageSchema.methods = {
    * @returns {Array} Return a populated image field array
    */
   addImages: function (imageFieldArray, fileArray) {
+    var images = [];
 
-/*    fileArray.forEach(function (file, key)) {
+    /** iterate through file array */
+    fileArray.forEach(function (file, key) {
+      if (file.name) { /** new file */
 
-    }*/
+        /** extend Image object to contain file values, then add to images array */
+        var img = _.extend(imageFieldArray[key], file);
+        images.push(img);
 
-    imageFieldArray.forEach(function (img, key) {
-      if (fileArray[key] && fileArray[key].name) { /** handle new image */
-        img = _.extend(img, fileArray[key]);
-        Q.fcall(fs.rename, img.tmpPath, img.sysPathRetina)
-          .then(function () {
-            /** create half-sized, non-retina version */
-            gm(img.sysPathRetina)
-              .quality(100)
-              .resize('50%')
-              .write(img.sysPath, function (err) {
-                if (err) throw err;
-              });
-          })
-          .fail(function (err) {
-            throw err;
-          });
-      } else if (fileArray[key] && fileArray[key].path) { /** no image, remove tmp file and data */
-        Q.fcall(fs.unlink, fileArray[key].path)
-          .then(function () {
-            return true;
-          })
-          .fail(function (err) {
-            throw err;
-          });
-        img.remove();
-      } else { /** no image, no tmp file, remove data */
-        img.remove();
+        /** move tmp file to retina path */
+        fs.rename(file.path, img.sysPathRetina, function (err) {
+          if (err) throw err;
+
+          /** create half-sized, non-retina version */
+          gm(img.sysPathRetina)
+            .quality(100)
+            .resize('50%')
+            .write(img.sysPath, function (err) {
+              if (err) throw err;
+            });
+        });
+
+      } else if (file.path) { /** no new file; remove temp file */
+
+        /** remove tmp file */
+        fs.unlink(file.path, function (err) {
+          if (err) throw err;
+        });
       }
-    })
-    return imageFieldArray;
+    });
+
+    return images;
   },
 
   /**
@@ -128,22 +126,23 @@ ImageSchema.methods = {
     var Image = mongoose.model('Image');
     var images = [];
 
-    /** iterate through file-field form array objects */
+    /** iterate through file array */
     fileArray.forEach(function (file, key) {
       if (file.name) { /** new file */
     
         /** create new Image object for images array; omit old data, if it exists, when merging with file */
-        images.push(new Image(_.extend(file, _.omit(dataArray[key], 'name', 'type', 'size'))));
+        var img = new Image(_.extend(file, _.omit(dataArray[key], 'name', 'type', 'size')));
+        images.push(img);
 
         /** move tmp file to retina path */
-        fs.rename(file.path, images[key].sysPathRetina, function (err) {
+        fs.rename(file.path, img.sysPathRetina, function (err) {
           if (err) throw err;
 
           /** create half-sized, non-retina version */
-          gm(images[key].sysPathRetina)
+          gm(img.sysPathRetina)
             .quality(100)
             .resize('50%')
-            .write(images[key].sysPath, function (err) {
+            .write(img.sysPath, function (err) {
               if (err) throw err;
             });
         });
@@ -153,7 +152,7 @@ ImageSchema.methods = {
         /** recreate existing (unreplaced) Image objects for images array; will reflect changes to data */
         if (dataArray[key].name) images.push(new Image(dataArray[key]));
 
-        /** remove temp file */
+        /** remove tmp file */
         fs.unlink(file.path, function (err) {
           if (err) throw err;
         });
