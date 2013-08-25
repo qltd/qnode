@@ -15,7 +15,7 @@ var fs = require('fs')
  */
 
 var Project = mongoose.model('Project')
-  , Image = mongoose.model('Image');
+  , Image = mongoose.model('Image').schema.methods;
 
 /**
  * Index
@@ -102,8 +102,8 @@ exports.edit = function (req, res) {
 
 exports.create = function (req, res) {
   var project = new Project(req.body);
-  project.coverImage = Image.schema.methods.addImages(project.coverImage, req.files.coverImage);
-  project.images = Image.schema.methods.addImages(project.images, req.files.images);
+  project.coverImage = Image.create(project.coverImage, req.files.coverImage);
+  project.images = Image.create(project.images, req.files.images);
   Q.ninvoke(project, 'save')
     .then(function () {
       req.flash('success', msg.project.created(project.title));
@@ -122,9 +122,9 @@ exports.create = function (req, res) {
  */
 
 exports.update = function (req, res) {
-  Image.schema.methods.updateImages(Project, { slug: req.params.slug }, 'coverImage', req.body.coverImage, req.files.coverImage) 
+  Image.update(Project, { slug: req.params.slug }, 'coverImage', req.body.coverImage, req.files.coverImage) 
     .then(function (data) {
-      return Image.schema.methods.updateImages(Project, { slug: req.params.slug }, 'images', req.body.images, req.files.images);
+      return Image.update(Project, { slug: req.params.slug }, 'images', req.body.images, req.files.images);
     })
     .then(function (data) {
       return Q.ninvoke(Project, 'findOne', { slug: req.params.slug });

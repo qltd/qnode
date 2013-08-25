@@ -15,7 +15,7 @@ var fs = require('fs')
  */
 
 var Client = mongoose.model('Client')
-  , Image = mongoose.model('Image');
+  , Image = mongoose.model('Image').schema.methods;
 
 /**
  * Index
@@ -101,7 +101,7 @@ exports.edit = function (req, res) {
 
 exports.create = function (req, res) {
   var client = new Client(req.body);
-  client.image = Image.schema.methods.addImages(client.image, req.files.image);
+  client.image = Image.create(client.image, req.files.image);
   Q.ninvoke(client, 'save')
     .then(function () {
       req.flash('success', msg.client.created(client.title));
@@ -120,7 +120,7 @@ exports.create = function (req, res) {
  */
 
 exports.update = function (req, res) {
-  Image.schema.methods.updateImages(Client, { slug: req.params.slug }, 'image', req.body.image, req.files.image)
+  Image.update(Client, { slug: req.params.slug }, 'image', req.body.image, req.files.image)
     .then(function (data) {
       return Q.ninvoke(Client, 'findOne', { slug: req.params.slug })
     })

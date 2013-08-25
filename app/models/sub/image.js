@@ -76,7 +76,7 @@ ImageSchema.methods = {
    * @param {Array} fileArray - File-field form values
    * @returns {Array} Return a populated image field array
    */
-  addImages: function (imageFieldArray, fileArray) {
+  create: function (imageFieldArray, fileArray) {
     var images = [];
 
     /** iterate through file array */
@@ -122,7 +122,7 @@ ImageSchema.methods = {
    * @param {Array} fileArray - File-field form values
    * @returns {Promise} Returns a then-able Promise which updates images in a mongoose-modeled object
    */
-  updateImages: function (parentModel, updateQuery, fieldName, dataArray, fileArray) {
+  update: function (parentModel, updateQuery, fieldName, dataArray, fileArray) {
     var Image = mongoose.model('Image');
     var images = [];
 

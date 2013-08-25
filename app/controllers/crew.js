@@ -15,7 +15,7 @@ var fs = require('fs')
  */
 
 var Crew = mongoose.model('Crew')
-  , Image = mongoose.model('Image');
+  , Image = mongoose.model('Image').schema.methods;
 
 
 /**
@@ -104,7 +104,7 @@ exports.edit = function (req, res) {
 
 exports.create = function (req, res) {
   var crew = new Crew(req.body);
-  crew.image = Image.schema.methods.addImages(crew.image, req.files.image);
+  crew.image = Image.create(crew.image, req.files.image);
   Q.ninvoke(crew, 'save')
     .then(function () {
       req.flash('success', msg.crew.created(crew.title));
@@ -123,7 +123,7 @@ exports.create = function (req, res) {
  */
 
 exports.update = function (req, res) {
-  Image.schema.methods.updateImages(Crew, { slug: req.params.slug }, 'image', req.body.image, req.files.image)
+  Image.update(Crew, { slug: req.params.slug }, 'image', req.body.image, req.files.image)
     .then(function (data) {
       return Q.ninvoke(Crew, 'findOne', { slug: req.params.slug })
     })
