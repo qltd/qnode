@@ -118,6 +118,16 @@ module.exports = {
    */
 
   default: 'Sorry! There was an error',
-  notUnique: function (collectionField, fieldValue) { return collectionField + ' \'' + fieldValue + '\' already exists, please enter another'; }
+  notUnique: function (collectionField, fieldValue) { return collectionField + ' \'' + fieldValue + '\' already exists, please enter another'; },
+
+  /**
+   * HTTP status code messages
+   */
+
+  status: {
+    403: 'Forbidden! You are not authorized to view this page.',
+    404: 'Oh, no! That page was not found.',
+    500: 'Whoa! There was an error while processing your request.'
+  }
   
 }

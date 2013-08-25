@@ -1,0 +1,11 @@
+extends layouts/default
+
+block body_content
+  article.panel
+    .container
+      if status
+        h2= status.code
+        p.content= status.msg
+      else
+        h2 Error
+        p.content There's been an error!

@@ -21,7 +21,7 @@ var Panel = mongoose.model('Panel');
  * GET /panels/json
  */
 
-exports.index = function (req, res) {
+exports.index = function (req, res, next) {
   Q.ninvoke(Panel.index, 'find')
     .then(function (panels) {
       res.locals.panels = panels;
@@ -29,7 +29,7 @@ exports.index = function (req, res) {
       return res.render('panels'); // html
     })
     .fail(function (err) {
-      return res.render('500');
+      return next(err);
     });
 }
 
@@ -41,16 +41,16 @@ exports.index = function (req, res) {
  * GET /panels/:slug/log/:__v/json
  */
 
-exports.show = function (req, res) {
+exports.show = function (req, res, next) {
   Q.ninvoke(Panel, 'findOne', { slug: req.params.slug })
     .then(function (panel) {
-      if (!panel) return res.render('404');
+      if (!panel) return next(); // 404
       res.locals.panel = ( req.params.__v && panel.changeLog[req.params.__v] ? _.extend(panel, panel.changeLog[req.params.__v].data) : panel );
       if (req.url.indexOf('/json') > -1) return res.send(stripMongoIds(res.locals.panel)); // json
       return res.render('panels/show'); // html
     })
     .fail(function (err) {
-      return res.render('500');
+      return next(err); // 500
     });
 }
 
@@ -59,7 +59,7 @@ exports.show = function (req, res) {
  * GET /panels/new
  */
 
-exports.new = function (req, res) {
+exports.new = function (req, res, next) {
   Q.fcall(function () {
     var panels = req.flash('panel');
     return ( panels && panels.length && panels[panels.length-1] ? panels[panels.length-1] : new Panel() );
@@ -71,7 +71,7 @@ exports.new = function (req, res) {
       });
     })
     .fail(function (err) {
-      return res.render('500');
+      return next(err);
     });
 }
 
@@ -80,15 +80,15 @@ exports.new = function (req, res) {
  * GET /panels/:slug/edit
  */
 
-exports.edit = function (req, res) {
+exports.edit = function (req, res, next) {
   Q.ninvoke(Panel, 'findOne', { slug: req.params.slug })
     .then(function (panel) {
-      if (!panel) return res.render('404');
+      if (!panel) return next();
       res.locals.panel = panel;
       return res.render('panels/edit');
     })
     .fail(function (err) {
-      return res.render('500');
+      return next(err);
     });
 }
 
@@ -97,7 +97,7 @@ exports.edit = function (req, res) {
  * POST /panels/new
  */
 
-exports.create = function (req, res) {
+exports.create = function (req, res, next) {
   var panel = new Panel(req.body);
   Q.ninvoke(panel, 'save')
     .then(function () {

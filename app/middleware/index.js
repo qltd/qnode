@@ -176,19 +176,61 @@ exports.authorization = {
     next();
   },
   requiresAdmin: function (req, res, next) {
-    if (!req.user) res.render('500');
     if (req.user.role != 'admin') {
-      req.flash('error', msg.user.adminRequired(req.host + req.url));
-      return res.redirect(( req.headers.referer ? req.headers.referer : '/' ));
+      var _msg = msg.user.adminRequired(req.host + req.url);
+      res.locals.errors = [_msg];
+      var err = new Error(_msg);
+      err.status = 403;
+      return next(err);
     }
     next();
   },
   requiresAuthor: function (req, res, next) {
-    if (!req.user) res.render('500');
     if (req.user.username != req.params.username && req.user.role != 'admin') {
-      req.flash('error', msg.user.authorRequired(req.host + req.url));
-      return res.redirect(( req.headers.referer ? req.headers.referer : '/' ));
+      var _msg = msg.user.authorRequired(req.host + req.url);
+      res.locals.errors = [_msg];
+      var err = new Error(_msg);
+      err.status = 403;
+      return next(err);
     }
     next();
   }
+}
+
+/**
+ * 404 handling
+ */
+
+exports.noPath = function (req, res, next) {
+  /** create status object; set response status code */
+  var status = {
+    code: 404,
+    msg: msg.status[404]
+  }
+  res.status(status.code);
+  
+  /** respond */
+  if (req.accepts('html')) return res.render('status', { status: status }); // html
+  if (req.accepts('json')) return res.send({ status: status }); // json
+  return res.type('txt').send(status.msg); // text
+}
+
+/**
+ * Error handling
+ */
+
+exports.errors = function (err, req, res, next) {
+  console.log(err);
+
+  /** create status object; set response status code */
+  var status = {
+    code: err.status || 500,
+    msg: msg.status[err.status] || msg.status[500]
+  }
+  res.status(status.code);
+
+  /** respond */
+  if (req.accepts('html')) return res.render('status', { status: status }); // html
+  if (req.accepts('json')) return res.send({ status: status }); // json
+  return res.type('txt').send(status.msg); // text
 }

@@ -114,7 +114,6 @@ module.exports = function(app, passport) {
   app.get('/projects/:slug/log/:__v/json', projects.show);
   app.get('/projects/:slug/log/:__v/restore', projects.restore);
 
-
   // services
   app.all('/services*', auth.requiresLogin);
   app.get('/services', services.index);
@@ -129,9 +128,4 @@ module.exports = function(app, passport) {
   app.get('/services/:slug/log/:__v', services.show);
   app.get('/services/:slug/log/:__v/json', services.show);
   app.get('/services/:slug/log/:__v/restore', services.restore);
-
-  // 404
-  app.all('*', function (req,res) {
-    res.render('404');
-  });
 }
