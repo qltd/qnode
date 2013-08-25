@@ -42,14 +42,14 @@ var ImageSchema = new Schema({
 ImageSchema.virtual('name')
   .set(function (name) {
     var pathParts = name.match(/(.*)\.(.{3,4})$/);
-    pathParts[1] = toSlug(sanitize(pathParts[1]).escape());
-    pathParts[2] = sanitize(pathParts[2].toLowerCase()).escape();
-    this._name = pathParts[1] + '.' + pathParts[2];
+    var _filename = ( pathParts && pathParts[1] ? toSlug(sanitize(pathParts[1]).escape()) : toSlug(sanitize(name).escape()) );
+    var _extension = ( pathParts && pathParts[2] ? '.' + sanitize(pathParts[2].toLowerCase()).escape() : '' );
+    this._name = _filename + _extension;
     this.fileName = this._name;
     this.sysPath = 'public/images/uploads/' + this._name;
-    this.sysPathRetina = 'public/images/uploads/' + pathParts[1] + '@2x.' + pathParts[2];
+    this.sysPathRetina = 'public/images/uploads/' + _filename + '@2x' + _extension;
     this.src = '/images/uploads/' + this._name;
-    this.srcRetina = '/images/uploads/' + pathParts[1] + '@2x.' + pathParts[2];
+    this.srcRetina = '/images/uploads/' + _filename + '@2x' + _extension;
   })
   .get(function () { 
     return this._name; 
@@ -81,7 +81,7 @@ ImageSchema.methods = {
 
     /** iterate through file array */
     fileArray.forEach(function (file, key) {
-      if (file.name) { /** new file */
+      if (file.name && file.type && file.type.indexOf('image') !== -1) { /** new file */
 
         /** extend Image object to contain file values, then add to images array */
         var img = _.extend(imageFieldArray[key], file);
@@ -128,7 +128,7 @@ ImageSchema.methods = {
 
     /** iterate through file array */
     fileArray.forEach(function (file, key) {
-      if (file.name) { /** new file */
+      if (file.name && file.type && file.type.indexOf('image') !== -1) { /** new file */
     
         /** create new Image object for images array; omit old data, if it exists, when merging with file */
         var img = new Image(_.extend(file, _.omit(dataArray[key], 'name', 'type', 'size')));
