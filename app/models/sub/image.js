@@ -81,7 +81,7 @@ ImageSchema.methods = {
 
     /** iterate through file array */
     fileArray.forEach(function (file, key) {
-      if (file.name && file.type && file.type.indexOf('image') !== -1) { /** new file */
+      if (file.name && file.type && file.type.indexOf('image') > -1) { /** new file */
 
         /** extend Image object to contain file values, then add to images array */
         var img = _.extend(imageFieldArray[key], file);
@@ -128,7 +128,7 @@ ImageSchema.methods = {
 
     /** iterate through file array */
     fileArray.forEach(function (file, key) {
-      if (file.name && file.type && file.type.indexOf('image') !== -1) { /** new file */
+      if (file.name && file.type && file.type.indexOf('image') > -1) { /** new file */
     
         /** create new Image object for images array; omit old data, if it exists, when merging with file */
         var img = new Image(_.extend(file, _.omit(dataArray[key], 'name', 'type', 'size')));
