@@ -100,16 +100,16 @@ exports.edit = function (req, res) {
 
 exports.create = function (req, res) {
   var user = new User(req.body);
-  user.save(function(err) {
-    if(err) {
+  Q.ninvoke(user, 'save')
+    .then(function () {
+      req.flash('success', msg.user.created(user.username));
+      return res.redirect('/users');
+    })
+    .fail(function (err) {
       req.flash('error', utils.errors(err));
       req.flash('user', user);
       return res.redirect('/users/new');
-    } else {
-      req.flash('success', msg.user.created(user.username));
-      return res.redirect('/users');
-    }
-  });
+    });
 }
 
 /**

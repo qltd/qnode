@@ -29,6 +29,7 @@ exports.index = function (req, res) {
       return res.render('services'); // html
     })
     .fail(function (err) {
+      console.log(err);
       return res.render('500');
     });
 }
@@ -99,16 +100,16 @@ exports.edit = function (req, res) {
 
 exports.create = function (req, res) {
   var service = new Service(req.body);
-  service.save(function (err) {
-    if (err) {
+  Q.ninvoke(service, 'save')
+    .then(function () {
+      req.flash('success', msg.service.created(service.title));
+      return res.redirect('/services');
+    })
+    .fail(function (err) {
       req.flash('error', utils.errors(err));
       req.flash('service', service);
       return res.redirect('/services/new');
-    } else {
-      req.flash('success', msg.service.created(service.title));
-      return res.redirect('/services');
-    }
-  });
+    });
 }
 
 /**

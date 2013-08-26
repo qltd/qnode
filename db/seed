@@ -24,6 +24,15 @@ if [ "$1" ]; then
     mongoimport --db $1 --collection $data_collection_name --file $filename
   done
 
+  ## add indices
+  for filename in "$DATA_DIRECTORY"/*.index; do
+    data_filename="$(basename "$filename")"
+    data_collection_name="${data_filename%.*}"
+    while read fieldname; do
+      mongo $1 --eval "db.$data_collection_name.ensureIndex({$fieldname: 1},{unique: true})"           
+    done <$filename
+  done
+
   ## import images that are referenced by mongo docs
   for filename in "$DATA_DIRECTORY"/*.tar.gz; do
     data_filename="$(basename "$filename")"
