@@ -6,7 +6,6 @@
 var mongoose = require('mongoose')
   , msg = require('../../config/messages')
   , Q = require('q')
-  , utils = require('../../lib/utils')
   , _ = require('underscore');
 
 /**
@@ -29,7 +28,7 @@ exports.index = function (req, res, next) {
       return res.render('panels'); // html
     })
     .fail(function (err) {
-      return next(err);
+      return next(err); // 500
     });
 }
 
@@ -68,10 +67,10 @@ exports.new = function (req, res, next) {
       res.locals.panel = panel;
       return res.render('panels/new', { 
         pageHeading: 'Create Panel'
-      });
+      }); // html
     })
     .fail(function (err) {
-      return next(err);
+      return next(err); // 500
     });
 }
 
@@ -83,12 +82,12 @@ exports.new = function (req, res, next) {
 exports.edit = function (req, res, next) {
   Q.ninvoke(Panel, 'findOne', { slug: req.params.slug })
     .then(function (panel) {
-      if (!panel) return next();
+      if (!panel) return next(); // 404
       res.locals.panel = panel;
-      return res.render('panels/edit');
+      return res.render('panels/edit'); // html
     })
     .fail(function (err) {
-      return next(err);
+      return next(err); // 500
     });
 }
 
@@ -102,12 +101,14 @@ exports.create = function (req, res, next) {
   Q.ninvoke(panel, 'save')
     .then(function () {
       req.flash('success', msg.panel.created(panel.title));
-      return res.redirect('/panels');
+      return res.redirect('/panels'); // html
     })
     .fail(function (err) {
-      req.flash('error', utils.errors(err));
+      var vErr = validationErrors(err);
+      if (!vErr) return next(err); // 500
+      req.flash('error', vErr);
       req.flash('panel', panel);
-      return res.redirect('/panels/new');
+      return res.redirect('/panels/new'); // html
     });
 }
 
@@ -116,20 +117,22 @@ exports.create = function (req, res, next) {
  * POST /panels/:slug/edit
  */
 
-exports.update = function (req, res) {
+exports.update = function (req, res, next) {
   Q.ninvoke(Panel, 'findOne', { slug: req.params.slug })
     .then(function (panel) {
-      if (!panel) return res.render('404');
+      if (!panel) return next(); // 404
       panel = _.extend(panel, req.body);
       return Q.ninvoke(panel, 'save');
     })
     .then(function () {
       req.flash('success', msg.panel.updated(req.body.title));
-      return res.redirect('/panels');
+      return res.redirect('/panels'); // html
     })
     .fail(function (err) {
-      req.flash('error', utils.errors(err));
-      return res.redirect('/panels/' + req.params.slug + '/edit');
+      var vErr = validationErrors(err);
+      if (!vErr) return next(err); // 500 
+      req.flash('error', vErr);
+      return res.redirect('/panels/' + req.params.slug + '/edit'); // html
     });
 }
 
@@ -138,15 +141,15 @@ exports.update = function (req, res) {
  * GET /panels/:slug/log
  */
 
-exports.log = function (req, res) {
+exports.log = function (req, res, next) {
   Q.ninvoke(Panel.index, 'findOne', { slug: req.params.slug })
     .then(function (panel) {
-      if (!panel) return res.render('404');
+      if (!panel) return next(); // 404
       res.locals.panel = panel;
-      return res.render('panels/log');
+      return res.render('panels/log'); // html
     })
     .fail(function (err) {
-      return res.render('500');
+      return next(err); // 500
     });
 }
 
@@ -155,10 +158,10 @@ exports.log = function (req, res) {
  * GET /panels/:slug/log/:__v/restore
  */
 
-exports.restore = function (req, res) {
+exports.restore = function (req, res, next) {
   Q.ninvoke(Panel.index, 'findOne', { slug: req.params.slug })
     .then(function (panel) {
-      if (!panel) return res.render('404');
+      if (!panel) return next(); // 404
       data = _.omit(panel.changeLog[req.params.__v].data, '__v');
       data._meta = req.body._meta;
       panel = _.extend(panel, data);
@@ -166,9 +169,9 @@ exports.restore = function (req, res) {
     })
     .then(function () {
       req.flash('success', msg.panel.restored(data.title, req.params.__v));
-      return res.redirect('/panels');
+      return res.redirect('/panels'); // html
     })
     .fail(function (err) {
-      return res.render('500');
+      return next(err); // 500
     });
 }

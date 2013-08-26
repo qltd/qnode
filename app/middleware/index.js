@@ -161,6 +161,40 @@ exports.helpers = function (req, res, next) {
   }
   res.locals.toSplitArray = toSplitArray;
 
+  /**
+   * Returns an {Array} of Mongo/Mongoose validation error messages, or false {Boolean} if they do not exist in the Error object 
+   *
+   * @param {Error} err - An error object
+   * @returns {Array|Boolean}
+   */
+  validationErrors = function (err) {
+    if (err.name !== 'MongoError' && err.name !== 'ValidationError') return false;
+    
+    /** Mongo errors that we are catching (duplicate key) */
+    if (err.code && ( err.code === 11000 || err.code === 11001 )) {
+      if (!err.err) return false;
+      var rawErr = err.err.match(/index:.*\.(.*)\.\$(.*)_.*dup\skey:\s{\s:\s"(.*)"/);
+      if (!rawErr) return false;
+      var dbCollection = rawErr[1];
+      var collectionField = rawErr[2];
+      var fieldValue = rawErr[3];
+      return [ msg.notUnique(collectionField, fieldValue) ];
+    }
+
+    /** Mongoose validation errors */
+    if (err.errors && typeof err.errors === 'object') {
+      var _err = [];
+      var objKeys = Object.keys(err.errors);
+      objKeys.forEach(function (key) {
+        _err.push(err.errors[key].type);
+      });
+      return _err;
+    }
+
+    /** no Mongo/Mongoose validation errors found */
+    return false;
+  }
+
   next();
 }
 

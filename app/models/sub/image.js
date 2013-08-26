@@ -113,6 +113,23 @@ ImageSchema.methods = {
   },
 
   /**
+   * Restores Mongo subdocument images from an array of mongoose-modeled Image objects
+   *
+   * @param {Object} parentModel - A mongoose model
+   * @param {Array} updateQuery - The filtering query that will be used to determine which models to update
+   * @param {String} fieldName - The name of image-containing field in the parent mongoose model
+   * @param {Array} imageDocs - An array of mongoose-modeled Image objects
+   * @returns {Promise} Returns a then-able Promise which updates images in a mongoose-modeled object
+   */
+  restore: function (parentModel, updateQuery, fieldName, imageDocs) {
+    /** prepare restore, and return a promise */
+    imageDocs = ( imageDocs ? imageDocs : [] );
+    var updateData = {};
+    updateData[fieldName] = imageDocs;
+    return Q.ninvoke(parentModel, 'update', updateQuery, updateData);
+  },
+
+  /**
    * Updates images in a mongoose-modeled object, and moves files from temp to permanent storage
    * 
    * @param {Object} parentModel - A mongoose model

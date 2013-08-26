@@ -5,8 +5,7 @@
 
 var mongoose = require('mongoose')
   , msg = require('../../config/messages')
-  , Q = require('q')
-  , utils = require('../../lib/utils');
+  , Q = require('q');
 
 /**
  * Models
@@ -20,7 +19,7 @@ var Contact = mongoose.model('Contact');
  * GET /contacts/json
  */
 
-exports.index = function (req, res) {
+exports.index = function (req, res, next) {
   Q.ninvoke(Contact, 'find')
     .then(function (contacts) {
       res.locals.contacts = contacts;
@@ -28,7 +27,7 @@ exports.index = function (req, res) {
       return res.render('contacts'); // html
     })
     .fail(function (err) {
-      return res.render('500');
+      return next(err); // 500
     });
 }
 
@@ -37,16 +36,18 @@ exports.index = function (req, res) {
  * POST /contacts/new
  */
 
-exports.create = function (req, res) {
+exports.create = function (req, res, next) {
   var contact = new Contact(req.body);
   Q.ninvoke(contact, 'save')
     .then(function () {
       req.flash('success', msg.contact.created(contact.name));
-      return res.redirect('/');
+      return res.redirect('/'); // html
     })
     .fail(function (err) {
-      req.flash('error', utils.errors(err));
+      var vErr = validationErrors(err);
+      if (!vErr) return next(err); // 500
+      req.flash('error', vErr);
       req.flash('contact', contact);
-      return res.redirect('/');
+      return res.redirect('/'); // html
     });
 }
