@@ -22,7 +22,7 @@ var Contact = mongoose.model('Contact')
  * GET /
  */
 
-exports.index = function (req, res) {
+exports.index = function (req, res, next) {
   Q.fcall(function () { 
     var contacts = req.flash('contact');
     return ( contacts && contacts.length && contacts[contacts.length-1] ? contacts[contacts.length-1] : new Contact() );
@@ -54,10 +54,9 @@ exports.index = function (req, res) {
       return res.render('home', { 
         title: 'Q Design & Communication Since 1981', 
         onload: 'changevid()'
-      });  
+      }); // html
     })
     .fail(function (err) {
-      console.log(err);
-      return res.render('500');
+      return next(err); // 500
     });
 };
