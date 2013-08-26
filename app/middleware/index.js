@@ -5,6 +5,7 @@
 
 var mongoose = require('mongoose')
   , msg = require('../../config/messages')
+  , Q = require('q')
   , _ = require('underscore');
 
 /**
@@ -185,15 +186,27 @@ exports.authorization = {
     }
     next();
   },
-  requiresAuthor: function (req, res, next) {
+  requiresSelf: function (req, res, next) {
     if (req.user.username != req.params.username && req.user.role != 'admin') {
-      var _msg = msg.user.authorRequired(req.host + req.url);
-      res.locals.errors = [_msg];
-      var err = new Error(_msg);
-      err.status = 403;
-      return next(err);
+      Q.ninvoke(User, 'findOne', { username: req.params.username })
+        .then(function (_user) {
+          if (!_user) {
+            var _msg = msg.user.notFound(req.params.username, req.host + req.url);
+            var err = new Error(_msg);
+            err.status = 404;
+            return next(err); // 404
+          }
+          var _msg = msg.user.selfRequired(req.params.username, req.host + req.url);
+          res.locals.errors = [_msg];
+          var err = new Error(_msg);
+          err.status = 403;
+          return next(err); // 403
+        })
+        .fail(function (err) {
+          return next(err); // 500
+        });
     }
-    next();
+    else next(); // self!
   }
 }
 
@@ -201,7 +214,7 @@ exports.authorization = {
  * 404 handling
  */
 
-exports.noPath = function (req, res, next) {
+exports.notFound = function (req, res, next) {
   /** create status object; set response status code */
   var status = {
     code: 404,

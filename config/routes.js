@@ -40,7 +40,7 @@ module.exports = function(app, passport) {
   app.get('/users/new', users.new);
   app.post('/users/new', users.create);
   app.get('/users/:username', users.show);
-  app.all('/users/:username*', auth.requiresAuthor);
+  app.all('/users/:username*', auth.requiresSelf);
   app.get('/users/:username/json', users.show);
   app.get('/users/:username/edit', users.edit);
   app.post('/users/:username/edit', users.update);

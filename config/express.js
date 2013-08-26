@@ -48,7 +48,7 @@ module.exports = function(app, config, passport) {
   app.use(app.router);
 
   // 404
-  app.use(middleware.noPath);
+  app.use(middleware.notFound);
 
   // error handling
   app.use(middleware.errors);

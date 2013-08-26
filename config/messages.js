@@ -31,9 +31,10 @@ module.exports = {
     authenticated:  function (username) { return 'Authenticated as \'' + username + '\''; },
     authenticationFailed: 'Username and/or password are not correct',
     authenticationRequired: function (path) { return 'You must be authenticated to access ' + path; },
-    authorRequired: function (path) { return 'You must be the author to access ' + path; },
     created: function (username) { return 'User \'' + username + '\' was created'; },
     deleted: function (username) { return 'User \'' + username + '\' was deleted'; },
+    notFound: function (username, path) { return 'User \'' + username + '\' could not found while trying to respond to ' + path; },
+    selfRequired: function (username, path) { return 'You must be user \'' + username + '\' to access ' + path; },
     read: function (username) { return 'User \'' + username + ' \' was read'; },
     restored: function (username, version) { return 'User \'' + username + '\' was restored with data from version ' + version; },
     updated: function (username) { return 'User \'' + username + '\' was updated'; }
