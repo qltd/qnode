@@ -994,8 +994,8 @@ footer#footer {
         display: block;
         padding:10px 20px;
         top:-65px;
-        left:-30px;
-        width:105px;
+        left:-35px;
+        width:117px;
         &:after {
           content:'';
           border-top: #dbd8cf dotted 15px;
@@ -1007,7 +1007,7 @@ footer#footer {
         }
       }
       &.facebook span {
-        left:-35px;
+        left:-40px;
       }
       &:hover {
         color:orange;
@@ -1065,12 +1065,17 @@ footer#footer {
   }
   .social {
     @include span-columns(4);
+    margin-top: 0;
   }
   .newsletter {
     @include span-columns(4 omega);
   }
   #submitbutton {
     @include navText;
+  }
+.copyright {
+    text-align: right;
+    width: 100%;
   }
 }
 
