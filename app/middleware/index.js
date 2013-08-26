@@ -95,7 +95,7 @@ exports.helpers = function (req, res, next) {
         _obj.push(stripMongoIds(o));
       });
     } else { // is Object
-      var _obj = _.omit( ( obj._doc ? obj._doc : obj ) , '_id', 'user');
+      var _obj = _.omit( ( obj && obj._doc ? obj._doc : obj ) , '_id', 'user');
       _objKeys = Object.keys(_obj);
       _objKeys.forEach(function (key) {
         _obj[key] = stripMongoIds(_obj[key]);

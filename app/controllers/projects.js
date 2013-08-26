@@ -3,8 +3,7 @@
  * Module dependencies
  */
 
-var fs = require('fs')
-  , mongoose = require('mongoose')
+var mongoose = require('mongoose')
   , msg = require('../../config/messages')
   , Q = require('q')
   , utils = require('../../lib/utils')

@@ -3,8 +3,7 @@
  * Module dependencies
  */
 
-var fs = require('fs')
-  , mongoose = require('mongoose')
+var mongoose = require('mongoose')
   , msg = require('../../config/messages')
   , Q = require('q')
   , utils = require('../../lib/utils')
@@ -16,7 +15,6 @@ var fs = require('fs')
 
 var Crew = mongoose.model('Crew')
   , Image = mongoose.model('Image').schema.methods;
-
 
 /**
  * Index
