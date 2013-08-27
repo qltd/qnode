@@ -1,15 +1,15 @@
 .portfolio
-  if projects && projects.length
-    each project in projects
-      .project(id="project-#{project.slug}")
-        header
-          .container
-            h3= project.title
-            .content
-              p= project.body
-          a.close(href='#') Close
-        section
-          .container
-            each image in project.images
-              img(src=image.src, alt=image.alt)
-        footer
+  //- if projects && projects.length
+  //-   each project in projects
+  //-     .project(id="project-#{project.slug}")
+  //-       header
+  //-         .container
+  //-           h3= project.title
+  //-           .content
+  //-             p= project.body
+  //-         a.close(href='#') Close
+  //-       section
+  //-         .container
+  //-           each image in project.images
+  //-             img(src=image.src, alt=image.alt)
+  //-       footer

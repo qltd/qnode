@@ -1,1 +1,0 @@
-define(function(e){return{noext:e("text!../noext"),dirPath:e.toUrl("."),parentPath:e.toUrl("..")}});

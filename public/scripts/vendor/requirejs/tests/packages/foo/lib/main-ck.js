@@ -1,1 +1,0 @@
-define(function(e,t){t.name="foo";t.alphaName=e("alpha").name});

@@ -106,13 +106,13 @@ module.exports = function(app, passport) {
   app.get('/panels/:slug/log/:__v/restore', panels.restore);
 
   // projects
+  app.get('/projects/:slug/json', projects.show);
   app.all('/projects*', auth.requiresLogin);
   app.get('/projects', projects.index);
   app.get('/projects/json', projects.index);
   app.get('/projects/new', projects.new);
   app.post('/projects/new', projects.create);
   app.get('/projects/:slug', projects.show);
-  app.get('/projects/:slug/json', projects.show);
   app.get('/projects/:slug/edit', projects.edit);
   app.post('/projects/:slug/edit', projects.update);
   app.get('/projects/:slug/log', projects.log);

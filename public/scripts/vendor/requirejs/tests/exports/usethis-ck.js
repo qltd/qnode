@@ -1,1 +1,0 @@
-define(function(e,t){this.name="usethis"});

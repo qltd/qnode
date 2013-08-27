@@ -1,1 +1,0 @@
-define(function(e){var t=e("b");return{name:"a",b:t}});

@@ -1,1 +1,0 @@
-define(function(e){return{html:e("text!./main.html"),noext:e("text!sub/noext"),hidden:e("text!.hidden.html"),util:e("sub/util")}});

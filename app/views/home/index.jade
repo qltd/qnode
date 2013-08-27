@@ -27,7 +27,7 @@ block body_content
   include blocks/clients
   include blocks/contact
   include blocks/footer
-  include blocks/portfolio
+  .portfolio
 
 block body_scripts
   script.
@@ -52,6 +52,10 @@ block body_scripts
         return false;
       });
 
+      // project template to be used for incoming json
+      var projectTemplate = '<div class="project" id="project-<%- project.slug %>"><header><div class="container"><h3><%- project.title %></h3><div class="content"><p><%- project.body %></p></div></div><a href="#" class="close">Close</a></header><section><div class="container"><% _.each(project.images, function (image) { %> <img src="<%= image.src %>" alt="<%- image.title %>"> <% }); %></div></section><footer></footer></div>';
+      
+
       $('.trigger').on('click', function(){
         var target = $(this).attr('data-target');
         $('.portfolio').addClass('open');
@@ -59,13 +63,25 @@ block body_scripts
         // if project is not present it, retreive its json an add it to the page
         if ($('#project-' + target).length == 0) {
           $.ajax({ url: '/projects/' + target + '/json' })
-          .done(function(project) {
-            console.log(project);
-          });
-        }
+            .done(function(project) {
+              console.log(project);
+              var projectHtml = _.template(projectTemplate, { project: project });
+              $('.portfolio').append(projectHtml);
+              $('#project-' + target).addClass('active');
+              $('body').css('overflow', 'hidden');
 
-        $('#project-' + target).addClass('active');
-        $('body').css('overflow', 'hidden');
+              // make sure close button works
+              $('.close').on('click', function(){
+                closePort();
+              });
+
+              
+            }); 
+        } else {
+          $('#project-' + target).addClass('active');
+          $('body').css('overflow', 'hidden');
+        }
+        
       });
 
       $('.close').on('click', function(){

@@ -1,1 +1,0 @@
-define(function(e,t,n){e("exports").name="foo";e("require")("exports").related=e("module").config().related});
