@@ -45,15 +45,26 @@ block body_scripts
         });
       }
 
+      
+
       $("a[href^='#']").click(function(){//$.scrollTo works EXACTLY the same way, but scrolls the whole screen
         $.scrollTo( this.hash, 800, { offset:-150, axis: 'y' });
         return false;
       });
 
       $('.trigger').on('click', function(){
-        $target = $(this).attr('data-target');
+        var target = $(this).attr('data-target');
         $('.portfolio').addClass('open');
-        $('#project-' + $target).addClass('active');
+
+        // if project is not present it, retreive its json an add it to the page
+        if ($('#project-' + target).length == 0) {
+          $.ajax({ url: '/projects/' + target + '/json' })
+          .done(function(project) {
+            console.log(project);
+          });
+        }
+
+        $('#project-' + target).addClass('active');
         $('body').css('overflow', 'hidden');
       });
 
