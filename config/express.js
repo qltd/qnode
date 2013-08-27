@@ -47,16 +47,10 @@ module.exports = function(app, config, passport) {
   app.use(middleware.helpers);
   app.use(app.router);
 
-  // 404
-  app.use(middleware.notFound);
-
   // error handling
-  app.use(middleware.errors);
-
-  // development only
-  // if ('development' == app.get('env')) {
-  //   app.use(express.errorHandler());
-  // }
+  app.use(middleware.notFound);
+  app.use(middleware.errorLog);
+  app.use(middleware.errorRespond);
 
   // for reverse proxying via nginx/apache
   app.enable('trust proxy');

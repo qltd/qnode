@@ -1,0 +1,56 @@
+extends ../layouts/default
+
+block body_content
+  article.panel
+    div.container
+      table.edit-content
+        thead
+          tr
+            th.status Status
+              i.icon-chevron-up
+            th.url.method Method 
+              i.icon-chevron-up
+            th.url Url 
+              i.icon-chevron-up
+            th.url.referer Referer 
+              i.icon-chevron-up
+            th.by User
+              i.icon-chevron-up
+            th.stack Error Stack
+              i.icon-chevron-up
+            th.date Date
+              i.icon-chevron-up
+            
+        tbody
+          - each errLog in errorLog
+            tr
+              td
+                strong
+                  a(href='/errorLog')
+                    = errLog.status
+              td
+                strong
+                  a(href='/errorLog')
+                    = errLog.method
+              td
+                a(href='/errorLog')
+                    = errLog.url
+              td
+                a(href='/errorLog')
+                    = errLog.referer
+              td
+                a(href='/errorLog')
+                  = ( errLog.user && errLog.user.username ? errLog.user.username : 'anonymous' )
+              td
+                a(href='/errorLog')
+                    = errLog.stack
+              td
+                a(href='/errorLog')
+                  = errLog._id.getTimestamp()
+
+block body_scripts
+  script(src='/scripts/vendor/tablesorter/jquery.tablesorter.min.js')
+  script.
+    jQuery(function($){
+      $('.edit-content').tablesorter();
+    });

@@ -13,11 +13,12 @@ var auth = require('../app/middleware').authorization
 var clients = require('../app/controllers/clients')
   , contacts = require('../app/controllers/contacts')
   , crew = require('../app/controllers/crew')
-  , users = require('../app/controllers/users')
+  , errorLog = require('../app/controllers/errorLog')
   , home = require('../app/controllers/home')
   , panels = require('../app/controllers/panels')
   , projects = require('../app/controllers/projects')
-  , services = require('../app/controllers/services');
+  , services = require('../app/controllers/services')
+  , users = require('../app/controllers/users');
 
 module.exports = function(app, passport) {
 
@@ -31,6 +32,11 @@ module.exports = function(app, passport) {
     failureFlash: msg.user.authenticationFailed
   }), users.authenticate);
   app.get('/users/logout', users.logout);
+
+  // error log
+  app.all('/errorLog*', auth.requiresLogin, auth.requiresAdmin);
+  app.get('/errorLog', errorLog.index);
+  app.get('/errorLog/json', errorLog.index);
 
   // users
   app.all('/users*', auth.requiresLogin);

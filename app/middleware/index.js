@@ -12,7 +12,8 @@ var mongoose = require('mongoose')
  * Models
  */
 
-var User = mongoose.model('User')
+var ErrorLog = mongoose.model('ErrorLog')
+  , User = mongoose.model('User')
   , Image = mongoose.model('Image');
 
 /**
@@ -263,11 +264,33 @@ exports.notFound = function (req, res, next) {
 }
 
 /**
- * Error handling
+ * Error logging
  */
 
-exports.errors = function (err, req, res, next) {
-  console.log(err);
+exports.errorLog = function (err, req, res, next) {
+
+  /** record errors as mongoose-modeled documents */
+  var errorLog = new ErrorLog({ 
+    method: req.method,
+    referer: req.headers.referer,
+    stack: err.stack,
+    status: err.status || 500,
+    url: req.url,
+    user: req.body._meta.userId
+  });
+  errorLog.save(function (err) {
+    if (err) return next(err);
+  });
+
+  /** send to error handler */
+  next(err);
+}
+
+/**
+ * Error responding
+ */
+
+exports.errorRespond = function (err, req, res, next) {
 
   /** create status object; set response status code */
   var status = {

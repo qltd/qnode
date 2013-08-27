@@ -11,7 +11,10 @@ var mongoose = require('mongoose')
  */
 
 var ChangeLogSchema = new Schema({
-  user: { type : Schema.ObjectId, ref : 'User' },
+  user: { 
+    type : Schema.ObjectId, 
+    ref : 'User' 
+  },
   data: Object
 });
 
