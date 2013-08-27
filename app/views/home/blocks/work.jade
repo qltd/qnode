@@ -4,18 +4,12 @@ if panel && panel.work
       h2= panel.work.title
       .content
         p= panel.work.body
+        
       if projects && projects.length
         ul.project-grid
           each project, key in projects
-            if (key + 1) % 3 == 0
-              li.project-wrap.omega
-                a.clearfix.trigger.project-trigger(data-target="#{project.slug}", href="#")
-                  img(src=( project.coverImage[0] && project.coverImage[0].src ? project.coverImage[0].src : 'http://lorempixel.com/350/230/animals/' + key ), alt="")
-                  span 
-                    = project.title
-            else
-              li.project-wrap 
-                a.clearfix.trigger.project-trigger(data-target="#{project.slug}", href="#")
-                  img(src=( project.coverImage[0] && project.coverImage[0].src ? project.coverImage[0].src : 'http://lorempixel.com/350/230/animals/' + key ), alt="")
-                  span
-                    = project.title
+            li(class=( (key + 1) % 3 == 0 ? [ 'project-wrap', 'omega' ] : 'project-wrap' ))
+              a.clearfix.trigger.project-trigger(data-target=project.slug, href="#")
+                img(src=( project.coverImage[0] && project.coverImage[0].src ? project.coverImage[0].src : 'http://lorempixel.com/350/230/animals/' + key ), alt=( project.coverImage[0] && project.coverImage[0].title ? project.coverImage[0].title : '' ))
+                span 
+                  = project.title
