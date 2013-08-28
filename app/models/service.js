@@ -50,7 +50,7 @@ ServiceSchema.namedScope('index', function() {
   return this.populate('changeLog.user').sort('title');
 });
 ServiceSchema.namedScope('positioned', function() {
-  return this.sort('position');
+  return this.populate('changeLog.user').sort('position');
 });
 
 /**

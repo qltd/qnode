@@ -52,7 +52,7 @@ PanelSchema.namedScope('home', function() {
 });
 
 PanelSchema.namedScope('index', function() {
-  return this.populate('changeLog.user').sort('title');
+  return this.populate('changeLog.user').sort('position');
 });
 
 /**

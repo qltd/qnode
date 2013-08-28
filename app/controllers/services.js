@@ -21,7 +21,7 @@ var Service = mongoose.model('Service');
  */
 
 exports.index = function (req, res, next) {
-  Q.ninvoke(Service.index, 'find')
+  Q.ninvoke(Service.positioned, 'find')
     .then(function (services) {
       res.locals.services = services;
       if (req.url.indexOf('/json') > -1) return res.send(stripMongoIds(services)); // json
