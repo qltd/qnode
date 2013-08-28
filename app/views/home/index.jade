@@ -69,7 +69,7 @@ block body_scripts
 
       var projectTemplate = '\
         <% _.each(project.images, function (image) { %> \
-          <img src="<%= ( isRetina() && image.srcRetina ? image.srcRetina : image.src ) %>" alt="<%- image.title %>" width="<%= ( image.info && image.info.size && image.info.size.width ? Math.round(image.info.size.width / 2) : null ) %>" height="<%= ( image.info && image.info.size && image.info.size.height ? Math.round(image.info.size.height / 2) : null ) %>" > \
+          <img src="<%= ( isRetina() && image.srcRetina ? image.srcRetina : image.src ) %>" alt="<%- image.title %>" width="<%= ( image.info && image.info.size && image.info.size.width ? Math.round(image.info.size.width / 2) : null ) %>" > \
         <% }); %>';
       
 
