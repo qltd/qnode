@@ -187,8 +187,8 @@ ImageSchema.methods = {
       _images.push(Image.schema.methods.addImageInfo(img.sysPathRetina));
     });
 
-    /** resolve Promises for image metadata and add values to image array objects */
-    Q.all(_images)
+    /** return a Promise that resolves the array of image metadata Promises and returns a Promise for an update to the parent MongoDoc */
+    return Q.all(_images)
       .then(function (infoset) {
         infoset.forEach(function (info, key) {
           images[key].info = _.omit(info, 'Png:IHDR.color-type-orig', 'Png:IHDR.bit-depth-orig');
