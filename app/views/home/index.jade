@@ -27,7 +27,7 @@ block body_content
   include blocks/clients
   include blocks/contact
   include blocks/footer
-  .portfolio
+  include blocks/portfolio
 
 block body_scripts
   script.
@@ -45,43 +45,57 @@ block body_scripts
         });
       }
 
-      
+      // variant of the isRetina function found in retina.js
+      isRetina = function(){
+        var root = window;
+        var mediaQuery = "(-webkit-min-device-pixel-ratio: 1.5),\
+                          (min--moz-device-pixel-ratio: 1.5),\
+                          (-o-min-device-pixel-ratio: 3/2),\
+                          (min-resolution: 1.5dppx)";
+
+        if (root.devicePixelRatio > 1)
+          return true;
+
+        if (root.matchMedia && root.matchMedia(mediaQuery).matches)
+          return true;
+
+        return false;
+      };
 
       $("a[href^='#']").click(function(){//$.scrollTo works EXACTLY the same way, but scrolls the whole screen
         $.scrollTo( this.hash, 800, { offset:-150, axis: 'y' });
         return false;
       });
 
-      // project template to be used for incoming json
-      var projectTemplate = '<div class="project" id="project-<%- project.slug %>"><header><div class="container"><h3><%- project.title %></h3><div class="content"><p><%- project.body %></p></div></div><a href="#" class="close">Close</a></header><section><div class="container"><% _.each(project.images, function (image) { %> <img src="<%= image.src %>" alt="<%- image.title %>"> <% }); %></div></section><footer></footer></div>';
+      var projectTemplate = '\
+        <% _.each(project.images, function (image) { %> \
+          <img src="<%= ( isRetina() && image.srcRetina ? image.srcRetina : image.src ) %>" alt="<%- image.title %>" width="<%= ( image.info && image.info.size && image.info.size.width ? Math.round(image.info.size.width / 2) : null ) %>" height="<%= ( image.info && image.info.size && image.info.size.height ? Math.round(image.info.size.height / 2) : null ) %>" > \
+        <% }); %>';
       
 
       $('.trigger').on('click', function(){
         var target = $(this).attr('data-target');
         $('.portfolio').addClass('open');
 
-        // if project is not present it, retreive its json an add it to the page
-        if ($('#project-' + target).length == 0) {
-          $.ajax({ url: '/projects/' + target + '/json' })
-            .done(function(project) {
-              console.log(project);
-              var projectHtml = _.template(projectTemplate, { project: project });
-              $('.portfolio').append(projectHtml);
-              $('#project-' + target).addClass('active');
-              $('body').css('overflow', 'hidden');
+        // if project is present
+        if ($('#project-' + target).length != 0) {
 
-              // make sure close button works
-              $('.close').on('click', function(){
-                closePort();
-              });
+          // if images are not present
+          if ($('#project-' + target + ' .project-images > img').length == 0) {
+            $.ajax({ url: '/projects/' + target + '/json' })
+              .done(function(project) {
+                var projectHtml = _.template(projectTemplate, { project: project });
+                console.log(projectHtml);
+                $('#project-' + target + ' .project-images').append(projectHtml);
+                $('#project-' + target).addClass('active');
+              }); 
 
-              
-            }); 
-        } else {
-          $('#project-' + target).addClass('active');
-          $('body').css('overflow', 'hidden');
-        }
-        
+          // if images are present
+          } else {
+            $('#project-' + target).addClass('active');
+          }
+        } 
+        $('body').css('overflow', 'hidden');
       });
 
       $('.close').on('click', function(){

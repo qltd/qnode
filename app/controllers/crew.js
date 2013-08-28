@@ -101,7 +101,19 @@ exports.edit = function (req, res, next) {
 exports.create = function (req, res, next) {
   var crew = new Crew(req.body);
   crew.image = Image.create(crew.image, req.files.image);
-  Q.ninvoke(crew, 'save')
+
+  var _image = [];
+  crew.image.forEach(function (img) {
+    _image.push(Image.addImageInfo(img.sysPathRetina));
+  });
+
+  Q.all(_image)
+    .then(function (infoset) {
+      infoset.forEach(function (info, key) {
+        crew.image[key].info = _.omit(info, 'Png:IHDR.color-type-orig', 'Png:IHDR.bit-depth-orig');
+      });
+      return Q.ninvoke(crew, 'save');
+    })
     .then(function () {
       req.flash('success', msg.crew.created(crew.title));
       return res.redirect('/crew'); // html
@@ -121,9 +133,12 @@ exports.create = function (req, res, next) {
  */
 
 exports.update = function (req, res, next) {
-  Image.update(Crew, { slug: req.params.slug }, 'image', req.body.image, req.files.image)
-    .then(function (data) {
-      return Q.ninvoke(Crew, 'findOne', { slug: req.params.slug })
+  Q.fcall(Image.update, Crew, { slug: req.params.slug }, 'image', req.body.image, req.files.image)
+    .then(function (update) {
+      return update; // update image
+    })
+    .then(function (updateData) {
+      return Q.ninvoke(Crew, 'findOne', { slug: req.params.slug });
     })
     .then(function (crew) {
       if (!crew) return next(); // 404

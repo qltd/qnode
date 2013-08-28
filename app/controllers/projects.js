@@ -101,7 +101,29 @@ exports.create = function (req, res, next) {
   var project = new Project(req.body);
   project.coverImage = Image.create(project.coverImage, req.files.coverImage);
   project.images = Image.create(project.images, req.files.images);
-  Q.ninvoke(project, 'save')
+  
+  var _coverImage = [];
+  project.coverImage.forEach(function (img) {
+    _coverImage.push(Image.addImageInfo(img.sysPathRetina));
+  });
+  var _images = [];
+  project.images.forEach(function (img) {
+    _images.push(Image.addImageInfo(img.sysPathRetina));
+  });
+
+  Q.all(_coverImage)
+    .then(function (infoset) {
+      infoset.forEach(function (info, key) {
+        project.coverImage[key].info = _.omit(info, 'Png:IHDR.color-type-orig', 'Png:IHDR.bit-depth-orig');
+      });
+      return Q.all(_images);
+    })
+    .then(function (infoset) {
+      infoset.forEach(function (info, key) {
+        project.images[key].info = _.omit(info, 'Png:IHDR.color-type-orig', 'Png:IHDR.bit-depth-orig');
+      });
+      return Q.ninvoke(project, 'save');
+    })
     .then(function () {
       req.flash('success', msg.project.created(project.title));
       return res.redirect('/projects'); // html
@@ -121,11 +143,17 @@ exports.create = function (req, res, next) {
  */
 
 exports.update = function (req, res, next) {
-  Image.update(Project, { slug: req.params.slug }, 'coverImage', req.body.coverImage, req.files.coverImage) 
-    .then(function (data) {
-      return Image.update(Project, { slug: req.params.slug }, 'images', req.body.images, req.files.images);
+  Q.fcall(Image.update, Project, { slug: req.params.slug }, 'coverImage', req.body.coverImage, req.files.coverImage) 
+    .then(function (update) {
+      return update; // update coverImage
     })
-    .then(function (data) {
+    .then(function (updateData) {
+      return Q.fcall(Image.update, Project, { slug: req.params.slug }, 'images', req.body.images, req.files.images);
+    })
+    .then(function (update) {
+      return update; // update images
+    })
+    .then(function (updateData) {
       return Q.ninvoke(Project, 'findOne', { slug: req.params.slug });
     })
     .then(function (project) {

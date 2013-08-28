@@ -100,7 +100,19 @@ exports.edit = function (req, res, next) {
 exports.create = function (req, res, next) {
   var client = new Client(req.body);
   client.image = Image.create(client.image, req.files.image);
-  Q.ninvoke(client, 'save')
+
+  var _image = [];
+  client.image.forEach(function (img) {
+    _image.push(Image.addImageInfo(img.sysPathRetina));
+  });
+
+  Q.all(_image)
+    .then(function (infoset) {
+      infoset.forEach(function (info, key) {
+        client.image[key].info = _.omit(info, 'Png:IHDR.color-type-orig', 'Png:IHDR.bit-depth-orig');
+      });
+      return Q.ninvoke(client, 'save');
+    })
     .then(function () {
       req.flash('success', msg.client.created(client.title));
       return res.redirect('/clients'); // html
@@ -120,8 +132,11 @@ exports.create = function (req, res, next) {
  */
 
 exports.update = function (req, res, next) {
-  Image.update(Client, { slug: req.params.slug }, 'image', req.body.image, req.files.image)
-    .then(function (data) {
+  Q.fcall(Image.update, Client, { slug: req.params.slug }, 'image', req.body.image, req.files.image)
+    .then(function (update) {
+      return update; // update image
+    })
+    .then(function (updateData) {
       return Q.ninvoke(Client, 'findOne', { slug: req.params.slug });
     })
     .then(function (client) {

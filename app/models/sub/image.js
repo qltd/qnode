@@ -20,8 +20,8 @@ var ImageSchema = new Schema({
   body: String,
   class: [ String ],
   fileName: String,
-  height: Number,
   id: String,
+  info: Object,
   position: Number,
   size: Number,
   src: String,
@@ -31,8 +31,7 @@ var ImageSchema = new Schema({
   sysPathRetina: String,
   title: String,
   tmpPath: String,
-  type: String,
-  width: Number
+  type: String
 });
 
 /**
@@ -69,6 +68,11 @@ ImageSchema.virtual('path')
  */
 
 ImageSchema.methods = {
+  addImageInfo: function (path) {
+    var file = gm(path);
+    return Q.ninvoke(file, 'identify');
+  },
+
   /**
    * Adds images to a mongoose-modeled object, and moves files from temp to permanent storage
    * 
@@ -77,6 +81,7 @@ ImageSchema.methods = {
    * @returns {Array} Return a populated image field array
    */
   create: function (imageFieldArray, fileArray) {
+    var Image = ( imageFieldArray[0] ? imageFieldArray[0] : mongoose.model('Image').schema.methods );
     var images = [];
 
     /** iterate through file array */
@@ -89,14 +94,14 @@ ImageSchema.methods = {
 
         /** move tmp file to retina path */
         fs.rename(file.path, img.sysPathRetina, function (err) {
-          if (err) throw err;
+          if (err) return err;
 
           /** create half-sized, non-retina version */
           gm(img.sysPathRetina)
             .quality(100)
             .resize('50%')
             .write(img.sysPath, function (err) {
-              if (err) throw err;
+              if (err) return err;
             });
         });
 
@@ -104,7 +109,7 @@ ImageSchema.methods = {
 
         /** remove tmp file */
         fs.unlink(file.path, function (err) {
-          if (err) throw err;
+          if (err) return err;
         });
       }
     });
@@ -153,14 +158,14 @@ ImageSchema.methods = {
 
         /** move tmp file to retina path */
         fs.rename(file.path, img.sysPathRetina, function (err) {
-          if (err) throw err;
+          if (err) return err;
 
           /** create half-sized, non-retina version */
           gm(img.sysPathRetina)
             .quality(100)
             .resize('50%')
             .write(img.sysPath, function (err) {
-              if (err) throw err;
+              if (err) return err;
             });
         });
 
@@ -171,15 +176,33 @@ ImageSchema.methods = {
 
         /** remove tmp file */
         fs.unlink(file.path, function (err) {
-          if (err) throw err;
+          if (err) return err;
         });
       }
     });
 
-    /** prepare update, and return a promise */
-    var updateData = {};
-    updateData[fieldName] = images;
-    return Q.ninvoke(parentModel, 'update', updateQuery, updateData);
+    /** add Promises for image metadata */
+    var _images = [];
+    images.forEach(function (img) {
+      _images.push(Image.schema.methods.addImageInfo(img.sysPathRetina));
+    });
+
+    /** resolve Promises for image metadata and add values to image array objects */
+    Q.all(_images)
+      .then(function (infoset) {
+        infoset.forEach(function (info, key) {
+          images[key].info = _.omit(info, 'Png:IHDR.color-type-orig', 'Png:IHDR.bit-depth-orig');
+        });
+
+        /** prepare update data, then return a Promise for that update */
+        var updateData = {};
+        updateData[fieldName] = images;
+        return Q.ninvoke(parentModel, 'update', updateQuery, updateData); 
+      })
+      .fail(function (err) {
+        return err;
+      })
+
   }
 }
 
