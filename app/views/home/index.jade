@@ -85,7 +85,6 @@ block body_scripts
             $.ajax({ url: '/projects/' + target + '/json' })
               .done(function(project) {
                 var projectHtml = _.template(projectTemplate, { project: project });
-                console.log(projectHtml);
                 $('#project-' + target + ' .project-images').append(projectHtml);
                 $('#project-' + target).addClass('active');
               }); 
