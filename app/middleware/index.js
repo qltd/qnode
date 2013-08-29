@@ -109,8 +109,8 @@ exports.helpers = function (req, res, next) {
   /**
    * Returns a 'position' value sorted array
    *
-   * @param {Object|Array} obj - Any object or array
-   * @returns {Object|Array} An object or array that has been stripped of mongo and user identifiers
+   * @param {Array} array - An array that contains a position field (not nested)
+   * @returns {Array} Return an array sorted by its position field
    */
   toPositionSortedArray = function (array) {
     return _.sortBy(array, 'position');
