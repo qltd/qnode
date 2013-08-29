@@ -526,6 +526,12 @@ ul li:hover {
     z-index:100;
     position: relative;
   }
+  p a, p a:visited {
+    color:$orange;
+    &:hover {
+      color: $pink;
+    }
+  }
 }
 
 @include at-breakpoint($computer) {
