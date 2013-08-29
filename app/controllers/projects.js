@@ -104,25 +104,25 @@ exports.create = function (req, res, next) {
   
   var _coverImage = [];
   project.coverImage.forEach(function (img) {
-    _coverImage.push(Image.addImageInfo(img.sysPathRetina));
+    _coverImage.push(Image.addImageInfo(img.sysPathRetina)); // add Promises for coverImages metadata
   });
   var _images = [];
   project.images.forEach(function (img) {
-    _images.push(Image.addImageInfo(img.sysPathRetina));
+    _images.push(Image.addImageInfo(img.sysPathRetina)); // add Promises for images metadata
   });
 
-  Q.all(_coverImage)
+  Q.all(_coverImage) // resolve Promises for coverImages metadata
     .then(function (infoset) {
       infoset.forEach(function (info, key) {
         project.coverImage[key].info = _.omit(info, 'Png:IHDR.color-type-orig', 'Png:IHDR.bit-depth-orig');
       });
-      return Q.all(_images);
+      return Q.all(_images); // resolve Promises for images metadata
     })
     .then(function (infoset) {
       infoset.forEach(function (info, key) {
         project.images[key].info = _.omit(info, 'Png:IHDR.color-type-orig', 'Png:IHDR.bit-depth-orig');
       });
-      return Q.ninvoke(project, 'save');
+      return Q.ninvoke(project, 'save'); // save
     })
     .then(function () {
       req.flash('success', msg.project.created(project.title));
@@ -145,13 +145,13 @@ exports.create = function (req, res, next) {
 exports.update = function (req, res, next) {
   Q.fcall(Image.update, Project, { slug: req.params.slug }, 'coverImage', req.body.coverImage, req.files.coverImage) 
     .then(function (update) {
-      return update; // update coverImage
+      return update; // update parent's coverImage
     })
     .then(function (updateData) {
       return Q.fcall(Image.update, Project, { slug: req.params.slug }, 'images', req.body.images, req.files.images);
     })
     .then(function (update) {
-      return update; // update images
+      return update; // update parent's images
     })
     .then(function (updateData) {
       return Q.ninvoke(Project, 'findOne', { slug: req.params.slug });
