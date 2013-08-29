@@ -411,7 +411,7 @@ ul li:hover {
 
 @include at-breakpoint($computer) {
   .header {
-    padding:35px 0 40px;
+    padding:25px 0 25px;
   }
 
   .nav-toggle {
@@ -421,7 +421,7 @@ ul li:hover {
   .main-nav {
     display: block !important;
     float: right;
-    margin: 17px 6% 0 0;
+    margin: 13px 6% 0 0;
     background: transparent;
     clear: none;
     ul {
@@ -674,7 +674,7 @@ ul li:hover {
       }
       li {
         i {
-          display: none;
+          display: none !important;
         }
       }
     }
