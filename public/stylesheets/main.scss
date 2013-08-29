@@ -466,13 +466,20 @@ ul li:hover {
     position: absolute;
     z-index: 50;
     bottom:0;
+    display: none;
+  }
+  #img {
+    min-height: 320px;
+    position: absolute;
+    z-index: 50;
+    bottom:0;    
   }
 }
 
 @include at-breakpoint($computer) {
   .headline {
     padding: 150px 0;
-    margin-top: 146px;
+    margin-top: 125px;
     height: 500px;
     
     h3 {
@@ -481,6 +488,10 @@ ul li:hover {
 
     video {
       width: 100%;
+      display: block;
+    }
+    #img {
+      display: none;
     }
   }
 }
