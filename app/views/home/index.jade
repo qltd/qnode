@@ -1,12 +1,5 @@
 extends ../layouts/default
 
-block head_scripts
-  script(type='text/javascript').
-    function changevid() {
-      document.getElementById('vid').innerHTML = '<source src="images/power.mp4" type="video/mp4">';
-      document.getElementById('vid').load();
-    }
-
 block top_navigation
   nav.main-nav
     ul
@@ -45,8 +38,39 @@ block body_scripts
         });
       }
 
-      // variant of the isRetina function found in retina.js
-      isRetina = function(){
+      /**
+       * Replaces divx-replaced video elements with html5 video elements 
+       *
+       * @param {Object} element - HTML element containing video data
+       * @param {String} id - ID of HTML element containing video data
+       */
+      var replaceVideo = function (element, id) {
+        if ($(element + '#' + id).length > 0) {
+          $(element + '#' + id).replaceWith('<video id="' + id + '"></video>');
+          $('#' + id).attr('class', 'replaced');
+
+          /** set boolean attributes; convention #2 in code examples: http://www.w3.org/TR/html5/infrastructure.html#boolean-attribute */
+          $('#' + id).attr('preload', 'preload');
+          $('#' + id).attr('autoplay', 'autoplay');
+          $('#' + id).attr('loop', 'loop');
+          $('#' + id).attr('muted', 'muted')
+
+          $('#' + id).attr('src', 'images/power.mp4');
+          $('#' + id).attr('type', 'video/mp4');
+        }
+      }
+
+      $(window).load(function () {
+        /** Replace divx-replaced videos with original html5 tag */
+        replaceVideo('embed', 'vid');
+      })
+
+      /**
+       * Variant of the isRetina function found in retina.js
+       *
+       * @returns {Boolean} Returns true or false regarding weather a user's display is high-density
+       */
+      isRetina = function () {
         var root = window;
         var mediaQuery = "(-webkit-min-device-pixel-ratio: 1.5),\
                           (min--moz-device-pixel-ratio: 1.5),\
@@ -67,6 +91,7 @@ block body_scripts
         return false;
       });
 
+      /** template for portion of project portfolio that will be populated by as-needed with json */
       var projectTemplate = '\
         <% _.each(project.images, function (image) { %> \
           <img src="<%= ( isRetina() && image.srcRetina ? image.srcRetina : image.src ) %>" alt="<%- image.title %>" width="<%= ( isRetina() && image.srcRetina && image.meta && image.meta.size && image.meta.size.width ? Math.round(image.meta.size.width / 2) : null ) %>" > \

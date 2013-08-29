@@ -52,8 +52,7 @@ exports.index = function (req, res, next) {
     .then(function (projects) {
       res.locals.projects = projects;
       return res.render('home', { 
-        title: 'Q Design & Communication Since 1981', 
-        onload: 'changevid()'
+        title: 'Q Design & Communication Since 1981'
       }); // html
     })
     .fail(function (err) {
