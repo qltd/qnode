@@ -14,8 +14,6 @@ block body_content
             if project.coverImage[0] && project.coverImage[0].src
               img(src=project.coverImage[0].src)
               input(type='hidden', name='coverImage[0][name]', value=project.coverImage[0].fileName)
-              input(type='hidden', name='coverImage[0][type]', value=project.coverImage[0].type)
-              input(type='hidden', name='coverImage[0][size]', value=project.coverImage[0].size)
               input.image(type='file', name='coverImage[0]')
               input.image-title(type='text', name='coverImage[0][title]', placeholder='Cover Image Title', value=( project.coverImage[0] ? project.coverImage[0].title : null ))
             else

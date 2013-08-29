@@ -103,13 +103,13 @@ exports.create = function (req, res, next) {
 
   var _image = [];
   client.image.forEach(function (img) {
-    _image.push(Image.addImageInfo(img.sysPathRetina));
+    _image.push(Image.promiseImageMeta(img.sysPathRetina));
   });
 
   Q.all(_image)
-    .then(function (infoset) {
-      infoset.forEach(function (info, key) {
-        client.image[key].info = _.omit(info, 'Png:IHDR.color-type-orig', 'Png:IHDR.bit-depth-orig');
+    .then(function (metaArray) {
+      metaArray.forEach(function (meta, key) {
+        client.image[key].meta = Image.filterImageMeta(meta);
       });
       return Q.ninvoke(client, 'save');
     })

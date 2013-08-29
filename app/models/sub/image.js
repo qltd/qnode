@@ -21,17 +21,15 @@ var ImageSchema = new Schema({
   class: [ String ],
   fileName: String,
   id: String,
-  info: Object,
+  meta: Object,
   position: Number,
-  size: Number,
   src: String,
   srcRetina: String,
   style: String,
   sysPath: String,
   sysPathRetina: String,
   title: String,
-  tmpPath: String,
-  type: String
+  tmpPath: String
 });
 
 /**
@@ -68,11 +66,7 @@ ImageSchema.virtual('path')
  */
 
 ImageSchema.methods = {
-  addImageInfo: function (path) {
-    var file = gm(path);
-    return Q.ninvoke(file, 'identify');
-  },
-
+  
   /**
    * Adds images to a mongoose-modeled object, and moves files from temp to permanent storage
    * 
@@ -115,6 +109,27 @@ ImageSchema.methods = {
     });
 
     return images;
+  },
+
+  /**
+   * Returns a filtered metadata Object containing only the values of white-listed keys from an unfiltered metadata Object
+   *
+   * @param {Object} meta - an unfilter Image metadata Object 
+   * @returns {Object} Returns a filtered Image metadata Object
+   */
+  filterImageMeta: function (meta) {
+    return _.pick(meta, 'format', 'Filesize', 'Geometry', 'size');
+  },
+
+  /**
+   * Returns a Promise for metadata of an image at a particular path
+   *
+   * @param {String} path - A system path for an image
+   * @returns {Promise} Returns a then-able Promise for image metadata
+   */
+  promiseImageMeta: function (path) {
+    var file = gm(path);
+    return Q.ninvoke(file, 'identify');
   },
 
   /**
@@ -184,14 +199,14 @@ ImageSchema.methods = {
     /** add Promises for image metadata */
     var _images = [];
     images.forEach(function (img) {
-      _images.push(Image.schema.methods.addImageInfo(img.sysPathRetina));
+      _images.push(Image.schema.methods.promiseImageMeta(img.sysPathRetina));
     });
 
     /** return a Promise that resolves the array of image metadata Promises and returns a Promise for an update to the parent MongoDoc */
     return Q.all(_images)
-      .then(function (infoset) {
-        infoset.forEach(function (info, key) {
-          images[key].info = _.omit(info, 'Png:IHDR.color-type-orig', 'Png:IHDR.bit-depth-orig');
+      .then(function (metaArray) {
+        metaArray.forEach(function (meta, key) {
+          images[key].meta = Image.schema.methods.filterImageMeta(meta);
         });
 
         /** prepare update data, then return a Promise for that update */

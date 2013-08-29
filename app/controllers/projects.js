@@ -104,23 +104,23 @@ exports.create = function (req, res, next) {
   
   var _coverImage = [];
   project.coverImage.forEach(function (img) {
-    _coverImage.push(Image.addImageInfo(img.sysPathRetina)); // add Promises for coverImages metadata
+    _coverImage.push(Image.promiseImageMeta(img.sysPathRetina)); // add Promises for coverImages metadata
   });
   var _images = [];
   project.images.forEach(function (img) {
-    _images.push(Image.addImageInfo(img.sysPathRetina)); // add Promises for images metadata
+    _images.push(Image.promiseImageMeta(img.sysPathRetina)); // add Promises for images metadata
   });
 
   Q.all(_coverImage) // resolve Promises for coverImages metadata
-    .then(function (infoset) {
-      infoset.forEach(function (info, key) {
-        project.coverImage[key].info = _.omit(info, 'Png:IHDR.color-type-orig', 'Png:IHDR.bit-depth-orig');
+    .then(function (metaArray) {
+      metaArray.forEach(function (meta, key) {
+        project.coverImage[key].meta = Image.filterImageMeta(meta);
       });
       return Q.all(_images); // resolve Promises for images metadata
     })
-    .then(function (infoset) {
-      infoset.forEach(function (info, key) {
-        project.images[key].info = _.omit(info, 'Png:IHDR.color-type-orig', 'Png:IHDR.bit-depth-orig');
+    .then(function (metaArray) {
+      metaArray.forEach(function (meta, key) {
+        project.images[key].meta = Image.filterImageMeta(meta);
       });
       return Q.ninvoke(project, 'save'); // save
     })
