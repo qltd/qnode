@@ -77,6 +77,7 @@ ImageSchema.methods = {
   create: function (imageFieldArray, fileArray) {
     var Image = ( imageFieldArray[0] ? imageFieldArray[0] : mongoose.model('Image').schema.methods );
     var images = [];
+    var hasPosition = false;
 
     /** iterate through file array */
     fileArray.forEach(function (file, key) {
@@ -85,6 +86,9 @@ ImageSchema.methods = {
         /** extend Image object to contain file values, then add to images array */
         var img = _.extend(imageFieldArray[key], file);
         images.push(img);
+
+        /** images have a position */
+        if (img.position) hasPosition = true;
 
         /** move tmp file to retina path */
         fs.rename(file.path, img.sysPathRetina, function (err) {
@@ -108,7 +112,7 @@ ImageSchema.methods = {
       }
     });
 
-    return images;
+    return ( hasPosition ? toPositionSortedArray(images) : images );
   },
 
   /**
@@ -162,6 +166,7 @@ ImageSchema.methods = {
   update: function (parentModel, updateQuery, fieldName, dataArray, fileArray) {
     var Image = mongoose.model('Image');
     var images = [];
+    var hasPosition = false;
 
     /** iterate through file array */
     fileArray.forEach(function (file, key) {
@@ -170,6 +175,7 @@ ImageSchema.methods = {
         /** create new Image object for images array; omit old data, if it exists, when merging with file */
         var img = new Image(_.extend(file, _.omit(dataArray[key], 'name', 'type', 'size')));
         images.push(img);
+        if (img.position) hasPosition = true;
 
         /** move tmp file to retina path */
         fs.rename(file.path, img.sysPathRetina, function (err) {
@@ -188,6 +194,7 @@ ImageSchema.methods = {
 
         /** recreate existing (unreplaced) Image objects for images array; will reflect changes to data */
         if (dataArray[key].name) images.push(new Image(dataArray[key]));
+        if (dataArray[key].name && dataArray[key].position) hasPosition = true;
 
         /** remove tmp file */
         fs.unlink(file.path, function (err) {
@@ -195,6 +202,8 @@ ImageSchema.methods = {
         });
       }
     });
+
+    if (hasPosition) images = toPositionSortedArray(images);
 
     /** add Promises for image metadata */
     var _images = [];

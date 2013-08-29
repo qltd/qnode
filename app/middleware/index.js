@@ -107,6 +107,17 @@ exports.helpers = function (req, res, next) {
   res.locals.stripMongoIds = stripMongoIds;
 
   /**
+   * Returns a 'position' value sorted array
+   *
+   * @param {Object|Array} obj - Any object or array
+   * @returns {Object|Array} An object or array that has been stripped of mongo and user identifiers
+   */
+  toPositionSortedArray = function (array) {
+    return _.sortBy(array, 'position');
+  }
+  res.locals.toPositionSortedArray = toPositionSortedArray;
+
+  /**
    * Converts an array of mongoose-modeled objects into an object containing multiple mongoose-modeled objects with camel-case keys that are generated from their slugs or titles
    *
    * @param {Array} mongoDocs - An array of mongoose-modeled objects
