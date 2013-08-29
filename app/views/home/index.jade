@@ -86,6 +86,11 @@ block body_scripts
         return false;
       };
 
+      if (isRetina()) {
+        $('.q').addClass('2x');
+        $('.location').addClass('2x');
+      }
+
       $("a[href^='#']").click(function(){//$.scrollTo works EXACTLY the same way, but scrolls the whole screen
         $.scrollTo( this.hash, 800, { offset:-150, axis: 'y' });
         return false;
