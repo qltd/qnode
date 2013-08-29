@@ -743,7 +743,14 @@ ul li:hover {
 }
 
 @include at-breakpoint($computer) {
-
+  .crew-grid {
+    .person-wrap {
+      background: transparent;
+    }
+    .person-info {
+      display: none;
+    } 
+  }
 }
 
 
