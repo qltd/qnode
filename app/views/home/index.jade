@@ -156,6 +156,7 @@ block body_scripts
       //- Toggles Services 
       $('.services-list li').on('click', function(){
         $(this).children('.service-details').slideToggle();
+        $(this).toggleClass('expanded');
       });      
 
     });
