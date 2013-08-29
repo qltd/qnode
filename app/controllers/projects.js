@@ -208,11 +208,12 @@ exports.restore = function (req, res, next) {
       return Image.restore(Project, { slug: req.params.slug }, 'coverImage', coverImage);
     })
     .then(function () {
-      return Q.ninvoke(Project.index, 'findOne', { slug: req.params.slug });
+      return Q.ninvoke(Project, 'findOne', { slug: req.params.slug });
     })
     .then(function (project) {
       if (!project) return next(); // 404
-      var data = _.omit(project.changeLog[req.params.__v].data, '__v', 'images');
+      var data = _.omit(project.changeLog[req.params.__v].data, '__v', 'images', 'coverImage');
+      console.log(data);
       data._meta = req.body._meta;
       project = _.extend(project, data);
       res.locals.project = project;
