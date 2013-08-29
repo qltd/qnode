@@ -625,6 +625,12 @@ ul li:hover {
       font:italic 700 19px "adelle", serif;
       cursor: pointer;
       @include transition;
+      .icon-minus-sign {
+        display: none;
+      }
+      .icon-plus-sign {
+        display: inline;
+      }
       &:hover {
         color: $grey;
         i {
@@ -633,6 +639,14 @@ ul li:hover {
       }
       i {
         margin-right: 5px;
+      }
+      &.expanded {
+        .icon-plus-sign {
+          display: none;
+        }
+        .icon-minus-sign {
+          display: inline;
+        }
       }
     }
   }
@@ -828,6 +842,9 @@ ul li:hover {
   .location {
     padding-bottom: 75px;
     background-position: 86% 0;
+    p {
+      font-size: 20px;
+    }
   }
 }
 
