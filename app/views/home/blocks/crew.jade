@@ -3,9 +3,9 @@ if panel && panel.crew
     .container
       h2= panel.crew.title
       .crew-grid.content
-        ul
+        ul.clearfix
           each crewmember, key in crew
-            li.crew-member 
+            li(class=( (key + 1) % 4 == 0 ? [ 'crew-member', 'omega' ] : 'crew-member' ))
               .person-wrap.clearfix
                 each image in crewmember.image
                   img(src=image.src, alt=image.alt)
