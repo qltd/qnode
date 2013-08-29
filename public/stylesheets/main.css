@@ -2555,7 +2555,7 @@ ul li:hover .flyout {
 @media (min-width: 55em) {
   /* line 413, main.scss */
   .header {
-    padding: 35px 0 40px; }
+    padding: 25px 0 25px; }
 
   /* line 417, main.scss */
   .nav-toggle {
@@ -2565,7 +2565,7 @@ ul li:hover .flyout {
   .main-nav {
     display: block !important;
     float: right;
-    margin: 17px 6% 0 0;
+    margin: 13px 6% 0 0;
     background: transparent;
     clear: none; }
     /* line 428, main.scss */
@@ -2838,7 +2838,7 @@ ul li:hover .flyout {
       margin-right: 0; }
     /* line 676, main.scss */
     .services ul li i {
-      display: none; }
+      display: none !important; }
     /* line 681, main.scss */
     .services h4 {
       display: block; }
