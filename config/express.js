@@ -13,7 +13,7 @@ module.exports = function(app, config, passport) {
   app.setMaxListeners(0);
   app.set('port', process.env.PORT || 3000);
   
-  app.use(express.favicon());
+  app.use(express.favicon(config.root + '/public/images/favicon.ico'));
   app.use(require('stylus').middleware(config.root + '/public'));
   app.use(express.static(config.root + '/public'));
 
