@@ -506,15 +506,21 @@ ul li:hover {
   // Paralax Test
   .q {
     display: none !important;
-    background: url(../images/tanq.png);
-    width: 351px;
-    height: 342px;
+    background: url(../images/q-gray@2x.png);
+    background-size: contain;
+    width: 355px;
+    height: 355px;
     position: absolute;
     z-index: 1;
     font-size: 10em;
   }
   .pinq {
-    background: url(../images/pinq.png);
+    background: url(../images/q-pink@2x.png);
+    background-size: contain;
+  }
+  .blueq {
+    background: url(../images/q-blue@2x.png);
+    background-size: contain;
   }
   .content {
     z-index:100;
