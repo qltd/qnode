@@ -3059,16 +3059,16 @@ ul li:hover .flyout {
     padding: 110px 20px; }
     /* line 884, main.scss */
     .project header h3 {
-      padding-left: 40px;
-      margin: 0;
+      margin: 0 0 10px;
       color: #77c7c6;
       font: 800 20px "proxima-nova";
       text-transform: uppercase;
       letter-spacing: 2px;
       text-align: left; }
     @media (min-width: 55em) {
-      /* line 890, main.scss */
+      /* line 889, main.scss */
       .project header h3 {
+        padding-left: 40px;
         width: 31.42857%;
         float: left;
         margin-right: 2.85714%; }

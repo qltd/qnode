@@ -882,12 +882,12 @@ ul li:hover {
     background: $grey;
     padding:110px 20px;
     h3 {
-      padding-left: 40px;
-      margin: 0;
+      margin: 0 0 10px;
       @include projTitle;
     }
     @include at-breakpoint($computer) {
       h3 {
+        padding-left: 40px;
         @include span-columns(4 alpha);
       }
       .content {
