@@ -848,8 +848,8 @@ ul li:hover {
   margin-left: -30px;
   background: url(../images/q-map.png) no-repeat 50% 220px;
   &.x2 {
-    background: url(../images/q-map@2x.png) no-repeat 220px;
-    background-size: 50%;
+    background: url(../images/q-map@2x.png) 50% 83% no-repeat;
+    background-size: 450px 262px;
   }
   padding:0 30px 320px;
   p {
@@ -872,6 +872,9 @@ ul li:hover {
   .location {
     padding-bottom: 75px;
     background-position: 86% 0;
+    &.x2 {
+      background-position: 86% 0;
+    }
     p {
       font-size: 20px;
     }
