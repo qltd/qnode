@@ -765,6 +765,7 @@ ul li:hover {
   }
   .crew-member {
     list-style: none; 
+    position: relative;
   }
   .person-wrap {
     border:10px solid $teal;
@@ -799,6 +800,9 @@ ul li:hover {
     padding: 0 4%;
     color: white;
     @include transition;
+    h4, h5 {
+      display: none;
+    }
     a {
       color:white;
     }
@@ -825,9 +829,14 @@ ul li:hover {
 
 @include at-breakpoint($computer) {
   .crew-grid {
+    .crew-member {
+      @include span-columns(3);
+      &.omega {
+        margin-right: 0;
+      }
+    }
     .person-wrap {
       border-color:transparent;
-      @include span-columns(3);
       background: transparent;
       &:hover {
         border-color:$pink;
@@ -841,6 +850,27 @@ ul li:hover {
     .person-info {
       display: none;
     } 
+    .bio {
+      max-height: inherit;
+      background: rgba($grey, 0.9);
+      padding:20px;
+      position: absolute;
+      width: 410px;
+      top: 150px;
+      right:0;
+      opacity: 0;
+      z-index:-100;
+      @include transition;
+      h4, h5 {
+        display: block;
+      }
+    }
+  }
+  .crew-member:hover {
+    .bio {
+      z-index:1000;
+      opacity: 1;
+    }
   }
   .omega .person-wrap {
     margin-right: 0;
