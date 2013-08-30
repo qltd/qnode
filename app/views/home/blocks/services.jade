@@ -12,7 +12,7 @@ if panel && panel.services
                     i.icon-plus-sign 
                     i.icon-minus-sign 
                     = service.title
-                      .service-details
+                      .service-details.details-left
                         =service.body
             ul.services-list.list-right
               if services[1]
@@ -21,7 +21,7 @@ if panel && panel.services
                     i.icon-plus-sign 
                     i.icon-minus-sign 
                     =service.title
-                      .service-details
+                      .service-details.details-right
                         =service.body
   
       .q.pinq(data-stellar-ratio='2', data-stellar-vertical-offset='350')
