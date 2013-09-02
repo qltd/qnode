@@ -5,7 +5,7 @@ block body_content
     .container
       if pageHeading
         h1= pageHeading 
-      form(method='post', enctype='multipart/form-data')
+      form.admin-form(method='post', enctype='multipart/form-data')
         #name
           input(type='text', name='firstName', placeholder='First Name*', value=crew.firstName)
           input(type='text', name='middleName', placeholder='Middle Name', value=crew.middleName)
@@ -24,8 +24,8 @@ block body_content
         #image
           .row
             if crew.image[0] && crew.image[0].src
-              img(src=crew.image[0].src)
               input(type='hidden', name='image[0][name]', value=crew.image[0].fileName)
+              img(src=crew.image[0].src)
               input.image(type='file', name='image[0]')
               input.image-title(type='text', name='image[0][title]', placeholder='Image Title', value=( crew.image[0] ? crew.image[0].title : null ))
             else

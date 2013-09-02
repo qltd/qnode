@@ -215,6 +215,16 @@ textarea {
 }
 
 .admin-form {
+  img {
+    width: 10%;
+    height: auto;
+    max-height: 75px;
+    padding-right: 1%;
+    float: left;
+    & + input.image {
+      width: 30%;
+    }
+  }
   input, textarea {
     border: solid 4px $tan;
     @include transition;
@@ -614,6 +624,10 @@ ul li:hover {
   }
   input.position {
     width: 12%;
+  }
+  i.icon-remove-sign {
+    color: $pink;
+    margin-left: 5px;
   }
 }
 

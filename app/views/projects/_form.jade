@@ -12,8 +12,8 @@ block body_content
 
           .row
             if project.coverImage[0] && project.coverImage[0].src
-              img(src=project.coverImage[0].src)
               input(type='hidden', name='coverImage[0][name]', value=project.coverImage[0].fileName)
+              img(src=project.coverImage[0].src)
               input.image(type='file', name='coverImage[0]')
               input.image-title(type='text', name='coverImage[0][title]', placeholder='Cover Image Title', value=( project.coverImage[0] ? project.coverImage[0].title : null ))
             else
@@ -26,21 +26,21 @@ block body_content
 
         #project-image
           
-          each image, key in project.images
-            .row
-              img(src=image.src)
-              br
-              input(type='hidden', name='images['+key+'][name]', value=image.fileName)
-              input(type='hidden', name='images['+key+'][type]', value=image.type)
-              input(type='hidden', name='images['+key+'][size]', value=image.size)
-              input.image(type='file', name='images['+key+']')
-              input.image-title(type='text', name='images['+key+'][title]', placeholder='Image Title', value=image.title)
-              input.position(type='number', name='images['+key+'][position]', placeholder='Position', value=image.position)
+          if project.images
+            each image, key in project.images
+              .row(id='row-' + key)
+                input(type='hidden', name='images['+key+'][name]', value=image.fileName)
+                img(src=image.src)
+                input.image(type='file', name='images['+key+']')
+                input.image-title(type='text', name='images['+key+'][title]', placeholder='Image Title', value=image.title)
+                input.position(type='number', name='images['+key+'][position]', placeholder='Position', value=image.position)
+                i.icon-remove-sign.icon-2x
 
-          .row
-            input.image(type='file', name='images['+project.images.length+']')
-            input.image-title(type='text', name='images['+project.images.length+'][title]', placeholder='Image Title')
-            input.position(type='number', name='images['+project.images.length+'][position]', placeholder='Position', value=project.images.length)
+          .row(id='row-' + ( project.images ? project.images.length : 0 ))
+            input.image(type='file', name='images[' + ( project.images ? project.images.length : 0 ) + ']')
+            input.image-title(type='text', name='images[' + ( project.images ? project.images.length : 0 ) + '][title]', placeholder='Image Title')
+            input.position(type='number', name='images[' + ( project.images ? project.images.length : 0 ) + '][position]', placeholder='Position', value=( project.images ? project.images.length : 0 ))
+            i.icon-remove-sign.icon-2x
 
         a#add-image.btn.btn-new.
           Add Image +
@@ -51,9 +51,33 @@ block body_content
 
 block body_scripts
   script.
-    jQuery(function($){
+    jQuery(function ($) {
+
+      var imageRowTemplate = '\
+        <div id="row-<%- key %>" class="row">\
+          <input class="image" type="file" name="images[<%- key %>]">\
+          <input class="image-title" type="text" name="images[<%- key %>][title]" placeholder="Image Title">\
+          <input class="position" type="number" name="images[<%- key %>][position]" value="<%- key %>" placeholder="Position"><i class="icon-remove-sign icon-2x"></i>\
+        </div>';
+
       // Adds New Imagerow 
       $('#add-image').on('click', function() {
-        $('#project-image').append('<div class="row"><input class="image" type="file" name="images[' + $('#project-image > .row').length + ']"><input type="text" name="images[' + $('#project-image > .row').length + '][title]" placeholder="Image Title" class="image-title"><input type="number" name="images[' + $('#project-image > .row').length + '][position]" placeholder="Position" class="position" value="' + $('#project-image > .row').length + '"></div>');
+        var key = $('#project-image > .row').length;
+        var imageRowHtml = _.template(imageRowTemplate, { key: key });
+        console.log(imageRowHtml);
+        $('#project-image').append(imageRowHtml);
+        imageRemoveOnClick('#row-' + key + ' .icon-remove-sign');
       });
+
+      /**
+       * Listens for remove-image click events on a specific element or class of elements
+       * @param element - The ID or class of an element or set of elements
+       */
+      var imageRemoveOnClick = function (element) {
+        $(element).on('click', function () {
+          $(this).parent().remove();
+        });
+      }
+      imageRemoveOnClick('.icon-remove-sign');
+
     });
