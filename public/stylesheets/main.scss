@@ -725,7 +725,7 @@ ul li:hover {
           display: none !important;
         }
         .service-details {
-          display: block;
+          display: none;
           color:white;
           background: rgba($grey, 0.9);
           padding:20px;
@@ -733,8 +733,7 @@ ul li:hover {
           width: 350px;
           left:200px;
           top:-15px;
-          opacity: 0;
-          z-index:-100;
+          z-index: 1000;
           @include transition;
           &.details-left:after {
             top:20px;
@@ -755,8 +754,7 @@ ul li:hover {
           }
         }
         &:hover .service-details {
-          opacity: 1;
-          z-index:1000;
+          display: block;
         }      
       }
     }
@@ -880,8 +878,8 @@ ul li:hover {
       width: 410px;
       top: 150px;
       right:0;
-      opacity: 0;
-      z-index:-100;
+      z-index:1000;
+      display: none;
       @include transition;
       h4, h5 {
         display: block;
@@ -890,8 +888,7 @@ ul li:hover {
   }
   .crew-member:hover {
     .bio {
-      z-index:1000;
-      opacity: 1;
+      display: block;
     }
   }
   .omega .person-wrap {
