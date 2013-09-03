@@ -249,6 +249,39 @@ textarea {
   }
 }
 
+#loading-screen {
+  position: fixed; 
+  top: 100%; 
+  width: 100%; 
+  height: 100%; 
+  background: #3d393a; 
+  z-index: 9999;
+  opacity: 0;
+  @include transition(0.5s);
+  &.open {
+    @include transition(0.5s);
+    opacity: 1;
+    top: 0;
+  }
+  .container {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    margin-top: -77px;
+    #spinning-q {
+      background: url(/images/q-blue.png); 
+      background-repeat: no-repeat; 
+      background-size: contain; 
+      width: 90px; 
+      height: 90px; 
+      margin: auto;
+    }
+    h3 {
+      margin: 10px auto 0;
+    }
+  }
+}
 
 
 /*------------------------------------*\

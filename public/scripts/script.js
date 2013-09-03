@@ -26,3 +26,17 @@ $('.messages')
   .animate({ height: 0 }, 'easy', function () {
     $(this).hide();
   });
+
+/** 
+ * Animate Q logo on loading screen
+ * We can accomplish this with only css, but cross-browser compatibility is an issue 
+ */
+YUI().use('transition', function (Y){
+  Y.one('#spinning-q').transition({
+    transform: 'rotate(' + 300000 + 'deg)',
+    duration: 1000,
+    easing: 'linear'
+  }, function(){
+    this.setStyle('webkitTransform', 'rotateY(0deg)');
+  });               
+});

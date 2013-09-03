@@ -50,3 +50,8 @@ $('#add-image').on('click', function() {
   $('#project-image').append(imageRowHtml);
   removeParentOnClick('#row-' + key + ' .icon-remove-sign');
 });
+
+/** Open loading screen on admin form submissions */
+$('input[type=submit]').on('click', function () {
+  $('#loading-screen').addClass('open');
+})

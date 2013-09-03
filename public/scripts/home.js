@@ -64,9 +64,14 @@ $("a[href^='#']").click(function(){//$.scrollTo works EXACTLY the same way, but 
   return false;
 });
 
+/** 
+ * Check to see whether images have loaded; when they have, hide the loading screen
+ *
+ * @param images - Image or images that are being loaded
+ */
 var imageLoadCheck = function (images) {
   var imageCount = $(images).length;
-  var currentCount = 1;
+  var currentCount = 0;
   $(images).one('load', function() {
     currentCount++;
     if (currentCount == imageCount) $('#loading-screen').removeClass('open');
@@ -106,8 +111,6 @@ $('.trigger').on('click', function(){
       imageLoadCheck('#project-' + target + ' img');
     }
   } 
-
-  
 
   /** Hide overflow; aka, remove scrollbars from body */
   $('body').css('overflow', 'hidden');
