@@ -899,12 +899,24 @@ ul li:hover {
 /* $clients */
 .clients {
 	background: $pink;
+  .client {
+    display: block;
+    float: left;
+    width:44%;
+    margin-right: 12%;
+    height:80px;
+    line-height: 80px;
+    
+    img {
+      vertical-align: middle;
+    }
+  }
+  .client:nth-child(odd) {
+    margin-right: 0;
+  }
 }
 
-.clients-slideshow {
-  width: 140px;
-  margin: 0 auto;
-}
+
 
 /* $contact */
 .contact {
