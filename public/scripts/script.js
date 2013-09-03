@@ -14,3 +14,15 @@ $('#close-toolbar').on('click', function(){
 
 /** Add table sorter to admin item index views */
 $('.edit-content').tablesorter();
+
+/** Find height of messages dev before we set it to 0 */
+var msgHeight = $('.messages').height();
+
+/** Animate the messages div */
+$('.messages')
+  .css('height', 0)
+  .animate({ height: msgHeight }, 'easy')
+  .delay(5000)
+  .animate({ height: 0 }, 'easy', function () {
+    $(this).hide();
+  });
