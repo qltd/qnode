@@ -1,7 +1,8 @@
-if panel && panel.clients
+if panel && panel.selectClients
   article#clients.clients.panel
     .container
-      h2= panel.clients.title
-      each client in clients
-        .client
-          img(src=client.image[0].src, alt=client.image[0].alt)
+      h2= panel.selectClients.title
+      .clients-wrap
+        each client, key in clients
+          div(class=( (key + 1) % 6 == 0 ? [ 'client', 'omega' ] : 'client' ))
+            img(src=client.image[0].src, alt=client.image[0].alt)

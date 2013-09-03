@@ -613,6 +613,7 @@ ul li:hover {
     margin-bottom: 50px;
     img {
       max-width:100%;
+      height: auto !important;
     }
   }
 }
@@ -820,6 +821,12 @@ ul li:hover {
     padding: 0 4%;
     color: white;
     @include transition;
+    &:after {
+      @include triangle(15px, top, rgba($grey, 0.9));   
+      content:' ';
+      display: block;
+      position: absolute; 
+    }
     h4, h5 {
       display: none;
     }
@@ -900,13 +907,13 @@ ul li:hover {
 .clients {
 	background: $pink;
   .client {
+    text-align: center;
     display: block;
     float: left;
     width:44%;
     margin-right: 12%;
     height:80px;
     line-height: 80px;
-    
     img {
       vertical-align: middle;
     }
@@ -916,6 +923,21 @@ ul li:hover {
   }
 }
 
+@include at-breakpoint($computer) {
+  .clients-wrap {
+    @include span-columns(12 omega);
+  }
+  .clients .client {
+    @include span-columns(2);
+    margin-bottom: 40px;
+    &:nth-child(odd) {
+      @include span-columns(2);
+    }
+    &.omega {
+      margin-right: 0;
+    }
+  }  
+}
 
 
 /* $contact */
