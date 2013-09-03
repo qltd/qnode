@@ -1,4 +1,4 @@
-extends ../layouts/default
+extends ../layouts/adminForm
 
 block body_content
   article.panel
@@ -48,53 +48,3 @@ block body_content
           Add Image +
         #submit
           input(type='submit')
-
-
-
-block body_scripts
-  script.
-    jQuery(function ($) {
-
-      var imageRowTemplate = '\
-        <div id="row-<%- key %>" class="row clearfix">\
-          <i class="icon-move icon-2x"></i>\
-          <input class="image" type="file" name="images[<%- key %>]">\
-          <input class="image-title" type="text" name="images[<%- key %>][title]" placeholder="Image Title">\
-          <input class="position" type="hidden" name="images[<%- key %>][position]" value="<%- key %>" placeholder="Position"><i class="icon-remove-sign icon-2x"></i>\
-        </div>';
-
-      // Adds New Imagerow 
-      $('#add-image').on('click', function() {
-        var key = $('#project-image > .row').length;
-        var imageRowHtml = _.template(imageRowTemplate, { key: key });
-        console.log(imageRowHtml);
-        $('#project-image').append(imageRowHtml);
-        removeParentOnClick('#row-' + key + ' .icon-remove-sign');
-      });
-
-      /**
-       * Listens for remove-element click events on a specific element or class of elements
-       * @param element - The ID or class of an element or set of elements
-       */
-      var removeParentOnClick = function (element) {
-        $(element).on('click', function () {
-          $(this).parent().remove();
-        });
-      }
-      removeParentOnClick('.icon-remove-sign');
-
-
-      var updateImagePositions = function () {
-        $('#project-image > .row').each(function (key, value) {
-          $(this).children('input.position').val(key);
-        });
-      }
-      updateImagePositions();
-
-      $('#project-image').sortable({
-        update: function (e, ui) {
-          updateImagePositions();
-        }
-      });
-
-    });

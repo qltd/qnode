@@ -38,10 +38,3 @@ block body_content
                 a(href='/panels/' + panel.slug + '/log') Log
               td
                 a(href='/panels/' + panel.slug + '/edit') Edit
-
-block body_scripts
-  script(src='/scripts/vendor/tablesorter/jquery.tablesorter.min.js')
-  script.
-    jQuery(function($){
-      $('.edit-content').tablesorter();
-    });

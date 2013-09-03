@@ -30,6 +30,7 @@ html(class="no-js", lang="en")
     script(src='/scripts/vendor/jquery.scrollTo-min.js')
     script(src='/scripts/vendor/jquery.stellar/jquery.stellar.min.js')
     script(src='/scripts/vendor/cycle2/jquery.cycle2.min.js')
+    script(src='/scripts/vendor/tablesorter/jquery.tablesorter.min.js')
     script(src='//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js') 
      
     // endbuild 
@@ -54,10 +55,5 @@ html(class="no-js", lang="en")
 
     block body_scripts
 
-    script.
-      jQuery(function($){
-        $('#close-toolbar').on('click', function(){
-          $('.admin-bar').toggleClass('mini');
-        });
-      });
+    script(src='/scripts/script.js')
     script(src='/scripts/vendor/retina/retina.js')

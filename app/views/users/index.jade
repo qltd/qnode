@@ -43,10 +43,3 @@ block body_content
                 a(href='/users/' + user.username + '/log') Log
               td
                 a(href='/users/' + user.username + '/edit') Edit
-
-block body_scripts
-  script(src='/scripts/vendor/tablesorter/jquery.tablesorter.min.js')
-  script.
-    jQuery(function($){
-      $('.edit-content').tablesorter();
-    });
