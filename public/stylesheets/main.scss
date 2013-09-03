@@ -947,6 +947,7 @@ ul li:hover {
     margin-right: 12%;
     height:80px;
     line-height: 80px;
+    margin-bottom: 50px;
     img {
       vertical-align: middle;
     }
@@ -958,11 +959,11 @@ ul li:hover {
 
 @include at-breakpoint($computer) {
   .clients-wrap {
+    margin-top: 50px;
     @include span-columns(12 omega);
   }
   .clients .client {
     @include span-columns(2);
-    margin-bottom: 40px;
     &:nth-child(odd) {
       @include span-columns(2);
     }
