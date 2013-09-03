@@ -40,8 +40,7 @@ var imageRowTemplate = '\
   <div id="row-<%- key %>" class="row clearfix">\
     <i class="icon-move icon-2x"></i>\
     <input class="image" type="file" name="images[<%- key %>]">\
-    <input class="image-title" type="text" name="images[<%- key %>][title]" placeholder="Image Title">\
-    <input class="position" type="hidden" name="images[<%- key %>][position]" value="<%- key %>" placeholder="Position"><i class="icon-remove-sign icon-2x"></i>\
+    <input class="image-title" type="text" name="images[<%- key %>][title]" placeholder="Image Title"><input class="position" type="hidden" name="images[<%- key %>][position]" value="<%- key %>" placeholder="Position"><i class="icon-remove-sign icon-2x"></i>\
   </div>';
 
 /** Add new image row on click event */
