@@ -622,7 +622,7 @@ ul li:hover {
     cursor: move;
   }
   input.image-title {
-    width: 45%;
+    width: 39%;
   }
   input.position {
     width: 12%;
@@ -630,6 +630,13 @@ ul li:hover {
   i.icon-remove-sign {
     color: $pink;
     margin-left: 1%;
+    cursor: pointer;
+  }
+  i.icon-move {
+    cursor: move;
+    float: left;
+    margin-top: 20px;
+    margin-right: 1%;
   }
 }
 

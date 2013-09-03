@@ -29,6 +29,7 @@ block body_content
           if project.images
             each image, key in project.images
               .row.clearfix(id='row-' + key)
+                i.icon-move.icon-2x
                 input(type='hidden', name='images['+key+'][name]', value=image.fileName)
                 img(src=image.src)
                 input.image(type='file', name='images['+key+']')
@@ -37,6 +38,7 @@ block body_content
                 i.icon-remove-sign.icon-2x
 
           .row.clearfix(id='row-' + ( project.images ? project.images.length : 0 ))
+            i.icon-move.icon-2x
             input.image(type='file', name='images[' + ( project.images ? project.images.length : 0 ) + ']')
             input.image-title(type='text', name='images[' + ( project.images ? project.images.length : 0 ) + '][title]', placeholder='Image Title')
             input.position(type='hidden', name='images[' + ( project.images ? project.images.length : 0 ) + '][position]', placeholder='Position', value=( project.images ? project.images.length : 0 ))
@@ -55,6 +57,7 @@ block body_scripts
 
       var imageRowTemplate = '\
         <div id="row-<%- key %>" class="row clearfix">\
+          <i class="icon-move icon-2x"></i>\
           <input class="image" type="file" name="images[<%- key %>]">\
           <input class="image-title" type="text" name="images[<%- key %>][title]" placeholder="Image Title">\
           <input class="position" type="hidden" name="images[<%- key %>][position]" value="<%- key %>" placeholder="Position"><i class="icon-remove-sign icon-2x"></i>\
