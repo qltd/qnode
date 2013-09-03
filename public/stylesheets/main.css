@@ -2272,7 +2272,7 @@ textarea {
 \*------------------------------------*/
 /* line 156, main.scss */
 body, p, li, table {
-  color: #3d393a; }
+  color: #3a363d; }
 
 /* line 160, main.scss */
 body {
@@ -2462,7 +2462,7 @@ ul.inline li {
 @media (min-width: 55em) {
   /* line 316, main.scss */
   .flyout {
-    background: rgba(61, 57, 58, 0.9);
+    background: rgba(58, 54, 61, 0.9);
     padding: 20px;
     position: absolute;
     width: 410px;
@@ -2487,7 +2487,7 @@ ul.inline li {
     .flyout.fly-top:after {
       border-right: 15px solid transparent;
       border-left: 15px solid transparent;
-      border-bottom: 15px solid rgba(61, 57, 58, 0.9);
+      border-bottom: 15px solid rgba(58, 54, 61, 0.9);
       top: -15px; }
     /* line 339, main.scss */
     .flyout.fly-left {
@@ -2497,7 +2497,7 @@ ul.inline li {
         top: 20px;
         border-top: 15px solid transparent;
         border-bottom: 15px solid transparent;
-        border-left: 15px solid rgba(61, 57, 58, 0.9);
+        border-left: 15px solid rgba(58, 54, 61, 0.9);
         right: -15px; }
     /* line 346, main.scss */
     .flyout.fly-right {
@@ -2507,13 +2507,13 @@ ul.inline li {
         top: 20px;
         border-top: 15px solid transparent;
         border-bottom: 15px solid transparent;
-        border-right: 15px solid rgba(61, 57, 58, 0.9);
+        border-right: 15px solid rgba(58, 54, 61, 0.9);
         left: -15px; }
     /* line 354, main.scss */
     .flyout.fly-bottom:after {
       border-right: 15px solid transparent;
       border-left: 15px solid transparent;
-      border-bottom: 15px solid rgba(61, 57, 58, 0.9);
+      border-bottom: 15px solid rgba(58, 54, 61, 0.9);
       top: -15px; } }
 /* line 361, main.scss */
 ul li:hover .flyout {
@@ -2529,7 +2529,7 @@ ul li:hover .flyout {
 /* line 380, main.scss */
 .header {
   color: white;
-  background: #3d393a;
+  background: #3a363d;
   position: fixed;
   top: 0;
   width: 100%;
@@ -2799,7 +2799,7 @@ ul li:hover .flyout {
     font: 800 14px "proxima-nova";
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: #3d393a; }
+    color: #3a363d; }
     /* line 638, main.scss */
     .work .project-trigger span {
       display: block;
@@ -2888,7 +2888,7 @@ ul li:hover .flyout {
         display: inline; }
       /* line 716, main.scss */
       .services ul li:hover {
-        color: #3d393a; }
+        color: #3a363d; }
         /* line 718, main.scss */
         .services ul li:hover i {
           color: #c9005d; }
@@ -2905,7 +2905,7 @@ ul li:hover .flyout {
   .services .service-details {
     display: none;
     margin-left: 27px;
-    color: #3d393a;
+    color: #3a363d;
     font: 600 13px "proxima-nova"; }
   /* line 740, main.scss */
   .services .flyout {
@@ -2934,7 +2934,7 @@ ul li:hover .flyout {
     .services ul li .service-details {
       display: none;
       color: white;
-      background: rgba(61, 57, 58, 0.9);
+      background: rgba(58, 54, 61, 0.9);
       padding: 20px;
       position: absolute;
       width: 350px;
@@ -2951,7 +2951,7 @@ ul li:hover .flyout {
         top: 20px;
         border-top: 15px solid transparent;
         border-bottom: 15px solid transparent;
-        border-right: 15px solid rgba(61, 57, 58, 0.9);
+        border-right: 15px solid rgba(58, 54, 61, 0.9);
         left: -15px;
         content: ' ';
         display: block;
@@ -2964,7 +2964,7 @@ ul li:hover .flyout {
           top: 20px;
           border-top: 15px solid transparent;
           border-bottom: 15px solid transparent;
-          border-left: 15px solid rgba(61, 57, 58, 0.9);
+          border-left: 15px solid rgba(58, 54, 61, 0.9);
           right: -15px;
           content: ' ';
           display: block;
@@ -3006,7 +3006,7 @@ ul li:hover .flyout {
 /* line 824, main.scss */
 .crew-grid .person-wrap {
   border: 10px solid #77c7c6;
-  background: #3d393a;
+  background: #3a363d;
   color: white;
   position: relative;
   z-index: 100;
@@ -3022,7 +3022,7 @@ ul li:hover .flyout {
     height: auto !important; }
   /* line 836, main.scss */
   .crew-grid .person-wrap p {
-    background: #3d393a;
+    background: #3a363d;
     margin: 0; }
   /* line 840, main.scss */
   .crew-grid .person-wrap .person-info {
@@ -3037,7 +3037,7 @@ ul li:hover .flyout {
   margin: 0 2%;
   max-height: 0px;
   overflow: hidden;
-  background: #3d393a;
+  background: #3a363d;
   padding: 0 4%;
   color: white;
   -webkit-transition: all 0.2s ease-out;
@@ -3046,70 +3046,62 @@ ul li:hover .flyout {
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out; }
   /* line 857, main.scss */
-  .crew-grid .bio:after {
-    border-right: 15px solid transparent;
-    border-left: 15px solid transparent;
-    border-bottom: 15px solid rgba(61, 57, 58, 0.9);
-    top: -15px;
-    content: ' ';
-    display: block;
-    position: absolute; }
-  /* line 863, main.scss */
   .crew-grid .bio h4, .crew-grid .bio h5 {
     display: none; }
-  /* line 866, main.scss */
+  /* line 860, main.scss */
   .crew-grid .bio a {
     color: white; }
-  /* line 869, main.scss */
+  /* line 863, main.scss */
   .crew-grid .bio i {
     font-size: 18px;
     margin: 10px 10px 0 0; }
-  /* line 873, main.scss */
+  /* line 867, main.scss */
   .crew-grid .bio p {
     margin: 0 0 10px;
     color: white;
     font: 600 14px "proxima-nova"; }
-/* line 879, main.scss */
+/* line 873, main.scss */
 .crew-grid li.open .person-wrap {
   border-color: #c9005d;
   background: #c9005d; }
-/* line 883, main.scss */
+/* line 877, main.scss */
 .crew-grid li.open .bio {
   padding: 40px 4% 20px;
   max-height: 400px; }
 
 @media (min-width: 55em) {
-  /* line 892, main.scss */
+  /* line 886, main.scss */
   .crew-grid .crew-member {
     width: 22.85714%;
     float: left;
     margin-right: 2.85714%; }
-    /* line 894, main.scss */
+    /* line 888, main.scss */
     .crew-grid .crew-member.omega {
       margin-right: 0; }
-  /* line 898, main.scss */
+  /* line 892, main.scss */
   .crew-grid .person-wrap {
     border-color: transparent;
     background: transparent; }
-    /* line 901, main.scss */
+    /* line 895, main.scss */
     .crew-grid .person-wrap:hover {
       border-color: #c9005d; }
-    /* line 904, main.scss */
+    /* line 898, main.scss */
     .crew-grid .person-wrap img {
       width: 100%;
       float: none;
       max-width: 100%; }
-  /* line 910, main.scss */
+  /* line 904, main.scss */
   .crew-grid .person-info {
     display: none; }
-  /* line 913, main.scss */
+  /* line 907, main.scss */
   .crew-grid .bio {
+    overflow: visible;
     max-height: inherit;
-    background: rgba(61, 57, 58, 0.9);
+    background: rgba(58, 54, 61, 0.9);
     padding: 20px;
     position: absolute;
     width: 410px;
-    top: 150px;
+    top: 105px;
     right: 0;
     z-index: 1000;
     display: none;
@@ -3118,22 +3110,32 @@ ul li:hover .flyout {
     -ms-transition: all 0.2s ease-out;
     -o-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out; }
-    /* line 924, main.scss */
+    /* line 919, main.scss */
     .crew-grid .bio h4, .crew-grid .bio h5 {
       display: block; }
+    /* line 922, main.scss */
+    .crew-grid .bio:after {
+      border-right: 15px solid transparent;
+      border-left: 15px solid transparent;
+      border-bottom: 15px solid rgba(58, 54, 61, 0.9);
+      top: -15px;
+      content: ' ';
+      display: block;
+      position: absolute;
+      right: 15px; }
 
-  /* line 930, main.scss */
+  /* line 932, main.scss */
   .crew-member:hover .bio {
     display: block; }
 
-  /* line 934, main.scss */
+  /* line 936, main.scss */
   .omega .person-wrap {
     margin-right: 0; } }
 /* $clients */
-/* line 940, main.scss */
+/* line 942, main.scss */
 .clients {
   background: #c9005d; }
-  /* line 942, main.scss */
+  /* line 944, main.scss */
   .clients .client {
     text-align: center;
     display: block;
@@ -3143,40 +3145,40 @@ ul li:hover .flyout {
     height: 80px;
     line-height: 80px;
     margin-bottom: 50px; }
-    /* line 951, main.scss */
+    /* line 953, main.scss */
     .clients .client img {
       vertical-align: middle; }
-  /* line 955, main.scss */
+  /* line 957, main.scss */
   .clients .client:nth-child(odd) {
     margin-right: 0; }
 
 @media (min-width: 55em) {
-  /* line 961, main.scss */
+  /* line 963, main.scss */
   .clients-wrap {
     margin-top: 50px;
     width: 100%;
     float: right;
     margin-right: 0; }
 
-  /* line 965, main.scss */
+  /* line 967, main.scss */
   .clients .client {
     width: 14.28571%;
     float: left;
     margin-right: 2.85714%; }
-    /* line 967, main.scss */
+    /* line 969, main.scss */
     .clients .client:nth-child(odd) {
       width: 14.28571%;
       float: left;
       margin-right: 2.85714%; }
-    /* line 970, main.scss */
+    /* line 972, main.scss */
     .clients .client.omega {
       margin-right: 0; } }
 /* $contact */
-/* line 978, main.scss */
+/* line 980, main.scss */
 .contact {
   background: #dbd8cf; }
 
-/* line 982, main.scss */
+/* line 984, main.scss */
 #contact-submit {
   height: auto;
   float: right;
@@ -3194,28 +3196,28 @@ ul li:hover .flyout {
   -ms-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out; }
-  /* line 992, main.scss */
+  /* line 994, main.scss */
   #contact-submit:hover {
     background: #ab003f; }
 
-/* line 997, main.scss */
+/* line 999, main.scss */
 .location {
   width: 113%;
   margin-left: -30px;
   background: url(../images/q-map.png) no-repeat 50% 220px;
   padding: 0 30px 320px; }
-  /* line 1001, main.scss */
+  /* line 1003, main.scss */
   .location.x2 {
     background: url(../images/q-map@2x.png) 50% 83% no-repeat;
     background-size: 450px 262px; }
-  /* line 1006, main.scss */
+  /* line 1008, main.scss */
   .location p {
     line-height: 25px;
     text-transform: uppercase; }
-    /* line 1009, main.scss */
+    /* line 1011, main.scss */
     .location p a, .location p a:visited {
       color: #c9005d; }
-  /* line 1013, main.scss */
+  /* line 1015, main.scss */
   .location .dark-logo {
     margin: 50px 0 0 0;
     height: 34px;
@@ -3224,18 +3226,18 @@ ul li:hover .flyout {
     background: url(../images/dark-logo.png) no-repeat; }
 
 @media (min-width: 55em) {
-  /* line 1023, main.scss */
+  /* line 1025, main.scss */
   .location {
     padding-bottom: 75px;
     background-position: 86% 0; }
-    /* line 1026, main.scss */
+    /* line 1028, main.scss */
     .location.x2 {
       background-position: 86% 0; }
-    /* line 1029, main.scss */
+    /* line 1031, main.scss */
     .location p {
       font-size: 20px; } }
 /* $portfolio */
-/* line 1038, main.scss */
+/* line 1040, main.scss */
 .portfolio {
   -webkit-transition: all 0.5s ease-out;
   -moz-transition: all 0.5s ease-out;
@@ -3252,19 +3254,19 @@ ul li:hover .flyout {
   position: fixed;
   width: 100%;
   z-index: 9999; }
-  /* line 1050, main.scss */
+  /* line 1052, main.scss */
   .portfolio.open {
     top: 0;
     opacity: 1; }
 
-/* line 1057, main.scss */
+/* line 1059, main.scss */
 .project {
   display: none; }
-  /* line 1059, main.scss */
+  /* line 1061, main.scss */
   .project header {
-    background: #3d393a;
+    background: #3a363d;
     padding: 110px 20px; }
-    /* line 1062, main.scss */
+    /* line 1064, main.scss */
     .project header h3 {
       margin: 0 0 10px;
       color: #77c7c6;
@@ -3273,46 +3275,46 @@ ul li:hover .flyout {
       letter-spacing: 2px;
       text-align: left; }
     @media (min-width: 55em) {
-      /* line 1067, main.scss */
+      /* line 1069, main.scss */
       .project header h3 {
         padding-left: 40px;
         width: 31.42857%;
         float: left;
         margin-right: 2.85714%; }
-      /* line 1071, main.scss */
+      /* line 1073, main.scss */
       .project header .content {
         width: 65.71429%;
         float: right;
         margin-right: 0; } }
-    /* line 1075, main.scss */
+    /* line 1077, main.scss */
     .project header p {
       color: white;
       font-size: 18px;
       margin-top: 0; }
-      /* line 1079, main.scss */
+      /* line 1081, main.scss */
       .project header p a {
         color: #e16e2b; }
-  /* line 1084, main.scss */
+  /* line 1086, main.scss */
   .project section {
     margin-top: 8px;
     background: #dbd8cf;
     padding: 50px 20px 200px; }
-    /* line 1088, main.scss */
+    /* line 1090, main.scss */
     .project section .container {
       text-align: center; }
-      /* line 1090, main.scss */
+      /* line 1092, main.scss */
       .project section .container img {
         max-width: 100%;
         margin-bottom: 80px; }
-  /* line 1099, main.scss */
+  /* line 1101, main.scss */
   .project.active {
     display: block; }
-  /* line 1102, main.scss */
+  /* line 1104, main.scss */
   .project footer {
-    background: #3d393a;
+    background: #3a363d;
     padding: 50px 20px; }
 
-/* line 1109, main.scss */
+/* line 1111, main.scss */
 .close {
   display: block;
   background: #c9005d;
@@ -3330,26 +3332,26 @@ ul li:hover .flyout {
   -ms-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out; }
-  /* line 1119, main.scss */
+  /* line 1121, main.scss */
   .close:hover {
     background: #ab003f; }
 
 /* $admin-content */
-/* line 1126, main.scss */
+/* line 1128, main.scss */
 .edit-content {
   width: 100%;
   -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
   text-align: left; }
-  /* line 1130, main.scss */
+  /* line 1132, main.scss */
   .edit-content th {
-    color: #3d393a;
+    color: #3a363d;
     background: #77c7c6;
     padding: 5px;
     cursor: pointer;
     padding: 8px; }
-    /* line 1136, main.scss */
+    /* line 1138, main.scss */
     .edit-content th i {
       margin-right: 5px;
       float: right;
@@ -3359,10 +3361,10 @@ ul li:hover .flyout {
       -ms-transition: all 0.2s ease-out;
       -o-transition: all 0.2s ease-out;
       transition: all 0.2s ease-out; }
-    /* line 1142, main.scss */
+    /* line 1144, main.scss */
     .edit-content th.headerSortUp i {
       opacity: 1; }
-    /* line 1145, main.scss */
+    /* line 1147, main.scss */
     .edit-content th.headerSortDown i {
       opacity: 1;
       -webkit-transform: rotate(180deg);
@@ -3370,10 +3372,10 @@ ul li:hover .flyout {
       -ms-transform: rotate(180deg);
       -o-transform: rotate(180deg);
       transform: rotate(180deg); }
-  /* line 1150, main.scss */
+  /* line 1152, main.scss */
   .edit-content td, .edit-content th {
     border: solid 2px white; }
-  /* line 1153, main.scss */
+  /* line 1155, main.scss */
   .edit-content tr {
     background: #eee;
     -webkit-transition: all 0.2s ease-out;
@@ -3381,65 +3383,65 @@ ul li:hover .flyout {
     -ms-transition: all 0.2s ease-out;
     -o-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out; }
-  /* line 1157, main.scss */
+  /* line 1159, main.scss */
   .edit-content tr:nth-child(even) {
     background: #f8f8f8; }
-  /* line 1160, main.scss */
+  /* line 1162, main.scss */
   .edit-content td {
     -webkit-transition: all 0.2s ease-out;
     -moz-transition: all 0.2s ease-out;
     -ms-transition: all 0.2s ease-out;
     -o-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out; }
-    /* line 1162, main.scss */
+    /* line 1164, main.scss */
     .edit-content td a {
       display: block;
       width: 100%;
       padding: 8px;
-      color: #3d393a; }
-  /* line 1169, main.scss */
+      color: #3a363d; }
+  /* line 1171, main.scss */
   .edit-content tr:hover {
     background: #ccc; }
-  /* line 1172, main.scss */
+  /* line 1174, main.scss */
   .edit-content .position {
     width: 10%; }
-  /* line 1175, main.scss */
+  /* line 1177, main.scss */
   .edit-content .title {
     width: 25%; }
-  /* line 1178, main.scss */
+  /* line 1180, main.scss */
   .edit-content .date {
     width: 40%; }
-  /* line 1181, main.scss */
+  /* line 1183, main.scss */
   .edit-content .by {
     width: 20%; }
 
 /*--$FOOTER--*/
-/* line 1189, main.scss */
+/* line 1191, main.scss */
 footer#footer {
-  background: #3d393a;
+  background: #3a363d;
   padding: 125px 20px 0;
   color: white; }
-  /* line 1193, main.scss */
+  /* line 1195, main.scss */
   footer#footer h2 {
     color: white;
     margin-top: 0;
     padding: 0;
     padding-left: 40px; }
 
-/* line 1200, main.scss */
+/* line 1202, main.scss */
 .social {
   padding: 0; }
-  /* line 1202, main.scss */
+  /* line 1204, main.scss */
   .social li {
     display: inline-block; }
-    /* line 1204, main.scss */
+    /* line 1206, main.scss */
     .social li a {
       color: white;
       font-size: 30px;
       display: block;
       position: relative;
       padding: 10px; }
-      /* line 1210, main.scss */
+      /* line 1212, main.scss */
       .social li a i {
         position: relative;
         -webkit-transition: all 0.2s ease-out;
@@ -3447,7 +3449,7 @@ footer#footer {
         -ms-transition: all 0.2s ease-out;
         -o-transition: all 0.2s ease-out;
         transition: all 0.2s ease-out; }
-      /* line 1214, main.scss */
+      /* line 1216, main.scss */
       .social li a span {
         text-align: center;
         opacity: 0;
@@ -3463,13 +3465,13 @@ footer#footer {
         font: 800 12px "proxima-nova";
         letter-spacing: 1px;
         text-transform: uppercase;
-        color: #3d393a;
+        color: #3a363d;
         display: block;
         padding: 10px 20px;
         top: -65px;
         left: -35px;
         width: 117px; }
-        /* line 1228, main.scss */
+        /* line 1230, main.scss */
         .social li a span:after {
           content: '';
           border-top: #dbd8cf dotted 15px;
@@ -3478,37 +3480,37 @@ footer#footer {
           position: absolute;
           bottom: -15px;
           left: 36%; }
-      /* line 1238, main.scss */
+      /* line 1240, main.scss */
       .social li a.facebook span {
         left: -40px; }
-      /* line 1241, main.scss */
+      /* line 1243, main.scss */
       .social li a:hover {
         color: orange; }
-        /* line 1243, main.scss */
+        /* line 1245, main.scss */
         .social li a:hover i {
           bottom: 5px; }
-        /* line 1246, main.scss */
+        /* line 1248, main.scss */
         .social li a:hover span {
           top: -45px;
           opacity: 1;
           z-index: 100; }
 
-/* line 1255, main.scss */
+/* line 1257, main.scss */
 .copyright {
   margin-top: 70px;
   color: white;
   font: normal 12px "proxima-nova"; }
 
-/* line 1263, main.scss */
+/* line 1265, main.scss */
 .newsletter form input {
   float: left;
   height: 55px;
   margin-bottom: 0; }
-/* line 1268, main.scss */
+/* line 1270, main.scss */
 .newsletter form .field {
   width: 64%;
   background: #bebcbf; }
-/* line 1272, main.scss */
+/* line 1274, main.scss */
 .newsletter form #submitbutton {
   background: #77c7c6;
   color: white;
@@ -3520,7 +3522,7 @@ footer#footer {
   white-space: normal;
   width: 34%;
   padding: 10px 1%; }
-/* line 1282, main.scss */
+/* line 1284, main.scss */
 .newsletter p {
   font-family: "proxima-nova";
   font-size: 12px;
@@ -3528,39 +3530,39 @@ footer#footer {
   font-weight: normal; }
 
 @media (min-width: 55em) {
-  /* line 1291, main.scss */
+  /* line 1293, main.scss */
   h2 {
     padding-left: 40px;
     width: 31.42857%;
     float: left;
     margin-right: 2.85714%; }
 
-  /* line 1295, main.scss */
+  /* line 1297, main.scss */
   .social {
     width: 31.42857%;
     float: left;
     margin-right: 2.85714%;
     margin-top: 0; }
 
-  /* line 1299, main.scss */
+  /* line 1301, main.scss */
   .newsletter {
     width: 31.42857%;
     float: right;
     margin-right: 0; }
 
-  /* line 1302, main.scss */
+  /* line 1304, main.scss */
   #submitbutton {
     color: white;
     font: 800 14px "proxima-nova";
     letter-spacing: 1px;
     text-transform: uppercase; }
 
-  /* line 1305, main.scss */
+  /* line 1307, main.scss */
   .copyright {
     text-align: right;
     width: 100%; } }
 /*--$ADMINBAR--*/
-/* line 1314, main.scss */
+/* line 1316, main.scss */
 .admin-bar {
   background: #333;
   color: white;
@@ -3578,13 +3580,13 @@ footer#footer {
   -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); }
-  /* line 1325, main.scss */
+  /* line 1327, main.scss */
   .admin-bar a {
     color: white; }
-    /* line 1327, main.scss */
+    /* line 1329, main.scss */
     .admin-bar a:hover {
       color: #77c7c6; }
-  /* line 1331, main.scss */
+  /* line 1333, main.scss */
   .admin-bar .user-mega {
     overflow: hidden;
     opacity: 0;
@@ -3604,35 +3606,35 @@ footer#footer {
     -ms-transition: all 0.2s ease-out;
     -o-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out; }
-    /* line 1344, main.scss */
+    /* line 1346, main.scss */
     .admin-bar .user-mega img {
       border: solid 5px white;
       float: left;
       margin-right: 15px; }
-    /* line 1349, main.scss */
+    /* line 1351, main.scss */
     .admin-bar .user-mega h6, .admin-bar .user-mega p {
       float: left;
       color: white;
       font-size: 14px;
       margin: 0; }
-    /* line 1355, main.scss */
+    /* line 1357, main.scss */
     .admin-bar .user-mega .logout {
       margin-top: 35px;
       display: block; }
-  /* line 1360, main.scss */
+  /* line 1362, main.scss */
   .admin-bar .menu-level-1 {
     position: absolute;
     left: 0;
     margin: 0; }
-    /* line 1363, main.scss */
+    /* line 1365, main.scss */
     .admin-bar .menu-level-1 .home {
       padding: 0;
       vertical-align: middle;
       margin-right: 10px; }
-      /* line 1367, main.scss */
+      /* line 1369, main.scss */
       .admin-bar .menu-level-1 .home a {
         font-size: 20px; }
-    /* line 1372, main.scss */
+    /* line 1374, main.scss */
     .admin-bar .menu-level-1 li {
       padding: 10px;
       position: relative;
@@ -3640,13 +3642,13 @@ footer#footer {
       font-size: 12px;
       color: white;
       display: inline-block; }
-      /* line 1379, main.scss */
+      /* line 1381, main.scss */
       .admin-bar .menu-level-1 li i {
         padding-right: 5px; }
-    /* line 1383, main.scss */
+    /* line 1385, main.scss */
     .admin-bar .menu-level-1 > li + li {
       margin-left: 10px; }
-  /* line 1387, main.scss */
+  /* line 1389, main.scss */
   .admin-bar .menu-level-2 {
     display: none;
     position: absolute;
@@ -3656,59 +3658,59 @@ footer#footer {
     padding: 0;
     left: 0;
     top: 36px; }
-  /* line 1397, main.scss */
+  /* line 1399, main.scss */
   .admin-bar .user-menu:hover {
     background: #222; }
-    /* line 1399, main.scss */
+    /* line 1401, main.scss */
     .admin-bar .user-menu:hover, .admin-bar .user-menu:hover > a {
       color: #77c7c6; }
-    /* line 1402, main.scss */
+    /* line 1404, main.scss */
     .admin-bar .user-menu:hover .user-mega {
       z-index: 1000;
       opacity: 1;
       height: auto; }
-  /* line 1408, main.scss */
+  /* line 1410, main.scss */
   .admin-bar .drop-down:hover {
     background: #222; }
-    /* line 1410, main.scss */
+    /* line 1412, main.scss */
     .admin-bar .drop-down:hover, .admin-bar .drop-down:hover > a {
       color: #77c7c6; }
-    /* line 1413, main.scss */
+    /* line 1415, main.scss */
     .admin-bar .drop-down:hover > .menu-level-2 {
       display: block;
       -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
       -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
       box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); }
-      /* line 1416, main.scss */
+      /* line 1418, main.scss */
       .admin-bar .drop-down:hover > .menu-level-2 > li {
         width: 100%;
         margin: 0;
         padding: 0; }
-      /* line 1421, main.scss */
+      /* line 1423, main.scss */
       .admin-bar .drop-down:hover > .menu-level-2 a {
         display: block;
         padding: 10px 5px 10px 15px;
         width: 100%; }
-        /* line 1425, main.scss */
+        /* line 1427, main.scss */
         .admin-bar .drop-down:hover > .menu-level-2 a:hover {
           background: #77c7c6;
           color: #222; }
-  /* line 1432, main.scss */
+  /* line 1434, main.scss */
   .admin-bar #close-toolbar {
     cursor: pointer;
     padding: 10px 20px;
     float: right; }
-    /* line 1436, main.scss */
+    /* line 1438, main.scss */
     .admin-bar #close-toolbar:hover {
       color: #77c7c6; }
-  /* line 1440, main.scss */
+  /* line 1442, main.scss */
   .admin-bar.mini {
     width: 50px;
     overflow: hidden; }
-    /* line 1443, main.scss */
+    /* line 1445, main.scss */
     .admin-bar.mini .menu-level-1 {
       display: none; }
-    /* line 1446, main.scss */
+    /* line 1448, main.scss */
     .admin-bar.mini #close-toolbar {
       -webkit-transform: rotate(180deg);
       -moz-transform: rotate(180deg);
@@ -3727,7 +3729,7 @@ footer#footer {
 /*
  * Image replacement
  */
-/* line 1461, main.scss */
+/* line 1463, main.scss */
 .ir {
   background-color: transparent;
   border: 0;
@@ -3735,7 +3737,7 @@ footer#footer {
   /* IE 6/7 fallback */
   *text-indent: -9999px; }
 
-/* line 1469, main.scss */
+/* line 1471, main.scss */
 .ir:before {
   content: "";
   display: block;
@@ -3745,7 +3747,7 @@ footer#footer {
 /*
  * Hide from both screenreaders and browsers: h5bp.com/u
  */
-/* line 1480, main.scss */
+/* line 1482, main.scss */
 .hidden {
   display: none !important;
   visibility: hidden; }
@@ -3753,7 +3755,7 @@ footer#footer {
 /*
  * Hide only visually, but have it available for screenreaders: h5bp.com/v
  */
-/* line 1489, main.scss */
+/* line 1491, main.scss */
 .visuallyhidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -3768,7 +3770,7 @@ footer#footer {
  * Extends the .visuallyhidden class to allow the element to be focusable
  * when navigated to via the keyboard: h5bp.com/p
  */
-/* line 1506, main.scss */
+/* line 1508, main.scss */
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
   clip: auto;
@@ -3781,7 +3783,7 @@ footer#footer {
 /*
  * Hide visually and from screenreaders, but maintain layout
  */
-/* line 1519, main.scss */
+/* line 1521, main.scss */
 .invisible {
   visibility: hidden; }
 
@@ -3796,7 +3798,7 @@ footer#footer {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-/* line 1536, main.scss */
+/* line 1538, main.scss */
 .clearfix:before,
 .clearfix:after {
   content: " ";
@@ -3804,7 +3806,7 @@ footer#footer {
   display: table;
   /* 2 */ }
 
-/* line 1541, main.scss */
+/* line 1543, main.scss */
 .clearfix:after {
   clear: both; }
 
@@ -3812,7 +3814,7 @@ footer#footer {
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
  */
-/* line 1550, main.scss */
+/* line 1552, main.scss */
 .clearfix {
   *zoom: 1; }
 
@@ -3821,7 +3823,7 @@ footer#footer {
    Inlined to avoid required HTTP connection: h5bp.com/r
    ========================================================================== */
 @media print {
-  /* line 1560, main.scss */
+  /* line 1562, main.scss */
   * {
     background: transparent !important;
     color: #000 !important;
@@ -3829,59 +3831,59 @@ footer#footer {
     box-shadow: none !important;
     text-shadow: none !important; }
 
-  /* line 1568, main.scss */
+  /* line 1570, main.scss */
   a,
   a:visited {
     text-decoration: underline; }
 
-  /* line 1572, main.scss */
+  /* line 1574, main.scss */
   a[href]:after {
     content: " (" attr(href) ")"; }
 
-  /* line 1576, main.scss */
+  /* line 1578, main.scss */
   abbr[title]:after {
     content: " (" attr(title) ")"; }
 
   /*
    * Don't show links for images, or javascript/internal links
    */
-  /* line 1586, main.scss */
+  /* line 1588, main.scss */
   .ir a:after,
   a[href^="javascript:"]:after,
   a[href^="#"]:after {
     content: ""; }
 
-  /* line 1591, main.scss */
+  /* line 1593, main.scss */
   pre,
   blockquote {
     border: 1px solid #999;
     page-break-inside: avoid; }
 
-  /* line 1596, main.scss */
+  /* line 1598, main.scss */
   thead {
     display: table-header-group;
     /* h5bp.com/t */ }
 
-  /* line 1601, main.scss */
+  /* line 1603, main.scss */
   tr,
   img {
     page-break-inside: avoid; }
 
-  /* line 1605, main.scss */
+  /* line 1607, main.scss */
   img {
     max-width: 100% !important; }
 
   @page {
     margin: 0.5cm; }
 
-  /* line 1615, main.scss */
+  /* line 1617, main.scss */
   p,
   h2,
   h3 {
     orphans: 3;
     widows: 3; }
 
-  /* line 1621, main.scss */
+  /* line 1623, main.scss */
   h2,
   h3 {
     page-break-after: avoid; } }

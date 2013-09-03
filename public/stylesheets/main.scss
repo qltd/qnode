@@ -854,12 +854,6 @@ ul li:hover {
     padding: 0 4%;
     color: white;
     @include transition;
-    &:after {
-      @include triangle(15px, top, rgba($grey, 0.9));   
-      content:' ';
-      display: block;
-      position: absolute; 
-    }
     h4, h5 {
       display: none;
     }
@@ -911,18 +905,26 @@ ul li:hover {
       display: none;
     } 
     .bio {
+      overflow: visible;
       max-height: inherit;
       background: rgba($grey, 0.9);
       padding:20px;
       position: absolute;
       width: 410px;
-      top: 150px;
+      top: 105px;
       right:0;
       z-index:1000;
       display: none;
       @include transition;
       h4, h5 {
         display: block;
+      }
+      &:after {
+        @include triangle(15px, top, rgba($grey, 0.9));   
+        content:' ';
+        display: block;
+        position: absolute; 
+        right:15px;
       }
     }
   }
