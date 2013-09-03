@@ -244,7 +244,6 @@ textarea {
       margin-right: 1%;
     }
     &.image-title {
-      float: left;
       margin-right: 1%;
     }
   }
@@ -619,15 +618,18 @@ ul li:hover {
 }
 
 #project-image .row {
+  img {
+    cursor: move;
+  }
   input.image-title {
-    width: 30%;
+    width: 45%;
   }
   input.position {
     width: 12%;
   }
   i.icon-remove-sign {
     color: $pink;
-    margin-left: 5px;
+    margin-left: 1%;
   }
 }
 
