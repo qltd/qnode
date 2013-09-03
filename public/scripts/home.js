@@ -64,19 +64,30 @@ $("a[href^='#']").click(function(){//$.scrollTo works EXACTLY the same way, but 
   return false;
 });
 
+var imageLoadCheck = function (images) {
+  var imageCount = $(images).length;
+  var currentCount = 1;
+  $(images).one('load', function() {
+    currentCount++;
+    if (currentCount == imageCount) $('#loading-screen').removeClass('open');
+  }).each(function() {
+    if(this.complete) $(this).load();
+  });
+}
+
 /** template for portion of project portfolio that will be populated by as-needed with json */
 var projectTemplate = '\
   <% _.each(project.images, function (image) { %> \
     <img src="<%= ( isRetina() && image.srcRetina ? image.srcRetina : image.src ) %>" alt="<%- image.title %>" width="<%= ( isRetina() && image.srcRetina && image.meta && image.meta.size && image.meta.size.width ? Math.round(image.meta.size.width / 2) : null ) %>" > \
   <% }); %>';
 
-
 $('.trigger').on('click', function(){
   var target = $(this).attr('data-target');
-  $('.portfolio').addClass('open');
 
   /** if project is present... */
   if ($('#project-' + target).length != 0) {
+    $('#loading-screen').addClass('open');
+    $('.portfolio').addClass('open');
 
     /** if images are not present.. */
     if ($('#project-' + target + ' .project-images > img').length == 0) {
@@ -85,13 +96,18 @@ $('.trigger').on('click', function(){
           var projectHtml = _.template(projectTemplate, { project: project });
           $('#project-' + target + ' .project-images').append(projectHtml);
           $('#project-' + target).addClass('active');
-        }); 
+          imageLoadCheck('#project-' + target + ' img');
+
+        });
 
     /** if images are present.. */
     } else {
       $('#project-' + target).addClass('active');
+      imageLoadCheck('#project-' + target + ' img');
     }
   } 
+
+  
 
   /** Hide overflow; aka, remove scrollbars from body */
   $('body').css('overflow', 'hidden');
