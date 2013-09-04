@@ -264,11 +264,11 @@ textarea {
     top: 0;
   }
   .container {
-    position: absolute;
+    position: relative;
     top: 50%;
     left: 0;
     width: 100%;
-    margin-top: -77px;
+    margin: -77px auto 0;
     #spinning-q {
       background: url(/images/q-blue.png); 
       background-repeat: no-repeat; 
@@ -279,6 +279,7 @@ textarea {
     }
     h3 {
       margin: 10px auto 0;
+      font-weight: 700;
     }
   }
 }
