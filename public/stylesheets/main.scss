@@ -430,7 +430,7 @@ ul li:hover {
 .messages {
   position: fixed;
   bottom: 0;
-  height: 0;
+  display: none;
   width: 100%;
   z-index: 101;
   border-top: 8px solid white;
