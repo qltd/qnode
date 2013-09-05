@@ -1295,7 +1295,7 @@ footer#footer {
 }
 
 @include at-breakpoint($computer) {
-  h2 {
+  footer#footer h2 {
     padding-left: 40px;
     @include span-columns(4 alpha);
   }
