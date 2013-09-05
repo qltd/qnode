@@ -47,7 +47,7 @@ exports.index = function (req, res, next) {
     .then(function (services) {
       /** make an array of the services array that has half of its children in either of two keys */
       res.locals.services = toSplitArray(services);
-      return Q.ninvoke(Project, 'find');
+      return Q.ninvoke(Project.index, 'find');
     })
     .then(function (projects) {
       res.locals.projects = projects;
