@@ -736,9 +736,15 @@ ul li:hover {
     }
   }
   .service-details {
-    display: none;
+    overflow: hidden;
     margin-left: 27px;
+    max-height:0;
+    @include transition(0.5s, linear);
     @include proxSemi(13px, $grey);
+    
+    &.open {
+      max-height:200px;
+    }
   }
   .flyout {
     display: none;
@@ -761,7 +767,8 @@ ul li:hover {
         i {
           display: none !important;
         }
-        .service-details {
+        .service-details, .service-details.open {
+          overflow: visible;
           display: none;
           color:white;
           background: rgba($grey, 0.9);
@@ -770,6 +777,8 @@ ul li:hover {
           width: 350px;
           left:200px;
           top:-15px;
+          height: auto;
+          max-height:400px;
           z-index: 1000;
           @include transition;
           &.details-left:after {
