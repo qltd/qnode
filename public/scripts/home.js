@@ -27,7 +27,7 @@ var replaceVideo = function (element, id) {
     $('#' + id).attr('loop', 'loop');
     $('#' + id).attr('muted', 'muted')
 
-    $('#' + id).attr('src', 'images/power.mp4');
+    $('#' + id).attr('src', 'videos/power.mp4');
     $('#' + id).attr('type', 'video/mp4');
   }
 }

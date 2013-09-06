@@ -3,7 +3,8 @@
  * Module dependencies
  */
 
-var mongoose = require('mongoose')
+var fs = require('fs')
+  , mongoose = require('mongoose')
   , Q = require('q');
 
 /**

@@ -1,0 +1,35 @@
+extends ../layouts/default
+
+block body_content
+  article.panel
+    div.container
+      a.btn.new-btn(href='/videos/new') New Video
+      table.edit-content
+        thead
+          tr
+            th.title Title 
+              i.icon-chevron-up
+            th.date Updated Date
+              i.icon-chevron-up
+            th.by Updated By
+              i.icon-chevron-up
+            th.log Log
+            th.edit Edit
+            
+        tbody
+          each video in videos
+            tr
+              td
+                strong 
+                  a(href='/videos/' + video.slug + '/edit')
+                    = video.title
+              td
+                a(href='/videos/' + video.slug + '/edit')
+                  = dateUpdated(video)
+              td
+                a(href='/videos/' + video.slug + '/edit')
+                  = authorUpdated(video)
+              td
+                a(href='/videos/' + video.slug + '/log') Log
+              td
+                a(href='/videos/' + video.slug + '/edit') Edit

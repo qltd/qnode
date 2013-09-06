@@ -21,6 +21,7 @@ var msgHeight = $('.messages').height();
 /** Animate the messages div */
 $('.messages')
   .css('height', 0)
+  .show()
   .animate({ height: msgHeight }, 'easy')
   .delay(5000)
   .animate({ height: 0 }, 'easy', function () {
