@@ -1,7 +1,10 @@
 section.headline
   h3 Making the world a better place through design and communication
-  video#vid(preload, autoplay, loop, muted="muted")
-    source(src="videos/power.mp4", type="video/mp4")
-    source(src="videos/power.ogv", type="video/ogg")
+  if video
+    video#vid(preload, autoplay, loop, muted="muted")
+      if video.mp4Src
+        source(src=video.mp4Src, type="video/mp4")
+      if video.oggSrc
+        source(src=video.oggSrc, type="video/ogg")
   img#img(src="images/q-confroom.jpg")
   .teal

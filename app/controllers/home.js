@@ -16,7 +16,8 @@ var Contact = mongoose.model('Contact')
   , Project = mongoose.model('Project')
   , Service = mongoose.model('Service')
   , Client = mongoose.model('Client')
-  , Crew = mongoose.model('Crew');
+  , Crew = mongoose.model('Crew')
+  , Video = mongoose.model('Video');
 
 /**
  * Index
@@ -52,6 +53,13 @@ exports.index = function (req, res, next) {
     })
     .then(function (projects) {
       res.locals.projects = projects;
+      return Q.ninvoke(Video.notNull, 'find');
+    })
+    .then(function (videos) {
+      if (videos.length > 0) {
+        var randomVideoKey = Math.floor((Math.random() * videos.length));
+        res.locals.video = videos[randomVideoKey];
+      }
       return res.render('home', { 
         title: 'Q Design & Communication Since 1981'
       }); // html

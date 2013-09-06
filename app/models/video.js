@@ -48,6 +48,10 @@ VideoSchema.namedScope('index', function() {
   return this.populate('changeLog.user').sort('title');
 });
 
+VideoSchema.namedScope('notNull', function () {
+  return this.where('mp4Src').ne(null).where('oggSrc').ne(null);
+})
+
 /**
  * Virtuals
  */
