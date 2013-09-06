@@ -145,18 +145,15 @@ $('.crew-member').on('click', function(){
 
 // Toggles Mobile Nav
 $('.nav-toggle').on('click', function(){
-  $('.main-nav').slideToggle();
+  $('.main-nav').toggleClass('open');
 });
 
 $('.main-nav a').on('click', function(){
-  if (isMobileBrowser()){
-    $('.main-nav').slideToggle();
-  }  
+  $('.main-nav').toggleClass('open');
 });
 
 // Toggles Services 
 $('.services-list li').on('click', function(){
-  console.log('yo');
   $(this).children('.service-details').toggleClass('open');
   $(this).toggleClass('expanded');
 });

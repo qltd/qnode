@@ -405,9 +405,14 @@ ul li:hover {
 }
 
 .main-nav {
-  display: none;
+  overflow: hidden;
+  max-height: 0;
   background: $pink;
   clear:both;
+  @include transition(0.5s);
+  &.open {
+    max-height: 500px;
+  }
   ul {
     margin: 0;
     padding:20px 0;
@@ -1323,6 +1328,7 @@ footer#footer {
 /*--$ADMINBAR--*/
 
 .admin-bar {
+  display: none;
   background:#333;
   color:white;
   position:fixed;
@@ -1460,6 +1466,13 @@ footer#footer {
     }
   }
 }
+
+@include at-breakpoint($computer) {
+  display: block;  
+}
+
+
+
 
 
 /*------------------------------------*\
