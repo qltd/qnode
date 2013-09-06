@@ -138,9 +138,7 @@ var closePort = function() {
 
 //  Toggles crew member on mobile
 $('.crew-member').on('click', function(){
-  if (isMobileBrowser()){
-    $(this).toggleClass('open');
-  }
+  $(this).toggleClass('open');
 });
 
 // Toggles Mobile Nav

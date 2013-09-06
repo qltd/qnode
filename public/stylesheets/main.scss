@@ -469,6 +469,7 @@ ul li:hover {
 
   .main-nav {
     display: block !important;
+    max-height:300px;
     float: right;
     margin: 13px 6% 0 0;
     background: transparent;
@@ -918,10 +919,15 @@ ul li:hover {
         max-width:100%;
       }
     }
+    li.open .person-wrap {
+      border-color: transparent;
+      background-color: transparent;
+    }
     .person-info {
       display: none;
     } 
-    .bio {
+    li.open .bio, li .bio {
+      border-color:transparent;
       overflow: visible;
       max-height: inherit;
       background: rgba($grey, 0.9);
@@ -945,8 +951,11 @@ ul li:hover {
       }
     }
   }
-  .crew-member:hover {
-    .bio {
+  li.crew-member:hover {
+    &.open .person-wrap {
+      background: $pink;
+    }
+    &.open, .bio {
       display: block;
     }
   }
