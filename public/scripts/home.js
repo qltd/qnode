@@ -156,10 +156,9 @@ $('.main-nav a').on('click', function(){
 
 // Toggles Services 
 $('.services-list li').on('click', function(){
-  if (isMobileBrowser()){
-    $(this).children('.service-details').slideToggle();
-    $(this).toggleClass('expanded');
-  }
+  console.log('yo');
+  $(this).children('.service-details').toggleClass('open');
+  $(this).toggleClass('expanded');
 });
 
 

@@ -2,12 +2,12 @@
     $MIXINS
 \*------------------------------------*/
 
-@mixin transition($sec: 0.2s) {
-  -webkit-transition: all $sec ease-out;
-  -moz-transition: all $sec ease-out;
-  -ms-transition: all $sec ease-out;
-  -o-transition: all $sec ease-out;
-  transition: all $sec ease-out;
+@mixin transition($sec: 0.2s, $trans:ease-out ) {
+  -webkit-transition: all $sec $trans;
+  -moz-transition: all $sec $trans;
+  -ms-transition: all $sec $trans;
+  -o-transition: all $sec $trans;
+  transition: all $sec $trans;
 }
 
 
