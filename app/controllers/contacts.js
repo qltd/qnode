@@ -37,6 +37,10 @@ exports.index = function (req, res, next) {
  */
 
 exports.create = function (req, res, next) {
+
+  /** temporary drop-in for spam prevention */
+  if (req.body.company === 'google') return res.redirect('/');
+  
   var contact = new Contact(req.body);
   Q.ninvoke(contact, 'save')
     .then(function () {
