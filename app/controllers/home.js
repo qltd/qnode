@@ -52,7 +52,12 @@ exports.index = function (req, res, next) {
       return Q.ninvoke(Project.index, 'find');
     })
     .then(function (projects) {
-      res.locals.projects = projects;
+      /** perform a proper alpha-ordering that accounts for 'the' and is not case sensitive */
+      res.locals.projects = projects.sort(function (a, b) {
+        var _a = a.title.toLowerCase().match(/(the\s|^)(.*)/);
+        var _b = b.title.toLowerCase().match(/(the\s|^)(.*)/);
+        return _a[2].localeCompare(_b[2]);
+      });
       return Q.ninvoke(Video.notNull, 'find');
     })
     .then(function (videos) {
