@@ -60,6 +60,13 @@ module.exports = {
     restored: function (title, version) { return 'Service \'' + title + '\' was restored with data from version ' + version; },
     updated: function (title) { return 'Service \'' + title + '\' was updated'; }
   },
+  video: {
+    created: function (title) { return 'Video \'' + title + '\' was created'; },
+    deleted: function (title) { return 'Video \'' + title + '\' was deleted'; },
+    read: function (title) { return 'Video \'' + title + ' \' was read'; },
+    restored: function (title, version) { return 'Video \'' + title + '\' was restored with data from version ' + version; },
+    updated: function (title) { return 'Video \'' + title + '\' was updated'; }
+  },
 
   /**
    * Unbound messages (CRUD, etc)

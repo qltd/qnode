@@ -64,7 +64,7 @@ ServiceSchema.pre('validate', function (next) {
 });
 
 /**
- * Pre-save hook; Sanitizers
+ * Pre-save hook
  */
 
 ServiceSchema.pre('save', function (next) {

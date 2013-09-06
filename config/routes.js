@@ -18,7 +18,8 @@ var clients = require('../app/controllers/clients')
   , panels = require('../app/controllers/panels')
   , projects = require('../app/controllers/projects')
   , services = require('../app/controllers/services')
-  , users = require('../app/controllers/users');
+  , users = require('../app/controllers/users')
+  , videos = require('../app/controllers/videos');
 
 module.exports = function(app, passport) {
 
@@ -134,4 +135,20 @@ module.exports = function(app, passport) {
   app.get('/services/:slug/log/:__v', services.show);
   app.get('/services/:slug/log/:__v/json', services.show);
   app.get('/services/:slug/log/:__v/restore', services.restore);
+
+  // videos
+  app.all('/videos*', auth.requiresLogin);
+  app.get('/videos', videos.index);
+  app.get('/videos/json', videos.index);
+  app.get('/videos/new', videos.new);
+  app.post('/videos/new', videos.create);
+  app.get('/videos/:slug', videos.show);
+  app.get('/videos/:slug/json', videos.show);
+  app.get('/videos/:slug/edit', videos.edit);
+  app.post('/videos/:slug/edit', videos.update);
+  app.get('/videos/:slug/log', videos.log);
+  app.get('/videos/:slug/log/:__v', videos.show);
+  app.get('/videos/:slug/log/:__v/json', videos.show);
+  app.get('/videos/:slug/log/:__v/restore', videos.restore);
+
 }

@@ -1,0 +1,33 @@
+extends ../layouts/default
+
+block body_content
+  article.panel
+    div.container
+      table.edit-content
+        thead
+          tr
+            th.version
+              i.icon-chevron-up
+            th.title Title 
+              i.icon-chevron-up
+            th.date Updated Date
+              i.icon-chevron-up
+            th.by Updated By
+              i.icon-chevron-up
+            th.restore Restore
+            
+        tbody
+          each change in video.changeLog
+            tr
+              td
+                = change.data.__v
+              td
+                strong 
+                  = change.data.title
+              td
+                = ( change._id ? change._id.getTimestamp() : video._id.getTimestamp() )
+              td
+                = ( change.user ? change.user.username : authorCreated(video) )
+              td
+                a(href='/videos/' + video.slug + '/log/' + change.data.__v + '/restore' ) 
+                  | Restore  

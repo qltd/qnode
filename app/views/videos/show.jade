@@ -1,0 +1,13 @@
+extends ../layouts/default
+
+block body_content
+  article.panel
+    div.container
+      p
+        h1= video.title
+        if (video.mp4Src || video.oggSrc)
+          video(preload, autoplay, loop, muted="muted")
+            if (video.mp4Src)
+              source(src=video.mp4Src, type='video/mp4')
+            if (video.oggSrc)
+              source(src=video.oggSrc, type='video/ogg')
