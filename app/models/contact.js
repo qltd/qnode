@@ -69,7 +69,7 @@ ContactSchema.pre('save', function (next) {
 ContactSchema.post('save', function (contact) {
   var mailOptions = {
       from: 'web@qltd.com',
-      to: 'mike@qltd.com',
+      to: 'web@qltd.com',
       subject: 'qltd.com: New Message for Q from ' + contact.name,
       text: 'From: ' + contact.name + ' (' + contact.email + ')\nCompany: ' + contact.company + '\nComments: ' + contact.comments
   }
