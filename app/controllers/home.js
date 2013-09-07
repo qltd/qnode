@@ -53,11 +53,7 @@ exports.index = function (req, res, next) {
     })
     .then(function (projects) {
       /** perform a proper alpha-ordering that accounts for 'the' and is not case sensitive */
-      res.locals.projects = projects.sort(function (a, b) {
-        var _a = a.title.toLowerCase().match(/(the\s|^)(.*)/);
-        var _b = b.title.toLowerCase().match(/(the\s|^)(.*)/);
-        return _a[2].localeCompare(_b[2]);
-      });
+      res.locals.projects = toAlphaSortedArray(projects);
       return Q.ninvoke(Video.notNull, 'find');
     })
     .then(function (videos) {

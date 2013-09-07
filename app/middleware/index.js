@@ -107,15 +107,34 @@ exports.helpers = function (req, res, next) {
   res.locals.stripMongoIds = stripMongoIds;
 
   /**
-   * Returns a 'position' value sorted array
+   * Returns an alphabetically-sorted array that ignores 'the' and is case-insensitive
+   *
+   * @param {Array} array
+   * @param {String} sortField - the name of the field against which the sort will occur
+   * @returns {Array} An alpha-ordered array
+   */
+  toAlphaSortedArray = function (array, sortField) {
+    if (!sortField) sortField = 'title';
+    return array.sort(function (a, b) {
+      var _a = a[sortField].toLowerCase().match(/(the\s|^)(.*)/);
+      var _b = b[sortField].toLowerCase().match(/(the\s|^)(.*)/);
+      return _a[2].localeCompare(_b[2]);
+    });
+  }
+  res.locals.toAlphaSortedArray = toAlphaSortedArray
+
+  /**
+   * Returns a stable numerically-sorted array
    *
    * @param {Array} array - An array that contains a position field (not nested)
+   * @param {String} sortField - the name of the field against which the sort will occur
    * @returns {Array} Return an array sorted by its position field
    */
-  toPositionSortedArray = function (array) {
-    return _.sortBy(array, 'position');
+  toNumericSortedArray = function (array, sortField) {
+    if (!sortField) sortField = 'position';
+    return _.sortBy(array, sortField);
   }
-  res.locals.toPositionSortedArray = toPositionSortedArray;
+  res.locals.toNumericSortedArray = toNumericSortedArray;
 
   /**
    * Converts an array of mongoose-modeled objects into an object containing multiple mongoose-modeled objects with camel-case keys that are generated from their slugs or titles

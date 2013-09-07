@@ -112,7 +112,7 @@ ImageSchema.methods = {
       }
     });
 
-    return ( hasPosition ? toPositionSortedArray(images) : images );
+    return ( hasPosition ? toNumericSortedArray(images) : images );
   },
 
   /**
@@ -203,7 +203,7 @@ ImageSchema.methods = {
       }
     });
 
-    if (hasPosition) images = toPositionSortedArray(images);
+    if (hasPosition) images = toNumericSortedArray(images);
 
     /** add Promises for image metadata */
     var _images = [];
