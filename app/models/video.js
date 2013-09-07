@@ -56,6 +56,7 @@ VideoSchema.namedScope('notNull', function () {
  * Virtuals
  */
 
+/** passes session information through the model */
 VideoSchema.virtual('_meta')
   .set(function(metaData) {
     this.__meta = metaData;
@@ -64,6 +65,8 @@ VideoSchema.virtual('_meta')
     return this.__meta; 
   });
 
+
+/** assimilates values from req.files.mp4 */
 VideoSchema.virtual('mp4')
   .set(function(mp4) {
     /** remove tmp file when no actual file is present */
@@ -72,12 +75,19 @@ VideoSchema.virtual('mp4')
     /** if no file is present, and there is not a tmp file return nothing */
     else if (!mp4.name) return;
 
-    /** set paths */
-    this._mp4 = mp4;
-    this.mp4FileName = this._mp4.name;
+    /** separate filename and extension */
+    var pathParts = mp4.name.match(/(.*)\.(.{3,4})$/);
+
+    /** sanitize filename and extension */
+    var _filename = ( pathParts && pathParts[1] ? toSlug(sanitize(pathParts[1]).escape()) : toSlug(sanitize(name).escape()) );
+    var _extension = ( pathParts && pathParts[2] ? '.' + sanitize(pathParts[2].toLowerCase()).escape() : '.mp4' );
+
+    /** re-assemble sanitized filename and distribute it to appropriate paths */
+    this.mp4FileName = _filename + _extension;
     this.mp4Src =  '/videos/uploads/' + this.mp4FileName;
     this.mp4SysPath = 'public/videos/uploads/' + this.mp4FileName;
-    this.mp4TmpPath = this._mp4.path;
+    this.mp4TmpPath = mp4.path;
+    this._mp4 = mp4;
 
     /** move file from tmp to video uploads folder */
     fs.rename(this.mp4TmpPath, this.mp4SysPath, function (err) {
@@ -88,6 +98,7 @@ VideoSchema.virtual('mp4')
     return this._mp4; 
   });
 
+/** assimilates values from req.files.ogg */
 VideoSchema.virtual('ogg')
   .set(function(ogg) {
     /** remove tmp file when no actual file is present */
@@ -96,12 +107,19 @@ VideoSchema.virtual('ogg')
     /** if no file is present, and there is not a tmp file return nothing */
     else if (!ogg.name) return;
 
-    /** set paths */
-    this._ogg = ogg;
-    this.oggFileName = this._ogg.name;
+    /** separate filename and extension */
+    var pathParts = ogg.name.match(/(.*)\.(.{3,4})$/);
+
+    /** sanitize filename and extension */
+    var _filename = ( pathParts && pathParts[1] ? toSlug(sanitize(pathParts[1]).escape()) : toSlug(sanitize(name).escape()) );
+    var _extension = ( pathParts && pathParts[2] ? '.' + sanitize(pathParts[2].toLowerCase()).escape() : '.ogv' );
+
+    /** re-assemble sanitized filename and distribute it to appropriate paths */
+    this.oggFileName = _filename + _extension;
     this.oggSrc =  '/videos/uploads/' + this.oggFileName;
     this.oggSysPath = 'public/videos/uploads/' + this.oggFileName;
-    this.oggTmpPath = this._ogg.path;
+    this.oggTmpPath = ogg.path;
+    this._ogg = ogg;
 
     /** move file from tmp to video uploads folder */
     fs.rename(this.oggTmpPath, this.oggSysPath, function (err) {
@@ -118,6 +136,7 @@ VideoSchema.virtual('ogg')
 
 VideoSchema.pre('validate', function (next) {
   this.title = sanitize(this.title).xss();
+  if (this.body) this.body = sanitize(this.body).xss();
   next();
 });
 
