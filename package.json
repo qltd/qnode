@@ -12,6 +12,7 @@
     "express": "3.x.x",
     "gm": "*",
     "gravatar": "*",
+    "gzippo": "*",
     "jade": "*",
     "mongodb": "*",
     "mongoose": "3.x.x",
@@ -20,7 +21,6 @@
     "q": "*",
     "passport": "*",
     "passport-local": "*",
-    "stylus": "*",
     "underscore": "*",
     "validator": "*"
   },

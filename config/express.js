@@ -6,18 +6,22 @@
 var express = require('express')
   , mongoStore = require('connect-mongo')(express)
   , flash = require('connect-flash')
+  , gzippo = require('gzippo')
   , middleware = require('../app/middleware');
 
 module.exports = function(app, config, passport) {
-  app.use(express.compress());
   
   // all environments
   app.setMaxListeners(0);
   app.set('port', process.env.PORT || 3000);
   
-  app.use(express.favicon(config.root + '/public/favicon.ico'));
-  app.use(express.static(config.root + '/public'));
+  // static content and compression
+  app.use(express.favicon(config.root + '/public/favicon.ico', {maxAge: 86400000}));
+  app.use(gzippo.staticGzip(config.root + '/public', {maxAge: 86400000}));
 
+  // stream compression
+  app.use(gzippo.compress());
+  
   // don't use logger for test env
   if (process.env.NODE_ENV !== 'test') {
     app.use(express.logger('dev'));
@@ -25,6 +29,7 @@ module.exports = function(app, config, passport) {
 
   app.set('views', config.root + '/app/views');
   app.set('view engine', 'jade');
+  app.set('view options', {cache: true});
 
   app.use(express.cookieParser());
   app.use(express.bodyParser({ uploadDir: './tmp' }));
