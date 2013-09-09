@@ -13,8 +13,8 @@ module.exports = function(app, config, passport) {
   app.setMaxListeners(0);
   app.set('port', process.env.PORT || 3000);
   
+  app.use(express.compress());
   app.use(express.favicon(config.root + '/public/favicon.ico'));
-  app.use(require('stylus').middleware(config.root + '/public'));
   app.use(express.static(config.root + '/public'));
 
   // don't use logger for test env
