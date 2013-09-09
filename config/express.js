@@ -10,7 +10,9 @@ var express = require('express')
   , middleware = require('../app/middleware');
 
 module.exports = function(app, config, passport) {
-  
+  // for reverse proxying via nginx/apache
+  app.enable('trust proxy');
+
   // all environments
   app.setMaxListeners(0);
   app.set('port', process.env.PORT || 3000);
@@ -57,7 +59,4 @@ module.exports = function(app, config, passport) {
   app.use(middleware.notFound);
   app.use(middleware.errorLog);
   app.use(middleware.errorRespond);
-
-  // for reverse proxying via nginx/apache
-  app.enable('trust proxy');
 }
