@@ -840,12 +840,12 @@ ul li:hover {
     position: relative;
   }
   .person-wrap {
-    // border: 10px solid $teal;
+    border: 10px solid $teal;
     background: $grey;
-    color: blue;
+    color: white;
     position: relative;
     z-index: 100;
-    // @include transition(0.3s);
+    @include transition(0.3s);
     img {
       width:32.61%;
       float: left;
