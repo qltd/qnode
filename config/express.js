@@ -9,11 +9,12 @@ var express = require('express')
   , middleware = require('../app/middleware');
 
 module.exports = function(app, config, passport) {
+  app.use(express.compress());
+  
   // all environments
   app.setMaxListeners(0);
   app.set('port', process.env.PORT || 3000);
   
-  app.use(express.compress());
   app.use(express.favicon(config.root + '/public/favicon.ico'));
   app.use(express.static(config.root + '/public'));
 
