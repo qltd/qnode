@@ -845,7 +845,7 @@ ul li:hover {
     color: white;
     position: relative;
     z-index: 100;
-    @include transition(0.2s);
+    @include transition(0.3s);
     img {
       width:32.61%;
       float: left;
