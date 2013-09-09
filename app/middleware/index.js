@@ -237,6 +237,7 @@ exports.authorization = {
   requiresLogin: function (req, res, next) {
     if (!req.isAuthenticated()) {
       req.flash('warning', msg.user.authenticationRequired(req.host + req.url));
+      req.flash('referer', req.url);
       return res.redirect('/users/login');
     }
     next();

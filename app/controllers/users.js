@@ -203,8 +203,10 @@ exports.login = function (req, res) {
 
 exports.authenticate = function (req, res) {
   // THIS FOLLOWS passport.authenticate in /config/routes.js
+  var referers = req.flash('referer');
+  var referer = ( referers && referers[referers.length-1] ? referers[referers.length-1] : '/' );
   req.flash('success', msg.user.authenticated(req.user.username));
-  res.redirect('/');
+  res.redirect(referer);
 } 
 
 /**

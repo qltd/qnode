@@ -33,7 +33,7 @@ module.exports = function(app, config, passport) {
   app.use(express.session({
     secret: 'L5(uAr+skeFMTFN',
     store: new mongoStore({
-      url: 'mongodb://'+ config.db.host +'/' + config.db.name,
+      url: 'mongodb://' + config.db.host + '/' + config.db.name,
       collection : 'sessions'
     })
   }));
