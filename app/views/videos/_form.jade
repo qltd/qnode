@@ -25,5 +25,11 @@ block body_content
           else
             input.video(type='file', name='ogg')
 
+        #published Published
+          label True
+              input(type='radio', name='published', value=1, checked=( video.published == null || video.published === 1 ? true : false ))
+          label False
+            input(type='radio', name='published', value=0, checked=( video.published === 0 ? true : false ))
+
         #submit
           input(type='submit')

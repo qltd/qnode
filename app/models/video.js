@@ -32,6 +32,7 @@ var VideoSchema = new Schema({
   oggSrc: String,
   oggSysPath: String,
   oggTmpPath: String,
+  published: Number,
   slug: String,
   title: {
     type: String,
@@ -49,7 +50,7 @@ VideoSchema.namedScope('index', function() {
 });
 
 VideoSchema.namedScope('notNull', function () {
-  return this.where('mp4Src').ne(null).where('oggSrc').ne(null);
+  return this.where('mp4Src').ne(null).where('oggSrc').ne(null).where('published').ne(0);
 })
 
 /**
