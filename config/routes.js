@@ -151,4 +151,6 @@ module.exports = function(app, passport) {
   app.get('/videos/:slug/log/:__v/json', videos.show);
   app.get('/videos/:slug/log/:__v/restore', videos.restore);
 
+  // client pages
+  app.get('/client*', auth.requiresLogin);
 }
