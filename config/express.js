@@ -55,6 +55,9 @@ module.exports = function(app, config, passport) {
   app.use(middleware.helpers);
   app.use(app.router);
 
+  // private static content
+  app.use('/client', express.static(config.root + '/private'));
+
   // error handling
   app.use(middleware.notFound);
   app.use(middleware.errorLog);
