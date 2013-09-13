@@ -152,5 +152,5 @@ module.exports = function(app, passport) {
   app.get('/videos/:slug/log/:__v/restore', videos.restore);
 
   // client pages
-  app.get('/client*', auth.requiresLogin);
+  app.get('/client/tao*', auth.requiresLogin);
 }
