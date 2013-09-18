@@ -933,8 +933,8 @@ ul li:hover {
       background: rgba($grey, 0.9);
       padding:20px;
       position: absolute;
-      width: 410px;
-      top: 105px;
+      width: 500px;
+      top: 130px;
       right:0;
       z-index:1000;
       display: none;
@@ -961,6 +961,17 @@ ul li:hover {
   }
   .omega .person-wrap {
     margin-right: 0;
+  }
+  h5 {
+    margin:3px 0 10px;
+  }
+}
+
+@include at-breakpoint($wide) {
+  .crew-grid {
+    li.open .bio, li .bio {
+      top:170px;
+    }
   }
 }
 
