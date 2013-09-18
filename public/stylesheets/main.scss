@@ -1298,6 +1298,15 @@ footer#footer {
   @include proxReg(12px, white);
 }
 
+.back-to-top {
+  text-transform: uppercase;
+  color:white;
+  font-size: 12px;
+  i {
+    margin-left: 5px;
+  }
+}
+
 // Newsletter Signup
 .newsletter {
   form {
@@ -1343,9 +1352,14 @@ footer#footer {
   #submitbutton {
     @include navText;
   }
-.copyright {
+  .copyright {
     text-align: right;
-    width: 100%;
+    float: right;
+  }
+  .back-to-top {
+    float: left;
+    padding-left: 40px;
+    margin-top: 70px;
   }
 }
 
