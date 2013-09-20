@@ -86,11 +86,11 @@ module.exports = {
     isNull: 'Body field cannot be empty' 
   },
   comments: {
-    isNull: 'Comments cannot be empty'
+    isNull: 'Please include comments'
   },
   email: {
     notEmail: 'Email address must be valid',
-    isNull: 'Email address cannot be empty'
+    isNull: 'Please include your email address'
   },
   jobTitle: {
     isNull: 'Job title cannot be empty'
@@ -102,7 +102,7 @@ module.exports = {
     last: {
       isNull: 'Last name cannot be empty'
     }, 
-    isNull: 'Name cannot be empty'
+    isNull: 'Please include your name'
   },
   password: {
     isNull: 'Password cannot be empty'
