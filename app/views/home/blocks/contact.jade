@@ -7,14 +7,18 @@ if panel && panel.contact
 
         .location
           h5.dark-logo Q LTD
-          p
-            | 109 CATHERINE STREET<br> 
-            | ANN ARBOR, MICHIGAN 48104<br>
-            | <a target="_blank" href="https://www.google.com/maps/preview#!q=109+Catherine+St%2C+Ann+Arbor%2C+MI&data=!1m4!1m3!1d728!2d-83.7480559!3d42.2834629!4m10!1m9!4m8!1m3!1d6033550!2d-86.2705534!3d45.0010904!3m2!1i1439!2i802!4f13.1">VIEW MAP</a><br>
-          p
-            | <a href="tel:+7346681695"><strong>734.668.1695</strong></a><br>
-            | <a href="mailto:info@qltd.com"><strong>info@qltd.com</strong></a>
-        form(action='/contacts/new', method='post')
+          p.
+            109 CATHERINE STREET<br> 
+            ANN ARBOR, MICHIGAN 48104<br>
+            <a target="_blank" href="https://www.google.com/maps/preview#!q=109+Catherine+St%2C+Ann+Arbor%2C+MI&data=!1m4!1m3!1d728!2d-83.7480559!3d42.2834629!4m10!1m9!4m8!1m3!1d6033550!2d-86.2705534!3d45.0010904!3m2!1i1439!2i802!4f13.1">VIEW MAP</a><br>
+          p#contact-info
+            a(href='tel:+7346681695')
+              strong 734.668.1695
+            br
+            a(href='mailto:info@qltd.com')
+              strong info@qltd.com
+
+        form#contact-form(action='/contacts/new', method='post')
           input(name='name', placeholder='Name*', type='text', value=contact.name)
           input(name='email', placeholder='Email*', type='text', value=contact.email)
           input(name='company', placeholder='Company*', type='text', value=contact.company)
