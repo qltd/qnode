@@ -395,6 +395,10 @@ ul li:hover {
 	text-indent: -9999px;
 	float: left;
 	background: url(../images/logo.png) no-repeat;
+  &.x2 {
+    background: url(../images/logo@2x.png);
+    background-size: contain;
+  }
 }
 
 .nav-toggle {
