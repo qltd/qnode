@@ -52,6 +52,6 @@ exports.create = function (req, res, next) {
       if (!vErr) return next(err); // 500
       req.flash('error', vErr);
       req.flash('contact', contact);
-      return res.redirect('/'); // html
+      return res.redirect('/#contact-info'); // html
     });
 }
