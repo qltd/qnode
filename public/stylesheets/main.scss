@@ -992,10 +992,11 @@ ul li:hover {
     line-height: 80px;
     margin-bottom: 50px;
     img {
+      max-width:100%;
       vertical-align: middle;
     }
   }
-  .client:nth-child(odd) {
+  .client:nth-child(even) {
     margin-right: 0;
   }
 }
