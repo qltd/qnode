@@ -1,0 +1,35 @@
+extends ../layouts/default
+
+block body_content
+  article.panel
+    div.container
+      a.btn.new-btn(href='/jobs/new') New Job Listing
+      table.edit-content
+        thead
+          tr
+            th.title Title 
+              i.icon-chevron-up
+            th.date Updated Date
+              i.icon-chevron-up
+            th.by Updated By
+              i.icon-chevron-up
+            th.log Log
+            th.edit Edit
+            
+        tbody
+          - each job in jobs
+            tr
+              td
+                strong 
+                  a(href='/jobs/' + job.slug + '/edit')
+                    = job.title
+              td
+                a(href='/jobs/' + job.slug + '/edit')
+                  = dateUpdated(job)
+              td
+                a(href='/jobs/' + job.slug + '/edit')
+                  = authorUpdated(job)
+              td
+                a(href='/jobs/' + job.slug + '/log') Log
+              td
+                a(href='/jobs/' + job.slug + '/edit') Edit

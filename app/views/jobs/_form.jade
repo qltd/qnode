@@ -1,0 +1,15 @@
+extends ../layouts/adminForm
+
+block body_content
+  article.panel
+    .container
+      if pageHeading
+        h1= pageHeading 
+      form.admin-form(method='post')
+        #title
+          input(type='text', name='title', placeholder='Title*', value=job.title)
+        #body
+          textarea(name='body', placeholder='Body', cols='10', rows='15')
+            = job.body
+        #submit
+          input(type='submit')

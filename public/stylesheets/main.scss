@@ -582,6 +582,12 @@ ul li:hover {
       background-size: contain;
     }
   }
+  .small-q {
+    background: url(../images/q-gray.png);
+    background-size: 100px 100px;
+    width: 100px;
+    height: 100px;
+  }
   .pinq {
     background: url(../images/q-pink.png);
     &.x2 {
@@ -618,6 +624,11 @@ ul li:hover {
     }
     .q {
       display: block !important;
+    }
+    .small-q {
+      background-size: 200px 200px;
+      width: 200px;
+      height: 200px;
     }
     .content {
       @include span-columns(8 omega);
@@ -1230,6 +1241,42 @@ ul li:hover {
   }
 }
 
+/* $job-listings */
+
+article.job-listing {
+  padding-top: 150px;
+  h2 {
+    &.job-heading {
+      width: 100%;
+      padding-left: 0;
+    }
+  }
+  h4 {
+    font: 700 18px "proxima-nova", sans-serif;
+    line-height: 30px;
+  }
+  ul {
+    font: 400 18px "proxima-nova", sans-serif;
+    line-height: 30px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    li {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@include at-breakpoint($computer) {
+  article.job-listing {
+    padding-top: 190px;
+    padding-left: 20%;
+    padding-right: 18%;
+    h4, ul {
+      font-size: 24px;
+    }
+  }
+}
+
 
 /*--$FOOTER--*/
 
@@ -1372,7 +1419,6 @@ footer#footer {
 /*--$ADMINBAR--*/
 
 .admin-bar {
-  display: none;
   background:#333;
   color:white;
   position:fixed;

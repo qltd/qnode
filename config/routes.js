@@ -15,6 +15,7 @@ var clients = require('../app/controllers/clients')
   , crew = require('../app/controllers/crew')
   , errorLog = require('../app/controllers/errorLog')
   , home = require('../app/controllers/home')
+  , jobs = require('../app/controllers/jobs')
   , panels = require('../app/controllers/panels')
   , projects = require('../app/controllers/projects')
   , services = require('../app/controllers/services')
@@ -90,6 +91,23 @@ module.exports = function(app, passport) {
   app.get('/crew/:slug/log/:__v', crew.show);
   app.get('/crew/:slug/log/:__v/json', crew.show);
   app.get('/crew/:slug/log/:__v/restore', crew.restore);
+
+  // jobs
+  app.get('/jobs', auth.requiresLogin, jobs.index);
+  app.get('/jobs/json', auth.requiresLogin, jobs.index);
+  app.all('/jobs/new', auth.requiresLogin);
+  app.get('/jobs/new', jobs.new);
+  app.post('/jobs/new', jobs.create);
+  app.get('/jobs/:slug', jobs.show);
+  app.get('/jobs/:slug/json', jobs.show);
+  app.all('/jobs/:slug/edit', auth.requiresLogin);
+  app.get('/jobs/:slug/edit', jobs.edit);
+  app.post('/jobs/:slug/edit', jobs.update);
+  app.all('/jobs/:slug/log*', auth.requiresLogin);
+  app.get('/jobs/:slug/log', jobs.log);
+  app.get('/jobs/:slug/log/:__v', jobs.show);
+  app.get('/jobs/:slug/log/:__v/json', jobs.show);
+  app.get('/jobs/:slug/log/:__v/restore', jobs.restore);
 
   // panels
   app.all('/panels*', auth.requiresLogin);

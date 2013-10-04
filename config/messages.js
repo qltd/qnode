@@ -26,6 +26,13 @@ module.exports = {
     restored: function (title, version) { return 'Crew \'' + title + '\' was restored with data from version ' + version; },
     updated: function (title) { return 'Crew \'' + title + '\' was updated'; }
   },
+  job: {
+    created: function (title) { return 'Job listing \'' + title + '\' was created'; },
+    deleted: function (title) { return 'Job listing \'' + title + '\' was deleted'; },
+    read: function (title) { return 'Job listing \'' + title + ' \' was read'; },
+    restored: function (title, version) { return 'Job listing \'' + title + '\' was restored with data from version ' + version; },
+    updated: function (title) { return 'Job listing \'' + title + '\' was updated'; }
+  },
   user: {
     adminRequired: function (path) { return 'You must be a site administrator to access ' + path; },
     authenticated:  function (username) { return 'Authenticated as \'' + username + '\''; },
