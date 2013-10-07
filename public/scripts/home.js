@@ -83,7 +83,7 @@ var imageLoadCheck = function (images) {
 /** template for portion of project portfolio that will be populated by as-needed with json */
 var projectTemplate = '\
   <% _.each(project.images, function (image) { %> \
-    <img src="<%= ( isRetina() && image.srcRetina ? image.srcRetina : image.src ) %>" alt="<%- image.title %>" width="<%= ( isRetina() && image.srcRetina && image.meta && image.meta.size && image.meta.size.width ? Math.round(image.meta.size.width / 2) : null ) %>" > \
+    <img src="<%= ( isRetina() && image.srcRetina ? image.srcRetina : image.src ) %>" alt="<%- image.title %>" style="width: <%= ( isRetina() && image.srcRetina && image.meta && image.meta.size && image.meta.size.width ? Math.round(image.meta.size.width / 2) + "px" : "auto" ) %>; height: auto;" > \
   <% }); %>';
 
 $('.trigger').on('click', function(){
