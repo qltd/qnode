@@ -62,6 +62,7 @@ exports.index = function (req, res, next) {
         res.locals.video = videos[randomVideoKey];
       }
       return res.render('home', { 
+        logoLink: '#top',
         title: 'Q Design & Communication Since 1981'
       }); // html
     })

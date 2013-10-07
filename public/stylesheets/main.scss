@@ -583,10 +583,7 @@ ul li:hover {
     }
   }
   .small-q {
-    background: url(../images/q-gray.png);
-    background-size: 100px 100px;
-    width: 100px;
-    height: 100px;
+    display: none;
   }
   .pinq {
     background: url(../images/q-pink.png);
@@ -626,6 +623,8 @@ ul li:hover {
       display: block !important;
     }
     .small-q {
+      display: block;
+      background-image: url(../images/q-gray.png);
       background-size: 200px 200px;
       width: 200px;
       height: 200px;
@@ -1244,7 +1243,7 @@ ul li:hover {
 /* $job-listings */
 
 article.job-listing {
-  padding-top: 150px;
+  padding-top: 125px;
   h2 {
     &.job-heading {
       width: 100%;

@@ -46,7 +46,9 @@ exports.show = function (req, res, next) {
       if (!job) return next(); // 404
       res.locals.job = ( req.params.__v && job.changeLog[req.params.__v] ? _.extend(job, job.changeLog[req.params.__v].data) : job );
       if (req.url.indexOf('/json') > -1) return res.send(stripMongoIds(res.locals.job)); // json
-      return res.render('jobs/show'); // html
+      return res.render('jobs/show', {
+        title: 'Q LTD | ' + job.title
+      }); // html
     })
     .fail(function (err) {
       return next(err); // 500

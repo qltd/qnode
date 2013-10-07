@@ -2,8 +2,8 @@ if sessionUser
   .admin-bar
     ul.menu-level-1
       li.home
-        a(href="/") <i class="icon-home"></i>
-      li.user-menu <i class="icon-user"></i> User Menu
+        a(href='/') <i class='icon-home'></i>
+      li.user-menu <i class='icon-user'></i> User Menu
         div.user-mega
           img(src=sessionUser.getGravatarSrc())
           h6
@@ -13,33 +13,37 @@ if sessionUser
             br
             a(href='/users/' + sessionUser.username) Profile
             a(href='/users') User Index
-            a.logout(href="/users/logout") <i class="icon-off"></i> Logout
+            a.logout(href='/users/logout') <i class='icon-off'></i> Logout
       li.drop-down 
         i.icon-pencil 
         | Edit Content 
-        ul.menu-level-2
+        ul.menu-level-2          
           li
-            a(href="/panels") 
-              i.icon-tasks
-              | Edit Panels
+            a(href='/clients') 
+              i.icon-briefcase
+              | Edit Clients
           li
-            a(href="/projects") 
-              i.icon-laptop
-              | Edit Projects
-          li
-            a(href="/services") 
-              i.icon-book
-              | Edit Services
-          li
-            a(href="/crew") 
+            a(href='/crew') 
               i.icon-group
               | Edit Crew
           li
-            a(href="/clients") 
-              i.icon-briefcase
-              | Edit Clients
+            a(href='/jobs')
+              i.icon-money
+              | Edit Job Listings
+          li
+            a(href='/panels') 
+              i.icon-tasks
+              | Edit Panels
+          li
+            a(href='/projects') 
+              i.icon-laptop
+              | Edit Projects
+          li
+            a(href='/services') 
+              i.icon-book
+              | Edit Services
       li.drop-down
-        a(href="/contacts")
+        a(href='/contacts')
           i.icon-envelope-alt 
           | Contact Form
     i#close-toolbar.icon-chevron-left

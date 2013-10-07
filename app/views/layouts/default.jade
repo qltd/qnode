@@ -42,7 +42,7 @@ html(class="no-js", lang="en")
     
     //- BEGIN BODY HEADER
     header.header.clearfix
-      a(href="#top")
+      a(href=( logoLink ? logoLink : '/' ))
         h1.logo #{title}
       block top_navigation
 
