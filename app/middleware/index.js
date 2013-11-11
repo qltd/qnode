@@ -242,6 +242,16 @@ exports.authorization = {
     }
     next();
   },
+  requiresUser: function (req, res, next) {
+    if (req.user.role != 'admin' && req.user.role != 'user') {
+      var _msg = msg.user.userRequired(req.host + req.url);
+      res.locals.errors = [_msg];
+      var err = new Error(_msg);
+      err.status = 403;
+      return next(err);
+    }
+    next();
+  },
   requiresAdmin: function (req, res, next) {
     if (req.user.role != 'admin') {
       var _msg = msg.user.adminRequired(req.host + req.url);

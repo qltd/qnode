@@ -58,12 +58,12 @@ module.exports = function(app, passport) {
   app.get('/users/:username/log/:__v/restore', users.restore);
 
   // contacts
-  app.get('/contacts', auth.requiresLogin, contacts.index);
-  app.get('/contacts/json', auth.requiresLogin, contacts.index);
+  app.get('/contacts', auth.requiresLogin, auth.requiresUser, contacts.index);
+  app.get('/contacts/json', auth.requiresLogin, auth.requiresUser, contacts.index);
   app.post('/contacts/new', contacts.create);
 
   // clients
-  app.all('/clients*', auth.requiresLogin);
+  app.all('/clients*', auth.requiresLogin, auth.requiresUser);
   app.get('/clients', clients.index);
   app.get('/clients/json', clients.index);
   app.get('/clients/new', clients.new);
@@ -78,7 +78,7 @@ module.exports = function(app, passport) {
   app.get('/clients/:slug/log/:__v/restore', clients.restore);
 
   // crew
-  app.all('/crew*', auth.requiresLogin);
+  app.all('/crew*', auth.requiresLogin, auth.requiresUser);
   app.get('/crew', crew.index);
   app.get('/crew/json', crew.index);
   app.get('/crew/new', crew.new);
@@ -93,24 +93,24 @@ module.exports = function(app, passport) {
   app.get('/crew/:slug/log/:__v/restore', crew.restore);
 
   // jobs
-  app.get('/jobs', auth.requiresLogin, jobs.index);
-  app.get('/jobs/json', auth.requiresLogin, jobs.index);
-  app.all('/jobs/new', auth.requiresLogin);
+  app.get('/jobs', auth.requiresLogin, auth.requiresUser, jobs.index);
+  app.get('/jobs/json', auth.requiresLogin, auth.requiresUser, jobs.index);
+  app.all('/jobs/new', auth.requiresLogin, auth.requiresUser);
   app.get('/jobs/new', jobs.new);
   app.post('/jobs/new', jobs.create);
   app.get('/jobs/:slug', jobs.show);
   app.get('/jobs/:slug/json', jobs.show);
-  app.all('/jobs/:slug/edit', auth.requiresLogin);
+  app.all('/jobs/:slug/edit', auth.requiresLogin, auth.requiresUser);
   app.get('/jobs/:slug/edit', jobs.edit);
   app.post('/jobs/:slug/edit', jobs.update);
-  app.all('/jobs/:slug/log*', auth.requiresLogin);
+  app.all('/jobs/:slug/log*', auth.requiresLogin, auth.requiresUser);
   app.get('/jobs/:slug/log', jobs.log);
   app.get('/jobs/:slug/log/:__v', jobs.show);
   app.get('/jobs/:slug/log/:__v/json', jobs.show);
   app.get('/jobs/:slug/log/:__v/restore', jobs.restore);
 
   // panels
-  app.all('/panels*', auth.requiresLogin);
+  app.all('/panels*', auth.requiresLogin, auth.requiresUser);
   app.get('/panels', panels.index);
   app.get('/panels/json', panels.index);
   app.get('/panels/new', panels.new);
@@ -126,7 +126,7 @@ module.exports = function(app, passport) {
 
   // projects
   app.get('/projects/:slug/json', projects.show);
-  app.all('/projects*', auth.requiresLogin);
+  app.all('/projects*', auth.requiresLogin, auth.requiresUser);
   app.get('/projects', projects.index);
   app.get('/projects/json', projects.index);
   app.get('/projects/new', projects.new);
@@ -140,7 +140,7 @@ module.exports = function(app, passport) {
   app.get('/projects/:slug/log/:__v/restore', projects.restore);
 
   // services
-  app.all('/services*', auth.requiresLogin);
+  app.all('/services*', auth.requiresLogin, auth.requiresUser);
   app.get('/services', services.index);
   app.get('/services/json', services.index);
   app.get('/services/new', services.new);
@@ -155,7 +155,7 @@ module.exports = function(app, passport) {
   app.get('/services/:slug/log/:__v/restore', services.restore);
 
   // videos
-  app.all('/videos*', auth.requiresLogin);
+  app.all('/videos*', auth.requiresLogin, auth.requiresUser);
   app.get('/videos', videos.index);
   app.get('/videos/json', videos.index);
   app.get('/videos/new', videos.new);

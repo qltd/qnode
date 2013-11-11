@@ -1,4 +1,4 @@
-if sessionUser
+if sessionUser && (sessionUser.role == 'user' || sessionUser.role == 'admin')
   .admin-bar
     ul.menu-level-1
       li.home

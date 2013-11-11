@@ -44,7 +44,8 @@ module.exports = {
     selfRequired: function (username, path) { return 'You must be user \'' + username + '\' to access ' + path; },
     read: function (username) { return 'User \'' + username + ' \' was read'; },
     restored: function (username, version) { return 'User \'' + username + '\' was restored with data from version ' + version; },
-    updated: function (username) { return 'User \'' + username + '\' was updated'; }
+    updated: function (username) { return 'User \'' + username + '\' was updated'; },
+    userRequired: function (path) { return 'You must be an authorized user to access ' + path; }
   },
   panel: {
     created: function (title) { return 'Panel \'' + title + '\' was created'; },
