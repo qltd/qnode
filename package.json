@@ -15,14 +15,14 @@
     "gzippo": "*",
     "jade": "*",
     "mongodb": "*",
-    "mongoose": "3.x.x",
+    "mongoose": "3.6.x",
     "nib": "*",
     "nodemailer": "*",
     "q": "*",
     "passport": "*",
     "passport-local": "*",
     "underscore": "*",
-    "validator": "*"
+    "validator": "1.4.x"
   },
   "repository": { 
     "type": "git", 
