@@ -45,7 +45,9 @@ var CrewSchema = new Schema({
   },
   twitterUser: String,
   dribbbleUser: String,
-  gitHubUser: String, 
+  gitHubUser: String,
+  tumblrUser: String,
+  linkedInUser: String,
   slug: String,
   image: [ ImageSchema ],
   changeLog: [ ChangeLogSchema ]
@@ -85,6 +87,8 @@ CrewSchema.pre('validate', function(next) {
   this.twitterUser = sanitize(this.twitterUser).escape();
   this.dribbleUser = sanitize(this.dribbleUser).escape();
   this.gitHubUser = sanitize(this.gitHubUser).escape();
+  this.tumblrUser = sanitize(this.tumblrUser).escape();
+  this.linkedInUser = sanitize(this.linkedInUser).escape();
   
   next();
 });

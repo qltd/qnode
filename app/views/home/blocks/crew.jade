@@ -8,7 +8,7 @@ if panel && panel.crew
             li(class=( (key + 1) % 4 == 0 ? [ 'crew-member', 'omega' ] : 'crew-member' ))
               .person-wrap.clearfix
                 each image in crewmember.image
-                  img(src=image.src, alt=image.alt)
+                  img(src=image.src, alt=image.title)
                 .person-info
                   h4 
                     = crewmember.title
@@ -33,5 +33,11 @@ if panel && panel.crew
                 if crewmember.gitHubUser
                   a(href="http://github.com/#{crewmember.gitHubUser}", target="_blank")
                     i.icon-github
+                if crewmember.tumblrUser
+                  a(href="http://#{crewmember.tumblrUser}.tumblr.com", target="_blank")
+                    i.icon-tumblr
+                if crewmember.linkedInUser
+                  a(href="http://linkedin.com/in/#{crewmember.linkedInUser}/", target="_blank")
+                    i.icon-linkedin
 
       .q(data-stellar-ratio='0.5', data-stellar-vertical-offset='220')
