@@ -1,0 +1,1741 @@
+/*                            ,--,           ,----,             
+**                         ,---.'|         ,/   .`|             
+**     ,----..             |   | :       ,`   .'  :   ,---,     
+**    /   /   \            :   : |     ;    ;     / .'  .' `\   
+**   /   .     :           |   ' :   .'___,/    ,',---.'     \  
+**  .   /   ;.  \          ;   ; '   |    :     | |   |  .`\  | 
+** .   ;   /  ` ;          '   | |__ ;    |.';  ; :   : |  '  | 
+** ;   |  ; \ ; |          |   | :.'|`----'  |  | |   ' '  ;  : 
+** |   :  | ; | '          '   :    ;    '   :  ; '   | ;  .  | 
+** .   |  ' ' ' :          |   |  ./     |   |  ' |   | :  |  ' 
+** '   ;  \; /  |          ;   : ;       '   :  | '   : | /  ;  
+**  \   \  ',  . \         |   ,/        ;   |.'  |   | '` ,/   
+**   ;   :      ; |        '---'         '---'    ;   :  .'     
+**    \   \ .'`--'                                |   ,.'       
+**     `---`                                      '---'         
+*/                                                             
+
+
+
+/*------------------------------------*\
+    $TABLE OF CONTENTS
+\*------------------------------------*/
+
+/**
+ * BASE...................Brings in Compass, Normalize, Susy, Variables and Mixins
+ * HTML5 Bolierplate......HTML5 Boilerplate Styles
+ * Elemental Styles.......Styles for HTML Elements
+ * Utilities..............Reusabel Utility Classes
+ * Content................Page Content
+ * * Header...............Header Bar Styles
+ * * Headline.............Headline / Welcome Area
+ * * Main Content.........Main Content Area General Styles
+ * * Sections.............Page Section Specific Styles
+ * * * About
+ * * * Work
+ * * * Services
+ * * * Crew
+ * * * Clients
+ * * * Contact
+ * * * Portfolio
+ * * Footer...............Footer Section of the Site aka Connect Panel
+ * Helper Classes.........Things like clearfix, image replace
+ */
+
+
+
+
+
+
+ @import 'base';
+
+//this is the default number of columns
+$total-columns: 5;
+
+//width of each column
+$column-width   : 4em;
+
+//space between columns
+$gutter-width   : 2em;
+
+//space on the right and left of the grid
+$grid-padding   : $gutter-width;
+
+//alternative layout breakpoints
+$tablet: 8;
+$computer: 55em 12;
+$wide: 66em 12;
+
+// Widest width size
+$container-width:1440px;
+
+
+
+
+
+/*------------------------------------*\
+    $HTML5 BOILERPLATE
+\*------------------------------------*/
+
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }x
+
+html,
+button,
+input,
+select,
+textarea {
+  color: #222;
+}
+
+body {
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+ ::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+
+// A better looking default horizontal rule
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+
+// Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+img {
+  vertical-align: middle;
+}
+
+// Remove defauly fieldset styles
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+//Allow only vertical resizing of textareas.
+textarea {
+  resize: vertical;
+}
+
+// Chrome Frame
+.chromeframe {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+
+
+
+
+/*------------------------------------*\
+    $ELEMENTAL STYLES
+\*------------------------------------*/
+
+body, p, li, table {
+	color:$text;
+}
+
+body {
+	padding:0;
+	font-size: 100%;
+}
+
+h2 {
+	font: 700 40px "adelle", serif;
+}
+h3 {
+	font: 300 40px "adelle", serif;
+	color:white;
+	text-align: center;
+}
+h4 {
+  font: 700 16px "adelle", serif;
+  margin: 0;
+}
+h5 {
+  font: 400 12px "proxima-nova", sans-serif;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+p {
+	font: 400 18px "proxima-nova", sans-serif;
+  line-height: 30px;
+}
+
+a {
+  text-decoration: none;
+  @include transition;
+}
+
+input, textarea {
+  width: 100%;
+  margin-bottom: 15px;
+  font:italic 700 21px "adelle", serif;
+  padding:0.5% 2%;
+  -webkit-appearance: none;
+  border:none;
+  @include border-radius(0);
+}
+
+input {
+  height:75px;
+}
+
+textarea {
+  padding-top:10px;
+}
+
+@include at-breakpoint($computer) {
+  p {
+    font-size: 24px;
+  }
+}
+
+.admin-form {
+  img {
+    width: 10%;
+    height: auto;
+    padding-bottom: 1%;
+    padding-right: 1%;
+    float: left;
+    & + input.image {
+      width: 30%;
+    }
+  }
+  input, textarea {
+    border: solid 4px $tan;
+    @include transition;
+    &:focus {
+      @include box-shadow(none);
+      outline:none;
+      background: $tan + 40;
+    }
+    &.image {
+      border:none;
+      float: left;
+      width:40%;
+      line-height: 0px;
+      font-size: 18px;
+      background: $tan + 20;
+      padding-top: 28px;
+      margin-right: 1%;
+    }
+    &.image-title {
+      margin-right: 1%;
+    }
+  }
+}
+
+#loading-screen {
+  position: fixed; 
+  top: 100%; 
+  width: 100%; 
+  height: 100%; 
+  background: #3d393a; 
+  z-index: 9999;
+  opacity: 0;
+  @include transition(0.5s);
+  &.open {
+    @include transition(0.5s);
+    opacity: 1;
+    top: 0;
+  }
+  .container {
+    position: relative;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    margin: -77px auto 0;
+    #spinning-q {
+      background: url(/images/q-blue.png); 
+      background-repeat: no-repeat; 
+      background-size: contain; 
+      width: 90px; 
+      height: 90px; 
+      margin: auto;
+    }
+    h3 {
+      margin: 10px auto 0;
+      font-weight: 700;
+    }
+  }
+}
+
+
+/*------------------------------------*\
+    $UTILITIES
+\*------------------------------------*/
+
+ul.inline li {
+	display: inline-block;
+	& + li {
+		margin-left: 20px;
+	}
+}
+
+/* $overflow-hidden */
+.oh {
+  overflow: hidden;
+}
+
+// Buttons
+.btn {
+  @include button(13px, white, $teal);
+}
+
+.new-btn {
+  float: right;
+  margin-bottom: 10px;
+  background: $pink;
+}
+
+// Reusable
+@include at-breakpoint($computer) {
+  .flyout {
+    background: rgba($grey, 0.9);
+    padding:20px;
+    position: absolute;
+    width: 410px;
+    top:50px;
+    opacity: 0;
+    z-index:-100;
+    @include transition;
+    p {
+      color: #FFF;
+      font: 400 13px "proxima-nova", sans-serif;
+    }
+    &:after {
+      content:' ';
+      display: block;
+      position: absolute;
+    }
+    &.fly-top {
+      &:after {
+        @include triangle(15px, top, rgba($grey, 0.9)); 
+      }
+    }
+    &.fly-left {
+      left: -435px;
+      &:after {
+        top:20px;
+        @include triangle(15px, left, rgba($grey, 0.9));    
+      }
+    }
+    &.fly-right {
+      right: -300px;
+      &:after {
+        top:20px;
+        @include triangle(15px, right, rgba($grey, 0.9));
+      }
+    }
+    &.fly-bottom {
+      &:after {
+        @include triangle(15px, bottom, rgba($grey, 0.9)); 
+      }    
+    }
+  }
+}
+ul li:hover {
+  .flyout {
+    color:white;
+    z-index:100;
+    top:-18px;
+    opacity:1.0;
+  }
+}
+
+
+
+
+
+/*------------------------------------*\
+    $CONTENT
+\*------------------------------------*/
+
+
+/*--$HEADER--*/
+
+.header {
+	color:white;
+	background:$grey;
+  position: fixed;
+  top:0;
+  width: 100%;
+  z-index: 1000;
+  padding: 25px 0 0;
+}
+
+.logo {
+	margin: 0 0 20px 4%;
+	width:233px;
+	height: 55px;
+	text-indent: -9999px;
+	float: left;
+	background: url(../images/logo.png) no-repeat;
+  &.x2 {
+    background: url(../images/logo@2x.png);
+    background-size: contain;
+  }
+}
+
+.nav-toggle {
+  background: $pink;
+  color:white;
+  float: right;
+  padding: 5px 15px;
+  margin-right: 2%;
+}
+
+.main-nav {
+  overflow: hidden;
+  max-height: 0;
+  background: $pink;
+  clear:both;
+  @include transition(0.5s);
+  &.open {
+    max-height: 500px;
+  }
+  ul {
+    margin: 0;
+    padding:20px 0;
+  }
+  li {
+    text-align: center;
+    list-style: none;
+  }
+  a {
+    display: block;
+    padding:15px;
+    @include navText;
+    &:hover {
+    color:$linko;
+    }
+  }
+}
+
+.messages {
+  position: fixed;
+  bottom: 0;
+  display: none;
+  width: 100%;
+  z-index: 101;
+  border-top: 8px solid white;
+  &.info {
+    background: $tan; 
+  }
+  &.success {
+    background: $teal;
+  }
+  &.warning {
+    background: $orange;
+  }
+  &.error {
+    background: $pink;
+  }
+  ul > li {
+    color: white;
+    list-style: none;
+    line-height: 2em;
+  }
+}
+
+@include at-breakpoint($computer) {
+  .header {
+    padding:25px 0 25px;
+  }
+
+  .nav-toggle {
+    display: none;  
+  }
+
+  .main-nav {
+    display: block !important;
+    max-height:300px;
+    float: right;
+    margin: 13px 6% 0 0;
+    background: transparent;
+    clear: none;
+    ul {
+      li {
+        display: inline-block;  
+        & + li {
+          margin-left: 20px;
+        }
+      }
+      a {
+        padding: 0;
+      }
+    }
+  }
+}
+
+
+/*--$HEADLINE--*/
+
+.headline {
+  margin-top: 100px;
+  padding: 60px 0;
+  position: relative;
+  overflow: hidden;
+  h3 {
+    font-size: 30px;
+    width:70%;
+    margin: 0 auto;
+    z-index: 100;
+    position: relative;
+  }
+  .teal {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 95;
+    height:700px;
+    background: rgba(#6ca6a6, 0.8);
+  }
+  video {
+    min-height: 320px;
+    position: absolute;
+    z-index: 50;
+    bottom:0;
+    display: none;
+  }
+  #img {
+    min-height: 320px;
+    position: absolute;
+    z-index: 50;
+    bottom:0;    
+  }
+}
+
+@include at-breakpoint($computer) {
+  .headline {
+    padding: 150px 0;
+    margin-top: 125px;
+    height: 500px;
+    
+    h3 {
+      font-size: 40px;
+    }
+
+    video {
+      width: 100%;
+      display: block;
+    }
+    #img {
+      display: none;
+    }
+  }
+}
+
+@include at-breakpoint($wide) {
+  .headline {
+    height: 600px;
+  }
+}
+
+.lt-ie9 .headline {
+  display: none;
+}
+
+
+/*--$MAIN CONTENT--*/
+
+.panel {
+  position: relative;
+  padding:50px 20px 60px;
+  margin-bottom: 8px;
+  overflow: hidden;
+  h2, p {
+    position: relative;
+    z-index:100;
+  }
+  // Paralax Test
+  .q {
+    display: none !important;
+    background: url(../images/q-gray.png);
+    width: 355px;
+    height: 355px;
+    position: absolute;
+    z-index: 1;
+    font-size: 10em;
+    &.x2 {
+      background: url(../images/q-gray@2x.png);
+      background-size: contain;
+    }
+  }
+  .small-q {
+    display: none;
+  }
+  .pinq {
+    background: url(../images/q-pink.png);
+    &.x2 {
+      background: url(../images/q-pink@2x.png);
+      background-size: contain;
+    }
+  }
+  .blueq {
+    background: url(../images/q-blue.png);
+    &.x2 {
+      background: url(../images/q-blue@2x.png);
+      background-size: contain;
+    }
+  }
+  .content {
+    z-index:100;
+    position: relative;
+  }
+  p a, p a:visited {
+    color:$orange;
+    &:hover {
+      color: $pink;
+    }
+  }
+}
+
+@include at-breakpoint($computer) {
+  .panel {
+    padding:190px 20px 160px;
+    h2 {
+      @include span-columns(4 alpha);
+      padding-left: 40px;
+      margin-top: 24px;
+    }
+    .q {
+      display: block !important;
+    }
+    .small-q {
+      display: block;
+      background-image: url(../images/q-gray.png);
+      background-size: 200px 200px;
+      width: 200px;
+      height: 200px;
+    }
+    .content {
+      @include span-columns(8 omega);
+    }   
+  }
+}
+
+.container {
+  @include container($total-columns, $tablet, $computer, $wide);
+  padding:0;
+}
+
+
+/*--$SECTIONS--*/
+
+/* $about */
+.about {
+	background: white;
+}
+
+/* $work */
+.work {
+	background: $tan;
+  .project-grid {
+    padding: 0;
+  }
+  .project-trigger {
+    @include navText;
+    color:$grey;
+    span {
+      display: block;
+      margin-top: 30px;
+      min-height:40px;
+    }
+  }
+  .project-wrap {
+    list-style: none;
+    text-align: center;
+    margin-bottom: 50px;
+    img {
+      max-width:100%;
+      height: auto !important;
+    }
+  }
+}
+
+#project-image .row {
+  img {
+    cursor: move;
+  }
+  input.image-title {
+    width: 39%;
+  }
+  input.position {
+    width: 12%;
+  }
+  i.icon-remove-sign {
+    color: $pink;
+    cursor: pointer;
+  }
+  i.icon-move {
+    cursor: move;
+    float: left;
+    margin-top: 20px;
+    margin-right: 1%;
+  }
+}
+
+@include at-breakpoint($computer) {
+  .project-grid {
+    margin-top: 60px;
+    @include span-columns(12 omega);
+  }
+  .project-wrap {
+    @include span-columns(4);
+    &.omega {
+      @include span-columns(4 omega);
+    }
+  }
+}
+
+/* $services */
+.services {
+	background: $orange;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    &.first {
+      margin-bottom: 0;
+    }
+    &.last {
+      margin-top: 0;
+    }
+    li {
+      position: relative;
+      margin: 0;
+      padding: 5px 0;
+      color: #FFF;
+      font:italic 700 19px "adelle", serif;
+      cursor: pointer;
+      @include transition;
+      .icon-minus-sign {
+        display: none;
+      }
+      .icon-plus-sign {
+        display: inline;
+      }
+      &:hover {
+        color: $grey;
+        i {
+          color: $pink;
+        }
+      }
+      i {
+        margin-right: 5px;
+      }
+      &.expanded {
+        .icon-plus-sign {
+          display: none;
+        }
+        .icon-minus-sign {
+          display: inline;
+        }
+      }
+    }
+  }
+  .service-details {
+    overflow: hidden;
+    margin-left: 27px;
+    max-height:0;
+    @include transition(0.5s, linear);
+    @include proxSemi(13px, $grey);
+    
+    &.open {
+      max-height:200px;
+    }
+  }
+  .flyout {
+    display: none;
+    h4 {
+      display: none;
+    }
+    p {
+      margin-left: 25px;
+    }
+  }
+  @include at-breakpoint($computer) {
+    ul {
+      &.list-left {
+        @include span-columns(4, 8);
+      }
+      &.list-right {
+        @include span-columns(4 omega, 8);
+      }
+      li {
+        i {
+          display: none !important;
+        }
+        .service-details, .service-details.open {
+          overflow: visible;
+          display: none;
+          color:white;
+          background: rgba($grey, 0.9);
+          padding:20px;
+          position: absolute;
+          width: 350px;
+          left:200px;
+          top:-15px;
+          height: auto;
+          max-height:400px;
+          z-index: 1000;
+          @include transition;
+          &.details-left:after {
+            top:20px;
+            @include triangle(15px, right, rgba($grey, 0.9));   
+            content:' ';
+            display: block;
+            position: absolute; 
+          }
+          &.details-right {
+            left:-400px;
+            &:after {
+              top:20px;
+              @include triangle(15px, left, rgba($grey, 0.9));   
+              content:' ';
+              display: block;
+              position: absolute; 
+            }
+          }
+        }
+        &:hover .service-details {
+          display: block;
+        }      
+      }
+    }
+    h4 {
+      display: block;
+    }
+    .first {
+      @include span-columns(4, 8);
+    }
+    .last {
+      @include span-columns(4 omega, 8);
+    }
+  } 
+}
+
+/* $value */
+.value {
+	background: $tan;
+}
+
+/* $crew */
+.crew {
+  background:$teal; 
+}
+.crew-grid {
+  ul {
+    padding: 0;
+  }
+  .crew-member {
+    list-style: none; 
+    position: relative;
+  }
+  .person-wrap {
+    border: 10px solid $teal;
+    background: $grey;
+    color: white;
+    position: relative;
+    z-index: 100;
+    @include transition(0.3s);
+    img {
+      width:32.61%;
+      float: left;
+      height: auto !important;
+    }
+    p {
+      background: $grey;
+      margin: 0;
+    }
+    .person-info {
+      float: left;
+      width:64.06%;
+      padding:3.125%;
+    }
+  }
+  .bio {
+    top:-20px;
+    z-index: 10;
+    position: relative;
+    margin:0 2%;
+    max-height: 0px;
+    overflow: hidden;
+    background:$grey;
+    padding: 0 4%;
+    color: white;
+    @include transition;
+    h4, h5 {
+      display: none;
+    }
+    a {
+      color:white;
+    }
+    i {
+      font-size: 18px;
+      margin:10px 10px 0 0;
+    }
+    p {
+      margin: 0 0 10px;
+      @include proxSemi(14px, white);
+    }
+  }
+  li.open {
+    .person-wrap {
+      border-color:$pink;
+      background: $pink;
+    }
+    .bio {
+      padding:40px 4% 20px;
+      max-height: 400px;
+    }
+  }
+}
+
+@include at-breakpoint($computer) {
+  .crew-grid {
+    .crew-member {
+      @include span-columns(3);
+      &.omega {
+        margin-right: 0;
+      }
+    }
+    .person-wrap {
+      border-color:transparent;
+      background: transparent;
+      &:hover {
+        border-color:$pink;
+      }    
+      img {
+        width:100%;
+        float:none;
+        max-width:100%;
+      }
+    }
+    li.open .person-wrap {
+      border-color: transparent;
+      background-color: transparent;
+    }
+    .person-info {
+      display: none;
+    } 
+    li.open .bio, li .bio {
+      border-color:transparent;
+      overflow: visible;
+      max-height: inherit;
+      background: rgba($grey, 0.9);
+      padding:20px;
+      position: absolute;
+      width: 500px;
+      top: 130px;
+      right:0;
+      z-index:1000;
+      display: none;
+      @include transition;
+      h4, h5 {
+        display: block;
+      }
+      &:after {
+        @include triangle(15px, top, rgba($grey, 0.9));   
+        content:' ';
+        display: block;
+        position: absolute; 
+        right:15px;
+      }
+    }
+  }
+  li.crew-member:hover {
+    &.open .person-wrap {
+      background: $pink;
+    }
+    &.open, .bio {
+      display: block;
+    }
+  }
+  .omega .person-wrap {
+    margin-right: 0;
+  }
+  h5 {
+    margin:3px 0 10px;
+  }
+}
+
+@include at-breakpoint($wide) {
+  .crew-grid {
+    li.open .bio, li .bio {
+      top:170px;
+    }
+  }
+}
+
+/* $clients */
+.clients {
+	background: $pink;
+  .client {
+    text-align: center;
+    display: block;
+    float: left;
+    width:44%;
+    margin-right: 12%;
+    height:80px;
+    line-height: 80px;
+    margin-bottom: 50px;
+    img {
+      max-width:100%;
+      vertical-align: middle;
+    }
+  }
+  .client:nth-child(even) {
+    margin-right: 0;
+  }
+}
+
+@include at-breakpoint($computer) {
+  .clients-wrap {
+    margin-top: 50px;
+    @include span-columns(12 omega);
+  }
+  .clients .client {
+    @include span-columns(2);
+    &:nth-child(odd) {
+      @include span-columns(2);
+    }
+    &.omega {
+      margin-right: 0;
+    }
+  }  
+}
+
+
+/* $contact */
+.contact {
+	background:$tan;
+}
+
+#contact-submit {
+  height: auto;
+  float: right;
+  width: auto;
+  display: block;
+  background: $pink;
+  color:white;
+  padding: 20px;
+  @include navText(13px);
+  @include transition;
+  &:hover {
+    background: $pink - 30;
+  }
+}
+
+.location {
+  width: 113%;
+  margin-left: -30px;
+  background: url(../images/q-map.png) no-repeat 50% 220px;
+  &.x2 {
+    background: url(../images/q-map@2x.png) 50% 83% no-repeat;
+    background-size: 450px 262px;
+  }
+  padding:0 30px 320px;
+  p {
+    line-height: 25px;
+    text-transform: uppercase;
+    a, a:visited {
+      color:$pink;
+    }
+  }
+  .dark-logo {
+    margin:50px 0 0 0;
+    height: 34px;
+    display: block;
+    text-indent: -9999px;
+    background: url(../images/dark-logo.png) no-repeat;
+  }
+}
+
+@include at-breakpoint($computer) {
+  .location {
+    padding-bottom: 75px;
+    background-position: 86% 0;
+    &.x2 {
+      background-position: 86% 0;
+    }
+    p {
+      font-size: 20px;
+    }
+  }
+}
+
+
+/* $portfolio */
+// Portfolio Drawer container that slides up revealing individual project
+.portfolio {
+  @include transition(0.5s);
+  background: white;
+  height: 100%;
+  top: 100%;
+  opacity:0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+  &.open {
+    top:0;
+    opacity:1;
+  }
+}
+
+// Individual Project 
+.project {
+  display:none;
+  header {
+    background: $grey;
+    padding:110px 20px;
+    h3 {
+      margin: 0 0 10px;
+      @include projTitle;
+    }
+    @include at-breakpoint($computer) {
+      h3 {
+        padding-left: 40px;
+        @include span-columns(4 alpha);
+      }
+      .content {
+        @include span-columns(8 omega);
+      }
+    }
+    p {
+      color:white;
+      font-size: 18px;
+      margin-top: 0;
+      a {
+        color:$orange;
+      }
+    }
+  }
+  section {
+    margin-top: 8px;
+    background: $tan;
+    padding:50px 20px 200px;
+    .container {
+      text-align: center;
+      img {
+        max-width:100%;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 80px;
+        height:auto !important;
+        &.shadow {
+          
+        }
+      }
+    }
+  }
+  &.active {
+    display: block;
+  }
+  footer {
+    background: $grey;
+    padding:50px 20px;
+  }
+}
+
+// Closes Portfolio Drawer
+.close {
+  display: block;
+  background: $pink;
+  color:white;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  @include navText(13px);
+  @include transition;
+  &:hover {
+    background: $pink - 30;
+  }
+}
+
+
+/* $admin-content */
+.edit-content {
+  width: 100%;
+  @include box-shadow(1px 1px 3px rgba(black, 0.3));
+  text-align: left;
+  th {
+    color:$text;
+    background: $teal;
+    padding:5px;
+    cursor:pointer;
+    padding: 8px;
+    i {
+      margin-right: 5px;
+      float: right;
+      opacity: 0;
+      @include transition;
+    }
+    &.headerSortUp i {
+      opacity: 1;
+    }
+    &.headerSortDown i {
+      opacity: 1;
+      @include transform( rotate(180deg));
+    }
+  }
+  td, th {
+    border:solid 2px white;
+  }
+  tr {
+    background: #eee;
+    @include transition;
+  }
+  tr:nth-child(even) {
+    background: #eee + 10;
+  }
+  td {
+    @include transition;
+    a {
+      display: block;
+      width:100%;
+      padding: 8px;
+      color:$grey;
+    }
+  }
+  tr:hover {
+    background: #ccc;
+  }
+  .position {
+    width:10%;
+  }
+  .title {
+    width:25%;
+  }
+  .date {
+    width: 40%;
+  }
+  .by {
+    width:20%;
+  }
+}
+
+/* $job-listings */
+
+article.job-listing {
+  padding-top: 125px;
+  h2 {
+    &.job-heading {
+      width: 100%;
+      padding-left: 0;
+    }
+  }
+  h4 {
+    font: 700 18px "proxima-nova", sans-serif;
+    line-height: 30px;
+  }
+  ul {
+    font: 400 18px "proxima-nova", sans-serif;
+    line-height: 30px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    li {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@include at-breakpoint($computer) {
+  article.job-listing {
+    padding-top: 190px;
+    padding-left: 20%;
+    padding-right: 18%;
+    h4, ul {
+      font-size: 24px;
+    }
+  }
+}
+
+
+/*--$FOOTER--*/
+
+footer#footer {
+  background: $text; 
+  padding:125px 20px 0;  
+  color:white;
+  h2 {
+    color:white;
+    margin-top: 0;
+    padding:0;
+  }
+}
+.social {
+  padding: 0;
+  li {
+    display: inline-block; 
+    a {
+      color:white;
+      font-size: 30px;
+      display: block;
+      position: relative;
+      padding: 10px;
+      i {
+        position: relative;
+        @include transition;
+      }
+      span {
+        text-align: center;
+        opacity: 0;
+        z-index: -100;
+        position: absolute;
+        background: $tan;
+        @include transition;
+        @include navText(12px);
+        color:$text;
+        display: block;
+        padding:10px 20px;
+        top:-65px;
+        left:-35px;
+        width:117px;
+        &:after {
+          content:'';
+          border-top: #dbd8cf dotted 15px;
+          border-left: transparent solid 15px;
+          border-right: transparent solid 15px;
+          position: absolute;
+          bottom: -15px;
+          left: 36%;
+        }
+      }
+      &.facebook span {
+        left:-40px;
+      }
+      &:hover {
+        color:orange;
+        i {
+          bottom:5px;
+        }
+        span {
+          top:-45px;
+          opacity: 1;
+          z-index:100;
+        }
+      }
+    }
+  }
+}
+.copyright {
+  margin-top: 70px;
+  @include proxReg(12px, white);
+}
+
+.back-to-top {
+  text-transform: uppercase;
+  color:white;
+  font-size: 12px;
+  i {
+    margin-left: 5px;
+  }
+}
+
+// Newsletter Signup
+.newsletter {
+  form {
+    input {
+      float: left; 
+      height: 55px;
+      margin-bottom: 0;
+    }
+    .field {
+      width:64%;
+      background: #bebcbf;
+    }
+    #submitbutton {
+      background: $teal;
+      @include navText;
+      font-size: 12px;
+      margin-left: 2%;
+      white-space: normal;
+      width:34%;
+      padding:10px 1%;
+    }
+  }
+  p {
+    font-family: "proxima-nova";
+    font-size: 12px;
+    color: #bebcbf;
+    font-weight: normal;
+  }
+}
+
+@include at-breakpoint($computer) {
+  footer#footer h2 {
+    padding-left: 40px;
+    @include span-columns(4 alpha);
+  }
+  .social {
+    @include span-columns(4);
+    margin-top: 0;
+  }
+  .newsletter {
+    @include span-columns(4 omega);
+  }
+  #submitbutton {
+    @include navText;
+  }
+  .copyright {
+    text-align: right;
+    float: right;
+  }
+  .back-to-top {
+    float: left;
+    padding-left: 40px;
+    margin-top: 70px;
+  }
+}
+
+
+/*--$ADMINBAR--*/
+
+.admin-bar {
+  background:#333;
+  color:white;
+  position:fixed;
+  z-index:10000;
+  top:0;
+  height:37px;
+  right:0;
+  width:100%;
+  @include transition;
+  @include box-shadow(1px 1px 3px rgba(black, 0.3));
+  a {
+    color:white;
+    &:hover {
+      color: $teal;
+    }
+  }
+  .user-mega {
+    overflow: hidden;
+    opacity: 0;
+    height: 0;
+    z-index:-1;
+    position: absolute;
+    background: #222;
+    padding:15px;
+    left:0;
+    top:36px;
+    min-width: 330px;
+    @include box-shadow(1px 1px 3px rgba(black, 0.3));
+    @include transition;
+    img {
+      border:solid 5px white;
+      float: left;
+      margin-right:15px;
+    }
+    h6, p {
+      float: left;
+      color:white;
+      font-size: 14px;
+      margin: 0;
+    }
+    .logout {
+      margin-top: 35px;
+      display: block;
+    }
+  }
+  .menu-level-1 {
+    position: absolute;
+    left: 0;
+    .home {
+      padding: 0;
+      vertical-align: middle;
+      margin-right: 10px;
+      a {
+        font-size: 20px;
+      }
+    }
+    margin:0;
+    li {
+      padding:10px;
+      position: relative;
+      text-transform: uppercase;
+      font-size: 12px;
+      color:white;
+      display: inline-block;
+      i {
+        padding-right:5px;
+      }
+    }
+    > li + li {
+      margin-left:10px;
+    }
+  }
+  .menu-level-2 {
+    display: none;
+    position: absolute;
+    background: #222;
+    margin: 0;
+    width: 185px;
+    padding:0;
+    left:0;
+    top:36px;
+  }
+  .user-menu:hover {
+    background: #222;
+    &, > a {
+      color:$teal;
+    }
+    .user-mega {
+      z-index: 1000;
+      opacity: 1;
+      height: auto; 
+    }
+  }
+  .drop-down:hover {
+    background: #222;
+    &, > a {
+      color:$teal;
+    }
+    > .menu-level-2 {
+      display: block;
+      @include box-shadow(1px 1px 3px rgba(black, 0.3));
+      > li {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      a {
+        display: block;
+        padding:10px 5px 10px 15px;
+        width: 100%;
+        &:hover {
+          background:$teal;
+          color:#222;
+        }
+      }
+    }
+  }
+  #close-toolbar {
+    cursor:pointer;
+    padding:10px 20px;
+    float: right;
+    &:hover {
+      color:$teal;
+    }
+  }
+  &.mini {
+    width:50px;
+    overflow: hidden;
+    .menu-level-1 {
+      display: none;
+    }
+    #close-toolbar {
+      @include transform( rotate(180deg));
+      @include transition;
+    }
+  }
+}
+
+@include at-breakpoint($computer) {
+  display: block;  
+}
+
+
+
+
+
+/*------------------------------------*\
+    $HELPER CLASSES
+\*------------------------------------*/
+/*
+ * Image replacement
+ */
+
+ .ir {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+    /* IE 6/7 fallback */
+    *text-indent: -9999px;
+  }
+
+  .ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+  }
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+
+ .hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+
+ .visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+ .visuallyhidden.focusable:active,
+ .visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+
+ .invisible {
+  visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+ .clearfix:before,
+ .clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+  }
+
+  .clearfix:after {
+    clear: both;
+  }
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+ .clearfix {
+  *zoom: 1;
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+   @media print {
+    * {
+      background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+      }
+
+      a,
+      a:visited {
+        text-decoration: underline;
+      }
+
+      a[href]:after {
+        content: " (" attr(href) ")";
+      }
+
+      abbr[title]:after {
+        content: " (" attr(title) ")";
+      }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+     .ir a:after,
+     a[href^="javascript:"]:after,
+     a[href^="#"]:after {
+      content: "";
+    }
+
+    pre,
+    blockquote {
+      border: 1px solid #999;
+      page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+      }
+
+      tr,
+      img {
+        page-break-inside: avoid;
+      }
+
+      img {
+        max-width: 100% !important;
+      }
+
+      @page {
+        margin: 0.5cm;
+      }
+
+      p,
+      h2,
+      h3 {
+        orphans: 3;
+        widows: 3;
+      }
+
+      h2,
+      h3 {
+        page-break-after: avoid;
+      }
+    }
