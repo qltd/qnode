@@ -666,14 +666,44 @@ ul li:hover {
       margin-top: 30px;
       min-height:40px;
     }
+    &:after {
+      @include transition;
+      opacity: 0;
+      visibility: hidden;
+      font: 40px 'FontAwesome';
+      content: "\f002";
+      color: #ffffff;
+      padding-top: 95px;
+      background: #c9005d;
+      background: rgba(201, 0, 93, 0.8);
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 70px;
+      right: 0;
+      z-index: 1;
+      max-width: 350px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    &:hover {
+      &:after {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
   }
   .project-wrap {
     list-style: none;
     text-align: center;
     margin-bottom: 50px;
+    position: relative;
     img {
-      max-width:100%;
+      max-width: 100%;
       height: auto !important;
+      position: relative;
+      z-index: 0;
     }
   }
 }
