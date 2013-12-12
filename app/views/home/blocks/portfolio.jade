@@ -7,6 +7,8 @@
             h3= project.title
             .content
               p!= project.body
+              h4 Services Provided:
+              p.services-provided!= project.services
           a.close(href='#') Close
         section
           .container.project-images

@@ -26,6 +26,7 @@ var ProjectSchema = new Schema({
     validate: [ validate.notNull, msg.title.isNull ]
   },
   body: String,
+  services: String,
   slug: String,
   changeLog: [ ChangeLogSchema ],
   coverImage: [ ImageSchema ],
@@ -59,6 +60,7 @@ ProjectSchema.namedScope('index', function() {
 ProjectSchema.pre('validate', function(next) {
   this.title = sanitize(this.title).escape();
   this.body = sanitize(this.body).xss();
+  this.services = sanitize(this.services).escape();
   next();
 });
 

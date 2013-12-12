@@ -24,6 +24,9 @@ block body_content
           textarea(name='body', placeholder='Description', cols='10', rows='5')
             != project.body
 
+        #services
+          input(type='text', name='services', placeholder='Services', value=project.services)
+
         #project-image
           
           if project.images

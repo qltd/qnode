@@ -216,3 +216,135 @@
 2013-12-11 14:06:48 identical stylesheets/main.css 
 2013-12-11 14:55:02 overwrite stylesheets/main.css 
 2013-12-11 14:59:03 identical stylesheets/main.css 
+2013-12-11 15:30:00     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:30:00    create stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:30:01    create stylesheets/main.scss.BASE.47940.css 
+2013-12-11 15:30:01    create stylesheets/main.scss.LOCAL.47940.css 
+2013-12-11 15:30:02    create stylesheets/main.scss.REMOTE.47940.css 
+2013-12-11 15:30:10     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:30:10 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:30:11     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:30:11 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:30:12     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:30:12 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:30:13     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:30:13 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:30:14     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:30:14 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:30:15     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:30:15 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:30:15     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:30:15 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:30:16     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:30:16 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:30:17     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:30:17 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:30:47     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:30:47 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:32:12     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:32:12 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:32:13     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:32:13 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:32:14     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:32:14 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:32:14     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:32:14 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:32:15     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:32:15 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:32:15     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:32:15 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:32:16     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:32:16 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:32:16     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:32:16 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:32:17     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:32:17 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:32:17     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:32:17 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:32:18     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:32:18 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:32:51     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:32:51 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:32:51     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:32:51 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:32:52     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:32:52 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:32:52     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:32:52 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:32:52     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:32:52 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:32:53     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:32:53 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:32:53     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:32:53 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:59:03     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:59:03 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:59:05     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:59:05 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 15:59:06     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 15:59:06 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 16:01:08 overwrite stylesheets/main.css 
+2013-12-11 16:01:10     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 16:01:10 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 16:02:01 overwrite stylesheets/main.css 
+2013-12-11 16:02:03     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 16:02:03 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 16:03:15 overwrite stylesheets/main.css 
+2013-12-11 16:03:17     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 16:03:17 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 16:05:14 overwrite stylesheets/main.css 
+2013-12-11 16:05:16     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 16:05:16 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 16:05:52 overwrite stylesheets/main.css 
+2013-12-11 16:05:55     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 16:05:55 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 16:08:08 overwrite stylesheets/main.css 
+2013-12-11 16:08:10     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 16:08:10 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 16:09:38 overwrite stylesheets/main.css 
+2013-12-11 16:09:40     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 16:09:40 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-11 16:09:47 identical stylesheets/main.css 
+2013-12-11 16:09:49     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-11 16:09:49 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-12 13:27:55     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-12 13:27:55 overwrite stylesheets/main.scss.BACKUP.47940.css 
+2013-12-12 14:19:49 overwrite stylesheets/main.css 
+2013-12-12 14:19:50     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-12 14:19:50 overwrite stylesheets/main.scss.BACKUP.47940.css 
+2013-12-12 14:21:48 overwrite stylesheets/main.css 
+2013-12-12 14:21:50     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-12 14:21:50 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-12 14:22:11 overwrite stylesheets/main.css 
+2013-12-12 14:22:17     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-12 14:22:17 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-12 14:23:45 overwrite stylesheets/main.css 
+2013-12-12 14:23:51     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-12 14:23:51 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-12 14:23:53 overwrite stylesheets/main.css 
+2013-12-12 14:23:55     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-12 14:23:55 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-12 14:24:38 overwrite stylesheets/main.css 
+2013-12-12 14:24:39     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-12 14:24:39 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-12 14:26:20 overwrite stylesheets/main.css 
+2013-12-12 14:26:21     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-12 14:26:21 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-12 14:27:12 overwrite stylesheets/main.css 
+2013-12-12 14:27:14     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-12 14:27:14 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-12 14:28:07 overwrite stylesheets/main.css 
+2013-12-12 14:28:09     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-12 14:28:09 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-12 14:58:41 overwrite stylesheets/main.css 
+2013-12-12 14:58:43     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-12 14:58:43 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-12 14:59:32 overwrite stylesheets/main.css 
+2013-12-12 14:59:34     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-12 14:59:34 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-12 15:07:26 overwrite stylesheets/main.css 
+2013-12-12 15:07:27     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-12 15:07:27 identical stylesheets/main.scss.BACKUP.47940.css 
+2013-12-12 15:08:41 overwrite stylesheets/main.css 
+2013-12-12 15:08:44     error stylesheets/main.scss.BACKUP.47940.scss (Line 1: Invalid CSS after "": expected selector or at-rule, was "<<<<<<< HEAD")
+2013-12-12 15:08:44 identical stylesheets/main.scss.BACKUP.47940.css 
