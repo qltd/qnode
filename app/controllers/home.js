@@ -5,6 +5,7 @@
 
 var fs = require('fs')
   , mongoose = require('mongoose')
+  , Promise = require('bluebird')
   , Q = require('q');
 
 /**
@@ -25,48 +26,29 @@ var Contact = mongoose.model('Contact')
  */
 
 exports.index = function (req, res, next) {
-  Q.fcall(function () { 
-    var contacts = req.flash('contact');
-    return ( contacts && contacts.length && contacts[contacts.length-1] ? contacts[contacts.length-1] : new Contact() );
-  })
-    .then(function (contact) {
-      res.locals.contact = contact;
-      return Q.ninvoke(Panel.home, 'find');
-    })
-    .then(function (panels) { 
-      /** make panels accessible as panel.slug; where slug has had hyphens removed, and been converted to camelCase */
-      res.locals.panel = toCamelKeyObject(panels);
-      return Q.ninvoke(Crew.index, 'find');
-    })
-    .then(function (crew) { 
-      res.locals.crew = crew;
-      return Q.ninvoke(Client.index, 'find');
-    })
-    .then(function (clients) { 
-      res.locals.clients = clients;
-      return Q.ninvoke(Service.positioned, 'find');
-    })
-    .then(function (services) {
-      /** make an array of the services array that has half of its children in either of two keys */
-      res.locals.services = toSplitArray(services);
-      return Q.ninvoke(Project.index, 'find');
-    })
-    .then(function (projects) {
-      /** perform a proper alpha-ordering that accounts for 'the' and is not case sensitive */
-      res.locals.projects = toAlphaSortedArray(projects);
-      return Q.ninvoke(Video.notNull, 'find');
-    })
-    .then(function (videos) {
-      if (videos.length > 0) {
-        var randomVideoKey = Math.floor((Math.random() * videos.length));
-        res.locals.video = videos[randomVideoKey];
-      }
-      return res.render('home', { 
-        logoLink: '#top',
-        title: 'Q Design & Communication Since 1981'
-      }); // html
-    })
-    .fail(function (err) {
-      return next(err); // 500
+  var contacts = req.flash('contact');
+  res.locals.contact = ( contacts && contacts.length && contacts[contacts.length-1] ? contacts[contacts.length-1] : new Contact() );
+
+  Promise.all([
+    Promise.promisify(Panel.find, Panel)({ parentView: 'home' }),
+    Promise.promisify(Crew.find, Crew)(),
+    Promise.promisify(Client.find, Client)(),
+    Promise.promisify(Service.find, Service)(),
+    Promise.promisify(Project.find, Project)(),
+    Promise.promisify(Video.find, Video)({ mp4Src: { $ne: null }, oggSrc: { $ne: null }, published: { $ne: 0 }})
+  ]).spread(function (panels, crew, clients, services, projects, videos) {
+    var randomVideoKey = Math.floor((Math.random() * videos.length));
+    return res.render('home', {
+      panel: toCamelKeyObject(panels),
+      crew: toAlphaSortedArray(crew, 'lastName'),
+      clients: toAlphaSortedArray(clients),
+      services: toSplitArray(services),
+      projects: toAlphaSortedArray(projects),
+      video: videos[randomVideoKey],
+      logoLink: '#top',
+      title: 'Q Design & Communication Since 1981'
     });
+  }).catch(function (err) {
+    return next(err); // 500
+  });
 };
