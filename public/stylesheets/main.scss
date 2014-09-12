@@ -1405,6 +1405,13 @@ footer#footer {
   }
 }
 
+.footer-text-link {
+  color: #fff;
+  &:hover {
+    color: $orange;
+  }
+}
+
 // Newsletter Signup
 .newsletter {
   form {
