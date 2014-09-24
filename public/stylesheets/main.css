@@ -4419,12 +4419,13 @@ footer#footer h2 {
 .newsletter p {
   font-family: "proxima-nova";
   font-size: 12px;
+  line-height: 16px;
   color: #bebcbf;
   font-weight: normal;
 }
 
 @media (min-width: 55em) {
-  /* line 1446, main.scss */
+  /* line 1447, main.scss */
   footer#footer h2 {
     padding-left: 40px;
     width: 31.42857%;
@@ -4432,7 +4433,7 @@ footer#footer h2 {
     margin-right: 2.85714%;
   }
 
-  /* line 1450, main.scss */
+  /* line 1451, main.scss */
   .social {
     width: 31.42857%;
     float: left;
@@ -4440,14 +4441,14 @@ footer#footer h2 {
     margin-top: 0;
   }
 
-  /* line 1454, main.scss */
+  /* line 1455, main.scss */
   .newsletter {
     width: 31.42857%;
     float: right;
     margin-right: 0;
   }
 
-  /* line 1457, main.scss */
+  /* line 1458, main.scss */
   #submitbutton {
     color: white;
     font: 800 14px "proxima-nova";
@@ -4455,13 +4456,13 @@ footer#footer h2 {
     text-transform: uppercase;
   }
 
-  /* line 1460, main.scss */
+  /* line 1461, main.scss */
   .copyright {
     text-align: right;
     float: right;
   }
 
-  /* line 1464, main.scss */
+  /* line 1465, main.scss */
   .back-to-top {
     float: left;
     padding-left: 40px;
@@ -4469,7 +4470,7 @@ footer#footer h2 {
   }
 }
 /*--$ADMINBAR--*/
-/* line 1474, main.scss */
+/* line 1475, main.scss */
 .admin-bar {
   background: #333;
   color: white;
@@ -4488,15 +4489,15 @@ footer#footer h2 {
   -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
-/* line 1485, main.scss */
+/* line 1486, main.scss */
 .admin-bar a {
   color: white;
 }
-/* line 1487, main.scss */
+/* line 1488, main.scss */
 .admin-bar a:hover {
   color: #77c7c6;
 }
-/* line 1491, main.scss */
+/* line 1492, main.scss */
 .admin-bar .user-mega {
   overflow: hidden;
   opacity: 0;
@@ -4517,41 +4518,41 @@ footer#footer h2 {
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
 }
-/* line 1504, main.scss */
+/* line 1505, main.scss */
 .admin-bar .user-mega img {
   border: solid 5px white;
   float: left;
   margin-right: 15px;
 }
-/* line 1509, main.scss */
+/* line 1510, main.scss */
 .admin-bar .user-mega h6, .admin-bar .user-mega p {
   float: left;
   color: white;
   font-size: 14px;
   margin: 0;
 }
-/* line 1515, main.scss */
+/* line 1516, main.scss */
 .admin-bar .user-mega .logout {
   margin-top: 35px;
   display: block;
 }
-/* line 1520, main.scss */
+/* line 1521, main.scss */
 .admin-bar .menu-level-1 {
   position: absolute;
   left: 0;
   margin: 0;
 }
-/* line 1523, main.scss */
+/* line 1524, main.scss */
 .admin-bar .menu-level-1 .home {
   padding: 0;
   vertical-align: middle;
   margin-right: 10px;
 }
-/* line 1527, main.scss */
+/* line 1528, main.scss */
 .admin-bar .menu-level-1 .home a {
   font-size: 20px;
 }
-/* line 1532, main.scss */
+/* line 1533, main.scss */
 .admin-bar .menu-level-1 li {
   padding: 10px;
   position: relative;
@@ -4560,15 +4561,15 @@ footer#footer h2 {
   color: white;
   display: inline-block;
 }
-/* line 1539, main.scss */
+/* line 1540, main.scss */
 .admin-bar .menu-level-1 li i {
   padding-right: 5px;
 }
-/* line 1543, main.scss */
+/* line 1544, main.scss */
 .admin-bar .menu-level-1 > li + li {
   margin-left: 10px;
 }
-/* line 1547, main.scss */
+/* line 1548, main.scss */
 .admin-bar .menu-level-2 {
   display: none;
   position: absolute;
@@ -4579,72 +4580,72 @@ footer#footer h2 {
   left: 0;
   top: 36px;
 }
-/* line 1557, main.scss */
+/* line 1558, main.scss */
 .admin-bar .user-menu:hover {
   background: #222;
 }
-/* line 1559, main.scss */
+/* line 1560, main.scss */
 .admin-bar .user-menu:hover, .admin-bar .user-menu:hover > a {
   color: #77c7c6;
 }
-/* line 1562, main.scss */
+/* line 1563, main.scss */
 .admin-bar .user-menu:hover .user-mega {
   z-index: 1000;
   opacity: 1;
   height: auto;
 }
-/* line 1568, main.scss */
+/* line 1569, main.scss */
 .admin-bar .drop-down:hover {
   background: #222;
 }
-/* line 1570, main.scss */
+/* line 1571, main.scss */
 .admin-bar .drop-down:hover, .admin-bar .drop-down:hover > a {
   color: #77c7c6;
 }
-/* line 1573, main.scss */
+/* line 1574, main.scss */
 .admin-bar .drop-down:hover > .menu-level-2 {
   display: block;
   -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
-/* line 1576, main.scss */
+/* line 1577, main.scss */
 .admin-bar .drop-down:hover > .menu-level-2 > li {
   width: 100%;
   margin: 0;
   padding: 0;
 }
-/* line 1581, main.scss */
+/* line 1582, main.scss */
 .admin-bar .drop-down:hover > .menu-level-2 a {
   display: block;
   padding: 10px 5px 10px 15px;
   width: 100%;
 }
-/* line 1585, main.scss */
+/* line 1586, main.scss */
 .admin-bar .drop-down:hover > .menu-level-2 a:hover {
   background: #77c7c6;
   color: #222;
 }
-/* line 1592, main.scss */
+/* line 1593, main.scss */
 .admin-bar #close-toolbar {
   cursor: pointer;
   padding: 10px 20px;
   float: right;
 }
-/* line 1596, main.scss */
+/* line 1597, main.scss */
 .admin-bar #close-toolbar:hover {
   color: #77c7c6;
 }
-/* line 1600, main.scss */
+/* line 1601, main.scss */
 .admin-bar.mini {
   width: 50px;
   overflow: hidden;
 }
-/* line 1603, main.scss */
+/* line 1604, main.scss */
 .admin-bar.mini .menu-level-1 {
   display: none;
 }
-/* line 1606, main.scss */
+/* line 1607, main.scss */
 .admin-bar.mini #close-toolbar {
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
@@ -4667,7 +4668,7 @@ footer#footer h2 {
 /*
  * Image replacement
  */
-/* line 1628, main.scss */
+/* line 1629, main.scss */
 .ir {
   background-color: transparent;
   border: 0;
@@ -4676,7 +4677,7 @@ footer#footer h2 {
   *text-indent: -9999px;
 }
 
-/* line 1636, main.scss */
+/* line 1637, main.scss */
 .ir:before {
   content: "";
   display: block;
@@ -4687,7 +4688,7 @@ footer#footer h2 {
 /*
  * Hide from both screenreaders and browsers: h5bp.com/u
  */
-/* line 1647, main.scss */
+/* line 1648, main.scss */
 .hidden {
   display: none !important;
   visibility: hidden;
@@ -4696,7 +4697,7 @@ footer#footer h2 {
 /*
  * Hide only visually, but have it available for screenreaders: h5bp.com/v
  */
-/* line 1656, main.scss */
+/* line 1657, main.scss */
 .visuallyhidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -4712,7 +4713,7 @@ footer#footer h2 {
  * Extends the .visuallyhidden class to allow the element to be focusable
  * when navigated to via the keyboard: h5bp.com/p
  */
-/* line 1673, main.scss */
+/* line 1674, main.scss */
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
   clip: auto;
@@ -4726,7 +4727,7 @@ footer#footer h2 {
 /*
  * Hide visually and from screenreaders, but maintain layout
  */
-/* line 1686, main.scss */
+/* line 1687, main.scss */
 .invisible {
   visibility: hidden;
 }
@@ -4742,7 +4743,7 @@ footer#footer h2 {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-/* line 1703, main.scss */
+/* line 1704, main.scss */
 .clearfix:before,
 .clearfix:after {
   content: " ";
@@ -4751,7 +4752,7 @@ footer#footer h2 {
   /* 2 */
 }
 
-/* line 1708, main.scss */
+/* line 1709, main.scss */
 .clearfix:after {
   clear: both;
 }
@@ -4760,7 +4761,7 @@ footer#footer h2 {
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
  */
-/* line 1717, main.scss */
+/* line 1718, main.scss */
 .clearfix {
   *zoom: 1;
 }
@@ -4770,7 +4771,7 @@ footer#footer h2 {
    Inlined to avoid required HTTP connection: h5bp.com/r
    ========================================================================== */
 @media print {
-  /* line 1727, main.scss */
+  /* line 1728, main.scss */
   * {
     background: transparent !important;
     color: #000 !important;
@@ -4779,18 +4780,18 @@ footer#footer h2 {
     text-shadow: none !important;
   }
 
-  /* line 1735, main.scss */
+  /* line 1736, main.scss */
   a,
   a:visited {
     text-decoration: underline;
   }
 
-  /* line 1739, main.scss */
+  /* line 1740, main.scss */
   a[href]:after {
     content: " (" attr(href) ")";
   }
 
-  /* line 1743, main.scss */
+  /* line 1744, main.scss */
   abbr[title]:after {
     content: " (" attr(title) ")";
   }
@@ -4798,33 +4799,33 @@ footer#footer h2 {
   /*
    * Don't show links for images, or javascript/internal links
    */
-  /* line 1753, main.scss */
+  /* line 1754, main.scss */
   .ir a:after,
   a[href^="javascript:"]:after,
   a[href^="#"]:after {
     content: "";
   }
 
-  /* line 1758, main.scss */
+  /* line 1759, main.scss */
   pre,
   blockquote {
     border: 1px solid #999;
     page-break-inside: avoid;
   }
 
-  /* line 1763, main.scss */
+  /* line 1764, main.scss */
   thead {
     display: table-header-group;
     /* h5bp.com/t */
   }
 
-  /* line 1768, main.scss */
+  /* line 1769, main.scss */
   tr,
   img {
     page-break-inside: avoid;
   }
 
-  /* line 1772, main.scss */
+  /* line 1773, main.scss */
   img {
     max-width: 100% !important;
   }
@@ -4833,7 +4834,7 @@ footer#footer h2 {
     margin: 0.5cm;
 }
 
-  /* line 1782, main.scss */
+  /* line 1783, main.scss */
   p,
   h2,
   h3 {
@@ -4841,7 +4842,7 @@ footer#footer h2 {
     widows: 3;
   }
 
-  /* line 1788, main.scss */
+  /* line 1789, main.scss */
   h2,
   h3 {
     page-break-after: avoid;
