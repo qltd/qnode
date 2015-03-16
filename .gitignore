@@ -18,3 +18,6 @@ npm-debug.log
 .DS_Store
 .foreverignore
 codekit-config.json
+
+public/client_old/
+public/siggraph2015-2017/
