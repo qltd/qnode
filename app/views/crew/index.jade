@@ -15,6 +15,7 @@ block body_content
               i.icon-chevron-up
             th.log Log
             th.edit Edit
+            th.delete Remove
             
         tbody
           each c in crew
@@ -33,3 +34,5 @@ block body_content
                 a(href='/crew/' + c.slug + '/log') Log
               td
                 a(href='/crew/' + c.slug + '/edit') Edit
+              td
+                a(href='/crew/' + c.slug + '/destroy') Remove
