@@ -206,3 +206,15 @@ exports.restore = function (req, res, next) {
       return next(err); // 500
     });
 }
+
+/**
+ * delete crew
+ * DELETE /crew/:slug/destroy
+ * @rdarling
+ *
+ * **/
+
+exports.delete = function (req, res, next) {
+    Crew.find({slug: req.param.slug}).remove().exec();
+}
+

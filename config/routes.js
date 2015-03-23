@@ -87,7 +87,7 @@ module.exports = function(app, passport) {
   app.get('/crew/:slug/json', crew.show);
   app.get('/crew/:slug/edit', crew.edit);
   app.post('/crew/:slug/edit', crew.update);
-  app.post('/crew/:slug/destroy', crew.destroy);
+  app.post('/crew/:slug/destroy', crew.delete);
   app.get('/crew/:slug/log', crew.log);
   app.get('/crew/:slug/log/:__v', crew.show);
   app.get('/crew/:slug/log/:__v/json', crew.show);
