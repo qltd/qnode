@@ -56,13 +56,4 @@ $('input[type=submit]').on('click', function () {
   $('#loading-screen').addClass('open');
 })
 
-/**
- * Delete a crew member
- * @rdarling
- * **/
-$('.delete-crew').click(function(){
-    var slug = $(this).attr('data-crew-slug');
-    app.delete('/crew/'+slug+'/destroy', function (req, res) {
-          res.send('DELETE request to crew controller');
-    });
-});
+
