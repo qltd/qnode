@@ -209,12 +209,14 @@ exports.restore = function (req, res, next) {
 
 /**
  * delete crew
- * DELETE /crew/:slug/destroy
+ * DELETE /crew/:slug/delete
  * @rdarling
  *
  * **/
 
 exports.delete = function (req, res, next) {
-    Crew.find({slug: req.param.slug}).remove().exec();
+    Crew.find({slug: req.params.slug}).remove().exec();
+    req.flash('success','Crew person deleted');
+    return res.send(204);
 }
 

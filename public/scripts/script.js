@@ -41,3 +41,30 @@ YUI().use('transition', function (Y){
     this.setStyle('webkitTransform', 'rotateY(0deg)');
   });               
 });
+
+/**
+ * Delete Crew members
+ * @rdarling
+ *
+ * */
+
+$('.remove-crew').click(function(){
+    var slug = $(this).attr('data-crew-slug');
+    $('.remove-crew-wrap-'+slug).slideToggle();
+});
+
+$('.remove-crew-action').click(function(){
+    var slug = $(this).attr('data-crew-slug');
+    $.ajax({
+        type: 'DELETE', 
+        url: '/crew/'+slug+'/delete',
+        success: function(){
+            window.location='/crew' 
+        }
+    });
+});
+
+$('.cancel-remove-crew').click(function(){
+    var slug = $(this).attr('data-crew-slug');
+    $('.remove-crew-wrap-'+slug).slideUp();
+});

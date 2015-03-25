@@ -35,4 +35,7 @@ block body_content
               td
                 a(href='/crew/' + c.slug + '/edit') Edit
               td
-                button(class="remove-crew") Remove
+                button(class="remove-crew" data-crew-slug=c.slug) Delete
+                div(class="disappear remove-crew-wrap-"+c.slug style="display:none;")
+                    button(class="remove-crew-action warning" style="background:#e16e2b;" data-crew-slug=c.slug) Are you sure?
+                    button(class="cancel-remove-crew" style="background:#77c7c6" data-crew-slug=c.slug) Cancel

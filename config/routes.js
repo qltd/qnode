@@ -87,7 +87,8 @@ module.exports = function(app, passport) {
   app.get('/crew/:slug/json', crew.show);
   app.get('/crew/:slug/edit', crew.edit);
   app.post('/crew/:slug/edit', crew.update);
-  app.post('/crew/:slug/destroy', crew.delete);
+  //app.get('/crew/:slug/delete', crew.delete);//these will need to be switched from a get request
+  app.delete('/crew/:slug/delete', crew.delete);
   app.get('/crew/:slug/log', crew.log);
   app.get('/crew/:slug/log/:__v', crew.show);
   app.get('/crew/:slug/log/:__v/json', crew.show);
