@@ -218,3 +218,16 @@ exports.logout = function (req, res) {
   req.session.destroy();
   res.redirect('/');
 }
+
+/**
+ * delete user
+ * DELETE /users/:slug/delete
+ * @rdarling
+ *
+ * **/
+
+exports.delete = function (req, res, next) {
+    User.find({username: req.params.username}).remove().exec();
+    req.flash('success','User deleted');
+    return res.send(204);
+}

@@ -1,5 +1,9 @@
 extends _form
 
-article.panel
+block append body_content 
     div.container
-        h1 hello world
+        div(id="remove_user_wrap" style="text-align:center;")
+            button(class="remove-user btn" data-username="#{user.username}") Delete
+            div(class="disappear remove-user-wrap" style="display:none;")
+                button(class="remove-user-action warning" style="background:#e16e2b;" data-username="#{user.username}") Are you sure?
+                button(class="cancel-remove-user" style="background:#77c7c6" data-username="#{user.username}") Cancel

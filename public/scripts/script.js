@@ -68,3 +68,29 @@ $('.cancel-remove-crew').click(function(){
     var slug = $(this).attr('data-crew-slug');
     $('.remove-crew-wrap-'+slug).slideUp();
 });
+
+/**
+ * Delete User members
+ *
+ * */
+
+$('.remove-user').click(function(){
+    var username = $(this).attr('data-username');
+    $('.remove-user-wrap').slideToggle();
+});
+
+$('.remove-user-action').click(function(){
+    var username = $(this).attr('data-username');
+    $.ajax({
+        type: 'DELETE', 
+        url: '/users/'+username+'/delete',
+        success: function(){
+            window.location='/users' 
+        }
+    });
+});
+
+$('.cancel-remove-user').click(function(){
+    var username = $(this).attr('data-username');
+    $('.remove-user-wrap').slideUp();
+});

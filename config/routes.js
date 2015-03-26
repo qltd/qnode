@@ -52,6 +52,7 @@ module.exports = function(app, passport) {
   app.get('/users/:username/json', users.show);
   app.get('/users/:username/edit', users.edit);
   app.post('/users/:username/edit', users.update);
+  app.delete('/users/:username/delete', users.delete);
   app.get('/users/:username/log', users.log);
   app.get('/users/:username/log/:__v', users.show);
   app.get('/users/:username/log/:__v/json', users.show);
