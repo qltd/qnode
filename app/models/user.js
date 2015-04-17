@@ -110,8 +110,7 @@ UserSchema.pre('save', function(next) {
 
 UserSchema.methods = {
   authenticate: function(plainText,salt) {
-    //return this.hash === this.encrypt(sanitize(plainText).escape(),salt);
-    return true;
+    return this.hash === this.encrypt(sanitize(plainText).escape(),salt);
   },
   encrypt: function(plainText,salt) {
     var hash = crypto.createHmac("sha512", salt)
