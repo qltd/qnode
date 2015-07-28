@@ -82,7 +82,7 @@ ImageSchema.methods = {
     /** iterate through file array */
     fileArray.forEach(function (file, key) {
       if (file.name && file.type && file.type.indexOf('image') > -1) { /** new file */
-
+        console.log('fig');
         /** extend Image object to contain file values, then add to images array */
         var img = _.extend(imageFieldArray[key], file);
         images.push(img);
@@ -104,7 +104,7 @@ ImageSchema.methods = {
         });
 
       } else if (file.path) { /** no new file; remove temp file */
-
+        console.log('newton');
         /** remove tmp file */
         fs.unlink(file.path, function (err) {
           if (err) return err;

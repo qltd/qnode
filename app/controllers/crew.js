@@ -133,6 +133,7 @@ exports.create = function (req, res, next) {
  */
 
 exports.update = function (req, res, next) {
+    console.log("here we go again");
   Q.fcall(Image.update, Crew, { slug: req.params.slug }, 'image', req.body.image, req.files.image)
     .then(function (update) {
       return update; // update image
