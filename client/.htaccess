@@ -1,0 +1,5 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+RewriteRule ^designs/(.*)$ /var/www/vhosts/qltdclient.com/qltdee1/client/$1 [R=301,NC,L]
+

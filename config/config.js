@@ -11,21 +11,21 @@ module.exports = {
   development: {
     db: {
       host: 'localhost',
-      name: 'qnode_db_dev'
+      name: 'froggy_legs'
     },
     root: rootPath,
   },
   test: {
     db: {
       host: 'localhost',
-      name: 'qnode_db_test'
+      name: 'froggy_legs'
     },
     root: rootPath,
   },
   production: {
     db: {
       host: 'localhost',
-      name: 'qnode_db'
+      name: 'froggy_legs'
     },
     root: rootPath,
   }

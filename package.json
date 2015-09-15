@@ -1,9 +1,9 @@
 {
   "name": "qnode",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "NODE_ENV=production server.js"
+    "start": "NODE_ENV=development nodemon server.js"
   },
   "dependencies": {
     "connect-mongo": "*",
@@ -37,11 +37,6 @@
     { 
       "name": "Michael J. Bondra", 
       "email": "mike@qltd.com",
-      "url": "http://www.qltd.com/"
-    },
-    { 
-      "name": "Ramsey Darling", 
-      "email": "ramsey@qltd.com",
       "url": "http://www.qltd.com/"
     }
   ]
