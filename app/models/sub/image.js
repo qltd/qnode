@@ -4,7 +4,7 @@
  */
 
 var fs = require('fs')
-  , gm = require('gm')
+  , gm = require('gm').subClass({ imageMagick: true })
   , mongoose = require('mongoose')
   , Q = require('q')
   , sanitize = require('validator').sanitize
