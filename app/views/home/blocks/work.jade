@@ -2,8 +2,7 @@ if panel && panel.work
   article#work.work.panel
     .container
       h2= panel.work.title
-      .content
-        p= panel.work.body
+      p.content!= panel.work.body
         
       if projects && projects.length
         ul.project-grid
